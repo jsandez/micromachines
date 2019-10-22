@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11   CMakeFiles/client.dir/src/Client/Area.cpp.o CMakeFiles/client.dir/src/Client/SdlException.cpp.o CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o  -o client -lSDL2 -lSDL2_image 

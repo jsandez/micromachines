@@ -1,0 +1,8 @@
+/home/jorge/Taller/micromachines/build/CMakeFiles/install/strip.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/install/local.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/Box2D.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/install.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/edit_cache.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/rebuild_cache.dir
+/home/jorge/Taller/micromachines/build/CMakeFiles/list_install_components.dir
