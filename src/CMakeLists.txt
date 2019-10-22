@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.13.4)
 
-add_subdirectory(3rd-party/Box2D)
-add_subdirectory(servidor)
+# Subdirectorios 3rd-party que se compilan sin flags
 #add_subdirectory(SDL2)
+add_subdirectory(3rd-party/Box2D)
+
+# Subdirectorios propios
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")
+add_subdirectory(servidor)
+
 add_executable(main main.cpp)
 target_link_libraries(main Box2D Servidor)
