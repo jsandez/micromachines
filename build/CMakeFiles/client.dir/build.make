@@ -81,9 +81,33 @@ CMakeFiles/client.dir/src/Client/Area.cpp.o.provides: CMakeFiles/client.dir/src/
 CMakeFiles/client.dir/src/Client/Area.cpp.o.provides.build: CMakeFiles/client.dir/src/Client/Area.cpp.o
 
 
+CMakeFiles/client.dir/src/Client/Dot.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/Dot.cpp.o: ../src/Client/Dot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/client.dir/src/Client/Dot.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/src/Client/Dot.cpp.o -c /home/jorge/Taller/micromachines/src/Client/Dot.cpp
+
+CMakeFiles/client.dir/src/Client/Dot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/Dot.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/Taller/micromachines/src/Client/Dot.cpp > CMakeFiles/client.dir/src/Client/Dot.cpp.i
+
+CMakeFiles/client.dir/src/Client/Dot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/Dot.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/Taller/micromachines/src/Client/Dot.cpp -o CMakeFiles/client.dir/src/Client/Dot.cpp.s
+
+CMakeFiles/client.dir/src/Client/Dot.cpp.o.requires:
+
+.PHONY : CMakeFiles/client.dir/src/Client/Dot.cpp.o.requires
+
+CMakeFiles/client.dir/src/Client/Dot.cpp.o.provides: CMakeFiles/client.dir/src/Client/Dot.cpp.o.requires
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/Dot.cpp.o.provides.build
+.PHONY : CMakeFiles/client.dir/src/Client/Dot.cpp.o.provides
+
+CMakeFiles/client.dir/src/Client/Dot.cpp.o.provides.build: CMakeFiles/client.dir/src/Client/Dot.cpp.o
+
+
 CMakeFiles/client.dir/src/Client/SdlException.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/Client/SdlException.cpp.o: ../src/Client/SdlException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/client.dir/src/Client/SdlException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/src/Client/SdlException.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/src/Client/SdlException.cpp.o -c /home/jorge/Taller/micromachines/src/Client/SdlException.cpp
 
 CMakeFiles/client.dir/src/Client/SdlException.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/client.dir/src/Client/SdlException.cpp.o.provides.build: CMakeFiles/c
 
 CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o: ../src/Client/SdlTexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o -c /home/jorge/Taller/micromachines/src/Client/SdlTexture.cpp
 
 CMakeFiles/client.dir/src/Client/SdlTexture.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o.provides.build: CMakeFiles/cli
 
 CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o: ../src/Client/SdlWindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o -c /home/jorge/Taller/micromachines/src/Client/SdlWindow.cpp
 
 CMakeFiles/client.dir/src/Client/SdlWindow.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o.provides.build: CMakeFiles/clie
 
 CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o: ../src/Client/mainMicromachines.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o -c /home/jorge/Taller/micromachines/src/Client/mainMicromachines.cpp
 
 CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.i: cmake_force
@@ -180,6 +204,7 @@ CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o.provides.build: CMakeFi
 # Object files for target client
 client_OBJECTS = \
 "CMakeFiles/client.dir/src/Client/Area.cpp.o" \
+"CMakeFiles/client.dir/src/Client/Dot.cpp.o" \
 "CMakeFiles/client.dir/src/Client/SdlException.cpp.o" \
 "CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o" \
 "CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o" \
@@ -189,13 +214,14 @@ client_OBJECTS = \
 client_EXTERNAL_OBJECTS =
 
 client: CMakeFiles/client.dir/src/Client/Area.cpp.o
+client: CMakeFiles/client.dir/src/Client/Dot.cpp.o
 client: CMakeFiles/client.dir/src/Client/SdlException.cpp.o
 client: CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o
 client: CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o
 client: CMakeFiles/client.dir/src/Client/mainMicromachines.cpp.o
 client: CMakeFiles/client.dir/build.make
 client: CMakeFiles/client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jorge/Taller/micromachines/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -204,6 +230,7 @@ CMakeFiles/client.dir/build: client
 .PHONY : CMakeFiles/client.dir/build
 
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/src/Client/Area.cpp.o.requires
+CMakeFiles/client.dir/requires: CMakeFiles/client.dir/src/Client/Dot.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/src/Client/SdlException.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o.requires

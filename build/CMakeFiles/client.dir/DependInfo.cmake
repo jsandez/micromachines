@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jorge/Taller/micromachines/src/Client/Area.cpp" "/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir/src/Client/Area.cpp.o"
+  "/home/jorge/Taller/micromachines/src/Client/Dot.cpp" "/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir/src/Client/Dot.cpp.o"
   "/home/jorge/Taller/micromachines/src/Client/SdlException.cpp" "/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir/src/Client/SdlException.cpp.o"
   "/home/jorge/Taller/micromachines/src/Client/SdlTexture.cpp" "/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir/src/Client/SdlTexture.cpp.o"
   "/home/jorge/Taller/micromachines/src/Client/SdlWindow.cpp" "/home/jorge/Taller/micromachines/build/CMakeFiles/client.dir/src/Client/SdlWindow.cpp.o"

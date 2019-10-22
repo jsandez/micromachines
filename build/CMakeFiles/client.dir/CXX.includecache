@@ -12,6 +12,14 @@ Area.h
 
 /home/jorge/Taller/micromachines/src/Client/Area.h
 
+/home/jorge/Taller/micromachines/src/Client/Dot.cpp
+Dot.h
+/home/jorge/Taller/micromachines/src/Client/Dot.h
+
+/home/jorge/Taller/micromachines/src/Client/Dot.h
+SDL2/SDL_events.h
+-
+
 /home/jorge/Taller/micromachines/src/Client/SdlException.cpp
 SdlException.h
 /home/jorge/Taller/micromachines/src/Client/SdlException.h

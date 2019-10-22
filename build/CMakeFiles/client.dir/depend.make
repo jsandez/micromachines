@@ -4,6 +4,9 @@
 CMakeFiles/client.dir/src/Client/Area.cpp.o: ../src/Client/Area.cpp
 CMakeFiles/client.dir/src/Client/Area.cpp.o: ../src/Client/Area.h
 
+CMakeFiles/client.dir/src/Client/Dot.cpp.o: ../src/Client/Dot.cpp
+CMakeFiles/client.dir/src/Client/Dot.cpp.o: ../src/Client/Dot.h
+
 CMakeFiles/client.dir/src/Client/SdlException.cpp.o: ../src/Client/SdlException.cpp
 CMakeFiles/client.dir/src/Client/SdlException.cpp.o: ../src/Client/SdlException.h
 

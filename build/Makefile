@@ -2693,6 +2693,33 @@ src/Client/Area.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/Area.cpp.s
 .PHONY : src/Client/Area.cpp.s
 
+src/Client/Dot.o: src/Client/Dot.cpp.o
+
+.PHONY : src/Client/Dot.o
+
+# target to build an object file
+src/Client/Dot.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/Dot.cpp.o
+.PHONY : src/Client/Dot.cpp.o
+
+src/Client/Dot.i: src/Client/Dot.cpp.i
+
+.PHONY : src/Client/Dot.i
+
+# target to preprocess a source file
+src/Client/Dot.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/Dot.cpp.i
+.PHONY : src/Client/Dot.cpp.i
+
+src/Client/Dot.s: src/Client/Dot.cpp.s
+
+.PHONY : src/Client/Dot.s
+
+# target to generate assembly for a file
+src/Client/Dot.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/Dot.cpp.s
+.PHONY : src/Client/Dot.cpp.s
+
 src/Client/SdlException.o: src/Client/SdlException.cpp.o
 
 .PHONY : src/Client/SdlException.o
@@ -3094,6 +3121,9 @@ help:
 	@echo "... src/Client/Area.o"
 	@echo "... src/Client/Area.i"
 	@echo "... src/Client/Area.s"
+	@echo "... src/Client/Dot.o"
+	@echo "... src/Client/Dot.i"
+	@echo "... src/Client/Dot.s"
 	@echo "... src/Client/SdlException.o"
 	@echo "... src/Client/SdlException.i"
 	@echo "... src/Client/SdlException.s"
