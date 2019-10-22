@@ -1,15 +1,5 @@
 cmake_minimum_required(VERSION 3.13.4)
 
-#SET(BASEPATH "${CMAKE_SOURCE_DIR}")
-#INCLUDE_DIRECTORIES("${BASEPATH}")
-
-#file(GLOB_RECURSE BOX2D_SOURCES "Box2D/*.cpp")
-
-#add_library(Box2D STATIC ${BOX2D_SOURCES})
-
-#include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Box2D")
-#target_include_directories(Box2D PUBLIC Box2D)
-
 project (Box2D)
 
 set(SOURCES
@@ -60,9 +50,6 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/Box2D/Dynamics/b2WorldCallbacks.cpp
   ${PROJECT_SOURCE_DIR}/Box2D/Rope/b2Rope.cpp
 )
-
-
-#add_library(tobanteGaming::Box2D ALIAS ${PROJECT_NAME})
 
 include_directories(${PROJECT_SOURCE_DIR})
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
