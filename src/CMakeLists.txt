@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13.4)
+cmake_minimum_required(VERSION 3.10.2)
 
 # Subdirectorios 3rd-party que se compilan sin flags
 #add_subdirectory(SDL2)
