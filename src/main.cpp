@@ -1,5 +1,5 @@
-#include "includes/servidor/modelo/MiClase.h"
+#include "includes/servidor/modelo/Rueda.h"
 
 int main(int argc, char const *argv[]) {
-    MiClase m(1,2);
+    Rueda r(nullptr);
 }
