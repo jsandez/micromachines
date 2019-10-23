@@ -1,4 +1,4 @@
-#include "MiClase.h"
+#include "includes/servidor/modelo/MiClase.h"
 
 MiClase::MiClase(int attr1, int attr2) :
     attr1(attr1),
