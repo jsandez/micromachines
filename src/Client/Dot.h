@@ -1,6 +1,10 @@
 #ifndef _DOT_H_
 #define _DOT_H_
 
+//Screen dimension constants
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
+
 #include <SDL2/SDL_events.h>
 /*
  * Esta clase es solo para probar la camara.

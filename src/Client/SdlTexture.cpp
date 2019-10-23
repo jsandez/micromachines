@@ -23,7 +23,7 @@ SDL_Texture* SdlTexture::loadTexture(const std::string &filename) {
 }
 
 int SdlTexture::render(const Area& src, const Area& dest) const {
-    SDL_Rect sdlSrc = {
+  SDL_Rect sdlSrc = {
             src.getX(), src.getY(),
             src.getWidth(), src.getHeight()
     };

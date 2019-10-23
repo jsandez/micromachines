@@ -1,4 +1,4 @@
-#ifndef __AREA_H__
+#ifndef __AREA_H_
 #define __AREA_H_
 
 class Area {
