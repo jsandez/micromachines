@@ -2,8 +2,8 @@
 #include <iostream>
 #include <exception>
 #include "SdlWindow.h"
-#include "SdlTexture.h"
 #include "Pista.h"
+#include "Car.h"
 
 //The dimensions of the level
 const int LEVEL_WIDTH = 1920;
@@ -13,8 +13,10 @@ int main(int argc, char **argv) {
   try {
     SdlWindow window(LEVEL_WIDTH, LEVEL_HEIGHT);
     window.fill();
-    Pista pista(270, 270);
+    Pista pista(295, 295);
     pista.dibujar(window);
+    Car car(100,100);
+    car.dibujar(window);
     window.render();
     SDL_Delay(3000);
   } catch (std::exception &e) {

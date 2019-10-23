@@ -13,7 +13,7 @@ add_library(Box2D STATIC ${BOX2D_SOURCES})
 #FILE(GLOB 3RD_PARTY 3rd-party/Box2D/*.cpp)
 FILE(GLOB CLIENT_SRCFILES RELATIVE ${CMAKE_SOURCE_DIR} src/Client/*.cpp src/Client/*.h)
 
-ADD_EXECUTABLE(client ${CLIENT_SRCFILES} ${LIBS_SOURCES} src/Client/Dot.cpp src/Client/Dot.h src/Client/Pista.cpp src/Client/Pista.h)
+ADD_EXECUTABLE(client ${CLIENT_SRCFILES} ${LIBS_SOURCES} src/Client/Pista.cpp src/Client/Pista.h)
 target_link_libraries(client SDL2 SDL2_image)
 
 install(FILES assets/Finish.png DESTINATION ${CMAKE_BINARY_DIR})
@@ -21,6 +21,7 @@ install(FILES assets/Road_01/Road_01_Tile_01/Road_01_Tile_01.png DESTINATION ${C
 install(FILES assets/Road_01/Road_01_Tile_02/Road_01_Tile_02.png DESTINATION ${CMAKE_BINARY_DIR})
 install(FILES assets/Road_01/Road_01_Tile_03/Road_01_Tile_03.png DESTINATION ${CMAKE_BINARY_DIR})
 install(FILES assets/Road_01/Road_01_Tile_04/Road_01_Tile_04.png DESTINATION ${CMAKE_BINARY_DIR})
+install(FILES assets/pitstop_car_1.png DESTINATION ${CMAKE_BINARY_DIR})
 
 #[[include_directories(3rd-party/Box2D)
 include_directories(3rd-party/Box2D/Collision)
