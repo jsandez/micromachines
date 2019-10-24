@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
-#include "../../includes/cliente/SdlException.h"
-#include "../../includes/cliente/SdlWindow.h"
+#include "includes/cliente/SdlException.h"
+#include "includes/cliente/SdlWindow.h"
 #include <iostream>
 
 SdlWindow::SdlWindow(int width, int height) :
