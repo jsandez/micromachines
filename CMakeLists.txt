@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10.2)
 
+set(RUTA_INSTALACION "/home/mic/Escritorio/Micromachines_i" CACHE INTERNAL "")
+
 project(Micromachines)
 
 # seteo de flags compartidos por todos los subproyectos
@@ -9,4 +11,4 @@ include_directories(includes/servidor)
 
 add_subdirectory(src)
 
-INSTALL(DIRECTORY config DESTINATION /home/mic/Escritorio/Micromachines_i)
+INSTALL(DIRECTORY config DESTINATION ${RUTA_INSTALACION})
