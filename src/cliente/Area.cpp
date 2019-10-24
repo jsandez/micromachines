@@ -1,4 +1,4 @@
-#include "Area.h"
+#include "includes/cliente/Area.h"
 
 Area::Area(int x, int y, int width, int height) :
 	x(x), y(y), width(width), height(height){

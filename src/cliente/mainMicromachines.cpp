@@ -1,9 +1,9 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <exception>
-#include "SdlWindow.h"
-#include "Pista.h"
-#include "Car.h"
+#include "includes/cliente/SdlWindow.h"
+#include "includes/cliente/Pista.h"
+#include "includes/cliente/Car.h"
 
 const int LEVEL_WIDTH = 1920;
 const int LEVEL_HEIGHT = 1080;

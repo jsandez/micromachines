@@ -1,4 +1,4 @@
-#include "Pista.h"
+#include "../../includes/cliente/Pista.h"
 
 Pista::Pista(int width, int height,SdlTexture& road,SdlTexture& corner) :
             width(width), height(height),road(road),corner(corner) {}
