@@ -35,3 +35,7 @@ cmake-build-debug
 #CMakeLists.txt
 .idea
 build/*
+*.txt
+*.md
+client
+3rd-party/*

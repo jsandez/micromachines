@@ -22,6 +22,7 @@ int main(int argc, char **argv) {
     int x = 0;
     int y = 0;
     while (!quit) {
+      //empezar contador
       SDL_Event event;
       window.fill();
       pista.dibujar(window);
@@ -40,6 +41,7 @@ int main(int argc, char **argv) {
         camera.y = camera.h;
       }
       car.dibujar(window, x - camera.x, y - camera.y);
+      // terminar contador
       while (SDL_PollEvent(&event) != 0) {
         switch (event.type) {
           case SDL_KEYDOWN: {
@@ -64,6 +66,7 @@ int main(int argc, char **argv) {
         }
       }
       window.render();
+      // wait diferencia porcentual
     }
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
