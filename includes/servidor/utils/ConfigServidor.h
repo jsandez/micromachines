@@ -7,9 +7,12 @@
 
 #include <string>
 
+#include "includes/3rd-party/yaml-cpp/yaml.h"
+
 class ConfigServidor {
 private:
     ConfigServidor(const std::string& rutaArchivo);
+    YAML::Node config_;
 
 public:
     static ConfigServidor& instancia();

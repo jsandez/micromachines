@@ -5,7 +5,9 @@ ConfigServidor& ConfigServidor::instancia() {
     return config_;
 }
 
-ConfigServidor::ConfigServidor(const std::string& rutaArchivo) {
+ConfigServidor::ConfigServidor(const std::string& rutaArchivo) :
+    config_(YAML::LoadFile(rutaArchivo)) {
+
 }
 
 unsigned int ConfigServidor::puertoServidor() {

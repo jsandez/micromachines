@@ -11,11 +11,11 @@
 namespace YAML {
 class EventHandler;
 
-Parser::Parser() {}
+Parser::Parser() : m_pScanner{}, m_pDirectives{} {}
 
-Parser::Parser(std::istream& in) { Load(in); }
+Parser::Parser(std::istream& in) : Parser() { Load(in); }
 
-Parser::~Parser() {}
+Parser::~Parser() = default;
 
 Parser::operator bool() const {
   return m_pScanner.get() && !m_pScanner->empty();
@@ -126,4 +126,4 @@ void Parser::PrintTokens(std::ostream& out) {
     m_pScanner->pop();
   }
 }
-}
+}  // namespace YAML

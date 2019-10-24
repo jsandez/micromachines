@@ -4,12 +4,12 @@
 #include "includes/servidor/utils/ConfigServidor.h"
 
 int main(int argc, char const *argv[]) {
-    Servidor s(CONFIG_SERVIDOR.puertoServidor());
+    Servidor s(200);
     try {
         s.correr();
     } catch(const std::exception& e) {
         std::cout << e.what() << '\n';
     }
-    std::cout << CONFIG_SERVIDOR.puertoServidor() << '\n';
+    std::cout << 200 << '\n';
     return 0;
 }

@@ -11,12 +11,12 @@ namespace YAML {
 class Binary;
 struct _Null;
 
-Emitter::Emitter() : m_pState(new EmitterState) {}
+Emitter::Emitter() : m_pState(new EmitterState), m_stream{} {}
 
 Emitter::Emitter(std::ostream& stream)
     : m_pState(new EmitterState), m_stream(stream) {}
 
-Emitter::~Emitter() {}
+Emitter::~Emitter() = default;
 
 const char* Emitter::c_str() const { return m_stream.str(); }
 
@@ -285,10 +285,8 @@ void Emitter::PrepareTopNode(EmitterNodeType::value child) {
   if (child == EmitterNodeType::NoType)
     return;
 
-  if (m_pState->CurGroupChildCount() > 0 && m_stream.col() > 0) {
-    if (child != EmitterNodeType::NoType)
-      EmitBeginDoc();
-  }
+  if (m_pState->CurGroupChildCount() > 0 && m_stream.col() > 0)
+    EmitBeginDoc();
 
   switch (child) {
     case EmitterNodeType::NoType:
@@ -908,4 +906,4 @@ Emitter& Emitter::Write(const Binary& binary) {
 
   return *this;
 }
-}
+}  // namespace YAML
