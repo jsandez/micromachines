@@ -1,8 +1,7 @@
 #ifndef _FISICAS_H_
 #define _FISICAS_H_
 
-// Forward declarations
-class b2World;
+#include "includes/3rd-party/Box2D/Box2D.h"
 
 class Fisicas {
 private:
@@ -11,6 +10,7 @@ private:
 
 public:
     Fisicas();
+    ~Fisicas();
 };
 
 #endif

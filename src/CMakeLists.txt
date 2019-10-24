@@ -10,5 +10,7 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")
 include_directories(${CMAKE_SOURCE_DIR})
 add_subdirectory(servidor)
 
-add_executable(main main.cpp)
-target_link_libraries(main Box2D Servidor)
+add_executable(Servidor servidor/main_servidor.cpp)
+target_link_libraries(Servidor Box2D ServidorCMake)
+
+INSTALL(TARGETS Servidor DESTINATION /home/mic/Escritorio/Micromachines_i)

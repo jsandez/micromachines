@@ -8,3 +8,5 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -pthread")
 include_directories(includes/servidor)
 
 add_subdirectory(src)
+
+INSTALL(DIRECTORY config DESTINATION /home/mic/Escritorio/Micromachines_i)
