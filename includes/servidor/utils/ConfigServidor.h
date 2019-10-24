@@ -1,18 +1,18 @@
 #ifndef _CONFIG_SERVIDOR_H_
 #define _CONFIG_SERVIDOR_H_
 
-#define RUTA_CONFIG_SERVIDOR "/config/server_settings.yaml"
+#define RUTA_CONFIG_SERVIDOR "/config/server_settings.json"
 
 #define CONFIG_SERVIDOR ConfigServidor::instancia()
 
 #include <string>
 
-#include "includes/3rd-party/yaml-cpp/yaml.h"
+#include "includes/3rd-party/jsoncpp/json.hpp"
 
 class ConfigServidor {
 private:
     ConfigServidor(const std::string& rutaArchivo);
-    YAML::Node config_;
+    
 
 public:
     static ConfigServidor& instancia();
