@@ -11,13 +11,16 @@ class Car {
   int mPosX, mPosY;
   //The velocity of the dot
   int mVelX, mVelY;
+  SdlTexture texture;
  public:
   //Maximum axis velocity of the dot
   static const int DOT_VEL = 10;
-  Car(int width, int height);
-  void dibujar(SdlWindow &sdl_window);
-  void manejarEvento(SDL_Event& e);
+  Car(int width, int height, SdlTexture &sdl_texture);
+  void dibujar(SdlWindow &sdl_window,int x, int y);
+  void manejarEvento(SDL_Event &e);
   void manejar();
+  int getPosX();
+  int getPosY();
 };
 
 #endif

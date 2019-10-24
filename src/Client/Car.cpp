@@ -1,6 +1,7 @@
 #include "Car.h"
 
-Car::Car(int width, int height) : width(width), height(height) {
+Car::Car(int width, int height, SdlTexture &sdl_texture) :
+    width(width), height(height), texture(sdl_texture) {
   //Initialize the offsets
   mPosX = 0;
   mPosY = 0;
@@ -10,11 +11,10 @@ Car::Car(int width, int height) : width(width), height(height) {
   mVelY = 0;
 }
 
-void Car::dibujar(SdlWindow &sdl_window) {
-  SdlTexture car("pitstop_car_1.png", sdl_window);
+void Car::dibujar(SdlWindow &sdl_window, int x, int y) {
   Area src_area(0, 0, 463, 1010);
-  Area dest_area(0, 0, this->width, this->height);
-  car.render(src_area, dest_area, (double) -90, SDL_FLIP_NONE);
+  Area dest_area(x, y, this->width, this->height);
+  this->texture.render(src_area, dest_area, (double) -90, SDL_FLIP_NONE);
 }
 
 void Car::manejarEvento(SDL_Event &e) {
@@ -66,4 +66,12 @@ void Car::manejar() {
     //Move back
     mPosY -= mVelY;
   }
+}
+
+int Car::getPosX() {
+  return mPosX;
+}
+
+int Car::getPosY() {
+  return mPosY;
 }

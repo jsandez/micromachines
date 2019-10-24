@@ -17,7 +17,7 @@ SdlWindow::SdlWindow(int width, int height) :
   if (errCode) {
     throw SdlException("Error al crear ventana", SDL_GetError());
   }
-  SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+  //SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
 SdlWindow::~SdlWindow() {

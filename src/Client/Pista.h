@@ -7,8 +7,10 @@ class Pista {
  private:
   int width;
   int height;
+  SdlTexture road;
+  SdlTexture corner;
  public:
-  Pista(int width, int height);
+  Pista(int width, int height, SdlTexture &road, SdlTexture &corner);
   void dibujar(SdlWindow &sdl_window);
 };
 
