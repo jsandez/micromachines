@@ -3,7 +3,7 @@
 
 class Servidor {
 private:
-    unsigned int puerto_;
+    unsigned int puerto_; 
 
 public:
     Servidor(unsigned int puerto);
