@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 SocketTCPServidor::SocketTCPServidor(unsigned int unPuerto) :
-    puerto_(unPuerto) {
+    SocketTCP(unPuerto) {
 }
 
 void SocketTCPServidor::enlazar() {
