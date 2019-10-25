@@ -52,5 +52,7 @@ set(SOURCES
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/includes/3rd-party)
+
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
+
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
