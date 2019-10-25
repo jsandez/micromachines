@@ -2,25 +2,14 @@
 #define _AUTO_H_
 #include "SdlWindow.h"
 #include "SdlTexture.h"
+#include "includes/cliente/VistaObjeto.h"
 
-class Car {
- private:
-  int width;
-  int height;
-  //The X and Y offsets of the dot
-  int mPosX, mPosY;
-  //The velocity of the dot
-  int mVelX, mVelY;
-  SdlTexture texture;
+class Car : public VistaObjeto {
  public:
-  //Maximum axis velocity of the dot
-  static const int DOT_VEL = 10;
   Car(int width, int height, SdlTexture &sdl_texture);
-  void dibujar(SdlWindow &sdl_window,int x, int y);
-  void manejarEvento(SDL_Event &e);
-  void manejar();
-  int getPosX();
-  int getPosY();
+  virtual void dibujar(int x, int y) override;
+  virtual void mover(int x, int y) override;
+  virtual void rotar(int rotacion) override;
 };
 
 #endif
