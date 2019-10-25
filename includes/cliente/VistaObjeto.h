@@ -11,7 +11,6 @@ class VistaObjeto {
   virtual void dibujar(int x, int y) = 0;
   virtual void mover(int x, int y) = 0;
   virtual void rotar(int rotacion) = 0;
-  virtual ~VistaObjeto() = 0;
   int getX();
   int getY();
 };
