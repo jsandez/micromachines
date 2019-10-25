@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.2)
 
-set(RUTA_INSTALACION "~/Micromachines" CACHE INTERNAL "")
+set(RUTA_INSTALACION "$ENV{HOME}/micromachines" CACHE INTERNAL "")
 
 project(Micromachines)
 
