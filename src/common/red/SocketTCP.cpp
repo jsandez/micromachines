@@ -4,10 +4,30 @@
 
 #include <unistd.h>
 #include <stdexcept>
+#include <string.h>
 
 SocketTCP::SocketTCP(int unFileDescriptor) :
     fileDescripor_(unFileDescriptor),
     hints_(nullptr) {
+}
+
+SocketTCP::SocketTCP(const std::string& unHost, const std::string& unPuerto) :
+    hints_(NULL),
+    fileDescripor_(-1) {
+    int status = 0;
+    addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = IP_VERSION;    
+    hints.ai_socktype = SOCKET_TYPE;
+    hints.ai_flags = FLAGS;
+    status = getaddrinfo(unHost.c_str(), unPuerto.c_str(), &hints, &hints_);
+    if (status != 0) { 
+        throw std::runtime_error(ERROR_GET_ADDRINFO);
+    }
+    fileDescripor_ = socket(hints_->ai_family, hints_->ai_socktype, hints_->ai_protocol);
+    if (fileDescripor_ == -1) {
+        throw std::runtime_error(ERROR_CREAR);
+    }
 }
 
 SocketTCP::SocketTCP(SocketTCP&& otro) {

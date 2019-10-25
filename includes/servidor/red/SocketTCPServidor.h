@@ -3,17 +3,16 @@
 
 #include "includes/common/red/SocketTCP.h"
 
+#define LOCALHOST "localhost"
+
 #define ERROR_SET_SOCK_OPT "Error al llamar a setsockopt antes de enlazar."
 #define ERROR_BIND "Error al intentar enlazar el socket."
 #define ERROR_LISTEN "Error al llamar a listen()."
 #define ERROR_ACEPTAR "Error al llamar a accept()."
 
 class SocketTCPServidor : public SocketTCP {
-private:
-    unsigned int puerto_;
-
 public:
-    SocketTCPServidor(unsigned int puerto);
+    SocketTCPServidor(const std::string& unPuerto);
 
     void enlazar();
 
