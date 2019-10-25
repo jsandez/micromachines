@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.2)
 
-set(RUTA_INSTALACION "/home/mic/Escritorio/Micromachines_i" CACHE INTERNAL "")
+set(RUTA_INSTALACION "~/Micromachines" CACHE INTERNAL "")
 
 project(Micromachines)
 
@@ -12,3 +12,4 @@ include_directories(includes/servidor)
 add_subdirectory(src)
 
 INSTALL(DIRECTORY config DESTINATION ${RUTA_INSTALACION})
+INSTALL(DIRECTORY assets DESTINATION ${RUTA_INSTALACION})

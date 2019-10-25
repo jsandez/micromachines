@@ -12,9 +12,9 @@ int main(int argc, char **argv) {
   try {
     SDL_Rect camera = {0, 0, 640, 480};
     SdlWindow window(LEVEL_WIDTH, LEVEL_HEIGHT);
-    SdlTexture im_corner("Road_01_Tile_01.png", window);
-    SdlTexture im_road("Road_01_Tile_03.png", window);
-    SdlTexture im_car("pitstop_car_1.png", window);
+    SdlTexture im_corner("assets/Road_01_Tile_01.png", window);
+    SdlTexture im_road("assets/Road_01_Tile_03.png", window);
+    SdlTexture im_car("assets/pitstop_car_1.png", window);
     window.fill();
     Pista pista(295, 295, im_road, im_corner);
     Car car(100, 100, im_car);
