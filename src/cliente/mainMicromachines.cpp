@@ -26,8 +26,8 @@ int main(int argc, char **argv) {
       SDL_Event event;
       window.fill();
       pista.dibujar(window);
-      camera.x = car.getPosX() - 640 / 2;
-      camera.y = car.getPosY() - 480 / 2;
+      camera.x = car.getX() - 640 / 2;
+      camera.y = car.getY() - 480 / 2;
       if (camera.x < 0) {
         camera.x = 0;
       }
@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
       if (camera.y > camera.h) {
         camera.y = camera.h;
       }
-      car.dibujar(window, x - camera.x, y - camera.y);
+      car.dibujar(x - camera.x, y - camera.y);
       // terminar contador
       while (SDL_PollEvent(&event) != 0) {
         switch (event.type) {
