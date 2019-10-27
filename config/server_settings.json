@@ -1,5 +1,6 @@
 {
     "red" : {
-        "puerto" : "10001"
+        "puerto" : "10001",
+        "maxClientesEnEspera" : 20
     }
 }
