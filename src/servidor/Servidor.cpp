@@ -13,7 +13,7 @@ void Servidor::correr() {
     while ((c = std::cin.get()) != CARACTER_SALIR) {
         // pass
     }
-    seguirCorriendo_ = false,
+    seguirCorriendo_ = false;
     cerrar();
 }
 
