@@ -5,8 +5,11 @@
 
 #include <string>
 
+#define CARACTER_SALIR 'q'
+
 class Servidor {
 private:
+    bool seguirCorriendo_;
     HiloAceptador hiloAceptador_;
 
 public:

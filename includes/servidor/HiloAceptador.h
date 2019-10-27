@@ -13,6 +13,7 @@ class HiloAceptador : public Hilo {
 private:
     SocketTCPServidor sktAceptador_;
     std::vector<SocketTCP> socketsClientes_;
+    bool& seguirCorriendo_;
 
     HiloAceptador(const HiloAceptador& otro) = delete;
     HiloAceptador(HiloAceptador&& otro) = delete;
@@ -20,7 +21,7 @@ private:
     HiloAceptador& operator=(const HiloAceptador& otro) = delete;
     
 public:
-    HiloAceptador(const std::string& puerto);
+    HiloAceptador(const std::string& puerto, bool& seguirCorriendo);
 
     ~HiloAceptador();
 
