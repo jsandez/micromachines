@@ -1,13 +1,16 @@
 #ifndef _SERVIDOR_H_
 #define _SERVIDOR_H_
 
+#include "includes/servidor/red/SocketTCPServidor.h"
+
+#include <string>
+
 class Servidor {
 private:
-    unsigned int puerto_; 
+    SocketTCPServidor sktAceptador_;
 
 public:
-    Servidor(unsigned int puerto);
-
+    Servidor(const std::string& puerto);
     void correr();
 };
 

@@ -1,8 +1,7 @@
 #include "includes/servidor/Servidor.h"
 
-Servidor::Servidor(unsigned int puerto) :
-    puerto_(puerto) {
-
+Servidor::Servidor(const std::string& puerto) :
+    sktAceptador_(puerto) {
 }
 
 void Servidor::correr() {
