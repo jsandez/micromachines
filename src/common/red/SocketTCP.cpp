@@ -1,6 +1,6 @@
 #include "includes/common/red/SocketTCP.h"
 
-#define _POSIX_C_SOURCE 200112L
+//#define _POSIX_C_SOURCE 200112L
 
 #include <unistd.h>
 #include <stdexcept>
@@ -12,8 +12,8 @@ SocketTCP::SocketTCP(int unFileDescriptor) :
 }
 
 SocketTCP::SocketTCP(const std::string& unHost, const std::string& unPuerto) :
-    hints_(NULL),
-    fileDescripor_(-1) {
+    fileDescripor_(-1),
+    hints_(nullptr) {
     int status = 0;
     addrinfo hints;
     memset(&hints, 0, sizeof(hints));

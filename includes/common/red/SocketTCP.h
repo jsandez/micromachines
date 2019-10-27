@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <netdb.h>
+#include <string>
 
 #define IP_VERSION AF_INET
 #define SOCKET_TYPE SOCK_STREAM
