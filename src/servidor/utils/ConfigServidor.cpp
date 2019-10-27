@@ -12,6 +12,10 @@ ConfigServidor::ConfigServidor(const std::string& rutaArchivo) {
     archivo >> json_;
 }
 
-unsigned int ConfigServidor::puertoServidor() {
-    return json_["red"]["puerto"].get<unsigned int>();
+std::string ConfigServidor::puertoServidor() {
+    return json_["red"]["puerto"].get<std::string>();
+}
+
+unsigned int ConfigServidor::maxClientesEnEspera() {
+    return json_["red"]["maxClientesEnEspera"].get<unsigned int>();
 }
