@@ -7,3 +7,7 @@ Servidor::Servidor(const std::string& puerto) :
 void Servidor::correr() {
     hiloAceptador_.start();
 }
+
+void Servidor::cerrar() {
+    hiloAceptador_.join();
+}

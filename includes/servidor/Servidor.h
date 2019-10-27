@@ -8,10 +8,11 @@
 class Servidor {
 private:
     HiloAceptador hiloAceptador_;
-    
+
 public:
     Servidor(const std::string& puerto);
     void correr();
+    void cerrar();
 };
 
 #endif
