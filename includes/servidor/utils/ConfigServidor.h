@@ -18,7 +18,8 @@ private:
 
 public:
     static ConfigServidor& instancia();
-    unsigned int puertoServidor();
+    std::string puertoServidor();
+    unsigned int maxClientesEnEspera();
 };
 
 #endif
