@@ -9,8 +9,9 @@ class Pista {
   int height;
   SdlTexture road;
   SdlTexture corner;
+  SdlTexture grass;
  public:
-  Pista(int width, int height, SdlTexture &road, SdlTexture &corner);
+  Pista(int width, int height, SdlTexture &road, SdlTexture &corner, SdlTexture &grass);
   void dibujar(SdlWindow &sdl_window);
 };
 

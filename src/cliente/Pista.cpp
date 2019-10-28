@@ -1,14 +1,16 @@
 #include "includes/cliente/Pista.h"
 
-Pista::Pista(int width, int height,SdlTexture& road,SdlTexture& corner) :
-            width(width), height(height),road(road),corner(corner) {}
+Pista::Pista(int width, int height, SdlTexture &road, SdlTexture &corner, SdlTexture &grass) :
+    width(width), height(height), road(road), corner(corner), grass(grass) {}
 
 void Pista::dibujar(SdlWindow &sdl_window) {
 
   Area srcArea_road(0, 0, 512, 688);
   Area srcArea_corner(0, 0, 691, 691);
+  Area srcArea_grass(0, 0, 512, 512);
 
   Area destArea_corner_upper_left(0, 0, this->width, this->height);
+  Area destArea_grass_left1(0, this->height - 25, this->width, this->height);
   Area destArea_road_upper(this->width - 25, 0, this->width, this->height);
   Area destArea_road_upper_2((this->width * 2) - 50, 0, this->width, this->height);
   Area destArea_road_upper_3((this->width * 3) - 75, 0, this->width, this->height);
@@ -20,6 +22,7 @@ void Pista::dibujar(SdlWindow &sdl_window) {
   Area destArea_corner_lower_right((this->width * 6) - 150, (this->height * 3) - 75, this->width, this->height);
 
   this->road.render(srcArea_road, destArea_road_upper);
+  this->grass.render(srcArea_grass, destArea_grass_left1);
   this->road.render(srcArea_road, destArea_road_upper_2);
   this->road.render(srcArea_road, destArea_road_upper_3);
   this->road.render(srcArea_road, destArea_road_upper_4);

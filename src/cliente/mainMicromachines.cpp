@@ -1,9 +1,10 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <exception>
+#include "includes/cliente/VistaPasto.h"
 #include "includes/cliente/SdlWindow.h"
 #include "includes/cliente/Pista.h"
-#include "includes/cliente/Car.h"
+#include "includes/cliente/VistaAuto.h"
 
 const int LEVEL_WIDTH = 1920;
 const int LEVEL_HEIGHT = 1080;
@@ -13,11 +14,13 @@ int main(int argc, char **argv) {
     SDL_Rect camera = {0, 0, 640, 480};
     SdlWindow window(LEVEL_WIDTH, LEVEL_HEIGHT);
     SdlTexture im_corner("assets/Road_01_Tile_01.png", window);
+    SdlTexture im_grass("assets/background_grass.png", window);
     SdlTexture im_road("assets/Road_01_Tile_03.png", window);
     SdlTexture im_car("assets/pitstop_car_1.png", window);
     window.fill();
-    Pista pista(295, 295, im_road, im_corner);
-    Car car(100, 100, im_car);
+    Pista pista(295, 295, im_road, im_corner, im_grass);
+    VistaPasto grass(4096, 2160, 0, im_grass);
+    VistaAuto car(100, 100, -90, im_car);
     bool quit = false;
     int x = 0;
     int y = 0;
@@ -25,7 +28,7 @@ int main(int argc, char **argv) {
       //empezar contador
       SDL_Event event;
       window.fill();
-      pista.dibujar(window);
+      //pista.dibujar(window);
       camera.x = car.getX() - 640 / 2;
       camera.y = car.getY() - 480 / 2;
       if (camera.x < 0) {
@@ -40,6 +43,7 @@ int main(int argc, char **argv) {
       if (camera.y > camera.h) {
         camera.y = camera.h;
       }
+      grass.dibujar(0, 0);
       car.dibujar(x - camera.x, y - camera.y);
       // terminar contador
       while (SDL_PollEvent(&event) != 0) {
