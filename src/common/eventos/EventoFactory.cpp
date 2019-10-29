@@ -1,6 +1,6 @@
 #include "includes/common/eventos/EventoFactory.h"
 
-#include <stdexcept>
+#include "includes/common/excepciones/EventoDesconocidoError.h"
 
 std::shared_ptr<Evento> EventoFactory::instanciar(Protocolo& protocolo) {
     uint16_t UUIDEvento = protocolo.recibirNumUnsigned16();
@@ -11,6 +11,6 @@ std::shared_ptr<Evento> EventoFactory::instanciar(Protocolo& protocolo) {
     case UUID_EVENTO_DESCONEXION:
         return std::make_shared<EventoDesconexion>(protocolo);
     default:
-        throw std::runtime_error(ERROR_EVENTO_DESCONOCIDO);
+        throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);
     }
 }

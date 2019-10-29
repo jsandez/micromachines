@@ -17,7 +17,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp
-
+  ${CMAKE_SOURCE_DIR}/src/common/excepciones/EventoDesconocidoError.cpp
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
