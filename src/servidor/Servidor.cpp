@@ -4,7 +4,7 @@
 
 Servidor::Servidor(const std::string& puerto) :
     seguirCorriendo_(true),
-    hiloAceptador_(puerto, seguirCorriendo_) {
+    hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_) {
 }
 
 void Servidor::correr() {

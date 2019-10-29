@@ -1,18 +1,18 @@
 #ifndef _HILO_ACEPTADOR_H_
 #define _HILO_ACEPTADOR_H_
 
-#include <vector>
 #include <string>
 
 #include "includes/common/Hilo.h"
 #include "includes/common/red/SocketTCP.h"
 #include "includes/servidor/red/SocketTCPServidor.h"
+#include "includes/servidor/red/SalaDeEspera.h"
 
 class HiloAceptador : public Hilo {
 
 private:
     SocketTCPServidor sktAceptador_;
-    std::vector<SocketTCP> socketsClientes_;
+    SalaDeEspera& salaDeEspera_;
     bool& seguirCorriendo_;
 
     HiloAceptador(const HiloAceptador& otro) = delete;
@@ -21,7 +21,7 @@ private:
     HiloAceptador& operator=(const HiloAceptador& otro) = delete;
     
 public:
-    HiloAceptador(const std::string& puerto, bool& seguirCorriendo);
+    HiloAceptador(const std::string& puerto, bool& seguirCorriendo, SalaDeEspera& salaDeEspera);
 
     ~HiloAceptador();
 

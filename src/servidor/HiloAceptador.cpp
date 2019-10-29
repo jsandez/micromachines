@@ -4,8 +4,9 @@
 
 #include "includes/servidor/utils/ConfigServidor.h"
 
-HiloAceptador::HiloAceptador(const std::string& puerto, bool& seguirCorriendo) :
+HiloAceptador::HiloAceptador(const std::string& puerto, bool& seguirCorriendo, SalaDeEspera& salaDeEspera) :
     sktAceptador_(puerto),
+    salaDeEspera_(salaDeEspera),
     seguirCorriendo_(seguirCorriendo) {
 }
 
@@ -20,7 +21,7 @@ void HiloAceptador::run() {
     while (seguirCorriendo_) {
         try {
             SocketTCP aceptado = sktAceptador_.aceptar();
-            socketsClientes_.push_back(std::move(aceptado));
+            salaDeEspera_.agregarJugador(std::move(aceptado));
         }
         catch(const std::exception& e) {
             std::cerr << e.what() << '\n';
