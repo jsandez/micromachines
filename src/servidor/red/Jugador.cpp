@@ -2,5 +2,4 @@
 
 Jugador::Jugador(SocketTCP&& socket) :
     socket_(std::move(socket)) {
-
 }
