@@ -15,6 +15,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoAcelerar.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp
