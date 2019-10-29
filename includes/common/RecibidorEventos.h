@@ -13,7 +13,7 @@ private:
     bool& seguirCorriendo_;
     Protocolo protocolo_;
     
-    public:
+public:
     RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo);
     
     virtual void run() override;

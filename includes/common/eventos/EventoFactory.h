@@ -9,7 +9,7 @@
 #include "includes/common/eventos/EventoCrearPartida.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 
-#define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido.\n"
+#define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 
 class EventoFactory {
 private:

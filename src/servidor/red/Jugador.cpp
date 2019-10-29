@@ -3,9 +3,11 @@
 Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo) :
     UUID_(uuid),
     socket_(std::move(socket)),
-    recibidorEventos_(socket_, eventosRecibidos_, seguirCorriendo) {
+    recibidorEventos_(socket_, eventosRecibidos_, seguirCorriendo),
+    enviadorEventos_(socket_, eventosAEnviar_, seguirCorriendo) {
     
     recibidorEventos_.start();
+    enviadorEventos_.start();
 }
 
 Jugador::~Jugador() {
@@ -13,4 +15,5 @@ Jugador::~Jugador() {
     eventosAEnviar_.detener();
     socket_.cerrarLectoEscritura();
     recibidorEventos_.join();
+    enviadorEventos_.join();
 }

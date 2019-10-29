@@ -12,6 +12,7 @@ set(SOURCES
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
   ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp

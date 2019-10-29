@@ -7,6 +7,7 @@
 #include "includes/common/ColaBloqueante.h"
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/RecibidorEventos.h"
+#include "includes/common/EnviadorEventos.h"
 
 class Jugador {
 private:
@@ -15,6 +16,7 @@ private:
     ColaBloqueante<std::shared_ptr<Evento>> eventosRecibidos_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
     RecibidorEventos recibidorEventos_;
+    EnviadorEventos enviadorEventos_;
     
 
 public:
