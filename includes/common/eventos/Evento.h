@@ -10,7 +10,7 @@ class Evento {
 
 public:
     virtual ~Evento() {}
-    virtual void enviarse(Protocolo& protocolo);
+    virtual void enviarse(Protocolo& protocolo) = 0;
 };
 
 #endif

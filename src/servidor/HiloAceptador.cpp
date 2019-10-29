@@ -21,7 +21,7 @@ void HiloAceptador::run() {
     while (seguirCorriendo_) {
         try {
             SocketTCP aceptado = sktAceptador_.aceptar();
-            salaDeEspera_.agregarJugador(std::move(aceptado));
+            salaDeEspera_.agregarJugador(std::move(aceptado), seguirCorriendo_);
         }
         catch(const std::exception& e) {
             std::cerr << e.what() << '\n';

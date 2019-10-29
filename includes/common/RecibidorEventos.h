@@ -12,8 +12,7 @@ private:
     ColaBloqueante<std::shared_ptr<Evento>>& destino_;   
     bool& seguirCorriendo_;
     Protocolo protocolo_;
-    //int UUIDJugador_;
-
+    
     public:
     RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo);
     
