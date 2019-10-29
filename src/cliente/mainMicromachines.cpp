@@ -6,45 +6,51 @@
 #include "includes/cliente/Pista.h"
 #include "includes/cliente/VistaAuto.h"
 
-const int LEVEL_WIDTH = 1920;
-const int LEVEL_HEIGHT = 1080;
+const int LEVEL_WIDTH = 4096;
+const int LEVEL_HEIGHT = 2160;
+
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 int main(int argc, char **argv) {
   try {
-    SDL_Rect camera = {0, 0, 640, 480};
-    SdlWindow window(LEVEL_WIDTH, LEVEL_HEIGHT);
+    SdlWindow window(SCREEN_WIDTH, SCREEN_HEIGHT);
     SdlTexture im_corner("assets/Road_01_Tile_01.png", window);
     SdlTexture im_grass("assets/background_grass.png", window);
     SdlTexture im_road("assets/Road_01_Tile_03.png", window);
     SdlTexture im_car("assets/pitstop_car_1.png", window);
     window.fill();
     Pista pista(295, 295, im_road, im_corner, im_grass);
-    VistaPasto grass(4096, 2160, 0, im_grass);
+    VistaPasto grass(LEVEL_WIDTH, LEVEL_HEIGHT, 0, im_grass);
     VistaAuto car(100, 100, -90, im_car);
     bool quit = false;
     int x = 0;
     int y = 0;
+    int xCamara = 0;
+    int yCamara = 0;
     while (!quit) {
       //empezar contador
       SDL_Event event;
       window.fill();
       //pista.dibujar(window);
-      camera.x = car.getX() - 640 / 2;
-      camera.y = car.getY() - 480 / 2;
-      if (camera.x < 0) {
-        camera.x = 0;
+      xCamara = (car.getX() + 100 / 2) - SCREEN_WIDTH / 2;
+      yCamara = (car.getY() + 100 / 2) - SCREEN_HEIGHT / 2;
+      if (xCamara < 0) {
+        xCamara = 0;
       }
-      if (camera.y < 0) {
-        camera.y = 0;
+      if (yCamara < 0) {
+        yCamara = 0;
       }
-      if (camera.x > camera.w) {
-        camera.x = camera.w;
+      if (xCamara > LEVEL_WIDTH - SCREEN_WIDTH) {
+        xCamara = LEVEL_WIDTH - SCREEN_WIDTH;
       }
-      if (camera.y > camera.h) {
-        camera.y = camera.h;
+      if (yCamara > LEVEL_HEIGHT - SCREEN_HEIGHT) {
+        yCamara = LEVEL_HEIGHT - SCREEN_HEIGHT;
       }
-      grass.dibujar(0, 0);
-      car.dibujar(x - camera.x, y - camera.y);
+      std::cout << "xCamara " << xCamara << std::endl;
+      std::cout << "yCamara " << yCamara << std::endl;
+      grass.dibujar(xCamara, yCamara);
+      car.dibujar(car.getX() - xCamara, car.getY() - yCamara);
       // terminar contador
       while (SDL_PollEvent(&event) != 0) {
         switch (event.type) {
@@ -68,6 +74,7 @@ int main(int argc, char **argv) {
             quit = true;
             break;
         }
+        car.mover(x, y);
       }
       window.render();
       // wait diferencia porcentual
