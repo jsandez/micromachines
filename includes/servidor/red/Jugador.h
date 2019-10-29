@@ -19,6 +19,7 @@ private:
 
 public:
     Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo);
+    ~Jugador();
 };
 
 #endif

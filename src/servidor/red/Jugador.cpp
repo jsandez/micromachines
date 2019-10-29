@@ -7,3 +7,7 @@ Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo) :
     
     recibidorEventos_.start();
 }
+
+Jugador::~Jugador() {
+    recibidorEventos_.join();
+}

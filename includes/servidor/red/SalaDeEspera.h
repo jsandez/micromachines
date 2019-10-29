@@ -15,6 +15,7 @@ private:
 
 public:
     SalaDeEspera();
+    ~SalaDeEspera();
     void agregarJugador(SocketTCP&& socket, bool& seguirCorriendo);
 };
 
