@@ -13,14 +13,14 @@ class Jugador {
 private:
     uint32_t UUID_;
     SocketTCP socket_;
-    ColaBloqueante<std::shared_ptr<Evento>> eventosRecibidos_;
+    ColaBloqueante<std::shared_ptr<Evento>>& destino_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
     RecibidorEventos recibidorEventos_;
     EnviadorEventos enviadorEventos_;
     
 
 public:
-    Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo);
+    Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
     ~Jugador();
 };
 

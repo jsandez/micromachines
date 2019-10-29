@@ -11,9 +11,10 @@
 class Servidor {
 private:
     bool seguirCorriendo_;
-    HiloAceptador hiloAceptador_;
+    ColaBloqueante<std::shared_ptr<Evento>> eventosRecibidos_;
     SalaDeEspera salaDeEspera_;
-
+    HiloAceptador hiloAceptador_;
+    
 public:
     Servidor(const std::string& puerto);
     void correr();

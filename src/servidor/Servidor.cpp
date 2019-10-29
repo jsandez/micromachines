@@ -4,6 +4,7 @@
 
 Servidor::Servidor(const std::string& puerto) :
     seguirCorriendo_(true),
+    salaDeEspera_(eventosRecibidos_),
     hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_) {
 }
 
@@ -18,5 +19,6 @@ void Servidor::correr() {
 }
 
 void Servidor::cerrar() {
+    eventosRecibidos_.detener();
     hiloAceptador_.join();
 }
