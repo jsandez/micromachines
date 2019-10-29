@@ -19,7 +19,7 @@ void RecibidorEventos::run() {
             std::cerr << e.what() << '\n';
             std::shared_ptr<Evento> desconexion(std::make_shared<EventoDesconexion>());
             destino_.put(desconexion);
-            break;
+            continue;
         }       
     }
 }

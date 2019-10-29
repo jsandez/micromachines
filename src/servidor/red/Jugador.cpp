@@ -9,5 +9,8 @@ Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo) :
 }
 
 Jugador::~Jugador() {
+    eventosRecibidos_.detener();
+    eventosAEnviar_.detener();
+    socket_.cerrarLectoEscritura();
     recibidorEventos_.join();
 }
