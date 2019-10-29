@@ -5,9 +5,7 @@ SalaDeEspera::SalaDeEspera() :
 }
 
 SalaDeEspera::~SalaDeEspera() {
-    /*for (auto& kv : jugadores_) {
-        kv.second->cerrar();
-    }*/
+    
 }
 
 void SalaDeEspera::agregarJugador(SocketTCP&& socket, bool& seguirCorriendo) {
