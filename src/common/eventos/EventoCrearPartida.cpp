@@ -1,7 +1,6 @@
 #include "includes/common/eventos/EventoCrearPartida.h"
 
-EventoCrearPartida::EventoCrearPartida(Protocolo& protocolo) :
-    Evento(UUID_EVENTO_CREAR_PARTIDA) {
+EventoCrearPartida::EventoCrearPartida(Protocolo& protocolo) {
 }
 
 void EventoCrearPartida::enviarse(Protocolo& protocolo) {

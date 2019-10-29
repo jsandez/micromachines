@@ -11,7 +11,13 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/red/Jugador.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp
+
 )
 
 include_directories(${CMAKE_SOURCE_DIR})

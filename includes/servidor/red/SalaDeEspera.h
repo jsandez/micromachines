@@ -9,10 +9,7 @@
 
 class SalaDeEspera {
 private:
-    //bool& seguirCorriendo_;
-    //CoordinadorPartidas coordinadorPartidas_;
     std::map<unsigned int, Jugador> jugadores_;
-    //ColaBloqueante<std::shared_ptr<Evento>> eventosEntrantes_;
 
 public:
     void agregarJugador(SocketTCP&& socket);

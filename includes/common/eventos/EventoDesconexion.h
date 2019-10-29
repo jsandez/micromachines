@@ -6,6 +6,7 @@
 
 class EventoDesconexion : public Evento {
 public:
+    EventoDesconexion();
     EventoDesconexion(Protocolo& protocolo);
     virtual void enviarse(Protocolo& protocolo);
 };
