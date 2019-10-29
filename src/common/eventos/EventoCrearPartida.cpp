@@ -1,6 +1,7 @@
 #include "includes/common/eventos/EventoCrearPartida.h"
 
-EventoCrearPartida::EventoCrearPartida(Protocolo& protocolo) {
+EventoCrearPartida::EventoCrearPartida(uint32_t uuidRemitente, Protocolo& protocolo) :
+    Evento(uuidRemitente) {
 }
 
 void EventoCrearPartida::enviarse(Protocolo& protocolo) {

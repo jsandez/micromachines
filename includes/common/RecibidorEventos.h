@@ -12,10 +12,10 @@ private:
     ColaBloqueante<std::shared_ptr<Evento>>& destino_;   
     bool& seguirCorriendo_;
     Protocolo protocolo_;
+    uint32_t UUIDRemitente_;
     
 public:
-    RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo);
-    
+    RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo, uint32_t uuidRemitente);
     virtual void run() override;
 };
 

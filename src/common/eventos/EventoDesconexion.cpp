@@ -1,10 +1,12 @@
 #include "includes/common/eventos/EventoDesconexion.h"
 
-EventoDesconexion::EventoDesconexion() {
+EventoDesconexion::EventoDesconexion(uint32_t uuidRemitente) :
+    Evento(uuidRemitente) {
     
 }
 
-EventoDesconexion::EventoDesconexion(Protocolo& protocolo) {
+EventoDesconexion::EventoDesconexion(uint32_t uuidRemitente, Protocolo& protocolo) :
+    Evento(uuidRemitente) {
 }
 
 void EventoDesconexion::enviarse(Protocolo& protocolo) {

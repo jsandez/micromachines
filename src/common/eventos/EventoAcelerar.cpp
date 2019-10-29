@@ -1,6 +1,7 @@
 #include "includes/common/eventos/EventoAcelerar.h"
 
-EventoAcelerar::EventoAcelerar(Protocolo& protocolo) {
+EventoAcelerar::EventoAcelerar(uint32_t uuidRemitente, Protocolo& protocolo) :
+    Evento(uuidRemitente) {
 
 }
 

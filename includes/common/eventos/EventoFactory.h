@@ -14,7 +14,7 @@
 class EventoFactory {
 private:
 public:
-    static std::shared_ptr<Evento> instanciar(Protocolo& protocolo);
+    static std::shared_ptr<Evento> instanciar(uint32_t uuidRemitente, Protocolo& protocolo);
 };
 
 #endif

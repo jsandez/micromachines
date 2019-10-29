@@ -6,7 +6,7 @@
 
 class EventoCrearPartida : public Evento {
 public:
-    EventoCrearPartida(Protocolo& protocolo);
+    EventoCrearPartida(uint32_t uuidRemitente, Protocolo& protocolo);
     virtual void enviarse(Protocolo& protocolo) override;
 };
 
