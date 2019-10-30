@@ -3,6 +3,7 @@
 
 #include "includes/servidor/HiloAceptador.h"
 #include "includes/servidor/red/SalaDeEspera.h"
+#include "includes/servidor/DistribuidorEventos.h"
 
 #include <string>
 
@@ -14,6 +15,7 @@ private:
     ColaBloqueante<std::shared_ptr<Evento>> eventosRecibidos_;
     SalaDeEspera salaDeEspera_;
     HiloAceptador hiloAceptador_;
+    DistribuidorEventos distribuidorEventos_;
     
 public:
     Servidor(const std::string& puerto);
