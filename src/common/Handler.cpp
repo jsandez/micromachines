@@ -8,3 +8,6 @@ void Handler::manejar(EventoCrearPartida& e) {
 
 void Handler::manejar(EventoDesconexion& e) {
 }
+
+void Handler::manejar(EventoPartidaAgregada& e) {
+}

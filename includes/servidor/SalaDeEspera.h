@@ -4,11 +4,11 @@
 #include <map>
 #include <memory>
 
+#include "includes/common/Handler.h"
 #include "includes/common/red/SocketTCP.h"
 #include "includes/servidor/Jugador.h"
 
-
-class SalaDeEspera {
+class SalaDeEspera : public Handler {
 private:
     uint32_t contadorJugadores_;
     ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos_;
@@ -18,6 +18,9 @@ public:
     SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
     ~SalaDeEspera();
     void agregarJugador(SocketTCP&& socket, bool& seguirCorriendo);
+    virtual void manejar(Evento& e) override;
+    virtual void manejar(EventoDesconexion& e) override;
+    virtual void manejar(EventoPartidaAgregada& e) override;
 };
 
 #endif

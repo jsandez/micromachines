@@ -4,6 +4,7 @@
 #include "includes/common/Hilo.h"
 #include "includes/common/Handler.h"
 #include "includes/servidor/SalaDeEspera.h"
+#include "includes/servidor/CoordinadorPartidas.h"
 #include "includes/common/ColaBloqueante.h"
 #include "includes/common/eventos/Evento.h"
 
@@ -11,7 +12,8 @@ class DistribuidorEventos : public Hilo, public Handler {
 private:
     bool& seguirCorriendo_;
     ColaBloqueante<std::shared_ptr<Evento>>& eventos_;
-    SalaDeEspera& salaDeEspera_;    
+    SalaDeEspera& salaDeEspera_;
+    CoordinadorPartidas& coordinadorPartidas_;    
 
     DistribuidorEventos(const DistribuidorEventos& otro) = delete;
     DistribuidorEventos(DistribuidorEventos&& otro) = delete;
@@ -19,7 +21,7 @@ private:
     DistribuidorEventos& operator=(const DistribuidorEventos& otro) = delete;
 
 public:
-    DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera);
+    DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas);
 
     ~DistribuidorEventos();
 

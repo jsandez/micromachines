@@ -1,9 +1,10 @@
 #include "includes/servidor/DistribuidorEventos.h"
 
-DistribuidorEventos::DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera) :
+DistribuidorEventos::DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas) :
     seguirCorriendo_(seguirCorriendo),
     eventos_(eventos),
-    salaDeEspera_(salaDeEspera) {
+    salaDeEspera_(salaDeEspera),
+    coordinadorPartidas_(coordinadorPartidas) {
 
 }
 
@@ -27,9 +28,11 @@ void DistribuidorEventos::manejar(EventoAcelerar& e) {
 }
 
 void DistribuidorEventos::manejar(EventoCrearPartida& e) {
-
+    //TODO: Al coordinador de partidas
+    coordinadorPartidas_.manejar(e);
 }
 
 void DistribuidorEventos::manejar(EventoDesconexion& e) {
-
+    //TODO: A la partida/sala de espera para que
+    // quite al jugador
 }

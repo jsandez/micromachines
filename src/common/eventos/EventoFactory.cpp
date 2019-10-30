@@ -7,7 +7,10 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
     switch (UUIDEvento) {
     case UUID_EVENTO_CREAR_PARTIDA:
         return std::make_shared<EventoCrearPartida>(uuidRemitente, protocolo);
-    
+
+    case UUID_EVENTO_PARTIDA_AGREGADA:
+        return std::make_shared<EventoPartidaAgregada>(uuidRemitente, protocolo);
+        
     case UUID_EVENTO_DESCONEXION:
         return std::make_shared<EventoDesconexion>(uuidRemitente, protocolo);
 
