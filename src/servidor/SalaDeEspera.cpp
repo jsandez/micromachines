@@ -1,4 +1,4 @@
-#include "includes/servidor/red/SalaDeEspera.h"
+#include "includes/servidor/SalaDeEspera.h"
 
 SalaDeEspera::SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos) :
     contadorJugadores_(0),

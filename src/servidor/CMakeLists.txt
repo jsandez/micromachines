@@ -8,8 +8,8 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/HiloAceptador.cpp
   ${PROJECT_SOURCE_DIR}/DistribuidorEventos.cpp
   ${PROJECT_SOURCE_DIR}/red/SocketTCPServidor.cpp
-  ${PROJECT_SOURCE_DIR}/red/SalaDeEspera.cpp
-  ${PROJECT_SOURCE_DIR}/red/Jugador.cpp
+  ${PROJECT_SOURCE_DIR}/SalaDeEspera.cpp
+  ${PROJECT_SOURCE_DIR}/Jugador.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
   ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp

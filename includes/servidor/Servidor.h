@@ -2,7 +2,7 @@
 #define _SERVIDOR_H_
 
 #include "includes/servidor/HiloAceptador.h"
-#include "includes/servidor/red/SalaDeEspera.h"
+#include "includes/servidor/SalaDeEspera.h"
 #include "includes/servidor/DistribuidorEventos.h"
 
 #include <string>

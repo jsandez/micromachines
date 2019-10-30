@@ -14,6 +14,6 @@ void DistribuidorEventos::run() {
     bool obtenido;
     std::shared_ptr<Evento> evento;
     while(seguirCorriendo_ && (obtenido = eventos_.get(evento))) {
-    
+        // TODO: manejar el evento
     }
 }

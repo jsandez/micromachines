@@ -6,7 +6,7 @@
 #include "includes/common/Hilo.h"
 #include "includes/common/red/SocketTCP.h"
 #include "includes/servidor/red/SocketTCPServidor.h"
-#include "includes/servidor/red/SalaDeEspera.h"
+#include "includes/servidor/SalaDeEspera.h"
 
 class HiloAceptador : public Hilo {
 

@@ -1,4 +1,4 @@
-#include "includes/servidor/red/Jugador.h"
+#include "includes/servidor/Jugador.h"
 
 Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos) :
     UUID_(uuid),

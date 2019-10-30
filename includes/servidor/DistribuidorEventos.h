@@ -2,7 +2,7 @@
 #define _DISTRIBUIDOR_EVENTOS_H_
 
 #include "includes/common/Hilo.h"
-#include "includes/servidor/red/SalaDeEspera.h"
+#include "includes/servidor/SalaDeEspera.h"
 #include "includes/common/ColaBloqueante.h"
 #include "includes/common/eventos/Evento.h"
 

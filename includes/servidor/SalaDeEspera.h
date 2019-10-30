@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "includes/common/red/SocketTCP.h"
-#include "includes/servidor/red/Jugador.h"
+#include "includes/servidor/Jugador.h"
 
 
 class SalaDeEspera {
