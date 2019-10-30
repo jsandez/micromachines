@@ -9,6 +9,7 @@ public:
     EventoDesconexion(uint32_t uuidRemitente);
     EventoDesconexion(uint32_t uuidRemitente, Protocolo& protocolo);
     virtual void enviarse(Protocolo& protocolo);
+    virtual void actualizar(Handler& handler) override;
 };
 
 #endif

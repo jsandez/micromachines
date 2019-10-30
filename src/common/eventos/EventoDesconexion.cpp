@@ -12,3 +12,7 @@ EventoDesconexion::EventoDesconexion(uint32_t uuidRemitente, Protocolo& protocol
 void EventoDesconexion::enviarse(Protocolo& protocolo) {
 
 }
+
+void EventoDesconexion::actualizar(Handler& handler) {
+    handler.manejar(*this);
+}

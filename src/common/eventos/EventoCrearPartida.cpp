@@ -7,3 +7,7 @@ EventoCrearPartida::EventoCrearPartida(uint32_t uuidRemitente, Protocolo& protoc
 void EventoCrearPartida::enviarse(Protocolo& protocolo) {
 
 }
+
+void EventoCrearPartida::actualizar(Handler& handler) {
+    handler.manejar(*this);
+}

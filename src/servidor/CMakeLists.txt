@@ -12,6 +12,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/Jugador.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp
   ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp

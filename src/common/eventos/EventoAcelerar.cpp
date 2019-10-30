@@ -8,3 +8,7 @@ EventoAcelerar::EventoAcelerar(uint32_t uuidRemitente, Protocolo& protocolo) :
 void EventoAcelerar::enviarse(Protocolo& protocolo) {
 
 }
+
+void EventoAcelerar::actualizar(Handler& handler) {
+    handler.manejar(*this);
+}

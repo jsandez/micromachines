@@ -2,11 +2,12 @@
 #define _DISTRIBUIDOR_EVENTOS_H_
 
 #include "includes/common/Hilo.h"
+#include "includes/common/Handler.h"
 #include "includes/servidor/SalaDeEspera.h"
 #include "includes/common/ColaBloqueante.h"
 #include "includes/common/eventos/Evento.h"
 
-class DistribuidorEventos : public Hilo {
+class DistribuidorEventos : public Hilo, public Handler {
 private:
     bool& seguirCorriendo_;
     ColaBloqueante<std::shared_ptr<Evento>>& eventos_;
@@ -23,6 +24,12 @@ public:
     ~DistribuidorEventos();
 
     virtual void run() override;
+
+    virtual void manejar(Evento& e) override;
+
+    virtual void manejar(EventoAcelerar& e) override;
+    virtual void manejar(EventoCrearPartida& e) override;
+    virtual void manejar(EventoDesconexion& e) override;
 };
 
 #endif

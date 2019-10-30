@@ -14,6 +14,22 @@ void DistribuidorEventos::run() {
     bool obtenido;
     std::shared_ptr<Evento> evento;
     while(seguirCorriendo_ && (obtenido = eventos_.get(evento))) {
-        // TODO: manejar el evento
+        manejar(*evento);
     }
+}
+
+void DistribuidorEventos::manejar(Evento& e) {
+    e.actualizar(*this);
+}
+
+void DistribuidorEventos::manejar(EventoAcelerar& e) {
+    //TODO: Mandarlo con put a la partida correspondiente
+}
+
+void DistribuidorEventos::manejar(EventoCrearPartida& e) {
+
+}
+
+void DistribuidorEventos::manejar(EventoDesconexion& e) {
+
 }
