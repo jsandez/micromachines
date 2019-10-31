@@ -5,6 +5,7 @@
 #include "includes/common/eventos/EventoAcelerar.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
 #include "includes/common/eventos/EventoPartidaAgregada.h"
+#include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 
 class Handler {
@@ -13,6 +14,7 @@ public:
     virtual void manejar(EventoAcelerar& e);
     virtual void manejar(EventoCrearPartida& e);
     virtual void manejar(EventoPartidaAgregada& e);
+    virtual void manejar(EventoUnirseAPartida& e);
     virtual void manejar(EventoDesconexion& e);
 };
 

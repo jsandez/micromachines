@@ -8,8 +8,9 @@ class Handler;
 
 #define UUID_EVENTO_CREAR_PARTIDA       1
 #define UUID_EVENTO_PARTIDA_AGREGADA    2
-#define UUID_EVENTO_DESCONEXION         3
-#define UUID_EVENTO_ACELERAR            4
+#define UUID_EVENTO_UNIRSE_A_PARTIDA    3
+#define UUID_EVENTO_DESCONEXION         4
+#define UUID_EVENTO_ACELERAR            5
 
 class Evento {
 private:
