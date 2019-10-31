@@ -51,11 +51,11 @@ class Frame {
 
 
 
-		void fill_rgb(SwsContext * ctx, const char * data,
+		void fill_rgb(SwsContext * ctx, char * data,
 													int width, int pts){
 			int w = width * 3;
 			if (fr->format == AV_PIX_FMT_RGB24){
-				this->fr->data = (const uint8_t *) data;
+				this->fr->data[0] = (uint8_t *) data;
 				this->fr->width = width;
 				this->fr->height = strlen(data) / w;
 			} else {

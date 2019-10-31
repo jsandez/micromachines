@@ -22,7 +22,7 @@ class OutputVideo : public OutputStream {
 		}
 
 
-		void rgb_line_to_frame(const char * v){
+		void rgb_line_to_frame(char * v){
 			reinterpret_cast<VideoCodec *>(enc)->write_rgb_frame(frame, v, current_pts);
 			current_pts ++;
 		}
@@ -30,12 +30,12 @@ class OutputVideo : public OutputStream {
 
 		virtual void write_frame(){
 			try {
-			    reinterpret_cast<VideoCodec *>(enc)->send_frame(frame);
+			    enc->encode_frame(frame);
 			    while (true){
 					AVPacket pkt = { 0 };    	
 				    av_init_packet(&pkt);
 				    const AVRational *time_base;
-				    if (!reinterpret_cast<VideoCodec *>(enc)->receive_packet(&pkt, time_base)){
+				    if (!enc->get_packet(&pkt, time_base)){
 				    	break;
 				    }
 			        av_packet_rescale_ts(&pkt, *time_base, st->time_base);

@@ -7,6 +7,7 @@
 #include <cmath>
 #include <exception>
 #include "codec.cpp"
+#include "frame.cpp"
 
 #include <libavutil/avassert.h>
 #include <libavutil/channel_layout.h>
@@ -86,32 +87,9 @@ class VideoCodec : public Codec {
 			}
 		}
 
-		virtual void encode(AVPacket * pkt, const Frame& f){
-		    
-
-
-		}
-
-		void write_rgb_frame(Frame& dest, const char * data, int pts){
+		void write_rgb_frame(Frame& dest, char * data, int pts){
 			dest.fill_rgb(sws_ctx, data, enc->width, pts);
 			
-		}
-
-		void send_frame(const Frame& f){
-	        if (avcodec_send_frame(enc, f.get_frame())) {
-		        throw std::runtime_error("Error al enviar frame");
-		    }
-		}
-
-		int receive_packet(AVPacket * pkt, const AVRational *time_base){
-	        int ret = avcodec_receive_packet(enc, pkt);
-	        if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF)
-	            return 0;
-	        else if (ret < 0) {
-	            throw std::runtime_error("Error al codificar");
-	        }
-	        time_base = (const AVRational *) &enc->time_base;
-		    return 1;
 		}
 
 

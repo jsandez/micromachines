@@ -6,6 +6,8 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include "frame.cpp"
+
 
 #include <libavutil/avassert.h>
 #include <libavutil/channel_layout.h>
@@ -41,6 +43,26 @@ class Codec {
 	        enc->pix_fmt = codec->pix_fmts[0]; /* best quality format for codec*/
 
 		}
+
+
+		void encode_frame(const Frame& f){
+	        if (avcodec_send_frame(enc, f.get_frame())) {
+		        throw std::runtime_error("Error al enviar frame");
+		    }
+		}
+
+		int get_packet(AVPacket * pkt, const AVRational *time_base){
+	        int ret = avcodec_receive_packet(enc, pkt);
+	        if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF)
+	            return 0;
+	        else if (ret < 0) {
+	            throw std::runtime_error("Error al codificar");
+	        }
+	        time_base = (const AVRational *) &enc->time_base;
+		    return 1;
+		}
+
+
 
 		Codec(Codec&& rhs){
 			this->enc = rhs.enc;
