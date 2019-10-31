@@ -9,6 +9,7 @@
 #include "includes/common/eventos/EventoCrearPartida.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoPartidaAgregada.h"
+#include "includes/common/eventos/EventoIniciarPartida.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 #include "includes/common/eventos/EventoAcelerar.h"
 

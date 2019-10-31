@@ -20,6 +20,8 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaAgregada.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseAPartida.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIniciarPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoAcelerar.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp

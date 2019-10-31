@@ -5,6 +5,7 @@
 std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protocolo& protocolo) {
     uint16_t UUIDEvento = protocolo.recibirNumUnsigned16();
     switch (UUIDEvento) {
+    
     case UUID_EVENTO_CREAR_PARTIDA:
         return std::make_shared<EventoCrearPartida>(uuidRemitente, protocolo);
 
@@ -14,11 +15,15 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
     case UUID_EVENTO_UNIRSE_A_PARTIDA:
         return std::make_shared<EventoUnirseAPartida>(uuidRemitente, protocolo);
     
+    case UUID_EVENTO_INICIAR_PARTIDA:
+        return std::make_shared<EventoIniciarPartida>(uuidRemitente, protocolo);
+
     case UUID_EVENTO_DESCONEXION:
         return std::make_shared<EventoDesconexion>(uuidRemitente, protocolo);
 
     case UUID_EVENTO_ACELERAR:
         return std::make_shared<EventoAcelerar>(uuidRemitente, protocolo);
+    
     default:
         throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);
     }

@@ -31,7 +31,15 @@ void DistribuidorEventos::manejar(EventoCrearPartida& e) {
     coordinadorPartidas_.manejar(e);
 }
 
+void DistribuidorEventos::manejar(EventoUnirseAPartida& e) {
+    //TODO: redirigir al coordinador de partidas
+}
+
 void DistribuidorEventos::manejar(EventoDesconexion& e) {
     salaDeEspera_.manejar(e);
     coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoIniciarPartida& e) {
+    // TODO: iniciar la partida
 }
