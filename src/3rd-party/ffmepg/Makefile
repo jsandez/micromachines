@@ -41,7 +41,7 @@ threads = si
 ###########################
 
 # Opciones para el compilador C/C++ para tratamiento de errores y warnings.
-CFLAGS = -Wall -Werror -pedantic -pedantic-errors
+CFLAGS = -Wall -pedantic -pedantic-errors
 
 # Para optimizar el binario resultante lo mejor posible
 CFLAGS += -O3

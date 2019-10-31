@@ -2,9 +2,9 @@
 #define __OUTPUT_STREAM_H___
 
 
-#include <iostream.h>
+#include <iostream>
 #include <string>
-#include <math>
+#include <cmath>
 
 
 #include "frame.cpp"
@@ -29,7 +29,7 @@
 class OutputStream {
     protected:
 	    AVStream *st;
-	    Codec enc;
+	    Codec * enc;
 	    /* pts of the next frame that will be generated */
 	    int64_t current_pts = 0;
 	    OutputFormat &fmt;
@@ -39,7 +39,7 @@ class OutputStream {
 			st = fmt.get_new_stream();
 		}
 
-		virtual void write_frame(const std::vector<char>&) = delete;
+		virtual void write_frame(Frame& fr) = delete;
 
 		AVStream * get_stream(){
 			return st;

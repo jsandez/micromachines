@@ -2,9 +2,9 @@
 #define __FRAME_H___
 
 
-#include <iostream.h>
+#include <iostream>
 #include <string>
-#include <math>
+#include <cmath>
 #include <exception>
 #include <vector>
 
@@ -17,7 +17,7 @@
 #include <libswscale/swscale.h>
 #include <libswresample/swresample.h>
 
-class VideoCodec {
+class Frame {
     private:
 	    AVFrame * fr;
 	public:
@@ -28,7 +28,7 @@ class VideoCodec {
 			}
 		}
 
-		void AudioFrame(enum AVPixelFormat pix_fmt, int width, int height){
+		void VideoFrame(enum AVPixelFormat pix_fmt, int width, int height){
 		    fr->format = pix_fmt;
 		    fr->width  = width;
 		    fr->height = height;
@@ -51,14 +51,21 @@ class VideoCodec {
 
 
 
-		void fill_rgb_vector(SwsContext * ctx, const std::vector<char>& v,
-																int width, int pts){
-			sws_scale(ctx, (const uint8_t * const *) &buff.data(),
-				width * 3, 0, this->fr->height, this->fr->data, this->fr->linesize);
+		void fill_rgb(SwsContext * ctx, const char * data,
+													int width, int pts){
+			int w = width * 3;
+			if (fr->format == AV_PIX_FMT_RGB24){
+				this->fr->data = (const uint8_t *) data;
+				this->fr->width = width;
+				this->fr->height = strlen(data) / w;
+			} else {
+				sws_scale(ctx, (const uint8_t * const *) &data, &w,
+				 0, this->fr->height, this->fr->data, this->fr->linesize);
+			}
 			this->fr->pts = pts;
 		}
 
-		void VideoFrame(enum AVSampleFormat sample_fmt,
+		void AudioFrame(enum AVSampleFormat sample_fmt,
                                   uint64_t channel_layout,
                                   int sample_rate, int nb_samples){
 			fr->format = sample_fmt;
@@ -66,7 +73,8 @@ class VideoCodec {
 		    fr->sample_rate = sample_rate;
 		    fr->nb_samples = nb_samples;
 		    if (av_frame_get_buffer(fr, 0) < 0){
-		    	throw std::runtime_error("No se pudo obtener buffer para el video");
+		    	throw std::runtime_error(
+		    			"No se pudo obtener buffer para el video");
 		    }
 		}
 

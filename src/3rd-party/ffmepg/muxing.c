@@ -296,6 +296,7 @@ static AVFrame *get_audio_frame(OutputStream *ost)
         ost->tincr += ost->tincr2;
     }
 
+    printf("%d\n", ost->next_pts);
     frame->pts = ost->next_pts;
     ost->next_pts  += frame->nb_samples;
 

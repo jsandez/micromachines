@@ -2,9 +2,9 @@
 #define __CODEC_H___
 
 
-#include <iostream.h>
+#include <iostream>
 #include <string>
-#include <math>
+#include <cmath>
 #include <exception>
 
 #include <libavutil/avassert.h>
@@ -21,6 +21,8 @@ class Codec {
     protected:
 	    AVCodecContext *enc;
 	public:
+		Codec(){}
+
 		Codec(enum AVCodecID id){
 			AVCodec * codec = avcodec_find_encoder(id);
 			if (!codec) {
@@ -35,16 +37,19 @@ class Codec {
 	        if (avcodec_open2(enc, codec, NULL) < 0){
 		    	throw std::runtime_error("No se puedo abrir el encoder");	        	
 	        }
+
+	        enc->pix_fmt = codec->pix_fmts[0]; /* best quality format for codec*/
+
 		}
 
 		Codec(Codec&& rhs){
-			this->enc = rhs->enc;
-			rhs->enc = NULL;
+			this->enc = rhs.enc;
+			rhs.enc = NULL;
 		}
 
 		Codec& operator=(Codec&& rhs){
-			this->enc = rhs->enc;
-			rhs->enc = NULL;
+			this->enc = rhs.enc;
+			rhs.enc = NULL;
 			return *this;			
 		}
 
@@ -54,7 +59,7 @@ class Codec {
 
 		~Codec(){
 			if (enc){
-				avcodec_free_context(enc);
+				avcodec_free_context(&enc);
 			}
 		}
 };

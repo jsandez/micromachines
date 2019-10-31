@@ -2,9 +2,9 @@
 #define __OUTPUT_FORMAT_H___
 
 
-#include <iostream.h>
+#include <iostream>
 #include <string>
-#include <math>
+#include <cmath>
 #include <exception>
 
 #include "codec.cpp"
@@ -21,15 +21,15 @@
 class OutputFormat {
 	private:
 	    AVFormatContext *ctx;
-	    std::string& filename;
+	    std::string filename;
 	public:
 		OutputFormat(const std::string& file): filename(file){
-		    avformat_alloc_output_context2(&ctx, NULL, NULL, filename);
-	        if (!oc) {
+		    avformat_alloc_output_context2(&ctx, NULL, NULL, filename.c_str());
+	        if (!ctx) {
 	        	// Si no se encuentra el formato del archivo, se usa MPEG
-		        avformat_alloc_output_context2(&oc, NULL, "mpeg", filename);
+		        avformat_alloc_output_context2(&ctx, NULL, "mpeg", filename.c_str());
 		    }
-		    if (!oc){
+		    if (!ctx){
 		    	throw std::runtime_error("No se pudo alocar el contexto del formato del archivo");
 		    }
 
@@ -41,22 +41,27 @@ class OutputFormat {
 			return st;
 		}
 
+		bool is_flag_set(int flag){
+			return ctx->oformat->flags & AVFMT_GLOBALHEADER;
+		}
+
+
+		int write_pkt(AVPacket * pkt){
+    		return av_interleaved_write_frame(ctx, pkt);
+		}
+
+
 		void open(){
-		    av_dump_format(oc, 0, filename, 1);
-		    int ret;
+		    av_dump_format(ctx, 0, filename.c_str(), 1);
 		    if (!(ctx->oformat->flags & AVFMT_NOFILE)) {
-		    	ret = avio_open(&ctx->pb, filename, AVIO_FLAG_WRITE);
-		        if (ret < 0){
-		        	std::string err(av_err2str(ret));
-		        	throw std::runtime_error("No se pudo abrir el archivo" + err);
+		        if (avio_open(&ctx->pb, filename.c_str(), AVIO_FLAG_WRITE) < 0){
+		        	throw std::runtime_error("No se pudo abrir el archivo");
 		        }
 	    	}
 
 			// EN VEZ DE NULL SE PUEDEN AGREGAR OPCIONES
-		    ret = avformat_write_header(ctx, NULL);
-		    if (ret < 0){
-	        	std::string err(av_err2str(ret));
-	        	throw std::runtime_error("No se pudo escribir el header" + err);
+		    if (avformat_write_header(ctx, NULL) < 0){
+	        	throw std::runtime_error("No se pudo escribir el header");
 	        }
 
 		}
