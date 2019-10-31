@@ -32,7 +32,10 @@ void DistribuidorEventos::manejar(EventoCrearPartida& e) {
 }
 
 void DistribuidorEventos::manejar(EventoUnirseAPartida& e) {
-    //TODO: redirigir al coordinador de partidas
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = e.uuidPartida_;
+    std::shared_ptr<Jugador> jugador = salaDeEspera_.obtenerJugador(uuidJugador);
+    coordinadorPartidas_.agregarJugadorAPartida(jugador, uuidPartida);
 }
 
 void DistribuidorEventos::manejar(EventoDesconexion& e) {

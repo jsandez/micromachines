@@ -7,7 +7,7 @@ Servidor::Servidor(const std::string& puerto) :
     salaDeEspera_(eventosRecibidos_),
     hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_),
     distribuidorEventos_(seguirCorriendo_, eventosRecibidos_, salaDeEspera_, coordinadorPartidas_),
-    coordinadorPartidas_(salaDeEspera_) {
+    coordinadorPartidas_(salaDeEspera_, seguirCorriendo_) {
 }
 
 void Servidor::correr() {
