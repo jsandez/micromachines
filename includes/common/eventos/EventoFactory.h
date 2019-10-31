@@ -7,14 +7,18 @@
 #include "includes/common/red/Protocolo.h"
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
+#include "includes/common/eventos/EventoUnirseAPartida.h"
+#include "includes/common/eventos/EventoPartidaAgregada.h"
+#include "includes/common/eventos/EventoIniciarPartida.h"
 #include "includes/common/eventos/EventoDesconexion.h"
+#include "includes/common/eventos/EventoAcelerar.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 
 class EventoFactory {
 private:
 public:
-    static std::shared_ptr<Evento> instanciar(Protocolo& protocolo);
+    static std::shared_ptr<Evento> instanciar(uint32_t uuidRemitente, Protocolo& protocolo);
 };
 
 #endif

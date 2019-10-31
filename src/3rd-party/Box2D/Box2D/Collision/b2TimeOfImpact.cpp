@@ -39,7 +39,7 @@ struct b2SeparationFunction
 		e_faceB
 	};
 
-	// TODO_ERIN might not need to return the separation
+	
 
 	float32 Initialize(const b2SimplexCache* cache,
 		const b2DistanceProxy* proxyA, const b2Sweep& sweepA,
@@ -279,7 +279,7 @@ void b2TimeOfImpact(b2TOIOutput* output, const b2TOIInput* input)
 	b2Assert(target > tolerance);
 
 	float32 t1 = 0.0f;
-	const int32 k_maxIterations = 20;	// TODO_ERIN b2Settings
+	const int32 k_maxIterations = 20;	
 	int32 iter = 0;
 
 	// Prepare input for distance query.

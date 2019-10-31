@@ -1,9 +1,10 @@
-#include "includes/servidor/red/Jugador.h"
+#include "includes/servidor/Jugador.h"
 
-Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo) :
+Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos) :
     UUID_(uuid),
     socket_(std::move(socket)),
-    recibidorEventos_(socket_, eventosRecibidos_, seguirCorriendo),
+    destino_(destinoEventos),
+    recibidorEventos_(socket_, destino_, seguirCorriendo, UUID_),
     enviadorEventos_(socket_, eventosAEnviar_, seguirCorriendo) {
     
     recibidorEventos_.start();
@@ -11,9 +12,12 @@ Jugador::Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo) :
 }
 
 Jugador::~Jugador() {
-    eventosRecibidos_.detener();
     eventosAEnviar_.detener();
     socket_.cerrarLectoEscritura();
     recibidorEventos_.join();
     enviadorEventos_.join();
+}
+
+uint32_t Jugador::uuid () {
+    return UUID_;
 }

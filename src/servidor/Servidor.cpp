@@ -4,11 +4,15 @@
 
 Servidor::Servidor(const std::string& puerto) :
     seguirCorriendo_(true),
-    hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_) {
+    salaDeEspera_(eventosRecibidos_),
+    hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_),
+    distribuidorEventos_(seguirCorriendo_, eventosRecibidos_, salaDeEspera_, coordinadorPartidas_),
+    coordinadorPartidas_(salaDeEspera_, seguirCorriendo_) {
 }
 
 void Servidor::correr() {
     hiloAceptador_.start();
+    distribuidorEventos_.start();
     char c;
     while ((c = std::cin.get()) != CARACTER_SALIR) {
         // pass
@@ -18,5 +22,7 @@ void Servidor::correr() {
 }
 
 void Servidor::cerrar() {
+    eventosRecibidos_.detener();
     hiloAceptador_.join();
+    distribuidorEventos_.join();
 }
