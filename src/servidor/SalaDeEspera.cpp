@@ -6,7 +6,6 @@ SalaDeEspera::SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEvent
 }
 
 SalaDeEspera::~SalaDeEspera() {
-    
 }
 
 void SalaDeEspera::agregarJugador(SocketTCP&& socket, bool& seguirCorriendo) {

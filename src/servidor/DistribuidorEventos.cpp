@@ -24,15 +24,14 @@ void DistribuidorEventos::manejar(Evento& e) {
 }
 
 void DistribuidorEventos::manejar(EventoAcelerar& e) {
-    //TODO: Mandarlo con put a la partida correspondiente
+    coordinadorPartidas_.manejar(e);
 }
 
 void DistribuidorEventos::manejar(EventoCrearPartida& e) {
-    //TODO: Al coordinador de partidas
     coordinadorPartidas_.manejar(e);
 }
 
 void DistribuidorEventos::manejar(EventoDesconexion& e) {
-    //TODO: A la partida/sala de espera para que
-    // quite al jugador
+    salaDeEspera_.manejar(e);
+    coordinadorPartidas_.manejar(e);
 }

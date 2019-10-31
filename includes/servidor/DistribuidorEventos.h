@@ -13,7 +13,7 @@ private:
     bool& seguirCorriendo_;
     ColaBloqueante<std::shared_ptr<Evento>>& eventos_;
     SalaDeEspera& salaDeEspera_;
-    CoordinadorPartidas& coordinadorPartidas_;    
+    CoordinadorPartidas& coordinadorPartidas_;
 
     DistribuidorEventos(const DistribuidorEventos& otro) = delete;
     DistribuidorEventos(DistribuidorEventos&& otro) = delete;
