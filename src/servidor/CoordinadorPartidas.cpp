@@ -9,7 +9,7 @@ CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
         kv.second->detener();
         // TODO: Hacer join porque las partidas VAN a estar corriendo
-        //kv.second->join();
+        kv.second->join();
     }
 }
 
@@ -30,7 +30,7 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
 
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
     //TODO: iniciar la partida correspondiente
-    //partidas_[1]->start();
+    //partidas_[1]->iniciar();
 }
 
 void CoordinadorPartidas::manejar(EventoDesconexion& e) {
