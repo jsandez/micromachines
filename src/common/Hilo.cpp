@@ -1,6 +1,10 @@
 #include "includes/common/Hilo.h"
 
-Hilo::Hilo() {
+Hilo::Hilo()
+    : seguirCorriendo_(true) {
+}
+
+Hilo::~Hilo() {
 }
 
 Hilo::Hilo(Hilo&& otroHilo) {
@@ -12,8 +16,8 @@ Hilo& Hilo::operator=(Hilo&& otroHilo) {
     return *this;
 }
 
-void Hilo::start() {
-    hilo_ = std::thread(&Hilo::run, this);
+void Hilo::iniciar() {
+    hilo_ = std::thread(&Hilo::correr, this);
 }
 
 void Hilo::join() {

@@ -6,11 +6,12 @@ SalaDeEspera::SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEvent
 }
 
 SalaDeEspera::~SalaDeEspera() {
+    
 }
 
-void SalaDeEspera::agregarJugador(SocketTCP&& socket, bool& seguirCorriendo) {
+void SalaDeEspera::agregarJugador(SocketTCP&& socket) {
     contadorJugadores_++;
-    jugadores_[contadorJugadores_] = std::make_shared<Jugador>(std::move(socket), contadorJugadores_, seguirCorriendo, destinoEventos_);
+    jugadores_[contadorJugadores_] = std::make_shared<Jugador>(std::move(socket), contadorJugadores_, destinoEventos_);
 }
 
 std::shared_ptr<Jugador> SalaDeEspera::obtenerJugador(uint32_t uuidJugador) {

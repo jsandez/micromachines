@@ -3,26 +3,30 @@
 #include <iostream>
 
 Servidor::Servidor(const std::string& puerto) :
-    seguirCorriendo_(true),
     salaDeEspera_(eventosRecibidos_),
-    hiloAceptador_(puerto, seguirCorriendo_, salaDeEspera_),
-    distribuidorEventos_(seguirCorriendo_, eventosRecibidos_, salaDeEspera_, coordinadorPartidas_),
-    coordinadorPartidas_(salaDeEspera_, seguirCorriendo_) {
+    hiloAceptador_(puerto, salaDeEspera_),
+    distribuidorEventos_(eventosRecibidos_, salaDeEspera_, coordinadorPartidas_),
+    coordinadorPartidas_(salaDeEspera_) {
 }
 
 void Servidor::correr() {
-    hiloAceptador_.start();
-    distribuidorEventos_.start();
+    hiloAceptador_.iniciar();
+    distribuidorEventos_.iniciar();
     char c;
     while ((c = std::cin.get()) != CARACTER_SALIR) {
         // pass
     }
-    seguirCorriendo_ = false;
     cerrar();
 }
 
 void Servidor::cerrar() {
+    std::cout << "1\n";
     eventosRecibidos_.detener();
+    std::cout << "2\n";
+    hiloAceptador_.detener();
     hiloAceptador_.join();
+    std::cout << "3\n";
+    distribuidorEventos_.detener();
     distribuidorEventos_.join();
+    std::cout << "4\n";
 }

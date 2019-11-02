@@ -1,24 +1,24 @@
 #include "includes/servidor/Partida.h"
 
-Partida::Partida(bool& seguirCorriendo):
-    jugando_(false),
-    seguirCorriendo_(seguirCorriendo) {
+Partida::Partida() {
 }
 
 Partida::~Partida() {
-    join();
 }
 
 void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
     jugadores_[jugador->uuid()] = jugador;
 }
 
-void Partida::run() {
-    jugando_ = true;
-    while(seguirCorriendo_ && jugando_) {
+void Partida::correr() {
+    while(seguirCorriendo_) {
         //std::cout << "Hola, corriendo\n";
         //std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
+}
+
+void Partida::detener() {
+    seguirCorriendo_ = false;
 }
 
 void Partida::manejar(Evento& e) {

@@ -1,22 +1,24 @@
 #include "includes/servidor/DistribuidorEventos.h"
 
-DistribuidorEventos::DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas) :
-    seguirCorriendo_(seguirCorriendo),
+DistribuidorEventos::DistribuidorEventos(ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas) :
     eventos_(eventos),
     salaDeEspera_(salaDeEspera),
     coordinadorPartidas_(coordinadorPartidas) {
-
 }
 
 DistribuidorEventos::~DistribuidorEventos() {
 }
 
-void DistribuidorEventos::run() {
+void DistribuidorEventos::correr() {
     bool obtenido;
     std::shared_ptr<Evento> evento;
     while(seguirCorriendo_ && (obtenido = eventos_.get(evento))) {
         manejar(*evento);
     }
+}
+
+void DistribuidorEventos::detener() {
+    seguirCorriendo_ = false;
 }
 
 void DistribuidorEventos::manejar(Evento& e) {
