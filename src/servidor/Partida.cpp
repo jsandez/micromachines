@@ -17,7 +17,8 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
 #include <chrono>
 
 void Partida::run() {
-    while(seguirCorriendo_) {
+    jugando_ = true;
+    while(seguirCorriendo_ && jugando_) {
         std::cout << "Hola, corriendo\n";
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
@@ -25,5 +26,5 @@ void Partida::run() {
 
 void Partida::manejar(Evento& e) {
     e.actualizar(*this);
-    seguirCorriendo_ = false;
+    jugando_ = false;
 }
