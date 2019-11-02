@@ -6,13 +6,13 @@
 
 class VistaObjeto {
  protected:
-  int x, y, width, height, angulo;
+  int x, y, width, height;
   SdlTexture textura;
  public:
-  VistaObjeto(int width, int height, int angulo, SdlTexture &sdl_texture);
-  virtual void dibujar(int x, int y) = 0;
-  virtual void mover(int posX, int posY);
-  virtual void rotar(int rotacion);
+  VistaObjeto(SdlTexture &sdl_texture);
+  virtual void dibujar(int x, int y, int angulo) = 0;
+  /*virtual void mover(int posX, int posY);
+  virtual void rotar(int rotacion);*/
   int getX();
   int getY();
 };

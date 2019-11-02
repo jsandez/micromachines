@@ -4,7 +4,7 @@
 
 class VistaPasto : public VistaObjeto {
  public:
-  VistaPasto(int x, int y, int angulo, SdlTexture &sdl_texture);
-  virtual void dibujar(int x, int y) override;
+  VistaPasto(SdlTexture &sdl_texture);
+  virtual void dibujar(int x, int y, int angulo) override;
 };
 #endif

@@ -8,16 +8,17 @@ class CreadorTexturas {
  private:
   SdlTexture tierra;
   SdlTexture pasto;
-  SdlTexture pista;
-  SdlTexture curva;
-  SdlTexture agua;
-  SdlTexture roca;
-  SdlTexture bush1;
-  SdlTexture bush2;
-  SdlTexture tribuna1;
-  SdlTexture tribuna2;
+  SdlTexture asfalto_recto;
+  SdlTexture asfalto_curva;
+  SdlTexture car;
+  SdlTexture salud;
+  SdlTexture boost;
+  SdlTexture piedra;
+  SdlTexture aceite;
+  SdlTexture barro;
+
  public:
   CreadorTexturas(SdlWindow &sdl_window);
-  std::shared_ptr<VistaObjeto> crear(int id, int x, int y);
+  std::shared_ptr<VistaObjeto> crear(int id);
 };
 #endif
