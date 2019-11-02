@@ -44,5 +44,5 @@ void DistribuidorEventos::manejar(EventoDesconexion& e) {
 }
 
 void DistribuidorEventos::manejar(EventoIniciarPartida& e) {
-    // TODO: iniciar la partida
+    coordinadorPartidas_.manejar(e);   
 }

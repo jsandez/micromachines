@@ -20,6 +20,7 @@ public:
     void agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida);
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoCrearPartida& e) override;
+    virtual void manejar(EventoIniciarPartida& e) override;
     virtual void manejar(EventoDesconexion& e) override;
 };
 

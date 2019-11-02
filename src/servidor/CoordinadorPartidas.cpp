@@ -21,7 +21,14 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     salaDeEspera_.manejar(*actualizacion);
 }
 
+void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
+    partidas_[1]->start();
+}
+#include <iostream>
 void CoordinadorPartidas::manejar(EventoDesconexion& e) {
     //TODO: enviar a la partida correspondiente el
     //evento desconexion para que se quite al jugador.
+    partidas_[1]->manejar(e);
+    partidas_.erase(1);
+    std::cout << "Hardcodeando el manejar finalizar partida, para ver si joinea\n";
 }
