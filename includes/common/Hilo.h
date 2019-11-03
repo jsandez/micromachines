@@ -2,21 +2,28 @@
 #define _THREAD_H_
 
 #include <thread>
+#include <atomic>
 
 class Hilo {
-    private:
+private:
     std::thread hilo_;
  
-    public:
+protected:
+    std::atomic<bool> seguirCorriendo_;
+
+public:
     Hilo();
     
-    void start();
+    void iniciar();
 
-    virtual void run() = 0;
+    virtual void correr() = 0;
+
+    // TODO: Refactorizar y hacer un detener default, virtual. Que solo lo overridee un hilo que lance mas hilos.
+    virtual void detener() = 0;
 
     virtual void join();
 
-    virtual ~Hilo() {}
+    virtual ~Hilo();
 
     Hilo(const Hilo&) = delete;
 

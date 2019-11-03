@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-EnviadorEventos::EnviadorEventos(SocketTCP& socketDestino, ColaBloqueante<std::shared_ptr<Evento>>& origen, bool& seguirCorriendo) :
+EnviadorEventos::EnviadorEventos(SocketTCP& socketDestino, ColaBloqueante<std::shared_ptr<Evento>>& origen) :
     origen_(origen),
-    seguirCorriendo_(seguirCorriendo),
     protocolo_(socketDestino) {
 }
 
-void EnviadorEventos::run() {
+void EnviadorEventos::correr() {
     bool obtenido;
     std::shared_ptr<Evento> eventoAEnviar;
     while(seguirCorriendo_ && (obtenido = origen_.get(eventoAEnviar))) {
@@ -20,4 +19,8 @@ void EnviadorEventos::run() {
             break;
         }        
     }
+}
+
+void EnviadorEventos::detener() {
+    seguirCorriendo_ = false;
 }

@@ -15,19 +15,18 @@ private:
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosEntrantes_;
     Mundo mundo_;
-    bool jugando_;
-    bool& seguirCorriendo_;
 
     Partida(const Partida& otra) = delete;
     Partida& operator=(const Partida& otra) = delete;
 
 public:
-    Partida(bool& seguirCorriendo);
+    Partida();
     ~Partida();
 
     void agregarJugador(std::shared_ptr<Jugador> jugador);
 
-    virtual void run() override;
+    virtual void correr() override;
+    virtual void detener() override;
     virtual void manejar(Evento& e) override;
 };
 

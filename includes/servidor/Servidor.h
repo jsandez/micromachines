@@ -12,7 +12,6 @@
 
 class Servidor {
 private:
-    bool seguirCorriendo_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosRecibidos_;
     SalaDeEspera salaDeEspera_;
     HiloAceptador hiloAceptador_;

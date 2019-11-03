@@ -10,13 +10,12 @@
 class EnviadorEventos : public Hilo {
 private:
     ColaBloqueante<std::shared_ptr<Evento>>& origen_;
-    bool& seguirCorriendo_;
     Protocolo protocolo_;
 
 public:
-    EnviadorEventos(SocketTCP& socketDestino, ColaBloqueante<std::shared_ptr<Evento>>& origen, bool& seguirCorriendo);
-
-    virtual void run() override;
+    EnviadorEventos(SocketTCP& socketDestino, ColaBloqueante<std::shared_ptr<Evento>>& origen);
+    virtual void correr() override;
+    virtual void detener() override;
 };
 
 #endif

@@ -13,7 +13,6 @@ class HiloAceptador : public Hilo {
 private:
     SocketTCPServidor sktAceptador_;
     SalaDeEspera& salaDeEspera_;
-    bool& seguirCorriendo_;
 
     HiloAceptador(const HiloAceptador& otro) = delete;
     HiloAceptador(HiloAceptador&& otro) = delete;
@@ -21,13 +20,12 @@ private:
     HiloAceptador& operator=(const HiloAceptador& otro) = delete;
     
 public:
-    HiloAceptador(const std::string& puerto, bool& seguirCorriendo, SalaDeEspera& salaDeEspera);
+    HiloAceptador(const std::string& puerto, SalaDeEspera& salaDeEspera);
 
     ~HiloAceptador();
 
-    virtual void run() override;
-
-    virtual void join() override;
+    virtual void correr() override;
+    virtual void detener() override;
 };
 
 #endif

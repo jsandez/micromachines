@@ -10,7 +10,6 @@
 
 class DistribuidorEventos : public Hilo, public Handler {
 private:
-    bool& seguirCorriendo_;
     ColaBloqueante<std::shared_ptr<Evento>>& eventos_;
     SalaDeEspera& salaDeEspera_;
     CoordinadorPartidas& coordinadorPartidas_;
@@ -21,11 +20,12 @@ private:
     DistribuidorEventos& operator=(const DistribuidorEventos& otro) = delete;
 
 public:
-    DistribuidorEventos(bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas);
+    DistribuidorEventos(ColaBloqueante<std::shared_ptr<Evento>>& eventos, SalaDeEspera& salaDeEspera, CoordinadorPartidas& coordinadorPartidas);
 
     ~DistribuidorEventos();
 
-    virtual void run() override;
+    virtual void correr() override;
+    virtual void detener() override;
 
     virtual void manejar(Evento& e) override;
 

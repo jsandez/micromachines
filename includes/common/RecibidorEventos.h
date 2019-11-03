@@ -9,14 +9,14 @@
 
 class RecibidorEventos : public Hilo {
 private:
-    ColaBloqueante<std::shared_ptr<Evento>>& destino_;   
-    bool& seguirCorriendo_;
+    ColaBloqueante<std::shared_ptr<Evento>>& destino_;
     Protocolo protocolo_;
     uint32_t UUIDRemitente_;
     
 public:
-    RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo, uint32_t uuidRemitente);
-    virtual void run() override;
+    RecibidorEventos(SocketTCP& origen, ColaBloqueante<std::shared_ptr<Evento>>& destino, uint32_t uuidRemitente);
+    virtual void correr() override;
+    virtual void detener() override;
 };
 
 #endif

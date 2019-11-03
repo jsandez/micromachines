@@ -5,14 +5,13 @@
 #include "includes/common/eventos/EventoFactory.h"
 #include "includes/common/excepciones/EventoDesconocidoError.h"
 
-RecibidorEventos::RecibidorEventos(SocketTCP& socketOrigen, ColaBloqueante<std::shared_ptr<Evento>>& destino, bool& seguirCorriendo, uint32_t uuidRemitente) :
+RecibidorEventos::RecibidorEventos(SocketTCP& socketOrigen, ColaBloqueante<std::shared_ptr<Evento>>& destino, uint32_t uuidRemitente) :
     destino_(destino),
-    seguirCorriendo_(seguirCorriendo),
     protocolo_(socketOrigen),
     UUIDRemitente_(uuidRemitente) {
 }
 
-void RecibidorEventos::run() {
+void RecibidorEventos::correr() {
     while(seguirCorriendo_) {
         try {
             std::shared_ptr<Evento> eventoRecibido(EventoFactory::instanciar(UUIDRemitente_, protocolo_));
@@ -27,6 +26,10 @@ void RecibidorEventos::run() {
             std::shared_ptr<Evento> desconexion(std::make_shared<EventoDesconexion>(UUIDRemitente_));
             destino_.put(desconexion);
             break;
-        }   
+        }
     }
+}
+
+void RecibidorEventos::detener() {
+    seguirCorriendo_ = false;
 }

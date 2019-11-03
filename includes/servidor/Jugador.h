@@ -20,7 +20,7 @@ private:
     
 
 public:
-    Jugador(SocketTCP&& socket, uint32_t uuid, bool& seguirCorriendo, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
+    Jugador(SocketTCP&& socket, uint32_t uuid, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
     ~Jugador();
     uint32_t uuid();
 };
