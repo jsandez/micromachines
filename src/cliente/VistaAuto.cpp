@@ -1,7 +1,9 @@
 #include "includes/cliente/VistaAuto.h"
 
-VistaAuto::VistaAuto(SdlTexture &sdl_texture) :
-    VistaObjeto(sdl_texture) {
+VistaAuto::VistaAuto(SdlTexture &sdl_texture, int x, int y, int angulo) :
+    VistaObjetoDinamico(sdl_texture, x, y, angulo) {
+  this->width = 80;
+  this->height = 100;
 }
 
 void VistaAuto::dibujar(int x, int y, int angulo) {

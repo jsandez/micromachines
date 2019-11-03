@@ -5,7 +5,8 @@
  * Conversor que realiza el traspaso
  * de metros a pixeles y a bloques
  */
-class Conversor {
+class
+Conversor {
  private:
   float pixelPorMetro;
   int pixelPorBloque;
@@ -14,6 +15,7 @@ class Conversor {
   Conversor(float pixelPorMetro, int pixelPorBloque);
   int metroAPixel(float coord);
   float pixelAMetro(int coord);
-  int metroABloque(float coord);
+  int bloqueAPixel(int coord);
+  int pixelABloque(int coord);
 };
 #endif

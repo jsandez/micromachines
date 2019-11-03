@@ -8,10 +8,14 @@ int Conversor::metroAPixel(float coord) {
   return round(coord * pixelPorMetro);
 }
 
-int Conversor::metroABloque(float coord) {
-  return trunc(coord / pixelPorBloque);
-}
-
 float Conversor::pixelAMetro(int coord) {
   return (float) (coord / pixelPorMetro);
+}
+
+int Conversor::bloqueAPixel(int coord) {
+  return coord * pixelPorBloque;
+}
+
+int Conversor::pixelABloque(int coord) {
+  return trunc((float) coord / pixelPorBloque);
 }

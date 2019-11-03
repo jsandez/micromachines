@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.10.2)
 project(ClienteCMake)
 
 FILE(GLOB CLIENT_SRCFILES ${CMAKE_SOURCE_DIR}/src/cliente/*.cpp)
+FILE(GLOB COMMON_SRCFILES ${CMAKE_SOURCE_DIR}/src/common/*.cpp)
 
 set(SOURCES
   #${CMAKE_SOURCE_DIR}/src/cliente/Area.cpp
@@ -11,7 +12,7 @@ set(SOURCES
   #${CMAKE_SOURCE_DIR}/src/cliente/SdlException.cpp
   #${CMAKE_SOURCE_DIR}/src/cliente/SdlTexture.cpp
   #${CMAKE_SOURCE_DIR}/src/cliente/SdlWindow.cpp
-  ${CLIENT_SRCFILES}
+  ${CLIENT_SRCFILES} ${COMMON_SRCFILES}
 )
 
 include_directories(${CMAKE_SOURCE_DIR})

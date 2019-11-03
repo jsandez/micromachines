@@ -3,6 +3,7 @@
 #include <memory>
 #include "includes/cliente/SdlWindow.h"
 #include "includes/cliente/VistaObjeto.h"
+#include "includes/cliente/VistaObjetoDinamico.h"
 
 class CreadorTexturas {
  private:

@@ -7,7 +7,7 @@ VistaTierra::VistaTierra(SdlTexture &sdl_texture) :
 }
 
 void VistaTierra::dibujar(int x, int y, int angulo) {
-  Area src_area(0, 0, 256, 256);
+  Area src_area(0, 0, this->width, this->height);
   Area dest_area(x, y, this->width, this->height);
   this->textura.render(src_area, dest_area, angulo, SDL_FLIP_NONE);
 }

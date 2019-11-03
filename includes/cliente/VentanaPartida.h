@@ -5,6 +5,7 @@
 #include "includes/cliente/CreadorTexturas.h"
 #include <map>
 #include <list>
+#include <vector>
 
 typedef struct Posicion Posicion_t;
 
@@ -16,11 +17,11 @@ struct Posicion {
 class VentanaPartida {
  private:
   SdlWindow &window;
-  std::map<int, std::map<Posicion_t, std::shared_ptr<VistaObjeto>>> pista;
-  std::list<std::shared_ptr<VistaObjeto>> objetos;
+  std::map<int, std::vector<std::vector<std::shared_ptr<VistaObjeto>>>> pista;
+  std::map<int, std::shared_ptr<VistaObjeto>> texturasPista;
   std::map<int, std::shared_ptr<VistaObjeto>> autos;
   std::map<int, std::shared_ptr<VistaObjeto>> consumibles;
-  //Conversor conversor;
+  Conversor conversor;
   CreadorTexturas creador_texturas;
   bool terminado;
   int deltaCamaraX, deltaCamaraY;
@@ -31,7 +32,7 @@ class VentanaPartida {
   void crearPista();
 
   // METODO TEMPORAL
-  void addAuto(VistaObjeto *car);
+  void addAuto(std::shared_ptr<VistaObjeto> car);
 
 };
 #endif
