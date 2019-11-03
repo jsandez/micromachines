@@ -89,7 +89,7 @@ void VentanaPartida::dibujar() {
                                 screenY / 2,
                                 car.second.get()->getAngulo());
     } else {
-      // HAY QUE VERIFICAR SI CAE EN LOS BLOQUES
+      // VERIFICO QUE CAIGA EN LOS BLOQUES
       int bloqueCarX = conversor.pixelABloque(car.second.get()->getX());
       int bloqueCarY = conversor.pixelABloque(car.second.get()->getX());
       if (bloqueCarX >= xInicial &&
