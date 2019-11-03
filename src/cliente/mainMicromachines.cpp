@@ -4,8 +4,9 @@
 #include "includes/cliente/SdlWindow.h"
 #include "includes/cliente/VentanaPartida.h"
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+// TODO: HAY QUE HACER LOS PIXELES REELATIVOS A LA RESOLUCION
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 768;
 
 int main(int argc, char **argv) {
   try {
