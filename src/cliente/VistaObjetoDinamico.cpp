@@ -6,7 +6,7 @@ VistaObjetoDinamico::VistaObjetoDinamico(SdlTexture &sdl_texture, int x, int y, 
 void VistaObjetoDinamico::mover(int x, int y, int angulo) {
   this->x += x;
   this->y += y;
-  this->angulo = angulo;
+  this->angulo += angulo;
 }
 
 int VistaObjetoDinamico::getX() const {

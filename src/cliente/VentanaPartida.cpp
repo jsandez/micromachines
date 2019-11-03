@@ -31,14 +31,20 @@ void VentanaPartida::crearPista() {
 }
 
 void VentanaPartida::dibujar() {
+  int screenX, screenY;
+  for (std::pair<int, std::shared_ptr<VistaObjeto>> car :autos) {
+    window.getWindowSize(&screenX, &screenY);
+    deltaCamaraX = car.second.get()->getX();
+    deltaCamaraY = car.second.get()->getY();
+    car.second.get()->dibujar(screenX / 2,
+                              screenY / 2,
+                              car.second.get()->getAngulo());
+  }
   std::vector<std::vector<std::shared_ptr<VistaObjeto>>> matrix = pista.at(0);
   for (int i = 0; i < 2; i++) {
     for (int j = 0; j < 4; j++) {
-      matrix[i][j].get()->dibujar(j * 256, i * 256, 0);
+      matrix[i][j].get()->dibujar(j * 256 - deltaCamaraX , i * 256 -deltaCamaraY, 0);
     }
-  }
-  for (std::pair<int, std::shared_ptr<VistaObjeto>> car :autos) {
-    car.second.get()->dibujar(car.second.get()->getX(), car.second.get()->getY(), car.second.get()->getAngulo());
   }
   window.render();
 }
