@@ -32,7 +32,6 @@ class VentanaPartida {
   void crearPista();
 
   // METODO TEMPORAL
-  void addAuto(std::shared_ptr<VistaObjeto> car);
-
+  void addAuto(std::shared_ptr<VistaObjeto> car,int id);
 };
 #endif
