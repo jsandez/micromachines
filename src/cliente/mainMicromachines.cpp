@@ -5,8 +5,8 @@
 #include "includes/cliente/VentanaPartida.h"
 
 // TODO: HAY QUE HACER LOS PIXELES REELATIVOS A LA RESOLUCION
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 768;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 int main(int argc, char **argv) {
   try {
@@ -22,6 +22,7 @@ int main(int argc, char **argv) {
     bool running = true;
     int x = 0;
     int y = 0;
+    // TODO: ESTO TIENE QUE SER UN THREAD QUE ESPERA EVENTOS Y LOS EJECUTA
     while (running) {
       //empezar contador
       SDL_Event event;
@@ -31,16 +32,18 @@ int main(int argc, char **argv) {
         x = 0;
         y = 0;
         switch (event.type) {
+          // TODO: REVISAR, CUANDO DOBLA; COMO CONTROLAMOS LA DIAGONAL??
+          // TODO: PROPUESTA, ESPACIO PARA ACELERAR??
           case SDL_KEYDOWN: {
             SDL_KeyboardEvent &keyEvent = (SDL_KeyboardEvent &) event;
             switch (keyEvent.keysym.sym) {
-              case SDLK_LEFT:x = -1;
+              case SDLK_LEFT:x = -5;
                 break;
-              case SDLK_RIGHT:x = 1;
+              case SDLK_RIGHT:x = 5;
                 break;
-              case SDLK_UP:y = -1;
+              case SDLK_UP:y = -5;
                 break;
-              case SDLK_DOWN:y = 1;
+              case SDLK_DOWN:y = 5;
                 break;
             }
           } // Fin KEY_DOWN
