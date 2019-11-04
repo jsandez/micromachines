@@ -5,8 +5,8 @@
 
 class Fisicas {
 private:
-    std::shared_ptr<b2World> mundoBox2D_;
     b2Vec2 gravedad_;
+    std::shared_ptr<b2World> mundoBox2D_;
 
 public:
     Fisicas();

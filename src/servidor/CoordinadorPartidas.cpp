@@ -7,8 +7,10 @@ CoordinadorPartidas::CoordinadorPartidas(SalaDeEspera& salaDeEspera) :
 
 CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
-        kv.second->detener();
-        kv.second->join();
+        if (kv.second->estaCorriendo()) {
+            kv.second->detener();
+            kv.second->join();
+        }        
     }
 }
 
