@@ -20,6 +20,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp
   ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/Tile.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaAgregada.cpp
