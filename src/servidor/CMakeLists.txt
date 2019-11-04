@@ -14,6 +14,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/Partida.cpp
   ${PROJECT_SOURCE_DIR}/Jugador.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Mundo.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/Identificable.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
