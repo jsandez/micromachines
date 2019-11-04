@@ -10,31 +10,44 @@
 #include "includes/common/Tile.h"
 
 //Forward declaration
-static void cargarSuelo(int largoX, int largoY, std::map<Tile,int>& tilesASuelo, Json& pistaJson);
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuelo, Json& pistaJson);
+static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuperficie, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) {
-    //TODO: Aca se carga la pista json
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
     std::ifstream archivoPista(rutaPista);
     Json pistaJson;
     archivoPista >> pistaJson;
-    int x = pistaJson["dimensiones"]["x"].get<int>();
-    int y = pistaJson["dimensiones"]["y"].get<int>();
-    std::map<Tile, int> tilesASuelo;
-    cargarSuelo(x, y, tilesASuelo, pistaJson);
+    uint16_t x = pistaJson["dimensiones"]["x"].get<uint16_t>();
+    uint16_t y = pistaJson["dimensiones"]["y"].get<uint16_t>();
 
+    cargarSuelo(x, y, tileASuelo_, pistaJson);
+    cargarSuperficies(x, y, tileASuperficie_, pistaJson);
+    
+    fisicas_.generarSuelo(tileASuelo_);
+    fisicas_.generarSuperficies(tileASuperficie_);
 }
 
-static void cargarSuelo(int largoX, int largoY, std::map<Tile,int>& tilesASuelo, Json& pistaJson) {
-    for (int i = 0; i < largoX; ++i) {
-        for (int j = 0; j < largoY; ++j) {
+// El sistema de referencia de la pista está arriba a la izquierda,
+// mientras que en el servidor está abajo a la derecha.
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuelo, Json& pistaJson) {
+    for (uint16_t i = 0; i < largoX; ++i) {
+        for (uint16_t j = 0; j < largoY; ++j) {
             tilesASuelo[Tile(i, largoY - j)] = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)];
             int idPista = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)];
             if (idPista != -1) {
                 tilesASuelo[Tile(i, largoY - j)] = idPista;
             }
+        }
+    }
+}
+
+static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuperficie, Json& pistaJson) {
+    for (uint16_t i = 0; i < largoX; ++i) {
+        for (uint16_t j = 0; j < largoY; ++j) {
+            tilesASuperficie[Tile(i, largoY - j)] = pistaJson["capas"]["superficies"][std::to_string(i)][std::to_string(j)];
         }
     }
 }

@@ -7,3 +7,11 @@ Fisicas::Fisicas() :
 
 Fisicas::~Fisicas() {
 }
+
+void Fisicas::generarSuelo(std::map<Tile, uint16_t>& tileASuelo) {
+
+}
+
+void Fisicas::generarSuperficies(std::map<Tile, uint16_t>& tileASuperficie) {
+    
+}
