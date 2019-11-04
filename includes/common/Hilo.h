@@ -16,6 +16,8 @@ public:
     
     void iniciar();
 
+    bool estaCorriendo();
+
     virtual void correr() = 0;
 
     // TODO: Refactorizar y hacer un detener default, virtual. Que solo lo overridee un hilo que lance mas hilos.
