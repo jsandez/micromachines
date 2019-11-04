@@ -7,9 +7,8 @@ class VistaObjetoDinamico : public VistaObjeto {
  public:
   VistaObjetoDinamico(SdlTexture &sdl_texture, int x, int y, int angulo);
   virtual void mover(int x, int y, int angulo) override;
-
-  int getX() const override ;
-  int getY() const override ;
-  int getAngulo() const override ;
+  int getX() const override;
+  int getY() const override;
+  int getAngulo() const override;
 };
 #endif
