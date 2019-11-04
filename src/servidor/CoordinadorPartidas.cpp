@@ -15,6 +15,7 @@ CoordinadorPartidas::~CoordinadorPartidas() {
 
 void CoordinadorPartidas::agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida) {
     partidas_.at(uuidPartida)->agregarJugador(jugador);
+    jugadoresAPartidas_[jugador->uuid()] = uuidPartida;
 }
 
 void CoordinadorPartidas::manejar(Evento& e) {
@@ -29,8 +30,9 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
 }
 
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
-    //TODO: iniciar la partida correspondiente
-    //partidas_[1]->iniciar();
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    partidas_[uuidPartida]->iniciar();
 }
 
 void CoordinadorPartidas::manejar(EventoDesconexion& e) {
@@ -38,4 +40,11 @@ void CoordinadorPartidas::manejar(EventoDesconexion& e) {
     //evento desconexion para que se quite al jugador.
     //partidas_[1]->manejar(e);
     //partidas_.erase(1);
+}
+
+void CoordinadorPartidas::manejar(EventoAcelerar& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoAcelerar>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
 }

@@ -13,6 +13,7 @@ class Handler;
 #define UUID_EVENTO_DESCONEXION         5
 #define UUID_EVENTO_ACELERAR            6
 
+// TODO: Crear constructor por movimiento
 class Evento {
 private:
     uint32_t UUIDRemitente_;

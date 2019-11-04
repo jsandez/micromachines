@@ -20,13 +20,11 @@ void Servidor::correr() {
 }
 
 void Servidor::cerrar() {
-    std::cout << "1\n";
     eventosRecibidos_.detener();
-    std::cout << "2\n";
+
     hiloAceptador_.detener();
     hiloAceptador_.join();
-    std::cout << "3\n";
+
     distribuidorEventos_.detener();
     distribuidorEventos_.join();
-    std::cout << "4\n";
 }

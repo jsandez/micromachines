@@ -27,7 +27,11 @@ public:
 
     virtual void correr() override;
     virtual void detener() override;
+
+    void ocurrio(std::shared_ptr<Evento> unEvento);
+
     virtual void manejar(Evento& e) override;
+    virtual void manejar(EventoAcelerar& e) override;
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "includes/servidor/Partida.h"
 
+#include <iostream>
+
 Partida::Partida() {
 }
 
@@ -11,17 +13,27 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
 }
 
 void Partida::correr() {
-    while(seguirCorriendo_) {
-        //std::cout << "Hola, corriendo\n";
-        //std::this_thread::sleep_for(std::chrono::milliseconds(20));
+    bool obtenido;
+    std::shared_ptr<Evento> evento;
+    while(seguirCorriendo_ && (obtenido = eventosEntrantes_.get(evento))) {
+        manejar(*evento);
     }
 }
 
 void Partida::detener() {
     seguirCorriendo_ = false;
+    eventosEntrantes_.detener();
+
+}
+
+void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
+    eventosEntrantes_.put(unEvento);
 }
 
 void Partida::manejar(Evento& e) {
     e.actualizar(*this);
-    //jugando_ = false;
+}
+
+void Partida::manejar(EventoAcelerar& e) {
+    std::cout << "Hola, estoy en una partida y alguien mando acelerar\n";
 }

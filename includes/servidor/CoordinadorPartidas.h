@@ -13,6 +13,7 @@ private:
     uint16_t contadorPartidas_;
     SalaDeEspera& salaDeEspera_;
     std::map<uint16_t, std::shared_ptr<Partida>> partidas_;
+    std::map<uint32_t, uint16_t> jugadoresAPartidas_;
 
 public:
     CoordinadorPartidas(SalaDeEspera& salaDeEspera);
@@ -24,6 +25,7 @@ public:
     virtual void manejar(EventoCrearPartida& e) override;
     virtual void manejar(EventoIniciarPartida& e) override;
     virtual void manejar(EventoDesconexion& e) override;
+    virtual void manejar(EventoAcelerar& e) override;
 };
 
 #endif
