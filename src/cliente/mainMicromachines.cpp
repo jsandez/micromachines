@@ -13,7 +13,6 @@ int main(int argc, char **argv) {
     SdlWindow window(SCREEN_WIDTH, SCREEN_HEIGHT);
     VentanaPartida ventana_partida(window);
     CreadorTexturas creador_texturas(window);
-    ventana_partida.crearPista();
     std::shared_ptr<VistaObjeto> car = creador_texturas.crear(105);
     std::shared_ptr<VistaObjeto> car_2 = creador_texturas.crear(105);
     ventana_partida.addAuto(car, 0);
