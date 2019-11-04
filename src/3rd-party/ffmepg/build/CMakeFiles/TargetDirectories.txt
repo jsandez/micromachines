@@ -1,0 +1,4 @@
+/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles/rebuild_cache.dir
+/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles/edit_cache.dir
+/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles/ffmepg.dir
+/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles/example.dir

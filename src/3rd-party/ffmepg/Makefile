@@ -155,7 +155,7 @@ $(target): $(o_files)
 		if [ -n "$(directorios)" ]; then echo "Directorios encontrados: $(directorios)"; fi; \
 		false; \
 	fi >&2
-	$(LD) $(o_files) -o $(target) $(LDFLAGS)
+	$(LD) $(o_files) -lSDL2 -lSDL2_image `sdl2-config --cflags --libs` -o $(target) $(LDFLAGS) -lavutil -lavformat -lavcodec -lz -lswscale -lswresample -lm 
 
 clean:
 	$(RM) $(o_files) $(target)
