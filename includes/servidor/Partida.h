@@ -20,7 +20,7 @@ private:
     Partida& operator=(const Partida& otra) = delete;
 
 public:
-    Partida();
+    Partida(uint16_t uuidPista);
     ~Partida();
 
     void agregarJugador(std::shared_ptr<Jugador> jugador);

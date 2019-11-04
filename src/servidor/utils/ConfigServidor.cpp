@@ -19,3 +19,7 @@ std::string ConfigServidor::puertoServidor() {
 unsigned int ConfigServidor::maxClientesEnEspera() {
     return json_["red"]["maxClientesEnEspera"].get<unsigned int>();
 }
+
+std::string ConfigServidor::rutaPistas() {
+    return json_["rutaPistas"].get<std::string>();
+}

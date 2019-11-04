@@ -2,5 +2,6 @@
     "red" : {
         "puerto" : "10001",
         "maxClientesEnEspera" : 20
-    }
+    },
+    "rutaPistas" : "assets/pistas/"
 }

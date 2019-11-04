@@ -5,8 +5,6 @@
 
 #define CONFIG_SERVIDOR ConfigServidor::instancia()
 
-#define Json nlohmann::json
-
 #include <string>
 
 #include "includes/3rd-party/jsoncpp/json.hpp"
@@ -20,6 +18,7 @@ public:
     static ConfigServidor& instancia();
     std::string puertoServidor();
     unsigned int maxClientesEnEspera();
+    std::string rutaPistas();
 };
 
 #endif

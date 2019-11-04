@@ -1,8 +1,7 @@
 #include "includes/servidor/Partida.h"
 
-#include <iostream>
-
-Partida::Partida() {
+Partida::Partida(uint16_t uuidPista) :
+    mundo_(uuidPista) {
 }
 
 Partida::~Partida() {
@@ -23,7 +22,6 @@ void Partida::correr() {
 void Partida::detener() {
     seguirCorriendo_ = false;
     eventosEntrantes_.detener();
-
 }
 
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
@@ -35,5 +33,5 @@ void Partida::manejar(Evento& e) {
 }
 
 void Partida::manejar(EventoAcelerar& e) {
-    std::cout << "Hola, estoy en una partida y alguien mando acelerar\n";
+    //TODO: Derivar en mundo
 }
