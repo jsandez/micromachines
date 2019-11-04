@@ -30,6 +30,8 @@ void VentanaPartida::crearPista() {
   matrix.push_back(arrayTierra);
   matrix.push_back(arrayTierra);
   matrix.push_back(arrayTierra);
+  matrix.push_back(arrayTierra);
+  matrix.push_back(arrayTierra);
   for (int j = 0; j < 30; j++) {
     arrayAsfalto.push_back(texturasPista.at(102));
   }
@@ -55,34 +57,59 @@ void VentanaPartida::dibujar() {
       window.getWindowSize(&screenX, &screenY);
       // TODO: ACA TENEMOS QUE VERIFICAR CUANDO ES EL AUTO DEL ID; DEBERIA SER EL PRIMERO O ESTAR SEPARADO
       //TODO: SECTOR DE LA CAMARA
+      // EL AUTO YA ARRANCA EN EL MEDIO, NO LE SUMO NADA !!!
       deltaCamaraX = car.second.get()->getX();
       deltaCamaraY = car.second.get()->getY();
-      if (deltaCamaraX < 0) {
-        car.second.get()->mover(-deltaCamaraX, 0, 0);
-        deltaCamaraX = 0;
+      if (deltaCamaraX < screenX / 2) {
+        // TODO: ESTO DE MOVER ES PARA Q NO TENGA  E Y NEGATIVO; CREO QUE VA DEL LADO DEL SERVER
+        car.second.get()->mover((screenX / 2) - deltaCamaraX, 0, 0);
+        deltaCamaraX = screenX / 2;
       }
-      if (deltaCamaraY < 0) {
-        car.second.get()->mover(0, -deltaCamaraY, 0);
-        deltaCamaraY = 0;
+      if (deltaCamaraY < screenY / 2) {
+        car.second.get()->mover(0, (screenY / 2) - deltaCamaraY, 0);
+        deltaCamaraY = screenY / 2;
       }
-      int posCarX = conversor.pixelABloque(deltaCamaraX + screenX / 2);
-      int posCarY = conversor.pixelABloque(deltaCamaraY + screenY / 2);
-      xInicial = posCarX - 5;
-      xFinal = posCarX + 5;
-      yInicial = posCarY - 5;
-      yFinal = posCarY + 5;
+      int limiteFinalX = conversor.bloqueAPixel(30) - (screenX / 2);
+      int limiteFinalY = conversor.bloqueAPixel(15) - (screenY / 2);
+      if (deltaCamaraX > limiteFinalX) {
+        // TODO: ESTO DE MOVER ES PARA Q NO TENGA X E Y NEGATIVO; CREO QUE VA DEL LADO DEL SERVER
+        car.second.get()->mover(-(deltaCamaraX - limiteFinalX), 0, 0);
+        deltaCamaraX = limiteFinalX;
+      }
+      if (deltaCamaraY > limiteFinalY) {
+        car.second.get()->mover(0, -(deltaCamaraY - limiteFinalY), 0);
+        deltaCamaraY = limiteFinalY;
+      }
+      int posCarX = conversor.pixelABloque(deltaCamaraX);
+      int posCarY = conversor.pixelABloque(deltaCamaraY);
+      xInicial = posCarX - 3;
+      xFinal = posCarX + 4;
+      yInicial = posCarY - 3;
+      yFinal = posCarY + 4;
       if (xInicial < 0) {
         xInicial = 0;
       }
       if (yInicial < 0) {
         yInicial = 0;
       }
+      if (xFinal > 30) {
+        xFinal = 30;
+      }
+      if (yFinal > 15) {
+        yFinal = 15;
+      }
+      std::cout << "posCarX: " << posCarX << std::endl;
+      std::cout << "posCarY: " << posCarY << std::endl;
       std::cout << "xInicial: " << xInicial << std::endl;
       std::cout << "yInicial: " << yInicial << std::endl;
+      std::cout << "xFinal: " << xFinal << std::endl;
+      std::cout << "yFinsal: " << yFinal << std::endl;
       std::vector<std::vector<std::shared_ptr<VistaObjeto>>> matrix = pista.at(0);
       for (int i = yInicial; i < yFinal; i++) {
         for (int j = xInicial; j < xFinal; j++) {
-          matrix[i][j].get()->dibujar(j * 256 - deltaCamaraX, i * 256 - deltaCamaraY, 0);
+          matrix[i][j].get()->dibujar(j * 256 - (deltaCamaraX - screenX / 2),
+                                      i * 256 - (deltaCamaraY - screenY / 2),
+                                      0);
         }
       }
       car.second.get()->dibujar(screenX / 2,
@@ -91,13 +118,13 @@ void VentanaPartida::dibujar() {
     } else {
       // VERIFICO QUE CAIGA EN LOS BLOQUES
       int bloqueCarX = conversor.pixelABloque(car.second.get()->getX());
-      int bloqueCarY = conversor.pixelABloque(car.second.get()->getX());
+      int bloqueCarY = conversor.pixelABloque(car.second.get()->getY());
       if (bloqueCarX >= xInicial &&
           bloqueCarX <= xFinal &&
           bloqueCarY >= yInicial &&
           bloqueCarY <= yFinal) {
-        car.second.get()->dibujar(car.second.get()->getX() - deltaCamaraX,
-                                  car.second.get()->getY() - deltaCamaraY,
+        car.second.get()->dibujar(car.second.get()->getX() - (deltaCamaraX - screenX / 2),
+                                  car.second.get()->getY() - (deltaCamaraY - screenY / 2),
                                   car.second.get()->getAngulo());
       }
     }

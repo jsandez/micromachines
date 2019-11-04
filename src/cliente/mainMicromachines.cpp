@@ -18,7 +18,8 @@ int main(int argc, char **argv) {
     std::shared_ptr<VistaObjeto> car_2 = creador_texturas.crear(105);
     ventana_partida.addAuto(car, 0);
     ventana_partida.addAuto(car_2, 1);
-    car_2.get()->mover(100,100,0);
+    car.get()->mover(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
+    car_2.get()->mover(100, 100, 0);
     //window.fill();
     //ventana_partida.dibujar();
     //SDL_Delay(3000);
