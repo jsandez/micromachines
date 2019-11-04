@@ -13,6 +13,8 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/CoordinadorPartidas.cpp
   ${PROJECT_SOURCE_DIR}/Partida.cpp
   ${PROJECT_SOURCE_DIR}/Jugador.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/Mundo.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
   ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp
@@ -32,4 +34,5 @@ set(SOURCES
 )
 
 include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/includes/3rd-party)
 add_library(${PROJECT_NAME} STATIC ${SOURCES})

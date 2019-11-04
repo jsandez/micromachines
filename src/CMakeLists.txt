@@ -8,6 +8,8 @@ add_subdirectory(3rd-party/Box2D)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")
 
 include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/includes/3rd-party)
+
 add_subdirectory(servidor)
 add_subdirectory(cliente)
 
