@@ -39,6 +39,7 @@ void VentanaPartida::crearPista() {
 }
 
 void VentanaPartida::dibujar() {
+  // TODO: CREAR WRAPPER CAMARA
   int screenX, screenY;
   int xInicial = 0;
   int xFinal = 0;
