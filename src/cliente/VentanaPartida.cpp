@@ -1,4 +1,3 @@
-#include <iostream>
 #include "includes/cliente/VentanaPartida.h"
 #include "includes/common/Constantes.h"
 
@@ -119,5 +118,4 @@ void VentanaPartida::dibujar() {
 
 void VentanaPartida::addAuto(std::shared_ptr<VistaObjeto> car, int id) {
   autos.insert(std::pair<int, std::shared_ptr<VistaObjeto>>(id, car));
-
 }

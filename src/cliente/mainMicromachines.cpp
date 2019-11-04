@@ -19,9 +19,6 @@ int main(int argc, char **argv) {
     ventana_partida.addAuto(car_2, 1);
     car.get()->mover(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
     car_2.get()->mover(100, 100, 0);
-    //window.fill();
-    //ventana_partida.dibujar();
-    //SDL_Delay(3000);
     bool running = true;
     int x = 0;
     int y = 0;

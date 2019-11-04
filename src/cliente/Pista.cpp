@@ -15,8 +15,6 @@ Pista::Pista(int capas, int size_x, int size_y) : mapa(), size_x(size_x), size_y
 }
 
 void Pista::agregarBloque(int capa, int x, int y, std::shared_ptr<VistaObjeto> vista) {
-  // TODO: VERIFICAR OUT OF BOUNDS
-  //mapa.insert(std::pair<int, std::vector<std::vector<std::shared_ptr<VistaObjeto>>>>(capa,))
   mapa[capa][x][y] = vista;
 }
 
