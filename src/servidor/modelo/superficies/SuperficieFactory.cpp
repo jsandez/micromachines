@@ -36,6 +36,6 @@ std::shared_ptr<Superficie> SuperficieFactory::instanciar(int uuid) {
     if (uuid == tileAceite) {
         return std::make_shared<SuperficieAceite>();
     }
-
+    
     return std::make_shared<NoSuperficie>();
 }
