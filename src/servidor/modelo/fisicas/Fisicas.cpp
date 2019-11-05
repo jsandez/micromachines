@@ -8,10 +8,10 @@ Fisicas::Fisicas() :
 Fisicas::~Fisicas() {
 }
 
-void Fisicas::generarSuelo(std::map<Tile, uint16_t>& tileASuelo) {
+void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
 
 }
 
-void Fisicas::generarSuperficies(std::map<Tile, uint16_t>& tileASuperficie) {
-    
+void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {
+
 }
