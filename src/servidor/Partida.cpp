@@ -22,7 +22,6 @@ void Partida::correr() {
 
 void Partida::detener() {
     seguirCorriendo_ = false;
-    eventosEntrantes_.detener();
 }
 
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
