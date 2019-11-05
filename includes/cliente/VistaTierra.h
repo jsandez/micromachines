@@ -5,7 +5,7 @@
 class VistaTierra : public VistaObjeto {
  public:
   VistaTierra(SdlTexture &sdl_texture);
-  virtual void dibujar(int x, int y, int angulo) override;
+  virtual void dibujar(int x, int y, int angulo, int screenX, int screenY) override;
 };
 
 #endif

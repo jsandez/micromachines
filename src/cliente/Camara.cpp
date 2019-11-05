@@ -69,7 +69,7 @@ void Camara::dibujarPista() {
     for (int j = xInicial; j < xFinal; j++) {
       pista.getBloque(0, i, j).get()->dibujar(j * 256 - (deltaX - width / 2),
                                               i * 256 - (deltaY - height / 2),
-                                              0);
+                                              0,width,height);
     }
   }
 }
@@ -85,7 +85,7 @@ void Camara::dibujarObjetos(int car_id) {
           bloqueCarY <= yFinal) {
         car.second.get()->dibujar(car.second.get()->getX() - (deltaCamaraX() - width / 2),
                                   car.second.get()->getY() - (deltaCamaraY() - height / 2),
-                                  car.second.get()->getAngulo());
+                                  car.second.get()->getAngulo(),width,height);
       }
     }
   }

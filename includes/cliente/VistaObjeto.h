@@ -10,8 +10,8 @@ class VistaObjeto {
   SdlTexture textura;
  public:
   VistaObjeto(SdlTexture &sdl_texture);
-  virtual void dibujar(int x, int y, int angulo) = 0;
-  virtual void mover(int posX, int posY,int angulo);
+  virtual void dibujar(int x, int y, int angulo, int screenX, int screenY) = 0;
+  virtual void mover(int posX, int posY, int angulo);
   virtual int getX() const;
   virtual int getY() const;
   virtual int getAngulo() const;
