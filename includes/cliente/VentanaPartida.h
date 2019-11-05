@@ -18,13 +18,14 @@ class VentanaPartida {
   Conversor conversor;
   Camara camara;
   CreadorTexturas creador_texturas;
-  int id_car,screenX,screenY;
+  int id_car, screenX, screenY;
   void crearPista();
+  void dibujarPista(int xInicial, int xFinal, int yInicial, int yFinal, int deltaCamaraX, int deltaCamaraY);
+  void dibujarObjetos(int xInicial, int xFinal, int yInicial, int yFinal, int deltaCamaraX, int deltaCamaraY);
  public:
   VentanaPartida(SdlWindow &window);
   void dibujar();
-
-  // METODO TEMPORAL
+  // METODOS TEMPORAL
   void addAutoPrincipal(std::shared_ptr<VistaObjeto> car, int id);
   void addObjeto(std::shared_ptr<VistaObjeto> object, int id);
 };
