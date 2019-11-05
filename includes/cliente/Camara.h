@@ -2,18 +2,24 @@
 #define _CAMARA_H_
 #include "includes/cliente/SdlWindow.h"
 #include "includes/cliente/VistaObjeto.h"
+#include "includes/cliente/Pista.h"
 #include <memory>
 #include "includes/common/Conversor.h"
 
-class Camara{
-private:
-    int width,height;
-    Conversor& conversor;
-    std::shared_ptr<VistaObjeto> car;
-public:
-    Camara(int width, int height,Conversor& conversor);
-    void setCar(std::shared_ptr<VistaObjeto> car);
-    int deltaCamaraX();
-    int deltaCamaraY();
+class Camara {
+ private:
+  Conversor &conversor;
+  Pista &pista;
+  std::map<int, std::shared_ptr<VistaObjeto>> &objetosDinamicos;
+  int width, height, xInicial, xFinal, yInicial, yFinal;
+  std::shared_ptr<VistaObjeto> car;
+  int deltaCamaraX();
+  int deltaCamaraY();
+ public:
+  Camara(Conversor &conversor, Pista &pista, std::map<int, std::shared_ptr<VistaObjeto>> &objetosDinamicos);
+  void setWidthHeight(int width, int height);
+  void setCar(std::shared_ptr<VistaObjeto> car);
+  void dibujarPista();
+  void dibujarObjetos(int car_id);
 };
 #endif

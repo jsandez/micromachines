@@ -1,6 +1,7 @@
 #ifndef _VENTANAPARTIDA_H_
 #define _VENTANAPARTIDA_H_
 #include "includes/cliente/SdlWindow.h"
+#include "includes/cliente/Camara.h"
 #include "includes/common/Conversor.h"
 #include "includes/cliente/CreadorTexturas.h"
 #include "includes/cliente/Pista.h"
@@ -13,18 +14,19 @@ class VentanaPartida {
   SdlWindow &window;
   Pista pista;
   std::map<int, std::shared_ptr<VistaObjeto>> texturasPista;
-  std::map<int, std::shared_ptr<VistaObjeto>> autos;
-  std::map<int, std::shared_ptr<VistaObjeto>> consumibles;
+  std::map<int, std::shared_ptr<VistaObjeto>> objetosDinamicos;
   Conversor conversor;
+  Camara camara;
   CreadorTexturas creador_texturas;
-  bool terminado;
-  int deltaCamaraX, deltaCamaraY;
+  int id_car, screenX, screenY;
   void crearPista();
+  void dibujarPista(int xInicial, int xFinal, int yInicial, int yFinal, int deltaCamaraX, int deltaCamaraY);
+  void dibujarObjetos(int xInicial, int xFinal, int yInicial, int yFinal, int deltaCamaraX, int deltaCamaraY);
  public:
   VentanaPartida(SdlWindow &window);
   void dibujar();
-
-  // METODO TEMPORAL
-  void addAuto(std::shared_ptr<VistaObjeto> car, int id);
+  // METODOS TEMPORAL
+  void addAutoPrincipal(std::shared_ptr<VistaObjeto> car, int id);
+  void addObjeto(std::shared_ptr<VistaObjeto> object, int id);
 };
 #endif
