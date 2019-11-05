@@ -24,7 +24,7 @@ class VentanaPartida : public Ventana {
   void crearPista();
 
  public:
-  VentanaPartida(SdlWindow &window);
+    VentanaPartida(SdlWindow &window);
   void dibujar() override ;
   // METODOS TEMPORAL
   void addAutoPrincipal(std::shared_ptr<VistaObjeto> car, int id);

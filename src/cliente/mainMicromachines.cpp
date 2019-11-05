@@ -60,6 +60,7 @@ int main(int argc, char **argv) {
             break;
         }
       }
+      // TODO: ACA VA EL NUMERO DE ITERACION
       ventana_partida.dibujar();
       // wait diferencia porcentual
     }
