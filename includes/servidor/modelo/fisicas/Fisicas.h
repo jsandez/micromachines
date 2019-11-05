@@ -5,6 +5,7 @@
 
 #include "includes/3rd-party/Box2D/Box2D.h"
 #include "includes/common/Tile.h"
+#include "includes/servidor/modelo/superficies/Superficie.h"
 
 class Fisicas {
 private:
@@ -15,8 +16,8 @@ private:
 public:
     Fisicas();
     ~Fisicas();
-    void generarSuelo(std::map<Tile, uint16_t>& tileASuelo);
-    void generarSuperficies(std::map<Tile, uint16_t>& tileASuperficie);
+    void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
+    void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
 };
 
 #endif

@@ -10,6 +10,8 @@ ConfigServidor& ConfigServidor::instancia() {
 ConfigServidor::ConfigServidor(const std::string& rutaArchivo) {
     std::ifstream archivo(rutaArchivo);
     archivo >> json_;
+    tilesTierra_ = json_["tiles"]["tilesTierra"].get<std::vector<int>>();
+    tilesPista_ = json_["tiles"]["tilesPista"].get<std::vector<int>>();
 }
 
 std::string ConfigServidor::puertoServidor() {
@@ -22,4 +24,28 @@ unsigned int ConfigServidor::maxClientesEnEspera() {
 
 std::string ConfigServidor::rutaPistas() {
     return json_["rutaPistas"].get<std::string>();
+}
+
+std::vector<int>& ConfigServidor::tilesTierra() {
+    return tilesTierra_;
+}
+
+std::vector<int>& ConfigServidor::tilesPista() {
+    return tilesPista_;
+}
+
+int ConfigServidor::tileArena() {
+    return json_["tiles"]["arena"].get<int>();
+}
+
+int ConfigServidor::tileBarro() {
+    return json_["tiles"]["barro"].get<int>();
+}
+
+int ConfigServidor::tileAceite() {
+    return json_["tiles"]["aceite"].get<int>();
+}
+
+int ConfigServidor::tileVacio() {
+    return json_["tiles"]["vacio"].get<int>();
 }

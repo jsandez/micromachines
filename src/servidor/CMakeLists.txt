@@ -15,6 +15,14 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/Jugador.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Mundo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Identificable.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/Superficie.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/NoSuperficie.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieArena.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieBarro.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficiePista.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieTierra.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieAceite.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieFactory.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

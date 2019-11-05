@@ -8,10 +8,11 @@
 #include "includes/servidor/utils/ConfigServidor.h"
 #include "includes/3rd-party/jsoncpp/json.hpp"
 #include "includes/common/Tile.h"
+#include "includes/servidor/modelo/superficies/SuperficieFactory.h"
 
 //Forward declaration
-static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuelo, Json& pistaJson);
-static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuperficie, Json& pistaJson);
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
+static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
@@ -32,25 +33,26 @@ Mundo::Mundo(uint16_t uuidPista) {
 
 // El sistema de referencia de la pista está arriba a la izquierda,
 // mientras que en el servidor está abajo a la derecha.
-static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuelo, Json& pistaJson) {
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson) {
     for (uint16_t i = 0; i < largoX; ++i) {
         for (uint16_t j = 0; j < largoY; ++j) {
-            tilesASuelo[Tile(i, largoY - j)] = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)];
-            int idPista = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)];
-            if (idPista != -1) {
-                tilesASuelo[Tile(i, largoY - j)] = idPista;
+            int uuidTerreno = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<int>();
+            int uuidPista = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>();
+            // Hay pista
+            if (uuidPista != CONFIG_SERVIDOR.tileVacio()) {
+                tilesASuelo[Tile(i, largoY - j)] = SuperficieFactory::instanciar(uuidPista);
+            } else {
+                tilesASuelo[Tile(i, largoY - j)] = SuperficieFactory::instanciar(uuidTerreno);
             }
         }
     }
 }
 
-static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile,uint16_t>& tilesASuperficie, Json& pistaJson) {
+static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson) {
     for (uint16_t i = 0; i < largoX; ++i) {
         for (uint16_t j = 0; j < largoY; ++j) {
-            tilesASuperficie[Tile(i, largoY - j)] = pistaJson["capas"]["superficies"][std::to_string(i)][std::to_string(j)];
+            //FIXME: Acá se usa el superficieFactory
+            //tilesASuperficie[Tile(i, largoY - j)] = pistaJson["capas"]["superficies"][std::to_string(i)][std::to_string(j)];
         }
     }
 }
-
-/*Terreno desaparicion 116, 131
-Terreno tierra 90 ... 115, 117 ... 130*/
