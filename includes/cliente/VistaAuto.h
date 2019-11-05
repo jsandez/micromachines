@@ -4,7 +4,7 @@
 
 class VistaAuto : public VistaObjetoDinamico {
  public:
-  VistaAuto(SdlTexture &sdl_texture, int x, int y, int angulo);
+  VistaAuto(SdlTexture &sdl_texture,int x, int y, int angulo);
   virtual void dibujar(int x, int y, int angulo) override;
 };
 
