@@ -15,8 +15,8 @@ int main(int argc, char **argv) {
     CreadorTexturas creador_texturas(window);
     std::shared_ptr<VistaObjeto> car = creador_texturas.crear(105);
     std::shared_ptr<VistaObjeto> car_2 = creador_texturas.crear(105);
-    ventana_partida.addAuto(car, 0);
-    ventana_partida.addAuto(car_2, 1);
+    ventana_partida.addAutoPrincipal(car, 0);
+    ventana_partida.addObjeto(car_2, 1);
     car.get()->mover(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
     car_2.get()->mover(100, 100, 0);
     bool running = true;
@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
       //empezar contador
       SDL_Event event;
       car.get()->mover(x, y, 0);
+      car_2.get()->mover(1, 1, 0);
       window.fill();
       while (SDL_PollEvent(&event) != 0) {
         x = 0;
@@ -54,7 +55,6 @@ int main(int argc, char **argv) {
             running = false;
             break;
         }
-        //SDL_Delay(300);
       }
       ventana_partida.dibujar();
       // wait diferencia porcentual

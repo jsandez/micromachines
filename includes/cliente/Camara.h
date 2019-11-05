@@ -5,15 +5,16 @@
 #include <memory>
 #include "includes/common/Conversor.h"
 
-class Camara{
-private:
-    int width,height;
-    Conversor& conversor;
-    std::shared_ptr<VistaObjeto> car;
-public:
-    Camara(int width, int height,Conversor& conversor);
-    void setCar(std::shared_ptr<VistaObjeto> car);
-    int deltaCamaraX();
-    int deltaCamaraY();
+class Camara {
+ private:
+  Conversor &conversor;
+  int width, height;
+  std::shared_ptr<VistaObjeto> car;
+ public:
+  Camara(Conversor &conversor);
+  void setWidthHeight(int width, int height);
+  void setCar(std::shared_ptr<VistaObjeto> car);
+  int deltaCamaraX();
+  int deltaCamaraY();
 };
 #endif
