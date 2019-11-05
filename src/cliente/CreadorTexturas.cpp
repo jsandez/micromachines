@@ -16,18 +16,15 @@ CreadorTexturas::CreadorTexturas(SdlWindow &sdl_window) :
     aceite("assets/111.png", sdl_window),
     barro("assets/111.png", sdl_window) {}
 
-    // TODO: EN EL CREADOR DE TEXTURAS CREAMOS CADA  UNA, CREO QUE DEBERIAMOS PASARLE X,Y Y ANGULO
+// TODO: EN EL CREADOR DE TEXTURAS CREAMOS CADA  UNA, CREO QUE DEBERIAMOS PASARLE X,Y Y ANGULO
 std::shared_ptr<VistaObjeto> CreadorTexturas::crear(int id) {
   std::shared_ptr<VistaObjeto> vistaObjeto;
   switch (id) {
-    case ID_TIERRA:
-      vistaObjeto.reset(new VistaTierra(this->tierra));
+    case ID_TIERRA:vistaObjeto.reset(new VistaTierra(this->tierra));
       break;
-    case ID_ASFALTO_RECTO:
-      vistaObjeto.reset(new VistaAsfaltoRecto(this->asfalto_recto));
+    case ID_ASFALTO_RECTO:vistaObjeto.reset(new VistaAsfaltoRecto(this->asfalto_recto));
       break;
-    case ID_CAR:
-      vistaObjeto.reset(new VistaAuto(this->car,0,0,-90));
+    case ID_CAR:vistaObjeto.reset(new VistaAuto(this->car, 0, 0, -90));
       break;
   }
   return vistaObjeto;

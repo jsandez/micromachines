@@ -40,11 +40,13 @@ void VentanaPartida::crearPista() {
 }
 
 void VentanaPartida::dibujar() {
+  window.getWindowSize(&screenX, &screenY);
+  camara.setWidthHeight(screenX, screenY);
   camara.dibujarPista();
   std::shared_ptr<VistaObjeto> principalCar = objetosDinamicos[id_car];
   principalCar.get()->dibujar(screenX / 2,
                               screenY / 2,
-                              principalCar.get()->getAngulo());
+                              principalCar.get()->getAngulo(), screenX, screenY);
   camara.dibujarObjetos(id_car);
   window.render();
 }

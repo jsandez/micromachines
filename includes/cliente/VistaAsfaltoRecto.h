@@ -6,6 +6,6 @@
 class VistaAsfaltoRecto : public VistaObjeto {
  public:
   VistaAsfaltoRecto(SdlTexture &sdl_texture);
-  virtual void dibujar(int x, int y, int angulo) override;
+  virtual void dibujar(int x, int y, int angulo, int screenX, int screenY) override;
 };
 #endif
