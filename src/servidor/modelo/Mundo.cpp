@@ -26,6 +26,8 @@ Mundo::Mundo(uint16_t uuidPista) {
 
     cargarSuelo(x, y, tileASuelo_, pistaJson);
     cargarSuperficies(x, y, tileASuperficie_, pistaJson);
+
+    //TODO: Cargar posiciones de Vehículos
     
     fisicas_.generarSuelo(tileASuelo_);
     fisicas_.generarSuperficies(tileASuperficie_);

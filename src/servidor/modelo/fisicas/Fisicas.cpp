@@ -15,3 +15,5 @@ void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASue
 void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {
     //TODO: Implementar
 }
+
+void Fisicas::agregarVehículos

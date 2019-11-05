@@ -11,6 +11,7 @@ private:
     std::mutex mtx_;
     std::queue<T> elementos_;
     std::condition_variable cond_;
+    //FIXME: Cambiar a atomic
     bool detenida_;
 
     ColaBloqueante(ColaBloqueante&& otra) = delete;
