@@ -51,7 +51,8 @@ static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::sh
 static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson) {
     for (uint16_t i = 0; i < largoX; ++i) {
         for (uint16_t j = 0; j < largoY; ++j) {
-            //FIXME: Acá se usa el superficieFactory
+            //TODO: Acá se usa el superficieFactory
+            //TODO: Superficies son barro y aceite
             //tilesASuperficie[Tile(i, largoY - j)] = pistaJson["capas"]["superficies"][std::to_string(i)][std::to_string(j)];
         }
     }

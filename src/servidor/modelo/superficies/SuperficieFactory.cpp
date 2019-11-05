@@ -1,7 +1,6 @@
 #include "includes/servidor/modelo/superficies/SuperficieFactory.h"
 
 #include <algorithm>
-#include <stdexcept>
 
 #include "includes/servidor/utils/ConfigServidor.h"
 

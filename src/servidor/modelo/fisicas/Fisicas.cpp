@@ -9,9 +9,9 @@ Fisicas::~Fisicas() {
 }
 
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
-
+    //TODO: Implementar
 }
 
 void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {
-
+    //TODO: Implementar
 }
