@@ -14,6 +14,7 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
 void Partida::correr() {
     bool obtenido;
     std::shared_ptr<Evento> evento;
+    //FIXME: Esto NO DEBE SER bloqueante
     while(seguirCorriendo_ && (obtenido = eventosEntrantes_.get(evento))) {
         manejar(*evento);
     }
