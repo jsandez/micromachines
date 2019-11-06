@@ -49,6 +49,6 @@ add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
 
-add_executable(example ${SOURCES})
+add_executable(example ${PROJECT_SOURCE_DIR}/example/main.cpp)
 
 target_link_libraries(example libffmepg.a)

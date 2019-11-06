@@ -28,6 +28,16 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/libavswresample"
   "/libswscale"
   "."
+  "../example/Area.cpp"
+  "../example/SdlException.cpp"
+  "../example/SdlTexture.cpp"
+  "../example/SdlWindow.cpp"
+  "../common/output_stream.cpp"
+  "../common/codec.cpp"
+  "../common/frame.cpp"
+  "../common/output_format.cpp"
+  "../video/output_video.cpp"
+  "../video/video_codec.cpp"
   )
 
 # Targets to which this target links.

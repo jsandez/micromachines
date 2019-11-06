@@ -57,275 +57,41 @@ include CMakeFiles/example.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/example.dir/flags.make
 
-CMakeFiles/example.dir/example/Area.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/example/Area.cpp.o: ../example/Area.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/example.dir/example/Area.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/example/Area.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/example/Area.cpp
+CMakeFiles/example.dir/example/main.cpp.o: CMakeFiles/example.dir/flags.make
+CMakeFiles/example.dir/example/main.cpp.o: ../example/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/example.dir/example/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/example/main.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/example/main.cpp
 
-CMakeFiles/example.dir/example/Area.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/example/Area.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/example/Area.cpp > CMakeFiles/example.dir/example/Area.cpp.i
+CMakeFiles/example.dir/example/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/example/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/example/main.cpp > CMakeFiles/example.dir/example/main.cpp.i
 
-CMakeFiles/example.dir/example/Area.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/example/Area.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/example/Area.cpp -o CMakeFiles/example.dir/example/Area.cpp.s
+CMakeFiles/example.dir/example/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/example/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/example/main.cpp -o CMakeFiles/example.dir/example/main.cpp.s
 
-CMakeFiles/example.dir/example/Area.cpp.o.requires:
+CMakeFiles/example.dir/example/main.cpp.o.requires:
 
-.PHONY : CMakeFiles/example.dir/example/Area.cpp.o.requires
+.PHONY : CMakeFiles/example.dir/example/main.cpp.o.requires
 
-CMakeFiles/example.dir/example/Area.cpp.o.provides: CMakeFiles/example.dir/example/Area.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/Area.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/example/Area.cpp.o.provides
+CMakeFiles/example.dir/example/main.cpp.o.provides: CMakeFiles/example.dir/example/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/main.cpp.o.provides.build
+.PHONY : CMakeFiles/example.dir/example/main.cpp.o.provides
 
-CMakeFiles/example.dir/example/Area.cpp.o.provides.build: CMakeFiles/example.dir/example/Area.cpp.o
-
-
-CMakeFiles/example.dir/example/SdlException.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/example/SdlException.cpp.o: ../example/SdlException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/example.dir/example/SdlException.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/example/SdlException.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/example/SdlException.cpp
-
-CMakeFiles/example.dir/example/SdlException.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/example/SdlException.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/example/SdlException.cpp > CMakeFiles/example.dir/example/SdlException.cpp.i
-
-CMakeFiles/example.dir/example/SdlException.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/example/SdlException.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/example/SdlException.cpp -o CMakeFiles/example.dir/example/SdlException.cpp.s
-
-CMakeFiles/example.dir/example/SdlException.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/example/SdlException.cpp.o.requires
-
-CMakeFiles/example.dir/example/SdlException.cpp.o.provides: CMakeFiles/example.dir/example/SdlException.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlException.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/example/SdlException.cpp.o.provides
-
-CMakeFiles/example.dir/example/SdlException.cpp.o.provides.build: CMakeFiles/example.dir/example/SdlException.cpp.o
-
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/example/SdlTexture.cpp.o: ../example/SdlTexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/example.dir/example/SdlTexture.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/example/SdlTexture.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/example/SdlTexture.cpp
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/example/SdlTexture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/example/SdlTexture.cpp > CMakeFiles/example.dir/example/SdlTexture.cpp.i
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/example/SdlTexture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/example/SdlTexture.cpp -o CMakeFiles/example.dir/example/SdlTexture.cpp.s
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/example/SdlTexture.cpp.o.requires
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.o.provides: CMakeFiles/example.dir/example/SdlTexture.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlTexture.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/example/SdlTexture.cpp.o.provides
-
-CMakeFiles/example.dir/example/SdlTexture.cpp.o.provides.build: CMakeFiles/example.dir/example/SdlTexture.cpp.o
-
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/example/SdlWindow.cpp.o: ../example/SdlWindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/example.dir/example/SdlWindow.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/example/SdlWindow.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/example/SdlWindow.cpp
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/example/SdlWindow.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/example/SdlWindow.cpp > CMakeFiles/example.dir/example/SdlWindow.cpp.i
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/example/SdlWindow.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/example/SdlWindow.cpp -o CMakeFiles/example.dir/example/SdlWindow.cpp.s
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/example/SdlWindow.cpp.o.requires
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.o.provides: CMakeFiles/example.dir/example/SdlWindow.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlWindow.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/example/SdlWindow.cpp.o.provides
-
-CMakeFiles/example.dir/example/SdlWindow.cpp.o.provides.build: CMakeFiles/example.dir/example/SdlWindow.cpp.o
-
-
-CMakeFiles/example.dir/common/output_stream.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/common/output_stream.cpp.o: ../common/output_stream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/example.dir/common/output_stream.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/common/output_stream.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/common/output_stream.cpp
-
-CMakeFiles/example.dir/common/output_stream.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/common/output_stream.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/common/output_stream.cpp > CMakeFiles/example.dir/common/output_stream.cpp.i
-
-CMakeFiles/example.dir/common/output_stream.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/common/output_stream.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/common/output_stream.cpp -o CMakeFiles/example.dir/common/output_stream.cpp.s
-
-CMakeFiles/example.dir/common/output_stream.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/common/output_stream.cpp.o.requires
-
-CMakeFiles/example.dir/common/output_stream.cpp.o.provides: CMakeFiles/example.dir/common/output_stream.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_stream.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/common/output_stream.cpp.o.provides
-
-CMakeFiles/example.dir/common/output_stream.cpp.o.provides.build: CMakeFiles/example.dir/common/output_stream.cpp.o
-
-
-CMakeFiles/example.dir/common/codec.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/common/codec.cpp.o: ../common/codec.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/example.dir/common/codec.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/common/codec.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/common/codec.cpp
-
-CMakeFiles/example.dir/common/codec.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/common/codec.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/common/codec.cpp > CMakeFiles/example.dir/common/codec.cpp.i
-
-CMakeFiles/example.dir/common/codec.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/common/codec.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/common/codec.cpp -o CMakeFiles/example.dir/common/codec.cpp.s
-
-CMakeFiles/example.dir/common/codec.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/common/codec.cpp.o.requires
-
-CMakeFiles/example.dir/common/codec.cpp.o.provides: CMakeFiles/example.dir/common/codec.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/codec.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/common/codec.cpp.o.provides
-
-CMakeFiles/example.dir/common/codec.cpp.o.provides.build: CMakeFiles/example.dir/common/codec.cpp.o
-
-
-CMakeFiles/example.dir/common/frame.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/common/frame.cpp.o: ../common/frame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/example.dir/common/frame.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/common/frame.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/common/frame.cpp
-
-CMakeFiles/example.dir/common/frame.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/common/frame.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/common/frame.cpp > CMakeFiles/example.dir/common/frame.cpp.i
-
-CMakeFiles/example.dir/common/frame.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/common/frame.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/common/frame.cpp -o CMakeFiles/example.dir/common/frame.cpp.s
-
-CMakeFiles/example.dir/common/frame.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/common/frame.cpp.o.requires
-
-CMakeFiles/example.dir/common/frame.cpp.o.provides: CMakeFiles/example.dir/common/frame.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/frame.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/common/frame.cpp.o.provides
-
-CMakeFiles/example.dir/common/frame.cpp.o.provides.build: CMakeFiles/example.dir/common/frame.cpp.o
-
-
-CMakeFiles/example.dir/common/output_format.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/common/output_format.cpp.o: ../common/output_format.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/example.dir/common/output_format.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/common/output_format.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/common/output_format.cpp
-
-CMakeFiles/example.dir/common/output_format.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/common/output_format.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/common/output_format.cpp > CMakeFiles/example.dir/common/output_format.cpp.i
-
-CMakeFiles/example.dir/common/output_format.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/common/output_format.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/common/output_format.cpp -o CMakeFiles/example.dir/common/output_format.cpp.s
-
-CMakeFiles/example.dir/common/output_format.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/common/output_format.cpp.o.requires
-
-CMakeFiles/example.dir/common/output_format.cpp.o.provides: CMakeFiles/example.dir/common/output_format.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_format.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/common/output_format.cpp.o.provides
-
-CMakeFiles/example.dir/common/output_format.cpp.o.provides.build: CMakeFiles/example.dir/common/output_format.cpp.o
-
-
-CMakeFiles/example.dir/video/output_video.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/video/output_video.cpp.o: ../video/output_video.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/example.dir/video/output_video.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/video/output_video.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/video/output_video.cpp
-
-CMakeFiles/example.dir/video/output_video.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/video/output_video.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/video/output_video.cpp > CMakeFiles/example.dir/video/output_video.cpp.i
-
-CMakeFiles/example.dir/video/output_video.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/video/output_video.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/video/output_video.cpp -o CMakeFiles/example.dir/video/output_video.cpp.s
-
-CMakeFiles/example.dir/video/output_video.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/video/output_video.cpp.o.requires
-
-CMakeFiles/example.dir/video/output_video.cpp.o.provides: CMakeFiles/example.dir/video/output_video.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/output_video.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/video/output_video.cpp.o.provides
-
-CMakeFiles/example.dir/video/output_video.cpp.o.provides.build: CMakeFiles/example.dir/video/output_video.cpp.o
-
-
-CMakeFiles/example.dir/video/video_codec.cpp.o: CMakeFiles/example.dir/flags.make
-CMakeFiles/example.dir/video/video_codec.cpp.o: ../video/video_codec.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/example.dir/video/video_codec.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example.dir/video/video_codec.cpp.o -c /home/micromachines/src/3rd-party/ffmepg/video/video_codec.cpp
-
-CMakeFiles/example.dir/video/video_codec.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/video/video_codec.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/micromachines/src/3rd-party/ffmepg/video/video_codec.cpp > CMakeFiles/example.dir/video/video_codec.cpp.i
-
-CMakeFiles/example.dir/video/video_codec.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/video/video_codec.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/micromachines/src/3rd-party/ffmepg/video/video_codec.cpp -o CMakeFiles/example.dir/video/video_codec.cpp.s
-
-CMakeFiles/example.dir/video/video_codec.cpp.o.requires:
-
-.PHONY : CMakeFiles/example.dir/video/video_codec.cpp.o.requires
-
-CMakeFiles/example.dir/video/video_codec.cpp.o.provides: CMakeFiles/example.dir/video/video_codec.cpp.o.requires
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/video_codec.cpp.o.provides.build
-.PHONY : CMakeFiles/example.dir/video/video_codec.cpp.o.provides
-
-CMakeFiles/example.dir/video/video_codec.cpp.o.provides.build: CMakeFiles/example.dir/video/video_codec.cpp.o
+CMakeFiles/example.dir/example/main.cpp.o.provides.build: CMakeFiles/example.dir/example/main.cpp.o
 
 
 # Object files for target example
 example_OBJECTS = \
-"CMakeFiles/example.dir/example/Area.cpp.o" \
-"CMakeFiles/example.dir/example/SdlException.cpp.o" \
-"CMakeFiles/example.dir/example/SdlTexture.cpp.o" \
-"CMakeFiles/example.dir/example/SdlWindow.cpp.o" \
-"CMakeFiles/example.dir/common/output_stream.cpp.o" \
-"CMakeFiles/example.dir/common/codec.cpp.o" \
-"CMakeFiles/example.dir/common/frame.cpp.o" \
-"CMakeFiles/example.dir/common/output_format.cpp.o" \
-"CMakeFiles/example.dir/video/output_video.cpp.o" \
-"CMakeFiles/example.dir/video/video_codec.cpp.o"
+"CMakeFiles/example.dir/example/main.cpp.o"
 
 # External object files for target example
 example_EXTERNAL_OBJECTS =
 
-example: CMakeFiles/example.dir/example/Area.cpp.o
-example: CMakeFiles/example.dir/example/SdlException.cpp.o
-example: CMakeFiles/example.dir/example/SdlTexture.cpp.o
-example: CMakeFiles/example.dir/example/SdlWindow.cpp.o
-example: CMakeFiles/example.dir/common/output_stream.cpp.o
-example: CMakeFiles/example.dir/common/codec.cpp.o
-example: CMakeFiles/example.dir/common/frame.cpp.o
-example: CMakeFiles/example.dir/common/output_format.cpp.o
-example: CMakeFiles/example.dir/video/output_video.cpp.o
-example: CMakeFiles/example.dir/video/video_codec.cpp.o
+example: CMakeFiles/example.dir/example/main.cpp.o
 example: CMakeFiles/example.dir/build.make
 example: CMakeFiles/example.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable example"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/micromachines/src/3rd-party/ffmepg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable example"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -333,16 +99,7 @@ CMakeFiles/example.dir/build: example
 
 .PHONY : CMakeFiles/example.dir/build
 
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/example/Area.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/example/SdlException.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/example/SdlTexture.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/example/SdlWindow.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/common/output_stream.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/common/codec.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/common/frame.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/common/output_format.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/video/output_video.cpp.o.requires
-CMakeFiles/example.dir/requires: CMakeFiles/example.dir/video/video_codec.cpp.o.requires
+CMakeFiles/example.dir/requires: CMakeFiles/example.dir/example/main.cpp.o.requires
 
 .PHONY : CMakeFiles/example.dir/requires
 

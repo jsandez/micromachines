@@ -143,7 +143,6 @@ common/codec.o: common/codec.cpp.o
 # target to build an object file
 common/codec.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/codec.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/codec.cpp.o
 .PHONY : common/codec.cpp.o
 
 common/codec.i: common/codec.cpp.i
@@ -153,7 +152,6 @@ common/codec.i: common/codec.cpp.i
 # target to preprocess a source file
 common/codec.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/codec.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/codec.cpp.i
 .PHONY : common/codec.cpp.i
 
 common/codec.s: common/codec.cpp.s
@@ -163,7 +161,6 @@ common/codec.s: common/codec.cpp.s
 # target to generate assembly for a file
 common/codec.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/codec.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/codec.cpp.s
 .PHONY : common/codec.cpp.s
 
 common/frame.o: common/frame.cpp.o
@@ -173,7 +170,6 @@ common/frame.o: common/frame.cpp.o
 # target to build an object file
 common/frame.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/frame.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/frame.cpp.o
 .PHONY : common/frame.cpp.o
 
 common/frame.i: common/frame.cpp.i
@@ -183,7 +179,6 @@ common/frame.i: common/frame.cpp.i
 # target to preprocess a source file
 common/frame.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/frame.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/frame.cpp.i
 .PHONY : common/frame.cpp.i
 
 common/frame.s: common/frame.cpp.s
@@ -193,7 +188,6 @@ common/frame.s: common/frame.cpp.s
 # target to generate assembly for a file
 common/frame.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/frame.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/frame.cpp.s
 .PHONY : common/frame.cpp.s
 
 common/output_format.o: common/output_format.cpp.o
@@ -203,7 +197,6 @@ common/output_format.o: common/output_format.cpp.o
 # target to build an object file
 common/output_format.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_format.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_format.cpp.o
 .PHONY : common/output_format.cpp.o
 
 common/output_format.i: common/output_format.cpp.i
@@ -213,7 +206,6 @@ common/output_format.i: common/output_format.cpp.i
 # target to preprocess a source file
 common/output_format.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_format.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_format.cpp.i
 .PHONY : common/output_format.cpp.i
 
 common/output_format.s: common/output_format.cpp.s
@@ -223,7 +215,6 @@ common/output_format.s: common/output_format.cpp.s
 # target to generate assembly for a file
 common/output_format.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_format.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_format.cpp.s
 .PHONY : common/output_format.cpp.s
 
 common/output_stream.o: common/output_stream.cpp.o
@@ -233,7 +224,6 @@ common/output_stream.o: common/output_stream.cpp.o
 # target to build an object file
 common/output_stream.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_stream.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_stream.cpp.o
 .PHONY : common/output_stream.cpp.o
 
 common/output_stream.i: common/output_stream.cpp.i
@@ -243,7 +233,6 @@ common/output_stream.i: common/output_stream.cpp.i
 # target to preprocess a source file
 common/output_stream.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_stream.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_stream.cpp.i
 .PHONY : common/output_stream.cpp.i
 
 common/output_stream.s: common/output_stream.cpp.s
@@ -253,7 +242,6 @@ common/output_stream.s: common/output_stream.cpp.s
 # target to generate assembly for a file
 common/output_stream.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/common/output_stream.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/common/output_stream.cpp.s
 .PHONY : common/output_stream.cpp.s
 
 example/Area.o: example/Area.cpp.o
@@ -263,7 +251,6 @@ example/Area.o: example/Area.cpp.o
 # target to build an object file
 example/Area.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/Area.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/Area.cpp.o
 .PHONY : example/Area.cpp.o
 
 example/Area.i: example/Area.cpp.i
@@ -273,7 +260,6 @@ example/Area.i: example/Area.cpp.i
 # target to preprocess a source file
 example/Area.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/Area.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/Area.cpp.i
 .PHONY : example/Area.cpp.i
 
 example/Area.s: example/Area.cpp.s
@@ -283,7 +269,6 @@ example/Area.s: example/Area.cpp.s
 # target to generate assembly for a file
 example/Area.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/Area.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/Area.cpp.s
 .PHONY : example/Area.cpp.s
 
 example/SdlException.o: example/SdlException.cpp.o
@@ -293,7 +278,6 @@ example/SdlException.o: example/SdlException.cpp.o
 # target to build an object file
 example/SdlException.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlException.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlException.cpp.o
 .PHONY : example/SdlException.cpp.o
 
 example/SdlException.i: example/SdlException.cpp.i
@@ -303,7 +287,6 @@ example/SdlException.i: example/SdlException.cpp.i
 # target to preprocess a source file
 example/SdlException.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlException.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlException.cpp.i
 .PHONY : example/SdlException.cpp.i
 
 example/SdlException.s: example/SdlException.cpp.s
@@ -313,7 +296,6 @@ example/SdlException.s: example/SdlException.cpp.s
 # target to generate assembly for a file
 example/SdlException.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlException.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlException.cpp.s
 .PHONY : example/SdlException.cpp.s
 
 example/SdlTexture.o: example/SdlTexture.cpp.o
@@ -323,7 +305,6 @@ example/SdlTexture.o: example/SdlTexture.cpp.o
 # target to build an object file
 example/SdlTexture.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlTexture.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlTexture.cpp.o
 .PHONY : example/SdlTexture.cpp.o
 
 example/SdlTexture.i: example/SdlTexture.cpp.i
@@ -333,7 +314,6 @@ example/SdlTexture.i: example/SdlTexture.cpp.i
 # target to preprocess a source file
 example/SdlTexture.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlTexture.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlTexture.cpp.i
 .PHONY : example/SdlTexture.cpp.i
 
 example/SdlTexture.s: example/SdlTexture.cpp.s
@@ -343,7 +323,6 @@ example/SdlTexture.s: example/SdlTexture.cpp.s
 # target to generate assembly for a file
 example/SdlTexture.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlTexture.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlTexture.cpp.s
 .PHONY : example/SdlTexture.cpp.s
 
 example/SdlWindow.o: example/SdlWindow.cpp.o
@@ -353,7 +332,6 @@ example/SdlWindow.o: example/SdlWindow.cpp.o
 # target to build an object file
 example/SdlWindow.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlWindow.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlWindow.cpp.o
 .PHONY : example/SdlWindow.cpp.o
 
 example/SdlWindow.i: example/SdlWindow.cpp.i
@@ -363,7 +341,6 @@ example/SdlWindow.i: example/SdlWindow.cpp.i
 # target to preprocess a source file
 example/SdlWindow.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlWindow.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlWindow.cpp.i
 .PHONY : example/SdlWindow.cpp.i
 
 example/SdlWindow.s: example/SdlWindow.cpp.s
@@ -373,8 +350,34 @@ example/SdlWindow.s: example/SdlWindow.cpp.s
 # target to generate assembly for a file
 example/SdlWindow.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/example/SdlWindow.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/SdlWindow.cpp.s
 .PHONY : example/SdlWindow.cpp.s
+
+example/main.o: example/main.cpp.o
+
+.PHONY : example/main.o
+
+# target to build an object file
+example/main.cpp.o:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/main.cpp.o
+.PHONY : example/main.cpp.o
+
+example/main.i: example/main.cpp.i
+
+.PHONY : example/main.i
+
+# target to preprocess a source file
+example/main.cpp.i:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/main.cpp.i
+.PHONY : example/main.cpp.i
+
+example/main.s: example/main.cpp.s
+
+.PHONY : example/main.s
+
+# target to generate assembly for a file
+example/main.cpp.s:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example/main.cpp.s
+.PHONY : example/main.cpp.s
 
 video/output_video.o: video/output_video.cpp.o
 
@@ -383,7 +386,6 @@ video/output_video.o: video/output_video.cpp.o
 # target to build an object file
 video/output_video.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/output_video.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/output_video.cpp.o
 .PHONY : video/output_video.cpp.o
 
 video/output_video.i: video/output_video.cpp.i
@@ -393,7 +395,6 @@ video/output_video.i: video/output_video.cpp.i
 # target to preprocess a source file
 video/output_video.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/output_video.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/output_video.cpp.i
 .PHONY : video/output_video.cpp.i
 
 video/output_video.s: video/output_video.cpp.s
@@ -403,7 +404,6 @@ video/output_video.s: video/output_video.cpp.s
 # target to generate assembly for a file
 video/output_video.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/output_video.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/output_video.cpp.s
 .PHONY : video/output_video.cpp.s
 
 video/video_codec.o: video/video_codec.cpp.o
@@ -413,7 +413,6 @@ video/video_codec.o: video/video_codec.cpp.o
 # target to build an object file
 video/video_codec.cpp.o:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/video_codec.cpp.o
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/video_codec.cpp.o
 .PHONY : video/video_codec.cpp.o
 
 video/video_codec.i: video/video_codec.cpp.i
@@ -423,7 +422,6 @@ video/video_codec.i: video/video_codec.cpp.i
 # target to preprocess a source file
 video/video_codec.cpp.i:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/video_codec.cpp.i
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/video_codec.cpp.i
 .PHONY : video/video_codec.cpp.i
 
 video/video_codec.s: video/video_codec.cpp.s
@@ -433,7 +431,6 @@ video/video_codec.s: video/video_codec.cpp.s
 # target to generate assembly for a file
 video/video_codec.cpp.s:
 	$(MAKE) -f CMakeFiles/ffmepg.dir/build.make CMakeFiles/ffmepg.dir/video/video_codec.cpp.s
-	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/video/video_codec.cpp.s
 .PHONY : video/video_codec.cpp.s
 
 # Help Target
@@ -470,6 +467,9 @@ help:
 	@echo "... example/SdlWindow.o"
 	@echo "... example/SdlWindow.i"
 	@echo "... example/SdlWindow.s"
+	@echo "... example/main.o"
+	@echo "... example/main.i"
+	@echo "... example/main.s"
 	@echo "... video/output_video.o"
 	@echo "... video/output_video.i"
 	@echo "... video/output_video.s"

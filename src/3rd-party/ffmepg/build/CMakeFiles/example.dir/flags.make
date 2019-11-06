@@ -6,5 +6,5 @@ CXX_FLAGS =  -D__STDC_CONSTANT_MACROS
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/micromachines/src/3rd-party/ffmepg -I/libavcodec -I/libavdevice -I/libavfilter -I/libavformat -I/libavutil -I/libavswresample -I/libswscale -I/home/micromachines/src/3rd-party/ffmepg/build 
+CXX_INCLUDES = -I/home/micromachines/src/3rd-party/ffmepg -I/libavcodec -I/libavdevice -I/libavfilter -I/libavformat -I/libavutil -I/libavswresample -I/libswscale -I/home/micromachines/src/3rd-party/ffmepg/build -I/home/micromachines/src/3rd-party/ffmepg/example/Area.cpp -I/home/micromachines/src/3rd-party/ffmepg/example/SdlException.cpp -I/home/micromachines/src/3rd-party/ffmepg/example/SdlTexture.cpp -I/home/micromachines/src/3rd-party/ffmepg/example/SdlWindow.cpp -I/home/micromachines/src/3rd-party/ffmepg/common/output_stream.cpp -I/home/micromachines/src/3rd-party/ffmepg/common/codec.cpp -I/home/micromachines/src/3rd-party/ffmepg/common/frame.cpp -I/home/micromachines/src/3rd-party/ffmepg/common/output_format.cpp -I/home/micromachines/src/3rd-party/ffmepg/video/output_video.cpp -I/home/micromachines/src/3rd-party/ffmepg/video/video_codec.cpp 
 

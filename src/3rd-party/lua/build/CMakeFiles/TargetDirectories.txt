@@ -1,0 +1,3 @@
+/home/micromachines/src/3rd-party/lua/build/CMakeFiles/rebuild_cache.dir
+/home/micromachines/src/3rd-party/lua/build/CMakeFiles/lua.dir
+/home/micromachines/src/3rd-party/lua/build/CMakeFiles/edit_cache.dir
