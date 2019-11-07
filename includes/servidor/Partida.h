@@ -3,7 +3,7 @@
 
 #include "includes/common/Hilo.h"
 #include "includes/common/Handler.h"
-#include "includes/common/Cola.h"
+#include "includes/common/ColaProtegida.h"
 #include "includes/servidor/Jugador.h"
 #include "includes/servidor/modelo/Mundo.h"
 
@@ -13,7 +13,7 @@
 class Partida : public Hilo {
 private:
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
-    Cola<std::shared_ptr<Evento>> eventosEntrantes_;
+    ColaProtegida<std::shared_ptr<Evento>> eventosEntrantes_;
     Mundo mundo_;
 
     Partida(const Partida& otra) = delete;
