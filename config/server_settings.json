@@ -3,6 +3,9 @@
         "puerto": "10001",
         "maxClientesEnEspera": 20
     },
+    "fisicas": {
+        "simulacionesPorSegundo" : 60
+    },
     "rutaPistas": "assets/pistas/",
     "tiles": {
         "tilesTierra": [

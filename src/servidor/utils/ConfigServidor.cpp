@@ -49,3 +49,7 @@ int ConfigServidor::tileAceite() {
 int ConfigServidor::tileVacio() {
     return json_["tiles"]["vacio"].get<int>();
 }
+
+uint32_t ConfigServidor::iteracionesPorSegundo() {
+    return json_["fisicas"]["simulacionesPorSegundo"].get<uint32_t>();
+}
