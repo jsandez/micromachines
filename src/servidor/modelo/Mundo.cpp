@@ -33,8 +33,15 @@ Mundo::Mundo(uint16_t uuidPista) {
     fisicas_.generarSuperficies(tileASuperficie_);
 }
 
+#include <thread>
+#include <chrono>
+#include <iostream>
+
 void Mundo::step(uint32_t numeroIteracion) {
-    //TODO: implementar step
+    std::cout << "Prestep\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::cout << "Step\n";
+    std::cout << numeroIteracion << " es la iteracion\n";
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {

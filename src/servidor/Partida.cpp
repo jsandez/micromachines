@@ -37,7 +37,11 @@ void Partida::step(uint32_t nroIteracion) {
 
 void Partida::correr() {
     //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
-    double frecuencia = 1 / CONFIG_SERVIDOR.iteracionesPorSegundo();
+    double frecuencia = (double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo();
+    // Convierto a milisegundos
+    // TODO: Uniformizar esto, porque depende de como se usa aca, en el cronometro
+    // y en el dormir
+    frecuencia *= 1000;
     Cronometro c;
     double t1 = c.ahora();
     uint32_t iteracion = 0;
