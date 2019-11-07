@@ -42,7 +42,7 @@ void Mundo::step(uint32_t numeroIteracion) {
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
     std::cout << "Step\n";
     std::cout << numeroIteracion << " es la iteracion\n";
-    fisicas_.step();
+    fisicas_.step(numeroIteracion);
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
