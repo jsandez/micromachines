@@ -31,7 +31,7 @@ public:
     
     uint32_t simulacionesPorSegundo();
     uint32_t iteracionesPosicion();
-    uint32_t iteracionesVelociad();
+    uint32_t iteracionesVelocidad();
 };
 
 #endif

@@ -58,6 +58,6 @@ uint32_t ConfigServidor::iteracionesPosicion() {
     return json_["fisicas"]["iteracionesPosicion"].get<uint32_t>();
 }
 
-uint32_t ConfigServidor::iteracionesVelociad() {
+uint32_t ConfigServidor::iteracionesVelocidad() {
     return json_["fisicas"]["iteracionesVelocidad"].get<uint32_t>();
 }
