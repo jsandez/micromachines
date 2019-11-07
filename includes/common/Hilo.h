@@ -16,6 +16,8 @@ public:
     
     void iniciar();
 
+    void dormir(double microsegundos);
+
     bool estaCorriendo();
 
     virtual void correr() = 0;

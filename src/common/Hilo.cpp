@@ -1,5 +1,8 @@
 #include "includes/common/Hilo.h"
 
+#include <thread>
+#include <chrono>
+
 Hilo::Hilo()
     : seguirCorriendo_(false) {
 }
@@ -23,6 +26,10 @@ Hilo& Hilo::operator=(Hilo&& otroHilo) {
 void Hilo::iniciar() {
     seguirCorriendo_ = true;
     hilo_ = std::thread(&Hilo::correr, this);
+}
+
+void Hilo::dormir(double microsegundos) {
+    std::this_thread::sleep_for(std::chrono::microseconds((uint32_t)microsegundos));
 }
 
 void Hilo::join() {
