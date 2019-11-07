@@ -36,7 +36,7 @@ void Partida::step(uint32_t nroIteracion) {
 }
 
 void Partida::correr() {
-    // Asignar un auto a cada jugador presente, no poner autos vacios
+    //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
     double frecuencia = 1 / CONFIG_SERVIDOR.iteracionesPorSegundo();
     Cronometro c;
     double t1 = c.ahora();

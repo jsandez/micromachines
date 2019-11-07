@@ -3,11 +3,12 @@
 
 #include <memory>
 
+#include "includes/common/Handler.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
 
-class Mundo {
+class Mundo : public Handler {
 private:
     Fisicas fisicas_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
@@ -15,6 +16,8 @@ private:
 
 public:
     Mundo(uint16_t uuidPista);
+    
+    virtual void manejar(Evento& e) override;
 };
 
 #endif

@@ -33,6 +33,10 @@ Mundo::Mundo(uint16_t uuidPista) {
     fisicas_.generarSuperficies(tileASuperficie_);
 }
 
+void Mundo::manejar(Evento& e) {
+    e.actualizar(*this);
+}
+
 // El sistema de referencia de la pista está arriba a la izquierda,
 // mientras que en el servidor está abajo a la derecha.
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson) {
