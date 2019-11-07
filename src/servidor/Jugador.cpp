@@ -27,8 +27,6 @@ uint32_t Jugador::uuid () {
     return UUID_;
 }
 
-void Jugador::manejar(Evento& e) {
-    std::shared_ptr<Evento> eventoPtr(std::make_shared<Evento>(std::move(e)));
-    eventosAEnviar_.put(eventoPtr);
-    std::cout << e.uuid() << std::endl;
+void Jugador::ocurrio(std::shared_ptr<Evento> e) {
+    eventosAEnviar_.put(e);
 }

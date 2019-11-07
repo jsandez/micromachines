@@ -10,7 +10,7 @@
 #include "includes/common/RecibidorEventos.h"
 #include "includes/common/EnviadorEventos.h"
 
-class Jugador : public Handler {
+class Jugador {
 private:
     uint32_t UUID_;
     SocketTCP socket_;
@@ -25,7 +25,7 @@ public:
     ~Jugador();
     uint32_t uuid();
 
-    virtual void manejar(Evento& e) override;
+    void ocurrio(std::shared_ptr<Evento> e);
 };
 
 #endif
