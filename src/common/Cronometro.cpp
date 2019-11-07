@@ -3,6 +3,6 @@
 #include <chrono>
 
 double Cronometro::ahora() {
-    auto ahora = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now());
+    auto ahora = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now());
     return ahora.time_since_epoch().count();
 }
