@@ -5,6 +5,7 @@
 EventoPartidaAgregada::EventoPartidaAgregada(uint32_t uuidRemitente, Protocolo& protocolo) :
     Evento(uuidRemitente) {
     UUIDEvento_ = UUID_EVENTO_PARTIDA_AGREGADA;
+    cantidadPartidas_ = protocolo.recibirNumUnsigned16();
 }
 
 EventoPartidaAgregada::EventoPartidaAgregada(uint32_t uuidRemitente, uint16_t cantidadPartidas) :

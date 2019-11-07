@@ -14,6 +14,8 @@ class Handler;
 #define UUID_EVENTO_ACELERAR            6
 
 // TODO: Crear constructor por movimiento
+//TODO: Setear id en cada evento creado
+// TODO: implementar envio y construccion
 class Evento {
 private:
     uint32_t UUIDRemitente_;
