@@ -12,6 +12,7 @@
 class Mundo : public Handler {
 private:
     Fisicas fisicas_;
+    uint32_t iteracion_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuperficie_;
     Cola<std::shared_ptr<Evento>> eventosOcurridos_;
