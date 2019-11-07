@@ -28,7 +28,7 @@ public:
     int tileBarro();
     int tileAceite();
     int tileVacio();
-    uint32_t iteracionesPorSegundo();
+    uint32_t simulacionesPorSegundo();
 };
 
 #endif

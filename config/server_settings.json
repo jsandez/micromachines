@@ -4,7 +4,7 @@
         "maxClientesEnEspera": 20
     },
     "fisicas": {
-        "simulacionesPorSegundo" : 60
+        "simulacionesPorSegundo" : 1
     },
     "rutaPistas": "assets/pistas/",
     "tiles": {
