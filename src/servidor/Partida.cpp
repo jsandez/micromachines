@@ -22,13 +22,13 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
 void Partida::step(uint32_t nroIteracion) {
     bool obtenido = false;
     std::shared_ptr<Evento> evento;
-    while(obtenido = eventosEntrantes_.get(evento)) {
+    while((obtenido = eventosEntrantes_.get(evento))) {
         mundo_.manejar(*evento);
     }
     mundo_.step(nroIteracion);
     Cola<std::shared_ptr<Evento>>& eventosOcurridos = mundo_.eventosOcurridos();
     std::shared_ptr<Evento> eventoOcurrido;
-    while(obtenido = eventosOcurridos.get(eventoOcurrido)) {
+    while((obtenido = eventosOcurridos.get(eventoOcurrido))) {
         for (auto& kv : jugadores_) {
             kv.second->manejar(*eventoOcurrido);
         }
