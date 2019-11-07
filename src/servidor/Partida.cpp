@@ -44,7 +44,7 @@ void Partida::correr() {
     frecuencia *= 1000;
     Cronometro c;
     double t1 = c.ahora();
-    uint32_t iteracion = 0;
+    uint32_t iteracion = 1;
     while(seguirCorriendo_) {
         step(iteracion);
         double t2 = c.ahora();

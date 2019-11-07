@@ -12,7 +12,9 @@ private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
     std::map<uint16_t, b2Body*> colisionables_;
+    double frecuencia_;
     uint32_t iteracion_;
+
 
 public:
     Fisicas();

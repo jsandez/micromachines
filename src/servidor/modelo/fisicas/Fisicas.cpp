@@ -4,6 +4,7 @@
 Fisicas::Fisicas() :
     gravedad_(0, 0),
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
+    frecuencia_((double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo()),
     iteracion_(0) {
 }
 
@@ -19,5 +20,8 @@ void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& ti
 }
 
 void Fisicas::step(uint32_t numeroIteracion) {
-    mundoBox2D_->Step(asddas, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion())
+    uint32_t escala = numeroIteracion - iteracion_;
+    double tiempoAtranscurrir = (double)escala * frecuencia_;
+    mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
+    iteracion_ = numeroIteracion;
 }
