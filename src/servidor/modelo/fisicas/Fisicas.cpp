@@ -1,4 +1,5 @@
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
+#include "includes/servidor/utils/ConfigServidor.h"
 
 Fisicas::Fisicas() :
     gravedad_(0, 0),
@@ -18,5 +19,5 @@ void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& ti
 }
 
 void Fisicas::step(uint32_t numeroIteracion) {
-
+    mundoBox2D_->Step(asddas, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion())
 }

@@ -53,3 +53,11 @@ int ConfigServidor::tileVacio() {
 uint32_t ConfigServidor::simulacionesPorSegundo() {
     return json_["fisicas"]["simulacionesPorSegundo"].get<uint32_t>();
 }
+
+uint32_t ConfigServidor::iteracionesPosicion() {
+    return json_["fisicas"]["iteracionesPosicion"].get<uint32_t>();
+}
+
+uint32_t ConfigServidor::iteracionesVelociad() {
+    return json_["fisicas"]["iteracionesVelocidad"].get<uint32_t>();
+}
