@@ -33,7 +33,7 @@ Mundo::Mundo(uint16_t uuidPista) {
     fisicas_.generarSuperficies(tileASuperficie_);
 }
 
-void step(uint32_t numeroIteracion) {
+void Mundo::step(uint32_t numeroIteracion) {
     //TODO: implementar step
 }
 

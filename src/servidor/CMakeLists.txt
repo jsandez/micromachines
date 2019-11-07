@@ -26,6 +26,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
   ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp
   ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
   ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
