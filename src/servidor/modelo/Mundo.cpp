@@ -37,6 +37,10 @@ void step(uint32_t numeroIteracion) {
     //TODO: implementar step
 }
 
+Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
+    return eventosOcurridos_;
+}
+
 void Mundo::manejar(Evento& e) {
     e.actualizar(*this);
 }
