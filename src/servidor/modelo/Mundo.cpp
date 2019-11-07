@@ -14,8 +14,7 @@
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
 static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson);
 
-Mundo::Mundo(uint16_t uuidPista) :
-    iteracion_(0) {
+Mundo::Mundo(uint16_t uuidPista) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
@@ -40,9 +39,10 @@ Mundo::Mundo(uint16_t uuidPista) :
 
 void Mundo::step(uint32_t numeroIteracion) {
     std::cout << "Prestep\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
     std::cout << "Step\n";
     std::cout << numeroIteracion << " es la iteracion\n";
+    fisicas_.step();
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
