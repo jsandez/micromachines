@@ -33,6 +33,10 @@ Mundo::Mundo(uint16_t uuidPista) {
     fisicas_.generarSuperficies(tileASuperficie_);
 }
 
+void step(uint32_t numeroIteracion) {
+    //TODO: implementar step
+}
+
 void Mundo::manejar(Evento& e) {
     e.actualizar(*this);
 }

@@ -16,6 +16,8 @@ private:
 
 public:
     Mundo(uint16_t uuidPista);
+
+    void step(uint32_t numeroIteracion);
     
     virtual void manejar(Evento& e) override;
 };
