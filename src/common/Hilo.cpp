@@ -28,8 +28,8 @@ void Hilo::iniciar() {
     hilo_ = std::thread(&Hilo::correr, this);
 }
 
-void Hilo::dormir(double microsegundos) {
-    std::this_thread::sleep_for(std::chrono::milliseconds((uint32_t)microsegundos));
+void Hilo::dormir(double milisegundos) {
+    std::this_thread::sleep_for(std::chrono::milliseconds((uint32_t)milisegundos));
 }
 
 void Hilo::join() {
