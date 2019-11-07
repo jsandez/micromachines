@@ -39,7 +39,7 @@ Mundo::Mundo(uint16_t uuidPista) {
 
 void Mundo::step(uint32_t numeroIteracion) {
     std::cout << "Prestep\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    std::this_thread::sleep_for(std::chrono::milliseconds(15));
     std::cout << "Step\n";
     std::cout << numeroIteracion << " es la iteracion\n";
     fisicas_.step(numeroIteracion);
