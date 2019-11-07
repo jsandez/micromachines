@@ -23,7 +23,7 @@ void Partida::step(uint32_t nroIteracion) {
     bool obtenido = false;
     std::shared_ptr<Evento> evento;
     while(obtenido = eventosEntrantes_.get(evento)) {
-        manejar(*evento);
+        mundo_.manejar(*evento);
     }
     mundo_.step(nroIteracion);
     Cola<std::shared_ptr<Evento>>& eventosOcurridos = mundo_.eventosOcurridos();

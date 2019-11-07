@@ -26,3 +26,7 @@ Jugador::~Jugador() {
 uint32_t Jugador::uuid () {
     return UUID_;
 }
+
+void Jugador::manejar(Evento& e) {
+    e.actualizar(*this);
+}
