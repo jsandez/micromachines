@@ -12,12 +12,14 @@ private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
     std::map<uint16_t, b2Body*> colisionables_;
+    uint32_t iteracion_;
 
 public:
     Fisicas();
     ~Fisicas();
     void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
     void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
+    void step(uint32_t numeroIteracion);
 };
 
 #endif

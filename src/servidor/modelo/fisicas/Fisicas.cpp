@@ -2,7 +2,8 @@
 
 Fisicas::Fisicas() :
     gravedad_(0, 0),
-    mundoBox2D_(std::make_shared<b2World>(gravedad_)) {
+    mundoBox2D_(std::make_shared<b2World>(gravedad_)),
+    iteracion_(0) {
 }
 
 Fisicas::~Fisicas() {
@@ -16,3 +17,6 @@ void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& ti
     //TODO: Implementar
 }
 
+void Fisicas::step(uint32_t numeroIteracion) {
+
+}
