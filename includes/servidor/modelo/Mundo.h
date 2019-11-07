@@ -11,10 +11,10 @@
 
 class Mundo : public Handler {
 private:
-    Fisicas fisicas_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuperficie_;
     Cola<std::shared_ptr<Evento>> eventosOcurridos_;
+    Fisicas fisicas_;
 
 public:
     Mundo(uint16_t uuidPista);
@@ -24,6 +24,8 @@ public:
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
     
     virtual void manejar(Evento& e) override;
+
+    virtual void manejar(EventoAcelerar& e) override;
 };
 
 #endif

@@ -7,6 +7,15 @@ def main():
         if entrada is 'q':
             break
         s.send(struct.pack(">H", int(entrada)))
+    
+    while True:
+        entrada = input()
+        if entrada is 'q':
+            break
+        uuidEventoRed = s.recv(2)
+        #uuidEvento = struct.unpack("!i", uuidEventoRed)[0]
+        print(uuidEventoRed)
+
     s.close()
 
 main()

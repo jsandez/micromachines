@@ -14,7 +14,8 @@
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
 static void cargarSuperficies(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson);
 
-Mundo::Mundo(uint16_t uuidPista) {
+Mundo::Mundo(uint16_t uuidPista) :
+    fisicas_(eventosOcurridos_) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
@@ -51,6 +52,10 @@ Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
 
 void Mundo::manejar(Evento& e) {
     e.actualizar(*this);
+}
+
+void Mundo::manejar(EventoAcelerar& e) {
+    //TODO: Obtener el jugador, y mandarlo a la partida.
 }
 
 // El sistema de referencia de la pista está arriba a la izquierda,

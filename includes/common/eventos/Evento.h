@@ -17,6 +17,8 @@ class Handler;
 class Evento {
 private:
     uint32_t UUIDRemitente_;
+protected:
+    uint16_t UUIDEvento_;
 public:
     Evento(uint32_t uuidRemitente);
     virtual ~Evento() {}
