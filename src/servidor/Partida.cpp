@@ -65,12 +65,3 @@ void Partida::detener() {
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
     eventosEntrantes_.put(unEvento);
 }
-
-void Partida::manejar(Evento& e) {
-    mundo_.manejar(e);
-    e.actualizar(*this);
-}
-
-void Partida::manejar(EventoAcelerar& e) {
-    //TODO: Derivar en mundo
-}
