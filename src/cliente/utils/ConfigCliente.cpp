@@ -23,3 +23,7 @@ unsigned int ConfigCliente::altoVentana() {
 bool ConfigCliente::pantallaCompleta() {
     return json_["ventana"]["pantallaCompleta"].get<bool>();
 }
+
+std::string ConfigCliente::tituloVentana() {
+    return json_["ventana"]["titulo"].get<std::string>();
+}

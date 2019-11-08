@@ -20,6 +20,7 @@ public:
     unsigned int anchoVentana();
     unsigned int altoVentana();
     bool pantallaCompleta();
+    std::string tituloVentana();
 };
 
 #endif

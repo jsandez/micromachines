@@ -13,7 +13,7 @@ private:
     unsigned int alto_;
 
 public:
-    Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloPantalla);
+    Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloVentana);
     ~Ventana();
     SDL_Window* getSDL();
 

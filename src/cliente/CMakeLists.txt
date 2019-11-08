@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.10.2)
 project(ClienteCMake)
 
 set(SOURCES
+  ${PROJECT_SOURCE_DIR}/utils/ConfigCliente.cpp
   ${PROJECT_SOURCE_DIR}/red/SocketTCPCliente.cpp
-
   ${PROJECT_SOURCE_DIR}/excepciones/SDLException.cpp
   
   ${PROJECT_SOURCE_DIR}/Cliente.cpp

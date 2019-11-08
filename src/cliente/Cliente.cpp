@@ -1,7 +1,12 @@
 #include "includes/cliente/Cliente.h"
 
+#include "includes/cliente/utils/ConfigCliente.h"
+
 Cliente::Cliente() :
-    ventana_(200, 200, false, "Ruega por nosotros"),
+    ventana_(CONFIG_CLIENTE.anchoVentana(),
+        CONFIG_CLIENTE.altoVentana(),
+        CONFIG_CLIENTE.pantallaCompleta(),
+        CONFIG_CLIENTE.tituloVentana()),
     renderizador_(ventana_) {
 }
 
