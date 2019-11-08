@@ -1,0 +1,7 @@
+{
+    "ventana" : {
+        "ancho" : 800,
+        "alto"  : 600,
+        "pantallaCompleta" : false
+    }
+}
