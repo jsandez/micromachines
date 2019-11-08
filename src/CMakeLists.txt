@@ -14,9 +14,9 @@ add_subdirectory(servidor)
 add_subdirectory(cliente)
 
 add_executable(Servidor servidor/main_servidor.cpp)
-target_link_libraries(Servidor ServidorCMake Box2D lua5.3)
+target_link_libraries(Servidor ServidorCMake Box2D)
 
-add_executable(Cliente cliente/mainMicromachines.cpp)
+add_executable(Cliente cliente/main_cliente.cpp)
 target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image lua5.3)
 
 INSTALL(TARGETS Servidor DESTINATION ${RUTA_INSTALACION})
