@@ -15,3 +15,4 @@ set(SOURCES
 
 include_directories(${CMAKE_SOURCE_DIR})
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
+target_link_libraries(ClienteCMake Qt5::Widgets)

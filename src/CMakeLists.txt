@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.10.2)
 
+find_package(Qt5Widgets)
+
+qt5_wrap_ui(UIS_HEADERS
+  #Aca los headers
+)
+
+#para los headers generados por qt
+include_directories(${PROJECT_BINARY_DIR})
+
 # Subdirectorios 3rd-party que se compilan sin flags
-#add_subdirectory(SDL2)
 add_subdirectory(3rd-party/Box2D)
 
 # Subdirectorios propios
@@ -17,7 +25,7 @@ add_executable(Servidor servidor/main_servidor.cpp)
 target_link_libraries(Servidor ServidorCMake Box2D)
 
 add_executable(Cliente cliente/main_cliente.cpp)
-target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image lua5.3)
+target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image lua5.3 Qt5::Widgets)
 
 INSTALL(TARGETS Servidor DESTINATION ${RUTA_INSTALACION})
 INSTALL(TARGETS Cliente DESTINATION ${RUTA_INSTALACION})
