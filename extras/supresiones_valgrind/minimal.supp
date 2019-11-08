@@ -1127,23 +1127,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:_dbus_strdup
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    fun:strdup
    obj:/usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
    obj:/usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
@@ -1461,23 +1444,6 @@
    fun:g_signal_emit
    fun:g_closure_invoke
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_strdup
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
 }
 {
    <insert_a_suppression_name_here>
@@ -4069,6 +4035,19 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:start_thread
+   fun:clone
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
    fun:g_weak_ref_set
@@ -4081,19 +4060,6 @@
    fun:g_object_new
    obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
    obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:start_thread
-   fun:clone
 }
 {
    <insert_a_suppression_name_here>
@@ -4253,40 +4219,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:g_malloc
-   fun:g_strdup
-   fun:g_source_set_name
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_source_add_unix_fd
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_loop_run
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    fun:realloc
    fun:g_realloc
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
@@ -4417,6 +4349,40 @@
    fun:g_type_class_ref
    fun:g_object_new_valist
    fun:g_initable_new_valist
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_strdup
+   fun:g_source_set_name
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_source_add_unix_fd
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_loop_run
 }
 {
    <insert_a_suppression_name_here>
@@ -4848,74 +4814,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    fun:IceRegisterForProtocolSetup
    fun:SmcOpenConnection
    obj:/usr/lib/x86_64-linux-gnu/libQt5XcbQpa.so.5.9.5
@@ -5006,74 +4904,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -6332,6 +6162,23 @@
    fun:g_signal_emit_valist
    fun:g_signal_emit
    fun:g_closure_invoke
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_strdup
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
 }
 {
    <insert_a_suppression_name_here>
@@ -19403,57 +19250,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_slice_alloc
-   fun:g_slist_prepend
-   fun:g_source_add_child_source
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:realloc
-   fun:g_realloc
-   fun:g_closure_add_invalidate_notifier
-   fun:g_source_set_closure
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_slice_alloc
-   fun:g_slist_prepend
-   fun:g_source_add_unix_fd
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
@@ -19789,6 +19585,57 @@
    fun:g_object_new_valist
    fun:g_initable_new_valist
    fun:g_initable_new
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_slist_prepend
+   fun:g_source_add_child_source
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:g_closure_add_invalidate_notifier
+   fun:g_source_set_closure
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_slist_prepend
+   fun:g_source_add_unix_fd
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
@@ -23228,6 +23075,74 @@
    fun:gtk_icon_view_get_type
    fun:gtk_module_init
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -32558,40 +32473,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:IceAuthFileName
    fun:_IceGetPoValidAuthIndices
@@ -32705,40 +32586,6 @@
    fun:g_object_new
    obj:/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2200.30
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
 }
 {
    <insert_a_suppression_name_here>
@@ -33453,40 +33300,6 @@
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    fun:atspi_get_a11y_bus
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_string_append
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_string_append
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
 }
 {
    <insert_a_suppression_name_here>
@@ -40934,6 +40747,23 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
    fun:g_hash_table_new_full
@@ -46017,108 +45847,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_slice_alloc
-   fun:g_slice_alloc0
-   fun:g_source_new
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_slice_alloc
-   fun:g_slice_alloc0
-   fun:g_source_new
-   fun:g_cancellable_source_new
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_cclosure_new
-   fun:g_signal_connect_data
-   fun:g_cancellable_source_new
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_source_set_dummy_callback
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_loop_run
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_source_set_callback
-   fun:g_task_attach_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_loop_run
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:g_malloc
-   fun:g_slice_alloc
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_source_attach
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
@@ -46369,6 +46097,108 @@
    fun:g_initable_new
    fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
    obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_slice_alloc0
+   fun:g_source_new
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_slice_alloc0
+   fun:g_source_new
+   fun:g_cancellable_source_new
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_cclosure_new
+   fun:g_signal_connect_data
+   fun:g_cancellable_source_new
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_source_set_dummy_callback
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_loop_run
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_source_set_callback
+   fun:g_task_attach_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_loop_run
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_source_attach
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
@@ -51169,23 +50999,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_set_data
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    fun:FcStrSetCreate
    fun:FcConfigCreate
    obj:/usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
@@ -51650,40 +51463,6 @@
    fun:dbus_connection_set_data
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_set_data
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_bus_register
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
@@ -51741,57 +51520,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    fun:gtk_css_provider_load_from_file
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_strdup
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_string_copy_data
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_strdup
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
 }
 {
    <insert_a_suppression_name_here>
@@ -51928,23 +51656,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_object_new_valist
    fun:g_object_new
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_string_copy_data
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -55884,6 +55595,210 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
+   fun:g_signal_type_cclosure_new
+   fun:g_signal_new
+   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
+   fun:g_type_class_ref
+   fun:g_object_new_valist
+   fun:g_initable_new_valist
+   fun:g_initable_new
+   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
+   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:g_closure_new_simple
    fun:g_source_set_dummy_callback
    fun:g_socket_create_source
    obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
@@ -55895,210 +55810,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
    fun:g_main_loop_run
    obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:g_closure_new_simple
-   fun:g_signal_type_cclosure_new
-   fun:g_signal_new
-   obj:/usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_type_class_ref
-   fun:g_object_new_valist
-   fun:g_initable_new_valist
-   fun:g_initable_new
-   fun:gvfs_dbus_mount_tracker_proxy_new_for_bus_sync
-   obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
 }
 {
    <insert_a_suppression_name_here>
@@ -57044,108 +56755,6 @@
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   fun:_dbus_mem_pool_new
-   fun:_dbus_hash_table_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
@@ -57199,108 +56808,6 @@
    fun:_ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE
    fun:_ZN16QCoreApplication4execEv
    fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   fun:_dbus_mem_pool_new
-   fun:_dbus_hash_table_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
 }
 {
    <insert_a_suppression_name_here>
@@ -64344,74 +63851,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -64789,6 +64228,91 @@
    fun:calloc
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_bus_register
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
@@ -64798,125 +64322,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
    fun:g_main_context_iteration
    fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
@@ -66028,74 +65433,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
@@ -66159,74 +65496,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    fun:gtk_css_provider_load_from_file
    fun:gtk_css_provider_load_from_path
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:_dbus_credentials_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -66380,6 +65649,23 @@
    fun:g_type_class_ref
    fun:g_type_class_ref
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_string_append
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
 }
 {
    <insert_a_suppression_name_here>
@@ -67945,6 +67231,23 @@
    fun:g_closure_invoke
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_signal_emit_valist
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_do_work
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
 }
 {
    <insert_a_suppression_name_here>
@@ -72897,40 +72200,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:realloc
-   fun:_dbus_message_loader_get_unix_fds
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:IceRegisterForProtocolSetup
    fun:SmcOpenConnection
@@ -72991,23 +72260,6 @@
    fun:_ZN16QCoreApplicationD1Ev
    fun:_ZN12QApplicationD1Ev
    fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
 }
 {
    <insert_a_suppression_name_here>
@@ -73273,40 +72525,6 @@
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:realloc
-   fun:_dbus_message_loader_get_unix_fds
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
@@ -73331,6 +72549,40 @@
    fun:dbus_bus_register
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_set_data
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
@@ -73365,6 +72617,23 @@
    obj:/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2200.30
    fun:g_main_context_dispatch
    obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_strdup
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
 }
 {
    <insert_a_suppression_name_here>
@@ -73433,6 +72702,23 @@
    fun:g_closure_invoke
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_signal_emit_valist
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_string_copy_data
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -80257,6 +79543,108 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   fun:_dbus_mem_pool_new
+   fun:_dbus_hash_table_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
@@ -85752,23 +85140,6 @@
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
@@ -85845,23 +85216,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    fun:gtk_css_provider_load_from_file
    fun:gtk_css_provider_load_from_path
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -97029,23 +96383,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   fun:_dbus_message_loader_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -97739,20 +97076,50 @@
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: indirect
    fun:calloc
-   fun:_dbus_message_loader_new
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
@@ -97760,6 +97127,27 @@
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
 }
 {
    <insert_a_suppression_name_here>
@@ -100264,23 +99652,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   fun:g_malloc0
-   fun:g_source_new
-   fun:g_cancellable_source_new
-   fun:g_socket_create_source
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -100327,6 +99698,23 @@
    obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
    obj:/usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
    fun:g_type_create_instance
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:g_malloc0
+   fun:g_source_new
+   fun:g_cancellable_source_new
+   fun:g_socket_create_source
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
 }
 {
    <insert_a_suppression_name_here>
@@ -100554,23 +99942,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:calloc
-   fun:_dbus_hash_table_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
    fun:g_malloc0
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
@@ -100693,6 +100064,7 @@
    fun:_dbus_hash_table_new
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
@@ -100700,14 +100072,67 @@
    obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
    fun:g_main_context_dispatch
    obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
 }
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: indirect
-   fun:calloc
-   fun:_dbus_hash_table_new
+   fun:malloc
+   fun:_dbus_credentials_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_credentials_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_credentials_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:_dbus_credentials_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
@@ -100715,9 +100140,6 @@
    fun:_ZN7QObject5eventEP6QEvent
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
    fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
 }
 {
    <insert_a_suppression_name_here>
@@ -102134,23 +101556,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_do_work
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -102287,18 +101692,35 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
    fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_do_work
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_message_loader_get_unix_fds
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_send_with_reply_and_block
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -103820,6 +103242,23 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
    match-leak-kinds: reachable
    fun:realloc
    obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0
@@ -103908,23 +103347,6 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_message_new_method_call
-   fun:dbus_bus_register
-   fun:atspi_get_a11y_bus
-   fun:atk_bridge_adaptor_init
-   obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
-   obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
-   fun:g_closure_invoke
-   obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
-   fun:g_signal_emit_valist
-   fun:g_signal_emit
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
    fun:g_malloc0
    fun:g_type_class_ref
    fun:g_type_class_ref
@@ -104004,6 +103426,23 @@
    obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
    fun:_ZN11QMetaObject8activateEP7QObjectiiPPv
    fun:_ZN15QSocketNotifier9activatedEiNS_14QPrivateSignalE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_message_new_error
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_send_with_reply
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
 }
 {
    <insert_a_suppression_name_here>
@@ -104328,6 +103767,40 @@
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_signal_emit_valist
    fun:g_signal_emit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   fun:_dbus_message_loader_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_do_work
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
 }
 {
    <insert_a_suppression_name_here>
@@ -104803,23 +104276,6 @@
    fun:dbus_message_new_error
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    fun:dbus_connection_send_with_reply
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_type_writer_write_basic
-   fun:dbus_message_iter_append_basic
-   fun:dbus_message_new_error
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply
    obj:/usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0.0.0
 }
 {
@@ -104838,6 +104294,23 @@
    obj:/usr/lib/x86_64-linux-gnu/qt5/plugins/platformthemes/libqgtk3.so
    obj:/usr/lib/x86_64-linux-gnu/qt5/plugins/platformthemes/libqgtk3.so
    fun:_ZN21QPlatformThemeFactory6createERK7QStringS2_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   fun:_dbus_hash_table_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
 }
 {
    <insert_a_suppression_name_here>
@@ -104930,23 +104403,6 @@
    match-leak-kinds: reachable
    fun:calloc
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    fun:_dbus_auth_client_new
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
@@ -104957,23 +104413,6 @@
    fun:atspi_get_a11y_bus
    fun:atk_bridge_adaptor_init
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -105059,23 +104498,6 @@
    fun:g_object_new_with_properties
    fun:g_object_new
    fun:gtk_icon_theme_get_for_screen
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_auth_client_new
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -105676,23 +105098,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -105705,23 +105110,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2200.30
    fun:gdk_display_manager_open_display
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
-   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
-   fun:g_main_context_iteration
-   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
 }
 {
    <insert_a_suppression_name_here>
@@ -105807,6 +105195,23 @@
    fun:g_object_new_with_properties
    fun:g_object_new
    obj:/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.5600.4
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_message_loader_queue_messages
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
 }
 {
    <insert_a_suppression_name_here>
@@ -106135,23 +105540,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_message_loader_queue_messages
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
@@ -106232,6 +105620,23 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    fun:gtk_css_provider_load_from_file
    fun:gtk_css_provider_load_from_path
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_type_writer_recurse
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_message_new_method_call
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZNK15QDBusConnection9asyncCallERK12QDBusMessagei
+   fun:_ZN22QDBusAbstractInterface25asyncCallWithArgumentListERK7QStringRK5QListI8QVariantE
 }
 {
    <insert_a_suppression_name_here>
@@ -106368,23 +105773,6 @@
    fun:g_closure_invoke
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_signal_emit_valist
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_type_writer_write_basic
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_message_new_method_call
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
 }
 {
    <insert_a_suppression_name_here>
@@ -106538,23 +105926,6 @@
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_object_new_with_properties
    fun:g_object_new
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_message_loader_queue_messages
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
 }
 {
    <insert_a_suppression_name_here>
@@ -106827,40 +106198,6 @@
    fun:atk_bridge_adaptor_init
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   fun:_dbus_mem_pool_alloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_hash_table_insert_int
-   fun:dbus_connection_send_with_reply
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   fun:_dbus_mem_pool_alloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_hash_table_insert_int
-   fun:dbus_connection_send_with_reply
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -107244,6 +106581,23 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_type_writer_write_basic
+   fun:dbus_message_iter_append_basic
+   fun:dbus_message_new_error
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_send_with_reply
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
    fun:malloc
    fun:add_to_global
    fun:dl_open_worker
@@ -107326,6 +106680,23 @@
    fun:gtk_css_provider_load_from_path
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_auth_client_new
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
 }
 {
    <insert_a_suppression_name_here>
@@ -107840,6 +107211,23 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
+   obj:/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.5600.4
+   fun:g_main_context_iteration
+   fun:_ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
    match-leak-kinds: reachable
    fun:calloc
    fun:g_malloc0
@@ -108045,23 +107433,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_type_writer_recurse
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_message_new_method_call
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZNK15QDBusConnection9asyncCallERK12QDBusMessagei
-   fun:_ZN22QDBusAbstractInterface25asyncCallWithArgumentListERK7QStringRK5QListI8QVariantE
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    fun:malloc
    fun:dl_open_worker
    fun:_dl_catch_exception
@@ -108244,6 +107615,23 @@
    fun:_XOpenLC
    fun:_XrmInitParseInfo
    obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   fun:_dbus_mem_pool_alloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_hash_table_insert_int
+   fun:dbus_connection_send_with_reply
+   fun:dbus_connection_send_with_reply_and_block
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
 }
 {
    <insert_a_suppression_name_here>
@@ -108601,6 +107989,23 @@
    fun:g_closure_invoke
    obj:/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.5600.4
    fun:g_signal_emit_valist
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_message_loader_queue_messages
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
 }
 {
    <insert_a_suppression_name_here>
@@ -110043,74 +109448,6 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_read
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:_dbus_read
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:realloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   fun:dbus_connection_send_with_reply_and_block
-   fun:dbus_bus_register
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
    match-leak-kinds: indirect
    fun:realloc
    obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
@@ -111001,6 +110338,40 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:_dbus_read
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_send_with_reply_and_block
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   fun:dbus_connection_send_with_reply_and_block
+   fun:dbus_bus_register
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
    fun:g_malloc
@@ -111269,23 +110640,6 @@
    fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
    fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
    obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:calloc
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
-   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
-   fun:_ZN7QObject5eventEP6QEvent
-   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
-   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
-   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
-   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
@@ -111575,6 +110929,23 @@
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    obj:/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2200.30
    fun:g_closure_invoke
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so.3.19.4
+   obj:/usr/lib/x86_64-linux-gnu/libQt5DBus.so.5.9.5
+   fun:_ZN7QObject5eventEP6QEvent
+   fun:_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent
+   fun:_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData
+   obj:/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
+   fun:g_main_context_dispatch
 }
 {
    <insert_a_suppression_name_here>
