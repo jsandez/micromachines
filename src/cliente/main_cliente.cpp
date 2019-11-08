@@ -3,13 +3,13 @@
 #include "includes/cliente/Cliente.h"
 
 int main(int argc, char *argv[]) {
-    Cliente cliente(argc, argv);
-    int result = 0;
+    Cliente cliente;
     try {
-        result = cliente.correr();
+        cliente.correr();
     } catch(const std::exception& e) {
         std::cout << e.what() << '\n';
+        return -1;
     }
     cliente.cerrar();
-    return result;
+    return 0;
 }

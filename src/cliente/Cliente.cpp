@@ -1,17 +1,16 @@
 #include "includes/cliente/Cliente.h"
 
-#include <QLabel>
-
 #include "includes/cliente/utils/ConfigCliente.h"
+#include "includes/cliente/GUI/Ventana.h"
 
-Cliente::Cliente(int& argc, char *argv[]) :
-    QApplication(argc, argv){
+Cliente::Cliente() {
 }
 
-int Cliente::correr() {
-    QLabel label("Hello QT");
-    label.show();
-    return exec();
+void Cliente::correr() {
+    Ventana v(CONFIG_CLIENTE.anchoVentana(),
+        CONFIG_CLIENTE.altoVentana(),
+        CONFIG_CLIENTE.pantallaCompleta(),
+        CONFIG_CLIENTE.tituloVentana());
 }
 
 void Cliente::cerrar() {
