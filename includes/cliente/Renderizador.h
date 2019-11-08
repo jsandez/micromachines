@@ -14,6 +14,7 @@ private:
 
 public:
     Renderizador(Ventana& ventana);
+    ~Renderizador();
     SDL_Renderer* getSDL();
 };
 
