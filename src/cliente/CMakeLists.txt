@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 3.10.2)
 
 project(ClienteCMake)
 
+find_package(Qt5Widgets)
+
+qt5_wrap_ui(UIS_HEADERS
+  #Aca los headers
+)
+
+#para los headers generados por qt
+include_directories(${PROJECT_BINARY_DIR})
+
 set(SOURCES
   ${PROJECT_SOURCE_DIR}/utils/ConfigCliente.cpp
   ${PROJECT_SOURCE_DIR}/red/SocketTCPCliente.cpp

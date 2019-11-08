@@ -1,11 +1,13 @@
 #ifndef _CLIENTE_H_
 #define _CLIENTE_H_
 
-class Cliente {
+#include <QApplication>
+
+class Cliente : public QApplication {
 
 public:
-    Cliente();
-    void correr();
+    Cliente(int& argc, char *argv[]);
+    int correr();
     void cerrar();
 };
 
