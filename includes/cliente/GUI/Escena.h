@@ -8,10 +8,11 @@ class Escena {
 private:
     Ventana& ventana_;
     Renderizador& renderizador_;
-    
+
 public:
     Escena(Ventana& ventana, Renderizador& renderizador);
     void dibujar(uint32_t numeroIteracion);
+    void presentar();
 };
 
 #endif

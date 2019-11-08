@@ -1,7 +1,7 @@
 {
     "ventana" : {
-        "ancho" : 800,
-        "alto"  : 600,
+        "ancho" : 1280,
+        "alto"  : 720,
         "pantallaCompleta" : false,
         "titulo" : "rpn"
     }

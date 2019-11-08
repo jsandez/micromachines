@@ -17,6 +17,8 @@ private:
 public:
     Textura(const std::string& rutaArchivo, Renderizador& renderizador);
     ~Textura();
+
+    SDL_Texture* getSDL();
 };
 
 #endif

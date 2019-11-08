@@ -4,6 +4,7 @@
 //Forward declarations:
 class SDL_Renderer;
 class Ventana;
+class Textura;
 
 #define SDL_PRIMER_DISPONIBLE -1
 
@@ -15,6 +16,9 @@ private:
 public:
     Renderizador(Ventana& ventana);
     ~Renderizador();
+
+    void dibujarAbsoluto(Textura& textura, int xDesde, int yDesde);
+
     SDL_Renderer* getSDL();
 };
 

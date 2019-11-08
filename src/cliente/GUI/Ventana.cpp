@@ -18,7 +18,6 @@ Ventana::Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, c
     } else {
         ventanaSDL_ = crearSinFullScreen(ancho, alto, tituloVentana);
     }
-    SDL_Delay(3000);
 }
 
 Ventana::~Ventana() {

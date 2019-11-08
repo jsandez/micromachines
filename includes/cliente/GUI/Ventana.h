@@ -15,6 +15,7 @@ private:
 public:
     Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloVentana);
     ~Ventana();
+
     SDL_Window* getSDL();
 
 private:
