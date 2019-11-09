@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include "includes/cliente/GUI/Textura.h"
+
 //Forward declarations:
 class SDL_Renderer;
 class Escena;
@@ -15,9 +17,14 @@ private:
     SDL_Renderer* renderizadorSDL_;
     std::shared_ptr<Ventana> ventana_;
 
+    void clear();
+
 public:
     Renderizador(std::shared_ptr<Ventana> ventana);
     void dibujar(uint32_t numeroIteracion, Escena& escena);
+    void setDestino(Textura& textura);
+    void resetDestino();
+    void d();
     ~Renderizador();
 
     SDL_Renderer* getSDL();
