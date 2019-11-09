@@ -14,6 +14,9 @@ private:
     unsigned int ancho_;
     unsigned int alto_;
 
+    Ventana(const Ventana&) = delete;
+    Ventana& operator=(const Ventana&) = delete;
+
 public:
     Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloVentana);
     ~Ventana();

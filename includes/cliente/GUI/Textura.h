@@ -15,7 +15,6 @@ private:
     SDL_Texture* texturaSDL_;
 
     Textura(const Textura&) = delete;
-
     Textura& operator=(const Textura&) = delete;
 
 public:

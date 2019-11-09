@@ -17,6 +17,9 @@ private:
     SDL_Renderer* renderizadorSDL_;
     std::shared_ptr<Ventana> ventana_;
 
+    Renderizador(const Renderizador&) = delete;
+    Renderizador& operator=(const Renderizador&) = delete;
+
     void clear();
 
 public:
