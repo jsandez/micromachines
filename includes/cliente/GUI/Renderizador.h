@@ -1,8 +1,6 @@
 #ifndef _RENDERIZADOR_H_
 #define _RENDERIZADOR_H_
 
-#include <memory>
-
 #include "includes/cliente/GUI/Textura.h"
 
 //Forward declarations:
@@ -15,7 +13,7 @@ class Ventana;
 class Renderizador {
 private:
     SDL_Renderer* renderizadorSDL_;
-    std::shared_ptr<Ventana> ventana_;
+    Ventana& ventana_;
 
     Renderizador(const Renderizador&) = delete;
     Renderizador& operator=(const Renderizador&) = delete;
@@ -23,7 +21,7 @@ private:
     void clear();
 
 public:
-    Renderizador(std::shared_ptr<Ventana> ventana);
+    Renderizador(Ventana& ventana);
     void dibujar(uint32_t numeroIteracion, Escena& escena);
     void setDestino(Textura& textura);
     void resetDestino();
