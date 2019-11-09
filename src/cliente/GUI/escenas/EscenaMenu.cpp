@@ -1,6 +1,6 @@
-#include "includes/cliente/GUI/Escena.h"
+#include "includes/cliente/GUI/escenas/EscenaMenu.h"
 
-Textura Escena::dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) {
+Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) {
     Textura textura(renderizador, dimensiones);
     renderizador.setDestino(textura);
     /*

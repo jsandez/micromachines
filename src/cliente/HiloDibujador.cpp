@@ -1,6 +1,6 @@
 #include "includes/cliente/HiloDibujador.h"
 
-#include "includes/cliente/GUI/Escena.h"
+#include "includes/cliente/GUI/escenas/EscenaMenu.h"
 #include "includes/cliente/GUI/Renderizador.h"
 
 #include <SDL2/SDL.h>
@@ -12,7 +12,7 @@ HiloDibujador::HiloDibujador(unsigned int anchoVentana, unsigned int altoVentana
 }
 
 void HiloDibujador::correr() {
-    Escena e;    
+    EscenaMenu e;    
     while(seguirCorriendo_) {
         renderizador_.dibujar(1, e);
         SDL_Delay(100);

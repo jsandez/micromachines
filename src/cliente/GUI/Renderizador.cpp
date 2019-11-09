@@ -5,7 +5,7 @@
 
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Textura.h"
-#include "includes/cliente/GUI/Escena.h"
+#include "includes/cliente/GUI/escenas/Escena.h"
 
 Renderizador::Renderizador(Ventana& ventana) :
     ventana_(ventana) {

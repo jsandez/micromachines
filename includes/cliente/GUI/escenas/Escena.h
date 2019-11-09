@@ -8,7 +8,8 @@ class Escena {
 private:
 
 public:
-    Textura dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones);
+    virtual Textura dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) = 0;
+    virtual ~Escena();
 };
 
 #endif
