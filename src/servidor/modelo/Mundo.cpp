@@ -44,6 +44,7 @@ void Mundo::step(uint32_t numeroIteracion) {
     std::cout << "Step\n";
     std::cout << numeroIteracion << " es la iteracion\n";
     fisicas_.step(numeroIteracion);
+    //TODO: Encolar la serializacion
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {

@@ -17,6 +17,7 @@ private:
     Fisicas fisicas_;
 
 public:
+    //TODO: Mundo recibe referencia a partida para avisarle que termino.
     Mundo(uint16_t uuidPista);
 
     void step(uint32_t numeroIteracion);

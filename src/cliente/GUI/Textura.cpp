@@ -16,7 +16,9 @@ Textura::Textura(const std::string& rutaArchivo, Renderizador& renderizador) :
 }
 
 Textura::~Textura() {
-    SDL_DestroyTexture(texturaSDL_);
+    if (texturaSDL_ != nullptr) {
+        SDL_DestroyTexture(texturaSDL_);
+    }    
 }
 
 SDL_Texture* Textura::getSDL() {

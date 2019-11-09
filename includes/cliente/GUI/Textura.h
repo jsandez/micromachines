@@ -14,8 +14,14 @@ private:
 
     Renderizador& renderizador_;
 
+    Textura(const Textura&) = delete;
+
+    Textura& operator=(const Textura&) = delete;
+
 public:
     Textura(const std::string& rutaArchivo, Renderizador& renderizador);
+    Textura(Textura&& other);
+    Textura& operator=(Textura&& other);
     ~Textura();
 
     SDL_Texture* getSDL();
