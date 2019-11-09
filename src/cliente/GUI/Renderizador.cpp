@@ -15,7 +15,7 @@ Renderizador::~Renderizador() {
     SDL_DestroyRenderer(renderizadorSDL_);
 }
 
-void Renderizador::dibujarAbsoluto(Textura& textura, int xDesde, int yDesde) {
+/*void Renderizador::dibujarAbsoluto(Textura& textura, int xDesde, int yDesde) {
     SDL_Rect sdlSrc = {
             0, 0,
             1280, 720
@@ -23,7 +23,7 @@ void Renderizador::dibujarAbsoluto(Textura& textura, int xDesde, int yDesde) {
     SDL_Rect sdlDest = sdlSrc;
 
     SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), &sdlSrc, &sdlDest);
-}
+}*/
 
 SDL_Renderer* Renderizador::getSDL() {
     return renderizadorSDL_;

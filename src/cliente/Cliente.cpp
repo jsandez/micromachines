@@ -14,10 +14,7 @@ void Cliente::correr() {
         CONFIG_CLIENTE.tituloVentana());
     
     Renderizador r(v);
-
     Escena e(v, r);
-    e.dibujar(1);
-    e.presentar();
 }
 
 void Cliente::cerrar() {

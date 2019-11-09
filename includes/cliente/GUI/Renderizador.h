@@ -17,8 +17,6 @@ public:
     Renderizador(Ventana& ventana);
     ~Renderizador();
 
-    void dibujarAbsoluto(Textura& textura, int xDesde, int yDesde);
-
     SDL_Renderer* getSDL();
 };
 

@@ -11,6 +11,7 @@
 #include <memory>
 
 class Partida : public Hilo {
+//TODO: Devolver al jugador a la sala de espera cuando finaliza la partida
 private:
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
     ColaProtegida<std::shared_ptr<Evento>> eventosEntrantes_;
