@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "includes/cliente/GUI/Textura.h"
+
 class Animacion {
 private:
     //TODO: Hash para ciclos
@@ -10,6 +12,7 @@ private:
 
 public:
     Animacion(std::vector<Textura>& frames);
+    Textura& get(uint32_t numeroIteracion);
 };
 
 #endif
