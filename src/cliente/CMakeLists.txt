@@ -8,6 +8,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/excepciones/SDLException.cpp
   
   ${PROJECT_SOURCE_DIR}/Cliente.cpp
+  ${PROJECT_SOURCE_DIR}/GUI/Area.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Textura.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Ventana.cpp

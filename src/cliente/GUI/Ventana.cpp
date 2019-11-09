@@ -25,6 +25,18 @@ Ventana::~Ventana() {
     SDL_Quit();
 }
 
+Area Ventana::dimensiones() {
+    return Area(0, ancho_, 0, alto_);
+}
+
+unsigned int Ventana::ancho() {
+    return ancho_;
+}
+
+unsigned int Ventana::alto() {
+    return alto_;
+}
+
 SDL_Window* Ventana::getSDL() {
     return ventanaSDL_;
 }

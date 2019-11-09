@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "includes/cliente/GUI/Area.h"
+
 //Forward declarations:
 class SDL_Window;
 
@@ -15,6 +17,10 @@ private:
 public:
     Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloVentana);
     ~Ventana();
+
+    Area dimensiones();
+    unsigned int ancho();
+    unsigned int alto();
 
     SDL_Window* getSDL();
 

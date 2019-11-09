@@ -25,6 +25,17 @@ Textura& Textura::operator=(Textura&& otraTextura) {
     return *this;
 }
 
+Textura::Textura(Renderizador& renderizador, Area dimensiones) {
+    texturaSDL_ = SDL_CreateTexture(renderizador.getSDL(),
+        SDL_PIXELFORMAT_RGBA8888,
+        SDL_TEXTUREACCESS_TARGET,
+        dimensiones.ancho(),
+        dimensiones.alto());
+    if (!texturaSDL_) {
+        throw SDLException("Error al crear textura vacía", SDL_GetError());
+    }
+}
+
 Textura::~Textura() {
     if (texturaSDL_ != nullptr) {
         SDL_DestroyTexture(texturaSDL_);

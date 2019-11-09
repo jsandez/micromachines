@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "includes/cliente/GUI/Area.h"
+
 // Forward Declarations:
 class SDL_Texture;
 
@@ -18,6 +20,7 @@ private:
 
 public:
     Textura(const std::string& rutaArchivo, Renderizador& renderizador);
+    Textura(Renderizador& renderizador, Area dimensiones);
     Textura(Textura&& otraTextura);
     Textura& operator=(Textura&& otraTextura);
     ~Textura();
