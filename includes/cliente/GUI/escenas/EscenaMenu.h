@@ -12,6 +12,7 @@ class EscenaMenu : public Escena {
 private:
     Animacion animacion_;
 public:
+    EscenaMenu();
     virtual Textura dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) override;
 };
 
