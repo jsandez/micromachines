@@ -27,3 +27,11 @@ bool ConfigCliente::pantallaCompleta() {
 std::string ConfigCliente::tituloVentana() {
     return json_["ventana"]["titulo"].get<std::string>();
 }
+
+unsigned int ConfigCliente::uuidSorlo() {
+    return json_["animaciones"]["sorlo"]["uuid"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesSorlo() {
+    return json_["animaciones"]["sorlo"]["sprites"].get<std::vector<std::string>>();
+}

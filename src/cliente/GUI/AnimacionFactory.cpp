@@ -1,17 +1,18 @@
 #include "includes/cliente/GUI/AnimacionFactory.h"
 
 #include <vector>
+#include <string>
 
+#include "includes/cliente/utils/ConfigCliente.h"
 #include "includes/cliente/GUI/Textura.h"
 
-Animacion AnimacionFactory::instanciar(int uuidAnimacion, Renderizador& renderizador) {
+Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador& renderizador) {
     std::vector<Textura> frames_;
     switch (uuidAnimacion) {
-    case 1: //sorlo
-        frames_.emplace_back(Textura("assets/sorlo/1_sorlo.png", renderizador));
-        frames_.emplace_back(Textura("assets/sorlo/2_sorlo.png", renderizador));
-        frames_.emplace_back(Textura("assets/sorlo/3_sorlo.png", renderizador));
-        frames_.emplace_back(Textura("assets/sorlo/4_sorlo.png", renderizador));
+    case UUID_ANIMACION_SORLO:
+        for (std::string& rutaArchivo : CONFIG_CLIENTE.spritesSorlo()) {
+            frames_.emplace_back(Textura(rutaArchivo, renderizador));
+        }
         break;
     
     default:

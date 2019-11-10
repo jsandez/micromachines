@@ -1,8 +1,19 @@
 {
-    "ventana" : {
-        "ancho" : 1280,
-        "alto"  : 720,
-        "pantallaCompleta" : false,
-        "titulo" : "rpn"
+    "ventana": {
+        "ancho": 1280,
+        "alto": 720,
+        "pantallaCompleta": false,
+        "titulo": "rpn"
+    },
+    "animaciones": {
+        "sorlo" : {
+            "uuid" : 1,
+            "sprites" : [
+                "assets/sorlo/1_sorlo.png",
+                "assets/sorlo/2_sorlo.png",
+                "assets/sorlo/3_sorlo.png",
+                "assets/sorlo/4_sorlo.png"
+            ]
+        }
     }
 }

@@ -7,10 +7,12 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Animacion.h"
 
+#define UUID_ANIMACION_SORLO 1
+
 class AnimacionFactory {
     
 public:
-    static Animacion instanciar(int uuidAnimacion, Renderizador& renderizador);
+    static Animacion instanciar(unsigned int uuidAnimacion, Renderizador& renderizador);
 };
 
 #endif
