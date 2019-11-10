@@ -2,13 +2,13 @@
 #define _COLA_PROTEGIDA_H_
 
 #include <mutex>
-#include <queue>
+
+#include "includes/common/Cola.h"
 
 template <class T>
-class ColaProtegida {
+class ColaProtegida : public Cola<T> {
 private:
     std::mutex mtx_;
-    std::queue<T> elementos_;
 
     ColaProtegida(ColaProtegida&& otra) = delete;
 
@@ -18,6 +18,8 @@ private:
 
     ColaProtegida& operator=(ColaProtegida&& otra) = delete;
 
+    std::queue<T> elementos_;
+
     public:
     ColaProtegida() {
     }
@@ -25,12 +27,12 @@ private:
     ~ColaProtegida() {
     }
 
-    void put(T& unElemento) {
+    void put(T& unElemento) override {
         std::lock_guard<std::mutex> lck(mtx_);
         elementos_.push(std::move(unElemento));
     }
     
-    bool get(T& unElemento) {
+    bool get(T& unElemento) override {
         std::unique_lock<std::mutex> lck(mtx_);
         if (elementos_.empty()) {
             return false;

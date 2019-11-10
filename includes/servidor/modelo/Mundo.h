@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "includes/common/Handler.h"
-#include "includes/common/Cola.h"
+#include "includes/common/ColaNoProtegida.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
@@ -13,7 +13,7 @@ class Mundo : public Handler {
 private:
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
     std::map<Tile, std::shared_ptr<Superficie>> tileASuperficie_;
-    Cola<std::shared_ptr<Evento>> eventosOcurridos_;
+    ColaNoProtegida<std::shared_ptr<Evento>> eventosOcurridos_;
     Fisicas fisicas_;
 
 public:

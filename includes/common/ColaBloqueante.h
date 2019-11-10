@@ -3,16 +3,17 @@
 
 #include <mutex>
 #include <condition_variable>
-#include <queue>
+#include <atomic>
+
+#include "includes/common/Cola.h"
 
 template <class T>
-class ColaBloqueante {
+class ColaBloqueante : public Cola<T> {
 private:
     std::mutex mtx_;
-    std::queue<T> elementos_;
     std::condition_variable cond_;
-    //FIXME: Cambiar a atomic
-    bool detenida_;
+    std::atomic<bool> detenida_;
+    std::queue<T> elementos_;
 
     ColaBloqueante(ColaBloqueante&& otra) = delete;
 
@@ -30,13 +31,13 @@ private:
     ~ColaBloqueante() {
     }
 
-    void put(T& unElemento) {
+    void put(T& unElemento) override {
         std::lock_guard<std::mutex> lck(mtx_);
         elementos_.push(std::move(unElemento));
         cond_.notify_one();
     }
     
-    bool get(T& unElemento) {
+    bool get(T& unElemento) override {
         std::unique_lock<std::mutex> lck(mtx_);
         cond_.wait(lck, [this]{return !elementos_.empty() || detenida_ ;});
         if (detenida_) {

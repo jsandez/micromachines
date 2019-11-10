@@ -5,7 +5,7 @@
 #include "includes/common/eventos/EventoFactory.h"
 #include "includes/common/excepciones/EventoDesconocidoError.h"
 
-RecibidorEventos::RecibidorEventos(SocketTCP& socketOrigen, ColaBloqueante<std::shared_ptr<Evento>>& destino, uint32_t uuidRemitente) :
+RecibidorEventos::RecibidorEventos(SocketTCP& socketOrigen, Cola<std::shared_ptr<Evento>>& destino, uint32_t uuidRemitente) :
     destino_(destino),
     protocolo_(socketOrigen),
     UUIDRemitente_(uuidRemitente) {
