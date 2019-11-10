@@ -30,22 +30,23 @@ void Renderizador::resetDestino() {
     SDL_SetRenderTarget(renderizadorSDL_, NULL);
 }
 
-void Renderizador::dibujar(Textura& textura, Textura& canvas) {
-    SDL_Rect SDLDestino = {0,
-        0,
-        (int)ventana_.ancho(),
-        (int)ventana_.alto()
+void Renderizador::dibujar(Textura& textura, Area& area) {
+    SDL_Rect SDLDestino = {
+        (int)area.x(),
+        (int)area.y(),
+        (int)area.ancho(),
+        (int)area.alto()
         };
     SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
 }
 
 void Renderizador::dibujar(uint32_t numeroIteracion, Escena& escena) {
     Textura textura = escena.dibujate(numeroIteracion, *this, ventana_.dimensiones());
-    SDL_Rect SDLDestino = {0,
+    SDL_Rect SDLDestino = {
+        0,
         0,
         (int)ventana_.ancho(),
-        (int)ventana_.alto()
-        };
+        (int)ventana_.alto()};
     SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
     SDL_RenderPresent(renderizadorSDL_);
 }

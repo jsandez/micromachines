@@ -25,7 +25,7 @@ public:
     void dibujar(uint32_t numeroIteracion, Escena& escena);
     void setDestino(Textura& textura);
     void resetDestino();
-    void dibujar(Textura& textura, Textura& canvas);
+    void dibujar(Textura& textura, Area& destino);
     ~Renderizador();
 
     SDL_Renderer* getSDL();

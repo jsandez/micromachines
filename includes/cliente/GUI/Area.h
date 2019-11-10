@@ -3,15 +3,18 @@
 
 class Area {
 private:
-    unsigned int inicioAncho_;
-    unsigned int finAncho_;
-    unsigned int inicioAlto_;
-    unsigned int finAlto_;
+    unsigned int x_;
+    unsigned int y_;
+    unsigned int ancho_;
+    unsigned int alto_;
 public:
-    Area(unsigned int inicioAncho, unsigned int finAncho, unsigned int inicioAlto, unsigned int finAlto);
+    Area(unsigned int x, unsigned int y, unsigned int ancho, unsigned int alto);
 
     unsigned int ancho();
     unsigned int alto();
+
+    unsigned int x();
+    unsigned int y();
 };
 
 #endif

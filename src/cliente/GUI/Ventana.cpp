@@ -25,8 +25,9 @@ Ventana::~Ventana() {
     SDL_Quit();
 }
 
+//TODO: No tiene mucho sentido el 0, 0
 Area Ventana::dimensiones() {
-    return Area(0, ancho_, 0, alto_);
+    return Area(0, 0, ancho_, alto_);
 }
 
 unsigned int Ventana::ancho() {
