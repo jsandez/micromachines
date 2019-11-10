@@ -12,11 +12,20 @@ Cliente::Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool panta
 
 Cliente::~Cliente() {
     dibujador_.join();
+    recibidor_.join();
 }
 
 void Cliente::correr() {
-    socket_.
+    try {
+        socket_.conectar();
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }   
+
+    recibidor_.iniciar();
     dibujador_.iniciar();
+
     char c;
     while ((c = std::cin.get()) != 'q') {
         // pass
@@ -26,4 +35,7 @@ void Cliente::correr() {
 
 void Cliente::cerrar() {
     dibujador_.detener();
+    recibidor_.detener();
+    socket_.cerrarLectoEscritura();
 }
+
