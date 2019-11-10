@@ -16,6 +16,14 @@
                 "assets/sorlo/3_sorlo.png",
                 "assets/sorlo/4_sorlo.png"
             ]
+        },
+        "fondoMenu": {
+            "uuid": 2,
+            "ancho": 918,
+            "alto": 515,
+            "sprites": [
+                "assets/fondo_menu.png"
+            ]
         }
     }
 }

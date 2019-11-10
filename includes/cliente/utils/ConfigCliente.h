@@ -26,6 +26,11 @@ public:
     unsigned int anchoSorlo();
     unsigned int altoSorlo();
     std::vector<std::string> spritesSorlo();
+
+    unsigned int uuidFondoMenu();
+    unsigned int anchoFondoMenu();
+    unsigned int altoFondoMenu();
+    std::vector<std::string> spritesFondoMenu();
 };
 
 #endif

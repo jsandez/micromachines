@@ -19,6 +19,14 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador&
         alto_ = CONFIG_CLIENTE.altoSorlo();
         break;
     
+    case UUID_ANIMACION_FONDO_MENU:
+        for (std::string& rutaArchivo : CONFIG_CLIENTE.spritesFondoMenu()) {
+            frames_.emplace_back(Textura(rutaArchivo, renderizador));
+        }
+        ancho_ = CONFIG_CLIENTE.anchoFondoMenu();
+        alto_ = CONFIG_CLIENTE.altoFondoMenu();
+        break;
+
     default:
         break;
         //throw

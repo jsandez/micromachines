@@ -8,6 +8,7 @@
 #include "includes/cliente/GUI/Animacion.h"
 
 #define UUID_ANIMACION_SORLO 1
+#define UUID_ANIMACION_FONDO_MENU 2
 
 class AnimacionFactory {
     

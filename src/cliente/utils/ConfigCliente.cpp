@@ -25,7 +25,7 @@ bool ConfigCliente::pantallaCompleta() {
 }
 
 std::string ConfigCliente::tituloVentana() {
-    return json_["ventana"]["titulo"].get<std::string>();
+    return std::move(json_["ventana"]["titulo"].get<std::string>());
 }
 
 unsigned int ConfigCliente::uuidSorlo() {
@@ -41,5 +41,21 @@ unsigned int ConfigCliente::altoSorlo() {
 }
 
 std::vector<std::string> ConfigCliente::spritesSorlo() {
-    return json_["animaciones"]["sorlo"]["sprites"].get<std::vector<std::string>>();
+    return std::move(json_["animaciones"]["sorlo"]["sprites"].get<std::vector<std::string>>());
+}
+
+unsigned int ConfigCliente::uuidFondoMenu() {
+    return json_["animaciones"]["fondoMenu"]["uuid"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoFondoMenu() {
+    return json_["animaciones"]["fondoMenu"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoFondoMenu() {
+    return json_["animaciones"]["fondoMenu"]["alto"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesFondoMenu() {
+    return std::move(json_["animaciones"]["fondoMenu"]["sprites"].get<std::vector<std::string>>());
 }
