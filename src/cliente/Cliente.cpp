@@ -2,13 +2,10 @@
 
 #include <iostream>
 
-#include "includes/cliente/utils/ConfigCliente.h"
-
-Cliente::Cliente() :
-    dibujador_(CONFIG_CLIENTE.anchoVentana(),
-        CONFIG_CLIENTE.altoVentana(),
-        CONFIG_CLIENTE.pantallaCompleta(),
-        CONFIG_CLIENTE.tituloVentana()) {
+Cliente::Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana) :
+    ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
+    renderizador_(ventana_),
+    dibujador_(ventana_, renderizador_) {
 }
 
 Cliente::~Cliente() {

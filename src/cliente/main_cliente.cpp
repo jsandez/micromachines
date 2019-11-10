@@ -1,9 +1,10 @@
 #include <iostream>
 
 #include "includes/cliente/Cliente.h"
+#include "includes/cliente/utils/ConfigCliente.h"
 
 int main(int argc, char *argv[]) {
-    Cliente cliente;
+    Cliente cliente(CONFIG_CLIENTE.anchoVentana(), CONFIG_CLIENTE.altoVentana(), CONFIG_CLIENTE.pantallaCompleta(), CONFIG_CLIENTE.tituloVentana());
     try {
         cliente.correr();
     } catch(const std::exception& e) {
