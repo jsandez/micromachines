@@ -5,6 +5,10 @@
         "pantallaCompleta": false,
         "titulo": "rpn"
     },
+    "red": {
+        "host": "localhost",
+        "puerto": "10001"
+    },
     "animaciones": {
         "sorlo": {
             "uuid": 1,

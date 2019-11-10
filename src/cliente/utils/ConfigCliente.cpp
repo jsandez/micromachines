@@ -28,6 +28,14 @@ std::string ConfigCliente::tituloVentana() {
     return std::move(json_["ventana"]["titulo"].get<std::string>());
 }
 
+std::string ConfigCliente::host() {
+    return std::move(json_["red"]["host"].get<std::string>());
+}
+
+std::string ConfigCliente::puerto() {
+    return std::move(json_["red"]["puerto"].get<std::string>());
+}
+
 unsigned int ConfigCliente::uuidSorlo() {
     return json_["animaciones"]["sorlo"]["uuid"].get<unsigned int>();
 }

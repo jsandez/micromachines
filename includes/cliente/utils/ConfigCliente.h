@@ -17,10 +17,14 @@ private:
 
 public:
     static ConfigCliente& instancia();
+    
     unsigned int anchoVentana();
     unsigned int altoVentana();
     bool pantallaCompleta();
     std::string tituloVentana();
+
+    std::string host();
+    std::string puerto();
 
     unsigned int uuidSorlo();
     unsigned int anchoSorlo();

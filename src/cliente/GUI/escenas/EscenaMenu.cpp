@@ -5,14 +5,14 @@
 #include "includes/cliente/GUI/Area.h"
 
 EscenaMenu::EscenaMenu(Renderizador& renderizador) :
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuidFondoMenu(), renderizador)) {
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuidSorlo(), renderizador)) {
 }
 
 Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) {
     Textura miTextura(renderizador, dimensiones);
     renderizador.setDestino(miTextura);
-    Area areaSorlo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
-    renderizador.dibujar(fondoMenu_.get(numeroIteracion), areaSorlo);
+    Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
+    renderizador.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
     renderizador.resetDestino();
     return std::move(miTextura);
 }

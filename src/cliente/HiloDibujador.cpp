@@ -22,3 +22,7 @@ void HiloDibujador::correr() {
 void HiloDibujador::detener() {
     seguirCorriendo_ = false;
 }
+
+ColaProtegida<std::shared_ptr<Evento>>& HiloDibujador::eventosEntrantes() {
+    return eventos_;
+}
