@@ -19,6 +19,9 @@ public:
     static ConfigCliente& instancia();
     unsigned int anchoVentana();
     unsigned int altoVentana();
+    int sorlo() {
+        return 1;
+    }
     bool pantallaCompleta();
     std::string tituloVentana();
 };

@@ -12,9 +12,11 @@ HiloDibujador::HiloDibujador(unsigned int anchoVentana, unsigned int altoVentana
 }
 
 void HiloDibujador::correr() {
-    EscenaMenu e;    
+    EscenaMenu e(renderizador_);    
+    uint32_t iteracion = 0;
     while(seguirCorriendo_) {
-        renderizador_.dibujar(1, e);
+        renderizador_.dibujar(iteracion, e);
+        iteracion+=1;
         SDL_Delay(100);
     }
 }
