@@ -32,6 +32,14 @@ unsigned int ConfigCliente::uuidSorlo() {
     return json_["animaciones"]["sorlo"]["uuid"].get<unsigned int>();
 }
 
+unsigned int ConfigCliente::anchoSorlo() {
+    return json_["animaciones"]["sorlo"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoSorlo() {
+    return json_["animaciones"]["sorlo"]["alto"].get<unsigned int>();
+}
+
 std::vector<std::string> ConfigCliente::spritesSorlo() {
     return json_["animaciones"]["sorlo"]["sprites"].get<std::vector<std::string>>();
 }

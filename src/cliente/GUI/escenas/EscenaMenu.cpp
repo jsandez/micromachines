@@ -11,8 +11,8 @@ EscenaMenu::EscenaMenu(Renderizador& renderizador) :
 Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) {
     Textura miTextura(renderizador, dimensiones);
     renderizador.setDestino(miTextura);
-    Area destinoSorlo = Area(0, 0, 71, 71);
-    renderizador.dibujar(sorlo_.get(numeroIteracion), destinoSorlo);
+    Area areaSorlo = Area(0, 0, sorlo_.ancho(), sorlo_.alto());
+    renderizador.dibujar(sorlo_.get(numeroIteracion), areaSorlo);
     renderizador.resetDestino();
     return std::move(miTextura);
 }

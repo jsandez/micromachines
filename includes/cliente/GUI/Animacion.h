@@ -7,12 +7,17 @@
 
 class Animacion {
 private:
+    unsigned int ancho_;
+    unsigned int alto_;
     //TODO: Hash para ciclos
-    std::vector<Textura> frames_;
+    std::vector<Textura> frames_;    
 
 public:
-    Animacion(std::vector<Textura>& frames);
+    Animacion(std::vector<Textura>& frames, unsigned int ancho, unsigned int alto);
     Textura& get(uint32_t numeroIteracion);
+
+    unsigned int ancho();
+    unsigned int alto();
 };
 
 #endif

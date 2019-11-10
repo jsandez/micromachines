@@ -23,6 +23,8 @@ public:
     std::string tituloVentana();
 
     unsigned int uuidSorlo();
+    unsigned int anchoSorlo();
+    unsigned int altoSorlo();
     std::vector<std::string> spritesSorlo();
 };
 

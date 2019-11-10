@@ -6,9 +6,11 @@
         "titulo": "rpn"
     },
     "animaciones": {
-        "sorlo" : {
-            "uuid" : 1,
-            "sprites" : [
+        "sorlo": {
+            "uuid": 1,
+            "ancho": 250,
+            "alto": 250,
+            "sprites": [
                 "assets/sorlo/1_sorlo.png",
                 "assets/sorlo/2_sorlo.png",
                 "assets/sorlo/3_sorlo.png",
