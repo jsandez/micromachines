@@ -10,6 +10,7 @@
 
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Renderizador.h"
+#include "includes/cliente/GUI/eventos/EventoGUI.h"
 #include "includes/cliente/HiloDibujador.h"
 #include "includes/cliente/red/SocketTCPCliente.h"
 
@@ -22,6 +23,7 @@ private:
     RecibidorEventos recibidor_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
     EnviadorEventos enviador_;
+    ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
 
     void manejarKeyUp(SDL_Event& eventoSDL);
     void manejarKeyDown(SDL_Event& eventoSDL);

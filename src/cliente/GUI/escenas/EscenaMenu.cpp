@@ -5,7 +5,7 @@
 #include "includes/cliente/GUI/Area.h"
 
 EscenaMenu::EscenaMenu(Renderizador& renderizador) :
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuidSorlo(), renderizador)) {
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuidFondoMenu(), renderizador)) {
 }
 
 Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) {
