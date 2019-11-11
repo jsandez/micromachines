@@ -16,7 +16,6 @@ void Servidor::correr() {
     while ((c = std::cin.get()) != CARACTER_SALIR) {
         // pass
     }
-    cerrar();
 }
 
 void Servidor::cerrar() {
