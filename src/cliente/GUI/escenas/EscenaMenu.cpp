@@ -22,7 +22,6 @@ void EscenaMenu::manejar(EventoGUI& evento) {
     evento.actualizar(*this);
 }
 
-#include <iostream>
 void EscenaMenu::manejar(EventoGUIClick& evento) {
-    std::cout << "Click ñery\n";
+
 }
