@@ -16,6 +16,7 @@
 
 class Cliente {
 private:
+    ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
     Ventana ventana_;
     Renderizador renderizador_;
     HiloDibujador dibujador_;
@@ -23,10 +24,11 @@ private:
     RecibidorEventos recibidor_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
     EnviadorEventos enviador_;
-    ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
+    
 
     void manejarKeyUp(SDL_Event& eventoSDL);
     void manejarKeyDown(SDL_Event& eventoSDL);
+    void manejarMouseDown(SDL_Event& eventoSDL);
 
 public:
     Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana, const std::string& host, const std::string& puerto);
@@ -36,3 +38,4 @@ public:
 };
 
 #endif
+

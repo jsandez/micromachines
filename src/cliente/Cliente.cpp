@@ -2,12 +2,14 @@
 
 #include <iostream>
 
+#include "includes/cliente/GUI/eventos/EventoGUIClick.h"
+
 #include "includes/common/eventos/EventoAcelerar.h"
 
 Cliente::Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana, const std::string& host, const std::string& puerto) :
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
     renderizador_(ventana_),
-    dibujador_(ventana_, renderizador_),
+    dibujador_(ventana_, renderizador_, eventosGUI_),
     socket_(host, puerto),
     recibidor_(socket_, dibujador_.eventosEntrantes(), 0),
     enviador_(socket_, eventosAEnviar_) {
@@ -33,13 +35,16 @@ void Cliente::correr() {
 
     bool seguirCorriendo = true;
     SDL_Event evento;
-    while (SDL_WaitEvent(&evento) != 0 && seguirCorriendo) {
+    while (SDL_WaitEvent(&evento) && seguirCorriendo) {
         switch (evento.type) {
             case SDL_KEYDOWN:
                 manejarKeyDown(evento);
                 break;
             case SDL_KEYUP:
                 manejarKeyUp(evento);
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                manejarMouseDown(evento);
                 break;
             case SDL_QUIT:
                 seguirCorriendo = false;
@@ -75,6 +80,16 @@ void Cliente::manejarKeyDown(SDL_Event& eventoSDL) {
     }
 }
 
-void Cliente::manejarKeyUp(SDL_Event& evento) {
+void Cliente::manejarKeyUp(SDL_Event& eventoSDL) {
 
+}
+
+void Cliente::manejarMouseDown(SDL_Event& eventoSDL) {
+    if (eventoSDL.button.button != SDL_BUTTON_LEFT) {
+        return;
+    }
+    int x, y;
+	SDL_GetMouseState(&x, &y);
+    std::shared_ptr<EventoGUI> eventoClick = std::make_shared<EventoGUIClick>(x, y);
+    eventosGUI_.put(eventoClick);
 }

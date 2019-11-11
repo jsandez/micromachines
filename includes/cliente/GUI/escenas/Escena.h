@@ -1,10 +1,12 @@
 #ifndef _ESCENA_H_
 #define _ESCENA_H_
 
+#include "includes/cliente/GUI/EventoGUIHandler.h"
+
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Textura.h"
 
-class Escena {
+class Escena : public EventoGUIHandler {
 private:
 
 public:
