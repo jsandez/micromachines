@@ -9,6 +9,7 @@ set(SOURCES
   
   ${PROJECT_SOURCE_DIR}/Cliente.cpp
   ${PROJECT_SOURCE_DIR}/HiloDibujador.cpp
+  ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIClick.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Area.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp
   ${PROJECT_SOURCE_DIR}/GUI/Textura.cpp
