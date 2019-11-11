@@ -22,6 +22,12 @@ void EscenaMenu::manejar(EventoGUI& evento) {
     evento.actualizar(*this);
 }
 
-void EscenaMenu::manejar(EventoGUIClick& evento) {
+#include <iostream>
 
+void EscenaMenu::manejar(EventoGUIClick& evento) {
+    std::cout << "Click en escena menu\n";
+}
+
+void EscenaMenu::manejar(EventoGUIKeyDown& evento) {
+    std::cout << "keydown en escena menu\n";
 }

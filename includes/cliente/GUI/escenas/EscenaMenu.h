@@ -21,6 +21,7 @@ public:
     virtual Textura dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) override;
     virtual void manejar(EventoGUI& evento) override;
     virtual void manejar(EventoGUIClick& evento) override;
+    virtual void manejar(EventoGUIKeyDown& evento) override;
 };
 
 #endif

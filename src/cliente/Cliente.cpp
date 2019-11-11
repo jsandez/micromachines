@@ -3,8 +3,7 @@
 #include <iostream>
 
 #include "includes/cliente/GUI/eventos/EventoGUIClick.h"
-
-#include "includes/common/eventos/EventoAcelerar.h"
+#include "includes/cliente/GUI/eventos/EventoGUIKeyDown.h"
 
 Cliente::Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana, const std::string& host, const std::string& puerto) :
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
@@ -64,20 +63,18 @@ void Cliente::cerrar() {
 }
 
 void Cliente::manejarKeyDown(SDL_Event& eventoSDL) {
-    //TODO: Mala idea... abstraer clase, que pase como referencia (de alguna manera) la cola a cada escena, la verdadera encargada de manejar el evento
     SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&)eventoSDL;
     if (eventoSDL.key.repeat != 0) {
       return;
     }
-    std::shared_ptr<Evento> evento;
+    std::shared_ptr<EventoGUI> evento;
     switch (keyEvent.keysym.sym) {
-        case SDLK_SPACE:
-            evento = std::make_shared<EventoAcelerar>();
-            eventosAEnviar_.put(evento);
+        case SDLK_c:
+            evento = std::make_shared<EventoGUIKeyDown>('C');
+            eventosGUI_.put(evento);
             break;
         default:
             break;
-        
     }
 }
 
