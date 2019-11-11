@@ -7,6 +7,7 @@
 class EventoAcelerar : public Evento {
 public:
     EventoAcelerar(uint32_t uuidRemitente, Protocolo& protocolo);
+    EventoAcelerar();
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };

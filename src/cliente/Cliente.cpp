@@ -1,18 +1,21 @@
 #include "includes/cliente/Cliente.h"
 
 #include <iostream>
-#include <SDL2/SDL.h>
+
+#include "includes/common/eventos/EventoAcelerar.h"
 
 Cliente::Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana, const std::string& host, const std::string& puerto) :
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
     renderizador_(ventana_),
     dibujador_(ventana_, renderizador_),
     socket_(host, puerto),
-    recibidor_(socket_, dibujador_.eventosEntrantes(), 0) {
+    recibidor_(socket_, dibujador_.eventosEntrantes(), 0),
+    enviador_(socket_, eventosAEnviar_) {
 }
 
 Cliente::~Cliente() {
     dibujador_.join();
+    enviador_.join();
     recibidor_.join();
 }
 
@@ -25,75 +28,53 @@ void Cliente::correr() {
     }   
 
     recibidor_.iniciar();
+    enviador_.iniciar();
     dibujador_.iniciar();
 
+    bool seguirCorriendo = true;
     SDL_Event evento;
-    while (SDL_WaitEvent(&evento) != 0) {
+    while (SDL_WaitEvent(&evento) != 0 && seguirCorriendo) {
         switch (evento.type) {
-        case SDL_KEYDOWN:
-            manejarKeyDown();
-
-            
-         {
-            SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent &)evento;
-            switch (keyEvent.keysym.sym) {
-                            case SDLK_LEFT:
-                                x -= 10;
-                                break;
-                            case SDLK_RIGHT:
-                                x += 10;
-                                break;
-                            case SDLK_UP:
-                                y -= 10;
-                                break;
-                            case SDLK_DOWN:
-                                y += 10;
-                                break;
-                            }
-                    } // Fin KEY_DOWN
+            case SDL_KEYDOWN:
+                manejarKeyDown(evento);
+                break;
+            case SDL_KEYUP:
+                manejarKeyUp(evento);
+                break;
+            case SDL_QUIT:
+                seguirCorriendo = false;
+                break;
+            default:
+                break;
         }
     }
-    while (SDL_WaitEvent(&evento) != 0) {
-        x = 0;
-        y = 0;
-        switch (event.type) {
-          case SDL_KEYDOWN: {
-            
-            if (event.key.repeat == 0) {
-              switch (keyEvent.keysym.sym) {
-                case SDLK_SPACE: {
-                  std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
-                  cola_bloqueante.put(eventoAcelerar);
-                  break;
-                }
-              }
-            }
-          }
-          case SDL_MOUSEMOTION:std::cout << "Oh! Mouse" << std::endl;
-            break;
-          case SDL_QUIT:std::cout << "Quit :(" << std::endl;
-            running = false;
-            break;
-        }
-      }
-
-
-
-
-
-
-
-
-    char c;
-    while ((c = std::cin.get()) != 'q') {
-        // pass
-    }
-    cerrar();
 }
 
 void Cliente::cerrar() {
     dibujador_.detener();
+    eventosAEnviar_.detener();
+    enviador_.detener();
     recibidor_.detener();
     socket_.cerrarLectoEscritura();
 }
 
+void Cliente::manejarKeyDown(SDL_Event& eventoSDL) {
+    SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&)eventoSDL;
+    if (eventoSDL.key.repeat != 0) {
+      return;
+    }
+    std::shared_ptr<Evento> evento;
+    switch (keyEvent.keysym.sym) {
+        case SDLK_SPACE:
+            evento = std::make_shared<EventoAcelerar>();
+            eventosAEnviar_.put(evento);
+            break;
+        default:
+            break;
+        
+    }
+}
+
+void Cliente::manejarKeyUp(SDL_Event& evento) {
+
+}
