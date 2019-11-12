@@ -43,6 +43,10 @@ Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
     return eventosOcurridos_;
 }
 
+void Mundo::crearVehiculo(uint32_t uuidJugador) {
+    
+}
+
 void Mundo::manejar(Evento& e) {
     e.actualizar(*this);
 }

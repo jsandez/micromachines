@@ -16,6 +16,7 @@ Fisicas::~Fisicas() {
 
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
     //TODO: Implementar: es arena tierra y pista.
+
 }
 
 void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {
