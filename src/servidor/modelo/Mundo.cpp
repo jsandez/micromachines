@@ -34,15 +34,7 @@ Mundo::Mundo(uint16_t uuidPista) :
     fisicas_.generarSuperficies(tileASuperficie_);
 }
 
-#include <thread>
-#include <chrono>
-#include <iostream>
-
 void Mundo::step(uint32_t numeroIteracion) {
-    std::cout << "Prestep\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(15));
-    std::cout << "Step\n";
-    std::cout << numeroIteracion << " es la iteracion\n";
     fisicas_.step(numeroIteracion);
     //TODO: Encolar la serializacion
 }
@@ -56,7 +48,7 @@ void Mundo::manejar(Evento& e) {
 }
 
 void Mundo::manejar(EventoAcelerar& e) {
-    //TODO: Obtener el jugador, y mandarlo a la partida.
+    //TODO: Obtener el jugador, y mandarlo a las fisicas.
 }
 
 // El sistema de referencia de la pista está arriba a la izquierda,
