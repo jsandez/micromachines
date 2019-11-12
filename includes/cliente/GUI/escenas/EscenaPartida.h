@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "includes/common/ColaProtegida.h"
+#include "includes/common/Conversor.h"
 #include "includes/cliente/GUI/Animacion.h"
 #include "includes/cliente/GUI/Area.h"
 #include "includes/cliente/GUI/Renderizador.h"
@@ -16,6 +17,9 @@ class EscenaPartida : public Escena {
  private:
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   Pista pista;
+  Conversor conversor;
+ // Camara camara;
+  int id_car, screenX, screenY;
  public:
   EscenaPartida(Renderizador &renderizador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,

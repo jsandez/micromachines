@@ -7,7 +7,8 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
                              std::stack<std::shared_ptr<Escena>> &escenas) : Escena(escenas, renderizador),
                                                                              eventosGUI_(eventosGUI),
                                                                              pista("assets/pistas/1.json",
-                                                                                   renderizador) {}
+                                                                                   renderizador),
+                                                                             conversor(25.6, 256) {}
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   Textura miTextura(renderizador_, dimensiones);

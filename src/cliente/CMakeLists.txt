@@ -11,12 +11,14 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/HiloDibujador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIClick.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIKeyDown.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/Camara.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Area.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Textura.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Animacion.cpp
         ${PROJECT_SOURCE_DIR}/GUI/AnimacionFactory.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Pista.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/Camara.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Ventana.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/Escena.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaMenu.cpp
@@ -25,6 +27,7 @@ set(SOURCES
 
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
         ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/Conversor.cpp
         ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
