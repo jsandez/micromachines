@@ -31,7 +31,7 @@ void Cliente::correr() {
     recibidor_.iniciar();
     enviador_.iniciar();
     dibujador_.iniciar();
-
+    //TODO: Mover a inputhandler, que será de teclas o LUA
     bool seguirCorriendo = true;
     SDL_Event evento;
     while (SDL_WaitEvent(&evento) && seguirCorriendo) {
@@ -70,9 +70,12 @@ void Cliente::manejarKeyDown(SDL_Event& eventoSDL) {
     std::shared_ptr<EventoGUI> evento;
     switch (keyEvent.keysym.sym) {
         case SDLK_c:
-            evento = std::make_shared<EventoGUIKeyDown>('C');
+            evento = std::make_shared<EventoGUIKeyDown>(TECLA_C);
             eventosGUI_.put(evento);
             break;
+        case SDLK_ESCAPE:
+            evento = std::make_shared<EventoGUIKeyDown>(TECLA_ESC);
+            eventosGUI_.put(evento);
         default:
             break;
     }

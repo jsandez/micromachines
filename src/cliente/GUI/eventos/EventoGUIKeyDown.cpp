@@ -2,14 +2,14 @@
 
 #include "includes/cliente/GUI/EventoGUIHandler.h"
 
-EventoGUIKeyDown::EventoGUIKeyDown(char caracter)
-    : caracter_(caracter) {
+EventoGUIKeyDown::EventoGUIKeyDown(const std::string& tecla)
+    : tecla_(std::move(tecla)) {
 }
 
 void EventoGUIKeyDown::actualizar(EventoGUIHandler& handler) {
     handler.manejar(*this);
 }
 
-char EventoGUIKeyDown::getCaracter() {
-    return caracter_;
+std::string& EventoGUIKeyDown::getTecla() {
+    return tecla_;
 }

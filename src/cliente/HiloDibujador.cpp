@@ -8,20 +8,22 @@ HiloDibujador::HiloDibujador(Ventana& ventana, Renderizador& renderizador, ColaP
     ventana_(ventana),
     renderizador_(renderizador),
     eventosGUI_(eventosGUI) {
+    
+    escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_));
 }
 
 void HiloDibujador::correr() {
-    EscenaMenu escena(renderizador_, eventosGUI_);    
     uint32_t iteracion = 0;
     while(seguirCorriendo_) {
-        renderizador_.dibujar(iteracion, escena);
-        iteracion+=1;
+        Escena& escenaActual = *escenas_.top().get();
+        renderizador_.dibujar(iteracion, escenaActual);
+        iteracion += 1;
         SDL_Delay(100);
         // Manejo los eventos despues por si ocurre que se procesan dos clicks (por ejemplo), y se cambia de escena y se procesa el click sin haber dibujado.
         bool obtenido = false;
         std::shared_ptr<EventoGUI> evento;
         while((obtenido = eventosGUI_.get(evento))) {
-            escena.manejar(*evento.get());
+            escenaActual.manejar(*evento.get());
         }
     }
 }

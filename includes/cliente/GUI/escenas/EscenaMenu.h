@@ -1,9 +1,9 @@
 #ifndef _ESCENA_MENU_H_
 #define _ESCENA_MENU_H_
 
-#include <memory>
-
 #include "includes/cliente/GUI/escenas/Escena.h"
+
+#include <memory>
 
 #include "includes/common/ColaProtegida.h"
 #include "includes/cliente/GUI/Animacion.h"
@@ -17,8 +17,8 @@ private:
     ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI_;
 
 public:
-    EscenaMenu(Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI);
-    virtual Textura dibujate(uint32_t numeroIteracion, Renderizador& renderizador, Area dimensiones) override;
+    EscenaMenu(Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI, std::stack<std::shared_ptr<Escena>>& escenas);
+    virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
     virtual void manejar(EventoGUI& evento) override;
     virtual void manejar(EventoGUIClick& evento) override;
     virtual void manejar(EventoGUIKeyDown& evento) override;

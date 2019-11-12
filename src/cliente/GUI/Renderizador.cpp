@@ -41,7 +41,7 @@ void Renderizador::dibujar(Textura& textura, Area& area) {
 }
 
 void Renderizador::dibujar(uint32_t numeroIteracion, Escena& escena) {
-    Textura textura = escena.dibujate(numeroIteracion, *this, ventana_.dimensiones());
+    Textura textura = escena.dibujate(numeroIteracion, ventana_.dimensiones());
     SDL_Rect SDLDestino = {
         0,
         0,

@@ -3,6 +3,9 @@
 
 #include "includes/common/Hilo.h"
 
+#include <stack>
+#include <memory>
+
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/ColaProtegida.h"
 #include "includes/cliente/GUI/Ventana.h"
@@ -15,6 +18,8 @@ private:
     Renderizador& renderizador_;
     ColaProtegida<std::shared_ptr<Evento>> eventos_;
     ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI_;
+    //TODO: Abstraer en "Escenario" ?
+    std::stack<std::shared_ptr<Escena>> escenas_;
 
 public:
     HiloDibujador(Ventana& ventana, Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI);
