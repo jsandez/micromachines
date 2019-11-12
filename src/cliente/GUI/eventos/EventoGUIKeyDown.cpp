@@ -9,3 +9,7 @@ EventoGUIKeyDown::EventoGUIKeyDown(char caracter)
 void EventoGUIKeyDown::actualizar(EventoGUIHandler& handler) {
     handler.manejar(*this);
 }
+
+char EventoGUIKeyDown::getCaracter() {
+    return caracter_;
+}

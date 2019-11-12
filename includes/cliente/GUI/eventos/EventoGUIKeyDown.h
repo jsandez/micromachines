@@ -10,6 +10,7 @@ private:
 public:
     EventoGUIKeyDown(char caracter);
     virtual void actualizar(EventoGUIHandler& handler) override;
+    char getCaracter();
 };
 
 #endif
