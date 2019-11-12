@@ -13,6 +13,7 @@ HiloDibujador::HiloDibujador(Ventana& ventana, Renderizador& renderizador, ColaP
 }
 
 void HiloDibujador::correr() {
+    //TODO: Resetear cada vez que se cambia de escena
     uint32_t iteracion = 0;
     while(seguirCorriendo_) {
         Escena& escenaActual = *escenas_.top().get();
