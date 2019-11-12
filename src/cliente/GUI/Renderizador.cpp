@@ -40,6 +40,20 @@ void Renderizador::dibujar(Textura& textura, Area& area) {
     SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
 }
 
+void Renderizador::dibujar(Textura& textura, Area& area, double grados, bool flipVertical) {
+    SDL_Rect SDLDestino = {
+        (int)area.x(),
+        (int)area.y(),
+        (int)area.ancho(),
+        (int)area.alto()
+        };
+    if (flipVertical) {
+        SDL_RenderCopyEx(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino, grados, NULL, SDL_FLIP_VERTICAL);    
+    } else {
+        SDL_RenderCopyEx(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino, grados, NULL, SDL_FLIP_NONE);
+    }    
+}
+
 void Renderizador::dibujar(uint32_t numeroIteracion, Escena& escena) {
     Textura textura = escena.dibujate(numeroIteracion, ventana_.dimensiones());
     SDL_Rect SDLDestino = {

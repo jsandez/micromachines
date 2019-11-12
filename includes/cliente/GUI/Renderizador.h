@@ -26,6 +26,7 @@ public:
     void setDestino(Textura& textura);
     void resetDestino();
     void dibujar(Textura& textura, Area& destino);
+    void dibujar(Textura& textura, Area& destino, double grados, bool flipVertical);
     ~Renderizador();
 
     SDL_Renderer* getSDL();

@@ -28,6 +28,9 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador&
         break;
 
     default:
+        std::string rutaArchivo(std::to_string(uuidAnimacion));
+        frames_.emplace_back(Textura("assets/" + std::to_string(uuidAnimacion) + ".png",renderizador));
+
         break;
         //throw
     }
