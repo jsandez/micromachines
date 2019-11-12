@@ -12,21 +12,22 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Pista.h"
+#include "includes/cliente/GUI/Camara.h"
 
 class EscenaPartida : public Escena {
  private:
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   Pista pista;
   Conversor conversor;
- // Camara camara;
+  Camara camara;
   int id_car, screenX, screenY;
  public:
   EscenaPartida(Renderizador &renderizador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                 std::stack<std::shared_ptr<Escena>> &escenas);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
-  virtual void manejar(EventoGUI& evento) override;
-  virtual void manejar(EventoGUIClick& evento) override;
-  virtual void manejar(EventoGUIKeyDown& evento) override;
+  virtual void manejar(EventoGUI &evento) override;
+  virtual void manejar(EventoGUIClick &evento) override;
+  virtual void manejar(EventoGUIKeyDown &evento) override;
 };
 #endif

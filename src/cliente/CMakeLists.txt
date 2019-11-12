@@ -20,6 +20,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/Pista.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Camara.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Ventana.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/ObjetoDinamico.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/Escena.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaMenu.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaSala.cpp

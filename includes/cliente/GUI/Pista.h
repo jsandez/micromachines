@@ -7,6 +7,7 @@
 #include <memory>
 #include <vector>
 #include <mutex>
+#include "includes/cliente/GUI/ObjetoDinamico.h"
 
 class Pista {
  private:
@@ -14,7 +15,7 @@ class Pista {
   uint16_t capas, size_x, size_y;
   std::map<int, std::vector<std::vector<std::shared_ptr<Animacion>>>> mapa;
   std::map<int, std::shared_ptr<Animacion>> texturas;
-  std::map<int, std::shared_ptr<Animacion>> objetosDinamicos;
+  std::map<int, std::shared_ptr<ObjetoDinamico>> objetosDinamicos;
   std::mutex mtx_;
 
   // METODOS PRIVADOS PARA CREAR LA PISTA
@@ -25,10 +26,10 @@ class Pista {
   Pista(std::string fileName, Renderizador &renderizador);
   void dibujate(int iteracion);
   std::shared_ptr<Animacion> getBloque(int capa, int x, int y) const;
-  /*void agregarObjeto(int id, Animacion objetoDinamico);
-  Animacion obtenerObjeto(int id);
+  void agregarObjeto(int id, std::shared_ptr<ObjetoDinamico>);
+  std::shared_ptr<ObjetoDinamico> obtenerObjeto(int id);
   void obtenerIds(std::vector<int> &ids);
-  void borrarObjeto(int id);*/
+  void borrarObjeto(int id);
   int getSizeX() const;
   int getSizeY() const;
 };

@@ -11,12 +11,12 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
   unsigned int ancho_ = 0;
   unsigned int alto_ = 0;
   switch (uuidAnimacion) {
-    case UUID_ANIMACION_SORLO:
-      for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesSorlo()) {
+    case UUID_ANIMACION_AUTO_ROJO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesAutoRojo()) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));
       }
-      ancho_ = CONFIG_CLIENTE.anchoSorlo();
-      alto_ = CONFIG_CLIENTE.altoSorlo();
+      ancho_ = CONFIG_CLIENTE.anchoAutoRojo();
+      alto_ = CONFIG_CLIENTE.altoAutoRojo();
       break;
 
     case UUID_ANIMACION_FONDO_MENU:
@@ -27,8 +27,9 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       alto_ = CONFIG_CLIENTE.altoFondoMenu();
       break;
 
-    default:
-      frames_.emplace_back(Textura("assets/pistas/" + std::to_string(uuidAnimacion) + ".png", renderizador));
+    default:frames_.emplace_back(Textura("assets/pistas/" + std::to_string(uuidAnimacion) + ".png", renderizador));
+      ancho_ = CONFIG_CLIENTE.anchoBloquesPista();
+      alto_ = CONFIG_CLIENTE.altoBloquesPista();
       break;
   }
   return Animacion(frames_, ancho_, alto_);

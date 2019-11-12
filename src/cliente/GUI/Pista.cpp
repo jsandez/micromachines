@@ -6,6 +6,8 @@ void Pista::agregarBloque(int capa, int x, int y, std::shared_ptr<Animacion> ani
 }
 
 void Pista::crearPista(nlohmann::json pistaJson) {
+  // TODO: CREO QUE SE DEBERIA CAMBIAR LOS NOMBRES DEL JSON TERRENO Y PISTA POR NUMEROS
+  // DE ESA FORMA NO ES NECESARIO SEPARAR EN DOS CICLOS DIFERENTES
   for (uint16_t i = 0; i < size_x; i++) {
     for (uint16_t j = 0; j < size_y; j++) {
       int bloqueTerreno = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<int>();
@@ -62,22 +64,17 @@ Pista::Pista(std::string
 }
 
 void Pista::dibujate(int iteracion) {
-  for (int i = 0; i < size_x; i++) {
-    for (int j = 0; j < size_y; j++) {
-      std::shared_ptr<Animacion> animacion = getBloque(0, i, j);
-      if (animacion != nullptr) {
-        Area areaFondo = Area(i * 256, j * 256, 256, 256);
-        renderizador.dibujar(animacion.get()->get(iteracion), areaFondo);
-      }
-    }
-  }
-
-  for (int i = 0; i < size_x; i++) {
-    for (int j = 0; j < size_y; j++) {
-      std::shared_ptr<Animacion> animacion = getBloque(1, i, j);
-      if (animacion != nullptr) {
-        Area areaFondo = Area(i * 256, j * 256, 256, 256);
-        renderizador.dibujar(animacion.get()->get(iteracion), areaFondo);
+  for (int k = 0; k < capas; k++) {
+    for (int i = 0; i < size_x; i++) {
+      for (int j = 0; j < size_y; j++) {
+        std::shared_ptr<Animacion> animacion = getBloque(k, i, j);
+        if (animacion != nullptr) {
+          Area areaFondo = Area(i * animacion.get()->ancho(),
+                                j * animacion.get()->alto(),
+                                animacion.get()->ancho(),
+                                animacion.get()->alto());
+          renderizador.dibujar(animacion.get()->get(iteracion), areaFondo);
+        }
       }
     }
   }
@@ -87,21 +84,22 @@ std::shared_ptr<Animacion> Pista::getBloque(int capa, int x, int y) const {
   return mapa.at(capa).at(x).at(y);
 }
 
-/*void Pista::agregarObjeto(int id, Animacion objetoDinamico) {
+void Pista::agregarObjeto(int id, std::shared_ptr<ObjetoDinamico> objetoDinamico) {
   std::lock_guard<std::mutex> lck(mtx_);
-  objetosDinamicos.insert(std::pair<int, Animacion>(id, objetoDinamico));
+  objetosDinamicos.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(id, objetoDinamico));
 }
 
-Animacion Pista::obtenerObjeto(int id) {
+std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
   std::lock_guard<std::mutex> lck(mtx_);
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     return objetosDinamicos.at(id);
   }
+  return nullptr;
 }
 
 void Pista::obtenerIds(std::vector<int> &ids) {
   std::lock_guard<std::mutex> lck(mtx_);
-  for (std::map<int, Animacion>::iterator it = objetosDinamicos.begin();
+  for (std::map<int, std::shared_ptr<ObjetoDinamico>>::iterator it = objetosDinamicos.begin();
        it != objetosDinamicos.end(); ++it) {
     ids.push_back(it->first);
   }
@@ -112,7 +110,7 @@ void Pista::borrarObjeto(int id) {
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     objetosDinamicos.erase(id);
   }
-}*/
+}
 
 int Pista::getSizeX() const {
   return size_x;

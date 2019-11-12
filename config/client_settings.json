@@ -1,33 +1,38 @@
 {
-    "ventana": {
-        "ancho": 1280,
-        "alto": 720,
-        "pantallaCompleta": false,
-        "titulo": "rpn"
+  "ventana": {
+    "ancho": 1280,
+    "alto": 720,
+    "pantallaCompleta": false,
+    "titulo": "rpn"
+  },
+  "red": {
+    "host": "localhost",
+    "puerto": "10001"
+  },
+  "bloques": {
+    "ancho": 256,
+    "alto": 256
+  },
+  "animaciones": {
+    "autoRojo": {
+      "uuid": 800,
+      "ancho": 46,
+      "alto": 100,
+      "sprites": [
+        "assets/autos/800.png",
+        "assets/autos/801.png",
+        "assets/autos/802.png",
+        "assets/autos/803.png",
+        "assets/autos/804.png"
+      ]
     },
-    "red": {
-        "host": "localhost",
-        "puerto": "10001"
-    },
-    "animaciones": {
-        "sorlo": {
-            "uuid": 800,
-            "ancho": 250,
-            "alto": 250,
-            "sprites": [
-                "assets/sorlo/1_sorlo.png",
-                "assets/sorlo/2_sorlo.png",
-                "assets/sorlo/3_sorlo.png",
-                "assets/sorlo/4_sorlo.png"
-            ]
-        },
-        "fondoMenu": {
-            "uuid": 900,
-            "ancho": 918,
-            "alto": 515,
-            "sprites": [
-                "assets/fondo_menu.png"
-            ]
-        }
+    "fondoMenu": {
+      "uuid": 900,
+      "ancho": 918,
+      "alto": 515,
+      "sprites": [
+        "assets/fondo_menu.png"
+      ]
     }
+  }
 }

@@ -1,1 +1,88 @@
+#include "includes/cliente/GUI/Camara.h"
+
+Camara::Camara(Conversor &conversor, Pista &pista, Renderizador &renderizador) :
+    conversor(conversor), pista(pista), renderizador_(renderizador) {
+  xInicial = 0;
+  xFinal = 0;
+  yInicial = 0;
+  yFinal = 0;
+}
+
+void Camara::setWidthHeight(int width, int height) {
+  this->width = width;
+  this->height = height;
+}
+void Camara::setCar(std::shared_ptr<ObjetoDinamico> car) {
+  this->car = car;
+}
+
+void Camara::dibujarPista(int iteracion) {
+  int posCarX = conversor.pixelABloque(car.get()->getX());
+  int posCarY = conversor.pixelABloque(car.get()->getY());
+  xInicial = posCarX - (conversor.pixelABloque(width / 2) + 1);
+  xFinal = posCarX + (conversor.pixelABloque(width / 2) + 2);
+  yInicial = posCarY - (conversor.pixelABloque(height / 2) + 1);
+  yFinal = posCarY + (conversor.pixelABloque(height / 2) + 2);
+  if (xInicial < 0) {
+    xInicial = 0;
+  }
+  if (yInicial < 0) {
+    yInicial = 0;
+  }
+  if (xFinal > pista.getSizeX()) {
+    xFinal = pista.getSizeX();
+  }
+  if (yFinal > pista.getSizeY()) {
+    yFinal = pista.getSizeY();
+  }
+  for (int i = xInicial; i < xFinal; i++) {
+    for (int j = yInicial; j < yFinal; j++) {
+      std::shared_ptr<Animacion> animacion = pista.getBloque(0, i, j);
+      if (animacion != nullptr) {
+        Area areaFondo = Area(i * animacion.get()->ancho() - (car.get()->getX() - width / 2),
+                              j * animacion.get()->alto() - (car.get()->getY() - height / 2),
+                              animacion.get()->ancho(),
+                              animacion.get()->alto());
+        renderizador_.dibujar(animacion.get()->get(iteracion), areaFondo);
+      }
+    }
+  }
+  for (int i = xInicial; i < xFinal; i++) {
+    for (int j = yInicial; j < yFinal; j++) {
+      std::shared_ptr<Animacion> animacion = pista.getBloque(1, i, j);
+      if (animacion != nullptr) {
+        Area areaFondo = Area(i * animacion.get()->ancho() - (car.get()->getX() - width / 2),
+                              j * animacion.get()->alto() - (car.get()->getY() - height / 2),
+                              animacion.get()->ancho(),
+                              animacion.get()->alto());
+        renderizador_.dibujar(animacion.get()->get(iteracion), areaFondo);
+      }
+    }
+  }
+}
+
+void Camara::dibujarObjetos(int car_id, int iteracion) {
+  std::vector<int> idObjetos;
+  pista.obtenerIds(idObjetos);
+  for (uint16_t i = 0; i < idObjetos.size(); i++) {
+    if (idObjetos[i] != car_id) {
+      std::shared_ptr<ObjetoDinamico> objeto = pista.obtenerObjeto(idObjetos[i]);
+      if (objeto != nullptr) {
+        int bloqueCarX = conversor.pixelABloque(objeto.get()->getX());
+        int bloqueCarY = conversor.pixelABloque(objeto.get()->getY());
+        if (bloqueCarX >= xInicial &&
+            bloqueCarX <= xFinal &&
+            bloqueCarY >= yInicial &&
+            bloqueCarY <= yFinal) {
+          Animacion &animacion = objeto.get()->getAnimacion();
+          Area areaFondo = Area(objeto.get()->getX() - (this->car.get()->getX() - width / 2),
+                                objeto.get()->getY() - (this->car.get()->getY() - height / 2),
+                                animacion.ancho(),
+                                animacion.alto());
+          renderizador_.dibujar(animacion.get(iteracion), areaFondo);
+        }
+      }
+    }
+  }
+}
 

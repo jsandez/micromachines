@@ -67,3 +67,27 @@ unsigned int ConfigCliente::altoFondoMenu() {
 std::vector<std::string> ConfigCliente::spritesFondoMenu() {
     return std::move(json_["animaciones"]["fondoMenu"]["sprites"].get<std::vector<std::string>>());
 }
+
+unsigned int ConfigCliente::anchoBloquesPista() {
+  return json_["bloques"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoBloquesPista() {
+  return json_["bloques"]["alto"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::uuidAutoRojo() {
+  return json_["animaciones"]["autoRojo"]["uuid"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoAutoRojo() {
+  return json_["animaciones"]["autoRojo"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoAutoRojo() {
+  return json_["animaciones"]["autoRojo"]["alto"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesAutoRojo() {
+  return std::move(json_["animaciones"]["autoRojo"]["sprites"].get<std::vector<std::string>>());
+}
