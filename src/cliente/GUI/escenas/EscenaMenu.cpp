@@ -1,5 +1,5 @@
 #include "includes/cliente/GUI/escenas/EscenaMenu.h"
-
+#include "includes/cliente/GUI/escenas/EscenaPartida.h"
 #include "includes/cliente/GUI/escenas/EscenaSala.h"
 #include "includes/cliente/GUI/AnimacionFactory.h"
 #include "includes/cliente/utils/ConfigCliente.h"
@@ -28,7 +28,8 @@ void EscenaMenu::manejar(EventoGUI& evento) {
 
 void EscenaMenu::manejar(EventoGUIClick& evento) {
     std::cout << "Click en escena menu\n";
-    escenas_.emplace(std::make_shared<EscenaSala>(renderizador_, eventosGUI_, escenas_));
+    //escenas_.emplace(std::make_shared<EscenaSala>(renderizador_, eventosGUI_, escenas_));
+  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_));
 }
 
 void EscenaMenu::manejar(EventoGUIKeyDown& evento) {

@@ -11,7 +11,7 @@
     },
     "animaciones": {
         "sorlo": {
-            "uuid": 1,
+            "uuid": 800,
             "ancho": 250,
             "alto": 250,
             "sprites": [
@@ -22,7 +22,7 @@
             ]
         },
         "fondoMenu": {
-            "uuid": 2,
+            "uuid": 900,
             "ancho": 918,
             "alto": 515,
             "sprites": [
