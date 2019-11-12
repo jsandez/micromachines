@@ -18,6 +18,27 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.anchoAutoRojo();
       alto_ = CONFIG_CLIENTE.altoAutoRojo();
       break;
+    case UUID_ANIMACION_AUTO_BLANCO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesAutoBlanco()) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.anchoAutoBlanco();
+      alto_ = CONFIG_CLIENTE.altoAutoBlanco();
+      break;
+    case UUID_ANIMACION_AUTO_NEGRO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesAutoNegro()) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.anchoAutoNegro();
+      alto_ = CONFIG_CLIENTE.altoAutoNegro();
+      break;
+    case UUID_ANIMACION_AUTO_AZUL:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesAutoAzul()) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.anchoAutoAzul();
+      alto_ = CONFIG_CLIENTE.altoAutoAzul();
+      break;
 
     case UUID_ANIMACION_FONDO_MENU:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.spritesFondoMenu()) {

@@ -26,6 +26,42 @@
         "assets/autos/804.png"
       ]
     },
+    "autoBlanco": {
+      "uuid": 810,
+      "ancho": 46,
+      "alto": 100,
+      "sprites": [
+        "assets/autos/810.png",
+        "assets/autos/811.png",
+        "assets/autos/812.png",
+        "assets/autos/813.png",
+        "assets/autos/814.png"
+      ]
+    },
+    "autoNegro": {
+      "uuid": 820,
+      "ancho": 46,
+      "alto": 100,
+      "sprites": [
+        "assets/autos/820.png",
+        "assets/autos/821.png",
+        "assets/autos/822.png",
+        "assets/autos/823.png",
+        "assets/autos/824.png"
+      ]
+    },
+    "autoAzul": {
+      "uuid": 830,
+      "ancho": 46,
+      "alto": 100,
+      "sprites": [
+        "assets/autos/830.png",
+        "assets/autos/831.png",
+        "assets/autos/832.png",
+        "assets/autos/833.png",
+        "assets/autos/834.png"
+      ]
+    },
     "fondoMenu": {
       "uuid": 900,
       "ancho": 918,

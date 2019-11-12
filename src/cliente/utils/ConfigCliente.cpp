@@ -91,3 +91,51 @@ unsigned int ConfigCliente::altoAutoRojo() {
 std::vector<std::string> ConfigCliente::spritesAutoRojo() {
   return std::move(json_["animaciones"]["autoRojo"]["sprites"].get<std::vector<std::string>>());
 }
+
+unsigned int ConfigCliente::uuidAutoBlanco() {
+  return json_["animaciones"]["autoBlanco"]["uuid"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoAutoBlanco() {
+  return json_["animaciones"]["autoBlanco"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoAutoBlanco() {
+  return json_["animaciones"]["autoBlanco"]["alto"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesAutoBlanco() {
+  return std::move(json_["animaciones"]["autoBlanco"]["sprites"].get<std::vector<std::string>>());
+}
+
+unsigned int ConfigCliente::uuidAutoNegro() {
+  return json_["animaciones"]["autoNegro"]["uuid"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoAutoNegro() {
+  return json_["animaciones"]["autoNegro"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoAutoNegro() {
+  return json_["animaciones"]["autoNegro"]["alto"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesAutoNegro() {
+  return std::move(json_["animaciones"]["autoNegro"]["sprites"].get<std::vector<std::string>>());
+}
+
+unsigned int ConfigCliente::uuidAutoAzul() {
+  return json_["animaciones"]["autoAzul"]["uuid"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoAutoAzul() {
+  return json_["animaciones"]["autoAzul"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoAutoAzul() {
+  return json_["animaciones"]["autoAzul"]["alto"].get<unsigned int>();
+}
+
+std::vector<std::string> ConfigCliente::spritesAutoAzul() {
+  return std::move(json_["animaciones"]["autoAzul"]["sprites"].get<std::vector<std::string>>());
+}

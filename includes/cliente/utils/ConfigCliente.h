@@ -36,6 +36,21 @@ class ConfigCliente {
   unsigned int altoAutoRojo();
   std::vector<std::string> spritesAutoRojo();
 
+  unsigned int uuidAutoBlanco();
+  unsigned int anchoAutoBlanco();
+  unsigned int altoAutoBlanco();
+  std::vector<std::string> spritesAutoBlanco();
+
+  unsigned int uuidAutoNegro();
+  unsigned int anchoAutoNegro();
+  unsigned int altoAutoNegro();
+  std::vector<std::string> spritesAutoNegro();
+
+  unsigned int uuidAutoAzul();
+  unsigned int anchoAutoAzul();
+  unsigned int altoAutoAzul();
+  std::vector<std::string> spritesAutoAzul();
+
   unsigned int uuidFondoMenu();
   unsigned int anchoFondoMenu();
   unsigned int altoFondoMenu();

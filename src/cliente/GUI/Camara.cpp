@@ -79,7 +79,7 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
                                 objeto.get()->getY() - (this->car.get()->getY() - height / 2),
                                 animacion.ancho(),
                                 animacion.alto());
-          renderizador_.dibujar(animacion.get(iteracion), areaFondo);
+          renderizador_.dibujar(animacion.get(iteracion), areaFondo, objeto.get()->getAngulo(), false);
         }
       }
     }

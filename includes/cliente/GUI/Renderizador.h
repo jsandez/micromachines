@@ -11,24 +11,25 @@ class Ventana;
 #define SDL_PRIMER_DISPONIBLE -1
 
 class Renderizador {
-private:
-    SDL_Renderer* renderizadorSDL_;
-    Ventana& ventana_;
+ private:
+  SDL_Renderer *renderizadorSDL_;
+  Ventana &ventana_;
 
-    Renderizador(const Renderizador&) = delete;
-    Renderizador& operator=(const Renderizador&) = delete;
+  Renderizador(const Renderizador &) = delete;
+  Renderizador &operator=(const Renderizador &) = delete;
 
-    void clear();
+  void clear();
 
-public:
-    Renderizador(Ventana& ventana);
-    void dibujar(uint32_t numeroIteracion, Escena& escena);
-    void setDestino(Textura& textura);
-    void resetDestino();
-    void dibujar(Textura& textura, Area& destino);
-    ~Renderizador();
+ public:
+  Renderizador(Ventana &ventana);
+  void dibujar(uint32_t numeroIteracion, Escena &escena);
+  void setDestino(Textura &textura);
+  void resetDestino();
+  void dibujar(Textura &textura, Area &destino);
+  void dibujar(Textura &textura, Area &destino, double grados, bool flipVertical);
+  ~Renderizador();
 
-    SDL_Renderer* getSDL();
+  SDL_Renderer *getSDL();
 };
 
 #endif
