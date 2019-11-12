@@ -17,6 +17,7 @@ Partida::~Partida() {
 
 void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
     jugadores_[jugador->uuid()] = jugador;
+
 }
 
 void Partida::step(uint32_t nroIteracion) {
@@ -38,6 +39,7 @@ void Partida::step(uint32_t nroIteracion) {
 
 void Partida::correr() {
     //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
+    asignarVehiculos();
     double frecuencia = (double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo();
     // Convierto a milisegundos
     // TODO: Uniformizar esto, porque depende de como se usa aca, en el cronometro
@@ -69,4 +71,10 @@ void Partida::detener() {
 
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
     eventosEntrantes_.put(unEvento);
+}
+
+void Partida::asignarVehiculos() {
+    for (const auto& kv : jugadores_) {
+        mundo_.crearVehiculo(kv.second->uuid());
+    }
 }

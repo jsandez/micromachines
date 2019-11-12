@@ -21,6 +21,7 @@ private:
     Partida& operator=(const Partida& otra) = delete;
 
     void step(uint32_t iteracion);
+    void asignarVehiculos();
 
 public:
     Partida(uint16_t uuidPista);
