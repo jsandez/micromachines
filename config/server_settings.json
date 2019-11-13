@@ -4,9 +4,19 @@
         "maxClientesEnEspera": 20
     },
     "fisicas": {
-        "simulacionesPorSegundo" : 60,
-        "iteracionesVelocidad"   : 8,
-        "iteracionesPosicion"    : 3
+        "simulacionesPorSegundo": 2,
+        "iteracionesVelocidad": 8,
+        "iteracionesPosicion": 3
+    },
+    "modelo": {
+        "vehiculo": {
+            "velocidadMaxAdelante": 10,
+            "velocidadMaxAtras": 3,
+            "aceleracionVehiculo": 2,
+            "maniobrabilidadVehiculo": 5,
+            "agarreVehiculo": 5,
+            "saludVehiculo": 100
+        }
     },
     "rutaPistas": "assets/pistas/",
     "tiles": {
