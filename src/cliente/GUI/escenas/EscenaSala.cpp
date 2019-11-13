@@ -6,7 +6,7 @@
 
 EscenaSala::EscenaSala(Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI, std::stack<std::shared_ptr<Escena>>& escenas) :
     Escena(escenas, renderizador),
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuidSorlo(), renderizador)),
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("sorlo"), renderizador)),
     eventosGUI_(eventosGUI) {
 }
 

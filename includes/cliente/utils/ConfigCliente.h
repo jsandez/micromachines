@@ -26,38 +26,13 @@ class ConfigCliente {
   std::string host();
   std::string puerto();
 
-  unsigned int uuidSorlo();
-  unsigned int anchoSorlo();
-  unsigned int altoSorlo();
-  std::vector<std::string> spritesSorlo();
-
-  unsigned int uuidAutoRojo();
-  unsigned int anchoAutoRojo();
-  unsigned int altoAutoRojo();
-  std::vector<std::string> spritesAutoRojo();
-
-  unsigned int uuidAutoBlanco();
-  unsigned int anchoAutoBlanco();
-  unsigned int altoAutoBlanco();
-  std::vector<std::string> spritesAutoBlanco();
-
-  unsigned int uuidAutoNegro();
-  unsigned int anchoAutoNegro();
-  unsigned int altoAutoNegro();
-  std::vector<std::string> spritesAutoNegro();
-
-  unsigned int uuidAutoAzul();
-  unsigned int anchoAutoAzul();
-  unsigned int altoAutoAzul();
-  std::vector<std::string> spritesAutoAzul();
-
-  unsigned int uuidFondoMenu();
-  unsigned int anchoFondoMenu();
-  unsigned int altoFondoMenu();
-  std::vector<std::string> spritesFondoMenu();
-
   unsigned int anchoBloquesPista();
   unsigned int altoBloquesPista();
+
+  unsigned int uuid(std::string nombreAnimacion);
+  unsigned int ancho(std::string nombreAnimacion);
+  unsigned int alto(std::string nombreAnimacion);
+  std::vector<std::string> sprites(std::string nombreAnimacion);
 };
 
 #endif

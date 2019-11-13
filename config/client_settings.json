@@ -14,6 +14,17 @@
     "alto": 256
   },
   "animaciones": {
+    "sorlo": {
+      "uuid": 1,
+      "ancho": 250,
+      "alto": 250,
+      "sprites": [
+        "assets/sorlo/1_sorlo.png",
+        "assets/sorlo/2_sorlo.png",
+        "assets/sorlo/3_sorlo.png",
+        "assets/sorlo/4_sorlo.png"
+      ]
+    },
     "autoRojo": {
       "uuid": 800,
       "ancho": 46,
@@ -63,11 +74,25 @@
       ]
     },
     "fondoMenu": {
-      "uuid": 900,
+      "uuid": 700,
       "ancho": 918,
       "alto": 515,
       "sprites": [
         "assets/fondo_menu.png"
+      ]
+    },
+    "explosion": {
+      "uuid": 900,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/animaciones/900.png",
+        "assets/animaciones/901.png",
+        "assets/animaciones/902.png",
+        "assets/animaciones/903.png",
+        "assets/animaciones/904.png",
+        "assets/animaciones/905.png",
+        "assets/animaciones/906.png"
       ]
     }
   }
