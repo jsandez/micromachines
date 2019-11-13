@@ -20,7 +20,8 @@ void HiloDibujador::correr() {
         renderizador_.dibujar(iteracion, escenaActual);
         iteracion += 1;
         SDL_Delay(100);
-        // Manejo los eventos despues por si ocurre que se procesan dos clicks (por ejemplo), y se cambia de escena y se procesa el click sin haber dibujado.
+        //FIXME: Se arregla haciendo que el metodo manejar evento devuelva true si hay que continuar.
+        // También se puede chequear al hacer pop que no se esté quedando sin escenas
         bool obtenido = false;
         std::shared_ptr<EventoGUI> evento;
         while((obtenido = eventosGUI_.get(evento))) {
