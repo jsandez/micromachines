@@ -8,12 +8,14 @@
 #include "includes/common/Cola.h"
 #include "includes/common/eventos/Evento.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
+#include "includes/servidor/modelo/Vehiculo.h"
+#include "includes/servidor/modelo/movimiento/Posicion.h"
 
 class Fisicas {
 private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
-    std::map<uint16_t, b2Body*> colisionables_;
+    std::map<uint32_t, b2Body*> colisionables_;
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
@@ -23,8 +25,10 @@ public:
     Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos);
     ~Fisicas();
     void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
-    void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
+    //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
     void step(uint32_t numeroIteracion);
+    void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
+    void acelerar(uint32_t uuidVehiculo);
 };
 
 #endif

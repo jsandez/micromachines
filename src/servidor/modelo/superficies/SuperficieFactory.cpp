@@ -10,8 +10,6 @@ std::shared_ptr<Superficie> SuperficieFactory::instanciar(int uuid) {
     std::vector<int>& tilesPista = CONFIG_SERVIDOR.tilesPista();
     
     int tileArena = CONFIG_SERVIDOR.tileArena();
-    int tileBarro = CONFIG_SERVIDOR.tileBarro();
-    int tileAceite = CONFIG_SERVIDOR.tileAceite();
 
     std::vector<int>::iterator it;
 
@@ -27,14 +25,6 @@ std::shared_ptr<Superficie> SuperficieFactory::instanciar(int uuid) {
 
     if (uuid == tileArena) {
         return std::make_shared<SuperficieArena>();
-    }
-
-    if (uuid == tileBarro) {
-        return std::make_shared<SuperficieBarro>();
-    }
-
-    if (uuid == tileAceite) {
-        return std::make_shared<SuperficieAceite>();
     }
     
     return std::make_shared<NoSuperficie>();

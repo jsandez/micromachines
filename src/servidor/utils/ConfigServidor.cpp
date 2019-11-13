@@ -61,3 +61,22 @@ uint32_t ConfigServidor::iteracionesPosicion() {
 uint32_t ConfigServidor::iteracionesVelocidad() {
     return json_["fisicas"]["iteracionesVelocidad"].get<uint32_t>();
 }
+
+unsigned int ConfigServidor::velocidadMaxVehiculoAdelante() {
+    return json_["modelo"]["vehiculo"]["velocidadMaxAdelante"].get<unsigned int>();
+}
+unsigned int ConfigServidor::velocidadMaxVehiculoAtras() {
+    return json_["modelo"]["vehiculo"]["velocidadMaxAtras"].get<unsigned int>();
+}
+unsigned int ConfigServidor::aceleracionVehiculo() {
+    return json_["modelo"]["vehiculo"]["aceleracionVehiculo"].get<unsigned int>();
+}
+unsigned int ConfigServidor::maniobrabilidadVehiculo() {
+    return json_["modelo"]["vehiculo"]["agarreVehiculo"].get<unsigned int>();
+}
+unsigned int ConfigServidor::agarreVehiculo() {
+    return json_["modelo"]["vehiculo"]["maniobrabilidadVehiculo"].get<unsigned int>();
+}
+unsigned int ConfigServidor::saludVehiculo() {
+    return json_["modelo"]["vehiculo"]["saludVehiculo"].get<unsigned int>();
+}

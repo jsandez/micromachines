@@ -7,6 +7,7 @@
 #include "includes/common/Cronometro.h"
 #include "includes/common/Cola.h"
 #include "includes/servidor/utils/ConfigServidor.h"
+#include "includes/common/eventos/EventoIDJugador.h"
 
 Partida::Partida(uint16_t uuidPista) :
     mundo_(uuidPista) {
@@ -17,7 +18,6 @@ Partida::~Partida() {
 
 void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
     jugadores_[jugador->uuid()] = jugador;
-
 }
 
 void Partida::step(uint32_t nroIteracion) {
@@ -38,8 +38,8 @@ void Partida::step(uint32_t nroIteracion) {
 }
 
 void Partida::correr() {
-    //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
     asignarVehiculos();
+    //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
     double frecuencia = (double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo();
     // Convierto a milisegundos
     // TODO: Uniformizar esto, porque depende de como se usa aca, en el cronometro
@@ -75,6 +75,8 @@ void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
 
 void Partida::asignarVehiculos() {
     for (const auto& kv : jugadores_) {
-        mundo_.crearVehiculo(kv.second->uuid());
+        mundo_.agregarVehiculo(kv.second->uuid());
+        std::shared_ptr<Evento> eventoID = std::make_shared<EventoIDJugador>(kv.second->uuid());
+        kv.second->ocurrio(eventoID);
     }
 }

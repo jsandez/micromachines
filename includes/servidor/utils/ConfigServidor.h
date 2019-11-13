@@ -32,6 +32,13 @@ public:
     uint32_t simulacionesPorSegundo();
     uint32_t iteracionesPosicion();
     uint32_t iteracionesVelocidad();
+
+    unsigned int velocidadMaxVehiculoAdelante();
+    unsigned int velocidadMaxVehiculoAtras();
+    unsigned int aceleracionVehiculo();
+    unsigned int maniobrabilidadVehiculo();
+    unsigned int agarreVehiculo();
+    unsigned int saludVehiculo();
 };
 
 #endif

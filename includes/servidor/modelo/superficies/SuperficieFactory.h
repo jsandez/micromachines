@@ -4,8 +4,6 @@
 #include <memory>
 
 #include "includes/servidor/modelo/superficies/Superficie.h"
-#include "includes/servidor/modelo/superficies/SuperficieBarro.h"
-#include "includes/servidor/modelo/superficies/SuperficieAceite.h"
 #include "includes/servidor/modelo/superficies/SuperficieTierra.h"
 #include "includes/servidor/modelo/superficies/SuperficiePista.h"
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
