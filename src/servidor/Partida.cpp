@@ -28,6 +28,7 @@ void Partida::step(uint32_t nroIteracion) {
     }
     mundo_.step(nroIteracion);
     Cola<std::shared_ptr<Evento>>& eventosOcurridos = mundo_.eventosOcurridos();
+    //TODO: get snapshot
     std::shared_ptr<Evento> eventoOcurrido;
     while((obtenido = eventosOcurridos.get(eventoOcurrido))) {
         for (auto& kv : jugadores_) {
