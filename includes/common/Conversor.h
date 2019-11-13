@@ -17,5 +17,9 @@ Conversor {
   float pixelAMetro(int coord);
   int bloqueAPixel(int coord);
   int pixelABloque(int coord);
+  //TODO: Refactor this
+  static float tileAMetro(int coordenada) {
+    return 10*(float)coordenada;
+  }
 };
 #endif

@@ -13,7 +13,11 @@ private:
 public:
     Protocolo(SocketTCP& socket);
     uint16_t recibirNumUnsigned16();
+    uint32_t recibirNumUnsigned32();
     void enviar(uint16_t numero);
+    void enviar(uint32_t numero);
+    
+
 };
 
 #endif

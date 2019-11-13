@@ -12,6 +12,7 @@ class Handler;
 #define UUID_EVENTO_INICIAR_PARTIDA     4
 #define UUID_EVENTO_DESCONEXION         5
 #define UUID_EVENTO_ACELERAR            6
+#define UUID_EVENTO_ID_JUGADOR          7
 
 // TODO: Crear constructor por movimiento
 //TODO: Setear id en cada evento creado
