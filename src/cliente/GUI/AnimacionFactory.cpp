@@ -56,6 +56,46 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       alto_ = CONFIG_CLIENTE.alto("explosion");
       break;
 
+    case UUID_ANIMACION_CAJAS_SALUD:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("cajaSalud")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("cajaSalud");
+      alto_ = CONFIG_CLIENTE.alto("cajaSalud");
+      break;
+
+    case UUID_ANIMACION_BOOST:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("boost")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("boost");
+      alto_ = CONFIG_CLIENTE.alto("boost");
+      break;
+
+    case UUID_ANIMACION_PIEDRA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("piedra")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("piedra");
+      alto_ = CONFIG_CLIENTE.alto("piedra");
+      break;
+
+    case UUID_ANIMACION_ACEITE:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("aceite")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("aceite");
+      alto_ = CONFIG_CLIENTE.alto("aceite");
+      break;
+
+    case UUID_ANIMACION_BARRO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("barro")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("barro");
+      alto_ = CONFIG_CLIENTE.alto("barro");
+      break;
+
     default:frames_.emplace_back(Textura("assets/pistas/" + std::to_string(uuidAnimacion) + ".png", renderizador));
       ancho_ = CONFIG_CLIENTE.anchoBloquesPista();
       alto_ = CONFIG_CLIENTE.altoBloquesPista();

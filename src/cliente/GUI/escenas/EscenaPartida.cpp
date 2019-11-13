@@ -21,16 +21,20 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
   std::shared_ptr<ObjetoDinamico>
       explosion = std::make_shared<ObjetoDinamico>(900, renderizador);
 
+  std::shared_ptr<ObjetoDinamico>
+      salud = std::make_shared<ObjetoDinamico>(1000, renderizador);
+
   pista.agregarObjeto(0, carPrincipal);
   pista.agregarObjeto(1, carSecundario);
-  pista.agregarObjeto(2,explosion);
+  pista.agregarObjeto(2, explosion);
+  pista.agregarObjeto(3, salud);
   camara.setCar(carPrincipal);
   this->id_car = 0;
   pista.obtenerObjeto(0).get()->mover(3000, 3000, -90);
   pista.obtenerObjeto(1).get()->mover(3100, 3100, -90);
   pista.obtenerObjeto(2).get()->mover(3200, 3200, -90);
+  pista.obtenerObjeto(3).get()->mover(3300, 3300, 0);
 }
-
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   Textura miTextura(renderizador_, dimensiones);

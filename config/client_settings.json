@@ -94,6 +94,46 @@
         "assets/animaciones/905.png",
         "assets/animaciones/906.png"
       ]
+    },
+    "cajaSalud": {
+      "uuid": 1000,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/modificadores/1000.png"
+      ]
+    },
+    "boost": {
+      "uuid": 1100,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/modificadores/1100.png"
+      ]
+    },
+    "piedra": {
+      "uuid": 1200,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/modificadores/1200.png"
+      ]
+    },
+    "aceite": {
+      "uuid": 1300,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/modificadores/1300.png"
+      ]
+    },
+    "barro": {
+      "uuid": 1400,
+      "ancho": 110,
+      "alto": 110,
+      "sprites": [
+        "assets/modificadores/1400.png"
+      ]
     }
   }
 }
