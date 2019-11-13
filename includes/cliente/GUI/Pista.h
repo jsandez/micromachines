@@ -30,6 +30,7 @@ class Pista {
   std::shared_ptr<ObjetoDinamico> obtenerObjeto(int id);
   void obtenerIds(std::vector<int> &ids);
   void borrarObjeto(int id);
+  int getCapas() const;
   int getSizeX() const;
   int getSizeY() const;
 };

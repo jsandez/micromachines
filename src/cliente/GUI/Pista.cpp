@@ -112,6 +112,10 @@ void Pista::borrarObjeto(int id) {
   }
 }
 
+int Pista::getCapas() const {
+  return capas;
+}
+
 int Pista::getSizeX() const {
   return size_x;
 }
