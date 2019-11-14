@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10.2)
 
 # Subdirectorios 3rd-party que se compilan sin flags
 add_subdirectory(3rd-party/Box2D)
+add_subdirectory(3rd-party/lua)
+
 
 # Subdirectorios propios
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")

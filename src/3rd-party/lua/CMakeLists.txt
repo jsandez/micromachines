@@ -13,10 +13,12 @@ message("LUA_VERSION_MINOR: ${LUA_VERSION_MINOR}")
 message("LUA_VERSION_PATCH: ${LUA_VERSION_PATCH}")
 
 include_directories(${LUA_INCLUDE_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/includes/3rd-party)
+
 
 set(SOURCES
-  ${PROJECT_SOURCE_DIR}/lua/lua/LuaInterprete.cpp
-}
+  ${PROJECT_SOURCE_DIR}/lua/LuaInterprete.cpp
+)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
