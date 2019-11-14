@@ -65,8 +65,9 @@ void EscenaPartida::manejar(EventoGUIClick &evento) {
 }
 
 void EscenaPartida::manejar(EventoGUIKeyDown &evento) {
-  std::cout << "keydown de " << evento.getTecla() << "  en escena sala\n";
-  if (evento.getTecla() == TECLA_ESC) {
+  if (evento.getTecla() == TECLA_FULLSCREEN) {
+    renderizador_.toggleFullScreen();
+  } else if (evento.getTecla() == TECLA_ESC) {
     escenas_.pop();
   }
 }
