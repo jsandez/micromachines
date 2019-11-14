@@ -41,7 +41,7 @@ unsigned int Ventana::alto() {
 
 void Ventana::toggleFullScreen() {
     if (!fullscreen_) {
-        SDL_SetWindowFullscreen(ventanaSDL_, SDL_WINDOW_FULLSCREEN_DESKTOP);    
+        SDL_SetWindowFullscreen(ventanaSDL_, SDL_WINDOW_FULLSCREEN);    
     } else {
         SDL_SetWindowFullscreen(ventanaSDL_, 0);    
     }

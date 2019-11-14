@@ -33,5 +33,7 @@ void EscenaMenu::manejar(EventoGUIClick& evento) {
 }
 
 void EscenaMenu::manejar(EventoGUIKeyDown& evento) {
-    std::cout << "keydown de " << evento.getTecla() << "  en escena menu\n";
+    if (evento.getTecla() == TECLA_FULLSCREEN) {
+        renderizador_.toggleFullScreen();
+    }
 }

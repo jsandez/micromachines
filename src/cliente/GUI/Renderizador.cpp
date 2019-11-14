@@ -67,6 +67,10 @@ void Renderizador::dibujar(uint32_t numeroIteracion, Escena &escena) {
   SDL_RenderPresent(renderizadorSDL_);
 }
 
+void Renderizador::toggleFullScreen() {
+  ventana_.toggleFullScreen();
+}
+
 SDL_Renderer *Renderizador::getSDL() {
   return renderizadorSDL_;
 }
