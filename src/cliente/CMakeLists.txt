@@ -26,6 +26,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaSala.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaPartida.cpp
 
+        ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
         ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Conversor.cpp

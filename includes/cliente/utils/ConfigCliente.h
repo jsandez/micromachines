@@ -22,6 +22,7 @@ class ConfigCliente {
   unsigned int altoVentana();
   bool pantallaCompleta();
   std::string tituloVentana();
+  unsigned int fps();
 
   std::string host();
   std::string puerto();
