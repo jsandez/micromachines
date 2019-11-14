@@ -1,4 +1,4 @@
-#include "includes/servidor/modelo/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/Vehiculo.h"
 
 Vehiculo::Vehiculo(unsigned int velocidadMaximaAdelante,
             unsigned int velocidadMaximaAtras,
@@ -13,4 +13,3 @@ Vehiculo::Vehiculo(unsigned int velocidadMaximaAdelante,
             agarre_(agarre),
             salud_(salud) {
 }
-
