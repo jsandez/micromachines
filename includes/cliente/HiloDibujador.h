@@ -20,7 +20,7 @@ private:
     ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI_;
     //TODO: Abstraer en "Escenario" ?
     std::stack<std::shared_ptr<Escena>> escenas_;
-
+    void step(uint32_t nroIteracion, Escena& escena);
 public:
     HiloDibujador(Ventana& ventana, Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI);
     virtual void correr() override;

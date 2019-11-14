@@ -68,12 +68,10 @@ std::shared_ptr<Animacion> Pista::getBloque(int capa, int x, int y) const {
 }
 
 void Pista::agregarObjeto(int id, std::shared_ptr<ObjetoDinamico> objetoDinamico) {
-  std::lock_guard<std::mutex> lck(mtx_);
   objetosDinamicos.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(id, objetoDinamico));
 }
 
 std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
-  std::lock_guard<std::mutex> lck(mtx_);
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     return objetosDinamicos.at(id);
   }
@@ -81,7 +79,6 @@ std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
 }
 
 void Pista::obtenerIds(std::vector<int> &ids) {
-  std::lock_guard<std::mutex> lck(mtx_);
   for (std::map<int, std::shared_ptr<ObjetoDinamico>>::iterator it = objetosDinamicos.begin();
        it != objetosDinamicos.end(); ++it) {
     ids.push_back(it->first);
@@ -89,7 +86,6 @@ void Pista::obtenerIds(std::vector<int> &ids) {
 }
 
 void Pista::borrarObjeto(int id) {
-  std::lock_guard<std::mutex> lck(mtx_);
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     objetosDinamicos.erase(id);
   }

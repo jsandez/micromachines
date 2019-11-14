@@ -6,6 +6,18 @@
 
 #include <SDL2/SDL.h>
 #include <includes/common/Cronometro.h>
+#include <iostream>
+
+void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
+  bool obtenido = false;
+  std::shared_ptr<Evento> evento;
+  while ((obtenido = eventos_.get(evento))) {
+    // ACA SE PROCESAN LOS EVENTOS
+    //ALGO
+    //evento.get()->actualizar(escena);
+  }
+  renderizador_.dibujar(iteracion, escena);
+}
 
 HiloDibujador::HiloDibujador(Ventana &ventana,
                              Renderizador &renderizador,
@@ -13,7 +25,6 @@ HiloDibujador::HiloDibujador(Ventana &ventana,
     ventana_(ventana),
     renderizador_(renderizador),
     eventosGUI_(eventosGUI) {
-
   escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_));
 }
 
@@ -26,7 +37,7 @@ void HiloDibujador::correr() {
   uint32_t iteracion = 0;
   while (seguirCorriendo_) {
     Escena &escenaActual = *escenas_.top().get();
-    renderizador_.dibujar(iteracion, escenaActual);
+    step(iteracion, escenaActual);
     double t2 = c.ahora();
     double resto = frecuencia - (t2 - t1);
     if (resto < 0) {
