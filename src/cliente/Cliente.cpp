@@ -76,6 +76,11 @@ void Cliente::manejarKeyDown(SDL_Event& eventoSDL) {
         case SDLK_ESCAPE:
             evento = std::make_shared<EventoGUIKeyDown>(TECLA_ESC);
             eventosGUI_.put(evento);
+            break;
+        case SDLK_F11:
+            evento = std::make_shared<EventoGUIKeyDown>(TECLA_FULLSCREEN);
+            eventosGUI_.put(evento);
+            break;
         default:
             break;
     }
