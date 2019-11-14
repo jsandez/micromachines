@@ -22,12 +22,13 @@ class Renderizador {
 
  public:
   Renderizador(Ventana &ventana);
+  ~Renderizador();
   void dibujar(uint32_t numeroIteracion, Escena &escena);
   void setDestino(Textura &textura);
   void resetDestino();
   void dibujar(Textura &textura, Area &destino);
   void dibujar(Textura &textura, Area &destino, double grados, bool flipVertical);
-  ~Renderizador();
+  void toggleFullScreen();
 
   SDL_Renderer *getSDL();
 };

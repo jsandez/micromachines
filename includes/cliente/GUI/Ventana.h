@@ -13,6 +13,7 @@ private:
     SDL_Window* ventanaSDL_;
     unsigned int ancho_;
     unsigned int alto_;
+    bool fullscreen_;
 
     Ventana(const Ventana&) = delete;
     Ventana& operator=(const Ventana&) = delete;
@@ -24,6 +25,8 @@ public:
     Area dimensiones();
     unsigned int ancho();
     unsigned int alto();
+    void toggleFullScreen();
+
 
     SDL_Window* getSDL();
 

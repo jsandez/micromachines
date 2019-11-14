@@ -7,6 +7,7 @@
 
 #define TECLA_ESC "Esc"
 #define TECLA_C "c"
+#define TECLA_FULLSCREEN "F11"
 
 class EventoGUIKeyDown : public EventoGUI {
 private:

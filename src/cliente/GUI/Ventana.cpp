@@ -7,7 +7,8 @@
 
 Ventana::Ventana(unsigned int ancho, unsigned int alto, bool pantallaCompleta, const std::string& tituloVentana) :
     ancho_(ancho),
-    alto_(alto) {
+    alto_(alto),
+    fullscreen_(false) {
     
     int errCode = SDL_Init(SDL_INIT_VIDEO);
     if (errCode) {
@@ -36,6 +37,15 @@ unsigned int Ventana::ancho() {
 
 unsigned int Ventana::alto() {
     return alto_;
+}
+
+void Ventana::toggleFullScreen() {
+    if (!fullscreen_) {
+        SDL_SetWindowFullscreen(ventanaSDL_, SDL_WINDOW_FULLSCREEN);    
+    } else {
+        SDL_SetWindowFullscreen(ventanaSDL_, 0);    
+    }
+    fullscreen_ = !fullscreen_;
 }
 
 SDL_Window* Ventana::getSDL() {
