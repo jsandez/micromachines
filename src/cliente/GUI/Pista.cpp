@@ -63,23 +63,6 @@ Pista::Pista(std::string
   crearPista(pistaJson);
 }
 
-void Pista::dibujate(int iteracion) {
-  for (int k = 0; k < capas; k++) {
-    for (int i = 0; i < size_x; i++) {
-      for (int j = 0; j < size_y; j++) {
-        std::shared_ptr<Animacion> animacion = getBloque(k, i, j);
-        if (animacion != nullptr) {
-          Area areaFondo = Area(i * animacion.get()->ancho(),
-                                j * animacion.get()->alto(),
-                                animacion.get()->ancho(),
-                                animacion.get()->alto());
-          renderizador.dibujar(animacion.get()->get(iteracion), areaFondo);
-        }
-      }
-    }
-  }
-}
-
 std::shared_ptr<Animacion> Pista::getBloque(int capa, int x, int y) const {
   return mapa.at(capa).at(x).at(y);
 }

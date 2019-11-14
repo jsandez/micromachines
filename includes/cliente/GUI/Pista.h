@@ -18,13 +18,11 @@ class Pista {
   std::map<int, std::shared_ptr<ObjetoDinamico>> objetosDinamicos;
   std::mutex mtx_;
 
-  // METODOS PRIVADOS PARA CREAR LA PISTA
   void agregarBloque(int capa, int x, int y, std::shared_ptr<Animacion> animacion);
   void crearPista(nlohmann::json pistaJson);
 
  public:
   Pista(std::string fileName, Renderizador &renderizador);
-  void dibujate(int iteracion);
   std::shared_ptr<Animacion> getBloque(int capa, int x, int y) const;
   void agregarObjeto(int id, std::shared_ptr<ObjetoDinamico>);
   std::shared_ptr<ObjetoDinamico> obtenerObjeto(int id);
