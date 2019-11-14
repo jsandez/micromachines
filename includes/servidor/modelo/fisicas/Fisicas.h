@@ -8,7 +8,7 @@
 #include "includes/common/Cola.h"
 #include "includes/common/eventos/Evento.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
-#include "includes/servidor/modelo/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 
 class Fisicas {

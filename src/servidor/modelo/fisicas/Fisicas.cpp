@@ -3,7 +3,7 @@
 #include "includes/servidor/utils/ConfigServidor.h"
 #include "includes/common/eventos/EventoPartidaAgregada.h"
 
-#include "includes/servidor/modelo/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/Vehiculo.h"
 
 Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos) :
     gravedad_(0, 0),

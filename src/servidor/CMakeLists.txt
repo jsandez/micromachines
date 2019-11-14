@@ -16,7 +16,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/Mundo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Identificable.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/Superficie.cpp
-  ${PROJECT_SOURCE_DIR}/modelo/Vehiculo.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/Vehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/NoSuperficie.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieArena.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficiePista.cpp

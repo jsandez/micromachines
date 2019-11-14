@@ -7,7 +7,7 @@
 #include "includes/common/Handler.h"
 #include "includes/common/ColaProtegida.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
-#include "includes/servidor/modelo/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
 
