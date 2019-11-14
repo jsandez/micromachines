@@ -1,3 +1,0 @@
-/home/micromachines/includes/3rd-party/Lua/lua-5.3.3/build/CMakeFiles/rebuild_cache.dir
-/home/micromachines/includes/3rd-party/Lua/lua-5.3.3/build/CMakeFiles/lua_static.dir
-/home/micromachines/includes/3rd-party/Lua/lua-5.3.3/build/CMakeFiles/edit_cache.dir
