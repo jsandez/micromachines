@@ -1,7 +1,9 @@
 #ifndef _VEHICULO_H_
 #define _VEHICULO_H_
 
-class Vehiculo {
+#include "includes/servidor/modelo/Identificable.h"
+
+class Vehiculo : public Identificable {
 private:
     unsigned int velocidadMaximaAdelante_;
     unsigned int velocidadMaximaAtras_;
@@ -11,7 +13,8 @@ private:
     unsigned int salud_;
     
 public:
-    Vehiculo(unsigned int velocidadMaximaAdelante,
+    Vehiculo(uint8_t uuid,
+            unsigned int velocidadMaximaAdelante,
             unsigned int velocidadMaximaAtras,
             unsigned int aceleracion,
             unsigned int maniobrabilidad,
