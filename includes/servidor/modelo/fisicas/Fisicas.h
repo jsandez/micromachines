@@ -30,6 +30,7 @@ public:
     void step(uint32_t numeroIteracion);
     void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
     void acelerar(uint8_t uuidVehiculo);
+    void desacelerar(uint8_t uuidVehiculo);
 };
 
 #endif

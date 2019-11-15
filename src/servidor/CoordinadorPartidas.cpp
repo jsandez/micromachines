@@ -54,3 +54,11 @@ void CoordinadorPartidas::manejar(EventoAcelerar& e) {
     std::shared_ptr<Evento> evento = std::make_shared<EventoAcelerar>(std::move(e));
     partidas_[uuidPartida]->ocurrio(evento);
 }
+
+
+void CoordinadorPartidas::manejar(EventoDesacelerar& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDesacelerar>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}

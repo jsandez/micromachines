@@ -23,6 +23,9 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_ACELERAR:
         return std::make_shared<EventoAcelerar>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DESACELERAR:
+        return std::make_shared<EventoDesacelerar>(uuidRemitente, protocolo);
     
     default:
         throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);

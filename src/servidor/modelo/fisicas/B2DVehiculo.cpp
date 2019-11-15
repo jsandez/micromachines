@@ -14,8 +14,8 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     cuerpoBox2D_ = mundoBox2D->CreateBody(&bodyDef);
 
     b2PolygonShape polygonShape;
-    float ancho = CONFIG_SERVIDOR.anchoVehiculo() / 2;
-    float largo = CONFIG_SERVIDOR.largoVehiculo() / 2;
+    float ancho = CONFIG_SERVIDOR.anchoVehiculo() / 2.0f;
+    float largo = CONFIG_SERVIDOR.largoVehiculo() / 2.0f;
     polygonShape.SetAsBox(ancho, largo);
     b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, 1);
     fixture->SetUserData(nullptr);
@@ -23,8 +23,8 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     //fixture->SetUserData( new CarTireFUD() );
     cuerpoBox2D_->SetUserData(&vehiculo);
     
-    traccion_ = (float)vehiculo.agarre() / 100;
-    fuerzaManejoMaxima_ = vehiculo.aceleracion() * 75;
+    traccion_ = (float)vehiculo.agarre() / 100.0f;
+    fuerzaManejoMaxima_ = (float)vehiculo.aceleracion() * 0.75f;
 }
 
 B2DVehiculo::~B2DVehiculo() {
@@ -108,4 +108,8 @@ void B2DVehiculo::step() {
 
 void B2DVehiculo::acelerando() {
     control_ |= acelerador_;
+}
+
+void B2DVehiculo::frenando() {
+    control_ &= ~acelerador_;
 }

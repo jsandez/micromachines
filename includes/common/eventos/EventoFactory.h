@@ -12,6 +12,7 @@
 #include "includes/common/eventos/EventoIniciarPartida.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 #include "includes/common/eventos/EventoAcelerar.h"
+#include "includes/common/eventos/EventoDesacelerar.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 

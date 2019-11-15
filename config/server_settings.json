@@ -4,17 +4,17 @@
         "maxClientesEnEspera": 20
     },
     "fisicas": {
-        "simulacionesPorSegundo": 2,
-        "iteracionesVelocidad": 8,
-        "iteracionesPosicion": 3
+        "simulacionesPorSegundo": 60,
+        "iteracionesVelocidad": 12,
+        "iteracionesPosicion": 7
     },
     "modelo": {
         "vehiculo": {
-            "velocidadMaxAdelante": 10,
-            "velocidadMaxAtras": 3,
-            "aceleracionVehiculo": 2,
-            "maniobrabilidadVehiculo": 5,
-            "agarreVehiculo": 5,
+            "velocidadMaxAdelante": 100,
+            "velocidadMaxAtras": 35,
+            "aceleracionVehiculo": 20,
+            "maniobrabilidadVehiculo": 90,
+            "agarreVehiculo": 90,
             "saludVehiculo": 100,
             "ancho" : 3.125,
             "largo" : 5.78

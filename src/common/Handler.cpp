@@ -3,6 +3,9 @@
 void Handler::manejar(EventoAcelerar& e) {
 }
 
+void Handler::manejar(EventoDesacelerar& e) {
+}
+
 void Handler::manejar(EventoCrearPartida& e) {
 }
 

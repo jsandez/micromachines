@@ -42,6 +42,10 @@ Mundo::Mundo(uint16_t uuidPista) :
     //fisicas_.generarSuperficies(tileAModificador_);
 }
 
+Mundo::~Mundo() {
+    //TODO: IMPLEMENTAR
+}
+
 void Mundo::step(uint32_t numeroIteracion) {
     fisicas_.step(numeroIteracion);
     //TODO: Encolar la serializacion
@@ -79,6 +83,11 @@ void Mundo::manejar(Evento& e) {
 void Mundo::manejar(EventoAcelerar& e) {
     uint32_t jugador = e.uuidRemitente();
     fisicas_.acelerar(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDesacelerar& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.desacelerar(jugadoresAIDVehiculo_[jugador]);
 }
 
 // El sistema de referencia de la pista está arriba a la izquierda,

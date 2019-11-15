@@ -38,6 +38,7 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIniciarPartida.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoAcelerar.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesacelerar.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
         ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
         ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp

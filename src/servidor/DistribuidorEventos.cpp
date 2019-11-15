@@ -29,6 +29,10 @@ void DistribuidorEventos::manejar(EventoAcelerar& e) {
     coordinadorPartidas_.manejar(e);
 }
 
+void DistribuidorEventos::manejar(EventoDesacelerar& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
 void DistribuidorEventos::manejar(EventoCrearPartida& e) {
     coordinadorPartidas_.manejar(e);
 }

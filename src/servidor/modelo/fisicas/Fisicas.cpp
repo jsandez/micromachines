@@ -27,11 +27,17 @@ void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASue
 void Fisicas::acelerar(uint8_t uuidVehiculo) {
     vehiculos_.at(uuidVehiculo)->acelerando();
 }
+
+void Fisicas::desacelerar(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->frenando();
+}
 #include <iostream>
 void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
     vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
     std::cout << "Agrego vehículo en físicas: " << unsigned(vehiculo.uuid()) << std::endl;
 }
+
+
 
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
@@ -49,6 +55,9 @@ void Fisicas::step(uint32_t numeroIteracion) {
 		float32 angle = actual->GetAngle();
         printf("Vehiculo: 1");
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+        
+        b2Vec2 normal = actual->GetWorldVector(b2Vec2(0,1));
+        std::cout << "Speed: " << (b2Dot(normal, actual->GetLinearVelocity()) * normal).Normalize() << std::endl;
         actual = actual->GetNext();
     }
 }

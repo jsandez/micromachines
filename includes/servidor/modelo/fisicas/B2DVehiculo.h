@@ -38,6 +38,7 @@ public:
     void actualizarVolante();
     void step();
     void acelerando();
+    void frenando();
 };
 
 #endif

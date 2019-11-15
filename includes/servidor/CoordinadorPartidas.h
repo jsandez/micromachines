@@ -26,6 +26,8 @@ public:
     virtual void manejar(EventoIniciarPartida& e) override;
     virtual void manejar(EventoDesconexion& e) override;
     virtual void manejar(EventoAcelerar& e) override;
+    virtual void manejar(EventoDesacelerar& e) override;
 };
 
 #endif
+

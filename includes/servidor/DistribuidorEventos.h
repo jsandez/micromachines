@@ -30,6 +30,7 @@ public:
     virtual void manejar(Evento& e) override;
 
     virtual void manejar(EventoAcelerar& e) override;
+    virtual void manejar(EventoDesacelerar& e) override;
     virtual void manejar(EventoCrearPartida& e) override;
     virtual void manejar(EventoUnirseAPartida& e) override;
     virtual void manejar(EventoIniciarPartida& e) override;

@@ -26,6 +26,8 @@ public:
     //TODO: Mundo recibe referencia a partida para avisarle que termino.
     Mundo(uint16_t uuidPista);
 
+    ~Mundo();
+
     void step(uint32_t numeroIteracion);
 
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
@@ -35,6 +37,8 @@ public:
     virtual void manejar(Evento& e) override;
 
     virtual void manejar(EventoAcelerar& e) override;
+
+    virtual void manejar(EventoDesacelerar& e) override;
 };
 
 #endif
