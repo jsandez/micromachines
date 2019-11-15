@@ -21,7 +21,6 @@ void Pista::crearPista(nlohmann::json pistaJson) {
         agregarBloque(0, i, j, texturas.at(bloqueTerreno));
       }
     }
-
     for (uint16_t i = 0; i < size_x; i++) {
       for (uint16_t j = 0; j < size_y; j++) {
         int bloqueTerreno = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>();

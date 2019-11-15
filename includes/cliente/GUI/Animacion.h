@@ -2,6 +2,7 @@
 #define _ANIMACION_H_
 
 #include <vector>
+#include <map>
 
 #include "includes/cliente/GUI/Textura.h"
 
@@ -10,7 +11,10 @@ private:
     unsigned int ancho_;
     unsigned int alto_;
     //TODO: Hash para ciclos
-    std::vector<Textura> frames_;    
+    std::vector<int> iterations_;
+    std::vector<Textura> frames_;
+
+    void loadFramesByIteration();
 
 public:
     Animacion(std::vector<Textura>& frames, unsigned int ancho, unsigned int alto);
