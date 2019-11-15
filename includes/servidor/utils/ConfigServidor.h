@@ -39,6 +39,8 @@ public:
     unsigned int maniobrabilidadVehiculo();
     unsigned int agarreVehiculo();
     unsigned int saludVehiculo();
+    float anchoVehiculo();
+    float largoVehiculo();
 };
 
 #endif

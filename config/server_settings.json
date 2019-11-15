@@ -15,7 +15,9 @@
             "aceleracionVehiculo": 2,
             "maniobrabilidadVehiculo": 5,
             "agarreVehiculo": 5,
-            "saludVehiculo": 100
+            "saludVehiculo": 100,
+            "ancho" : 3.125,
+            "alto" : 5.78
         }
     },
     "rutaPistas": "assets/pistas/",

@@ -80,3 +80,11 @@ unsigned int ConfigServidor::agarreVehiculo() {
 unsigned int ConfigServidor::saludVehiculo() {
     return json_["modelo"]["vehiculo"]["saludVehiculo"].get<unsigned int>();
 }
+
+float ConfigServidor::anchoVehiculo() {
+    return json_["modelo"]["vehiculo"]["ancho"].get<float>();
+}
+
+float ConfigServidor::largoVehiculo() {
+    return json_["modelo"]["vehiculo"]["largo"].get<float>();
+}
