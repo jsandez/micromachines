@@ -105,3 +105,7 @@ void B2DVehiculo::step() {
     actualizarAceleracion();
     actualizarVolante();
 }
+
+void B2DVehiculo::acelerando() {
+    control_ |= acelerador_;
+}

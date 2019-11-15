@@ -25,7 +25,7 @@ void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASue
     //TODO: Implementar
 }*/
 void Fisicas::acelerar(uint8_t uuidVehiculo) {
-    
+    vehiculos_.at(uuidVehiculo)->acelerando();
 }
 #include <iostream>
 void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
@@ -35,9 +35,9 @@ void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
 
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
-    /*for (const auto& kv : colisionables_) {
-        ((b2Vehiculo*)kv.second->GetUserData())->update();
-    }*/
+    for (const auto& kv : vehiculos_) {
+        kv.second->step();
+    }
 
     uint32_t escala = numeroIteracion - iteracion_;
     double tiempoAtranscurrir = (double)escala * frecuencia_;
