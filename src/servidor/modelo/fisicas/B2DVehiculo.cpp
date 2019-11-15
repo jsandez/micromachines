@@ -17,14 +17,14 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     float ancho = CONFIG_SERVIDOR.anchoVehiculo() / 2.0f;
     float largo = CONFIG_SERVIDOR.largoVehiculo() / 2.0f;
     polygonShape.SetAsBox(ancho, largo);
-    b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, 1);
+    b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, 500000);
     fixture->SetUserData(nullptr);
     //TODO: Propiedades de la rueda, sublcase que tiene datos (?)
     //fixture->SetUserData( new CarTireFUD() );
     cuerpoBox2D_->SetUserData(&vehiculo);
     
-    traccion_ = (float)vehiculo.agarre() / 100.0f;
-    fuerzaManejoMaxima_ = (float)vehiculo.aceleracion() * 0.75f;
+    traccion_ = 1.0f;//(float)vehiculo.agarre() / 100.0f;
+    fuerzaManejoMaxima_ = 10;//(float)vehiculo.aceleracion() * 0.75f;
 }
 
 B2DVehiculo::~B2DVehiculo() {
