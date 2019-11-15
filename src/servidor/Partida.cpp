@@ -7,7 +7,7 @@
 #include "includes/common/Cronometro.h"
 #include "includes/common/Cola.h"
 #include "includes/servidor/utils/ConfigServidor.h"
-#include "includes/common/eventos/EventoIDJugador.h"
+#include "includes/common/eventos/EventoIDVehiculoDeJugador.h"
 
 Partida::Partida(uint16_t uuidPista) :
     mundo_(uuidPista) {
@@ -76,8 +76,8 @@ void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
 
 void Partida::asignarVehiculos() {
     for (const auto& kv : jugadores_) {
-        mundo_.agregarVehiculo(kv.second->uuid());
-        std::shared_ptr<Evento> eventoID = std::make_shared<EventoIDJugador>(kv.second->uuid());
+        uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second->uuid());
+        std::shared_ptr<Evento> eventoID = std::make_shared<EventoIDVehiculoDeJugador>(idVehiculo);
         kv.second->ocurrio(eventoID);
     }
 }

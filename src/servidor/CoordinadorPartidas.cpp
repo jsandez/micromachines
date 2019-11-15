@@ -34,6 +34,7 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     //TODO: Quitar partidas finalizadas, que no deben tener jugadores dentro.
 }
 
+//TODO: Debería esperar que todos envíen jugar.
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
     uint32_t uuidJugador = e.uuidRemitente();
     uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];

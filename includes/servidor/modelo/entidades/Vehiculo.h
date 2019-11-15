@@ -2,8 +2,9 @@
 #define _VEHICULO_H_
 
 #include "includes/servidor/modelo/Identificable.h"
+#include "includes/servidor/modelo/Colisionable.h"
 
-class Vehiculo : public Identificable {
+class Vehiculo : public Identificable, public Colisionable {
 private:
     unsigned int velocidadMaximaAdelante_;
     unsigned int velocidadMaximaAtras_;
@@ -20,6 +21,13 @@ public:
             unsigned int maniobrabilidad,
             unsigned int agarre,
             unsigned int salud);
+
+    unsigned int velocidadMaximaAdelante();
+    unsigned int velocidadMaximaAtras();
+    unsigned int aceleracion();
+    unsigned int maniobrabilidad();
+    unsigned int agarre();
+    unsigned int salud();
 };
 
 #endif

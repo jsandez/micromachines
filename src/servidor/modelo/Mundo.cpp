@@ -21,7 +21,8 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::sta
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
-    fisicas_(eventosOcurridos_) {
+    fisicas_(eventosOcurridos_),
+    contadorObjetos_(0) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
@@ -50,22 +51,25 @@ Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
     return eventosOcurridos_;
 }
 
-void Mundo::agregarVehiculo(uint32_t uuidJugador) {
+uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     //TODO: En cual de los casilleros?
+    //FIXME: Nada impide top() de pila vacia si hay mas jugadores
     Tile tile = posicionesIniciales_.top();
     float xMetros = Conversor::tileAMetro(tile.x_);
     float yMetros = Conversor::tileAMetro(tile.y_);
     Posicion posicion(xMetros, yMetros, 0.0);
-    //TODO: Refactor, usar move semantics
-    std::shared_ptr<Vehiculo> vehiculo = std::make_shared<Vehiculo>(CONFIG_SERVIDOR.velocidadMaxVehiculoAdelante(),
+    jugadoresAVehiculos_.emplace(uuidJugador, Vehiculo(contadorObjetos_,
+            CONFIG_SERVIDOR.velocidadMaxVehiculoAdelante(),
             CONFIG_SERVIDOR.velocidadMaxVehiculoAtras(),
             CONFIG_SERVIDOR.aceleracionVehiculo(),
             CONFIG_SERVIDOR.maniobrabilidadVehiculo(),
             CONFIG_SERVIDOR.agarreVehiculo(),
-            CONFIG_SERVIDOR.saludVehiculo());
-    jugadoresAVehiculos_[uuidJugador] = vehiculo;
-    fisicas_.agregarVehiculo(*vehiculo.get(), posicion);
+            CONFIG_SERVIDOR.saludVehiculo()));
+    jugadoresAIDVehiculo_[uuidJugador] = contadorObjetos_;
+    fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(uuidJugador), posicion);
     posicionesIniciales_.pop();
+    //Wizardry
+    return contadorObjetos_++;
 }
 
 void Mundo::manejar(Evento& e) {
@@ -74,7 +78,7 @@ void Mundo::manejar(Evento& e) {
 
 void Mundo::manejar(EventoAcelerar& e) {
     uint32_t jugador = e.uuidRemitente();
-    fisicas_.acelerar(jugadoresAVehiculos_[jugador]->uuid());
+    fisicas_.acelerar(jugadoresAIDVehiculo_[jugador]);
 }
 
 // El sistema de referencia de la pista está arriba a la izquierda,

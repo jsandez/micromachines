@@ -15,12 +15,11 @@ class Fisicas {
 private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
-    std::map<uint32_t, b2Body*> colisionables_;
+    std::map<uint8_t, b2Body*> colisionables_;
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
-
-
+    
 public:
     Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos);
     ~Fisicas();
@@ -28,7 +27,7 @@ public:
     //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
     void step(uint32_t numeroIteracion);
     void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
-    void acelerar(uint32_t uuidVehiculo);
+    void acelerar(uint8_t uuidVehiculo);
 };
 
 #endif

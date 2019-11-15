@@ -15,3 +15,27 @@ Vehiculo::Vehiculo(uint8_t uuid,
             agarre_(agarre),
             salud_(salud) {
 }
+
+unsigned int Vehiculo::velocidadMaximaAdelante() {
+    return velocidadMaximaAdelante_;
+}
+
+unsigned int Vehiculo::velocidadMaximaAtras() {
+    return velocidadMaximaAtras_;
+}
+
+unsigned int Vehiculo::aceleracion() {
+    return aceleracion_;
+}
+
+unsigned int Vehiculo::maniobrabilidad() {
+    return maniobrabilidad_;
+}
+
+unsigned int Vehiculo::agarre() {
+    return agarre_;
+}
+
+unsigned int Vehiculo::salud() {
+    return salud_;
+}

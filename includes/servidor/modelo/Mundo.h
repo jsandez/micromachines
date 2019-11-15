@@ -16,9 +16,11 @@ private:
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
     //std::map<Tile, std::shared_ptr<Superficie>> tileAModificador_;
     std::stack<Tile> posicionesIniciales_;
-    std::map<uint32_t, std::shared_ptr<Vehiculo>> jugadoresAVehiculos_;
+    std::map<uint32_t, Vehiculo> jugadoresAVehiculos_;
     ColaProtegida<std::shared_ptr<Evento>> eventosOcurridos_;
     Fisicas fisicas_;
+    uint8_t contadorObjetos_;
+    std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
 
 public:
     //TODO: Mundo recibe referencia a partida para avisarle que termino.
@@ -28,7 +30,7 @@ public:
 
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
 
-    void agregarVehiculo(uint32_t uuidJugador);
+    uint8_t agregarVehiculo(uint32_t uuidJugador);
     
     virtual void manejar(Evento& e) override;
 

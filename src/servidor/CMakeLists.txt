@@ -34,7 +34,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/Tile.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
-  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIDJugador.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIDVehiculoDeJugador.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaAgregada.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseAPartida.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIniciarPartida.cpp
