@@ -10,12 +10,14 @@
 #include "includes/servidor/modelo/superficies/Superficie.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
+#include "includes/servidor/modelo/fisicas/B2DVehiculo.h"
 
 class Fisicas {
 private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
     std::map<uint8_t, b2Body*> colisionables_;
+    std::map<uint8_t, std::shared_ptr<B2DVehiculo>> vehiculos_;
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;

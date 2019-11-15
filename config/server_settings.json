@@ -17,7 +17,7 @@
             "agarreVehiculo": 5,
             "saludVehiculo": 100,
             "ancho" : 3.125,
-            "alto" : 5.78
+            "largo" : 5.78
         }
     },
     "rutaPistas": "assets/pistas/",

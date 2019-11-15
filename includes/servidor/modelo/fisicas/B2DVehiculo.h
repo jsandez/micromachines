@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+#include "includes/3rd-party/Box2D/Box2D.h"
+
 //Forward declarations
 class b2Body;
 class b2World;
@@ -11,10 +13,11 @@ class Vehiculo;
 
 class B2DVehiculo {
 private:
-    uint8_t volanteIzquierda_;
-    uint8_t volanteDerecha_;
-    uint8_t acelerador_;
-    uint8_t freno_;
+    static const uint8_t volanteIzquierda_ = 0x1;
+    static const uint8_t volanteDerecha_ = 0x2;
+    static const uint8_t acelerador_ = 0x4;
+    static const uint8_t freno_ = 0x8;
+    int control_;
 
     b2Body* cuerpoBox2D_;
 
@@ -28,6 +31,12 @@ private:
 public:
     B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo);
     ~B2DVehiculo();
+    b2Vec2 getVelocidadLateral();
+    b2Vec2 getVelocidadFrontal();
+    void actualizarFriccion();
+    void actualizarAceleracion();
+    void actualizarVolante();
+    void step();
 };
 
 #endif

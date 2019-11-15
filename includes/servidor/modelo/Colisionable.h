@@ -2,7 +2,9 @@
 #define _COLISIONABLE_H_
 
 class Colisionable {
-    
+
+public:
+
 };
 
 #endif

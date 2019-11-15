@@ -23,6 +23,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieTierra.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieFactory.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/B2DVehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/movimiento/Posicion.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
