@@ -5,10 +5,16 @@
 
 #include "includes/3rd-party/Box2D/Box2D.h"
 
+#define DENSIDAD 0.05f
+#define MAX_IMPULSO_LATERAL 15.0f
+#define CORRECCION_DERRAPE 0.03f
+#define AJUSTE_VOLANTE 0.2f
+#define AJUSTE_VELOCIDAD 0.45f
+#define AJUSTE_ACELERACION 0.25f
+
 //Forward declarations
 class b2Body;
 class b2World;
-
 class Vehiculo;
 
 class B2DVehiculo {

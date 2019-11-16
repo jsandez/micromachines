@@ -3,10 +3,11 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/utils/ConfigServidor.h"
 
+//TODO: Que la velocidad hacia atrás dependa de la hacia delante
 B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     : control_(0)
-    , velocidadMaxAdelante_(vehiculo.velocidadMaximaAdelante())
-    , velocidadMaxAtras_((-1)*vehiculo.velocidadMaximaAtras()) {
+    , velocidadMaxAdelante_((float)vehiculo.velocidadMaximaAdelante() * AJUSTE_VELOCIDAD)
+    , velocidadMaxAtras_((-1)*(float)vehiculo.velocidadMaximaAtras() * AJUSTE_VELOCIDAD) {
     
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -17,14 +18,15 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     float ancho = CONFIG_SERVIDOR.anchoVehiculo() / 2.0f;
     float largo = CONFIG_SERVIDOR.largoVehiculo() / 2.0f;
     polygonShape.SetAsBox(ancho, largo);
-    b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, 500000);
+    b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, DENSIDAD);
     fixture->SetUserData(nullptr);
     //TODO: Propiedades de la rueda, sublcase que tiene datos (?)
     //fixture->SetUserData( new CarTireFUD() );
     cuerpoBox2D_->SetUserData(&vehiculo);
     
-    traccion_ = 1.0f;//(float)vehiculo.agarre() / 100.0f;
-    fuerzaManejoMaxima_ = 10;//(float)vehiculo.aceleracion() * 0.75f;
+    //TODO: Revisar agarre
+    traccion_ = (float)vehiculo.agarre() / 100.0f;
+    fuerzaManejoMaxima_ = (float)vehiculo.aceleracion() * AJUSTE_ACELERACION;
 }
 
 B2DVehiculo::~B2DVehiculo() {
@@ -43,20 +45,19 @@ b2Vec2 B2DVehiculo::getVelocidadFrontal() {
 
 void B2DVehiculo::actualizarFriccion() {
     //Derrape
-    float maxImpulsoLateral = (3.0f/100.0f)*(float)CONFIG_SERVIDOR.maniobrabilidadVehiculo() + 1.0f;
+    float maxImpulsoLateral = MAX_IMPULSO_LATERAL;
     b2Vec2 impulso = cuerpoBox2D_->GetMass() * -getVelocidadLateral();
     if (impulso.Length() > maxImpulsoLateral) {
         impulso *= maxImpulsoLateral / impulso.Length();
     }        
     cuerpoBox2D_->ApplyLinearImpulse(traccion_*impulso, cuerpoBox2D_->GetWorldCenter(), true);
 
-    float correccionAngular = (-0.49f/100.0f)*(float)CONFIG_SERVIDOR.maniobrabilidadVehiculo() + 0.5f;
-    cuerpoBox2D_->ApplyAngularImpulse(traccion_*correccionAngular*cuerpoBox2D_->GetInertia()*-cuerpoBox2D_->GetAngularVelocity(), true);
+    cuerpoBox2D_->ApplyAngularImpulse(traccion_ * CORRECCION_DERRAPE * cuerpoBox2D_->GetInertia() * -cuerpoBox2D_->GetAngularVelocity(), true);
 
     b2Vec2 normal = getVelocidadFrontal();
     float velocidadActual = normal.Normalize();
-    float rozamientoFrenado = -CONFIG_SERVIDOR.agarreVehiculo()/40 * velocidadActual;
-    cuerpoBox2D_->ApplyForce(traccion_ * rozamientoFrenado * normal, cuerpoBox2D_->GetWorldCenter(), true);
+    float rozamientoFrenado = -(fuerzaManejoMaxima_/velocidadMaxAdelante_)*velocidadActual;
+    cuerpoBox2D_->ApplyForce(rozamientoFrenado * normal, cuerpoBox2D_->GetWorldCenter(), true);
 }
 
 void B2DVehiculo::actualizarAceleracion() {
@@ -89,10 +90,10 @@ void B2DVehiculo::actualizarVolante() {
     float torque = 0;
     switch (control_ & (volanteIzquierda_|volanteDerecha_)) {
         case volanteIzquierda_:
-            torque = (0.15f)*CONFIG_SERVIDOR.maniobrabilidadVehiculo();
+            torque = AJUSTE_VOLANTE*(float)CONFIG_SERVIDOR.maniobrabilidadVehiculo();
             break;
         case volanteDerecha_:
-            torque = (-0.15f)*CONFIG_SERVIDOR.maniobrabilidadVehiculo();
+            torque = (-AJUSTE_VOLANTE)*(float)CONFIG_SERVIDOR.maniobrabilidadVehiculo();
             break;
         default:
             break;

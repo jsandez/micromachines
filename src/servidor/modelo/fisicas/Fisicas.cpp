@@ -55,9 +55,8 @@ void Fisicas::step(uint32_t numeroIteracion) {
 		float32 angle = actual->GetAngle();
         printf("Vehiculo: 1");
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-        
-        b2Vec2 normal = actual->GetWorldVector(b2Vec2(0,1));
-        std::cout << "Speed: " << (b2Dot(normal, actual->GetLinearVelocity()) * normal).Normalize() << std::endl;
+    
+        std::cout << "Speed: " << actual->GetLinearVelocity().Length() << std::endl;
         actual = actual->GetNext();
     }
 }

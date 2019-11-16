@@ -11,10 +11,10 @@
     "modelo": {
         "vehiculo": {
             "velocidadMaxAdelante": 100,
-            "velocidadMaxAtras": 35,
-            "aceleracionVehiculo": 20,
-            "maniobrabilidadVehiculo": 90,
-            "agarreVehiculo": 90,
+            "velocidadMaxAtras": 15,
+            "aceleracionVehiculo": 100,
+            "maniobrabilidadVehiculo": 100,
+            "agarreVehiculo": 100,
             "saludVehiculo": 100,
             "ancho" : 3.125,
             "largo" : 5.78
