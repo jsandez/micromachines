@@ -6,6 +6,7 @@ Vehiculo::Vehiculo(uint8_t uuid,
             unsigned int aceleracion,
             unsigned int maniobrabilidad,
             unsigned int agarre,
+            //FIXME: CAMBIAR SALUD A UINT8T
             unsigned int salud) :
             Identificable(uuid),
             velocidadMaximaAdelante_(velocidadMaximaAdelante),

@@ -1,13 +1,15 @@
 #ifndef _POSICION_H_
 #define _POSICION_H_
 
+#include <cstdint>
+
 class Posicion {
 public:
-    float x_;
-    float y_;
-    float anguloDeg_;
+    uint16_t x_;
+    uint16_t y_;
+    uint16_t anguloDeg_;
 
-    Posicion(float x, float y, float anguloDeg);
+    Posicion(uint16_t x, uint16_t y, uint16_t anguloDeg);
 };
 
 #endif

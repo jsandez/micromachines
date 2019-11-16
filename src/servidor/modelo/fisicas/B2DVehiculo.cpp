@@ -38,6 +38,10 @@ b2Vec2 B2DVehiculo::getVelocidadLateral() {
     return b2Dot(normal, cuerpoBox2D_->GetLinearVelocity()) * normal;
 }
 
+b2Body* B2DVehiculo::getB2D() {
+    return cuerpoBox2D_;
+}
+
 b2Vec2 B2DVehiculo::getVelocidadFrontal() {
     b2Vec2 normal = cuerpoBox2D_->GetWorldVector(b2Vec2(0,1));
     return b2Dot(normal, cuerpoBox2D_->GetLinearVelocity()) * normal;

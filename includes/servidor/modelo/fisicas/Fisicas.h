@@ -12,15 +12,21 @@
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 #include "includes/servidor/modelo/fisicas/B2DVehiculo.h"
 
+#ifndef DEGTORAD
+#define DEGTORAD 0.0174532925199432957f
+#define RADTODEG 57.295779513082320876f
+#endif
+
 class Fisicas {
 private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
-    std::map<uint8_t, b2Body*> colisionables_;
+    //std::map<uint8_t, b2Body*> colisionables_;
     std::map<uint8_t, std::shared_ptr<B2DVehiculo>> vehiculos_;
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
+    //TODO: Quitar reportesporsegundo de acà?
     unsigned int reportesPorSegundo_;
     
 public:
@@ -38,6 +44,7 @@ public:
     void dejarDeDoblarIzquierda(uint8_t uuidVehiculo);
     void doblarDerecha(uint8_t uuidVehiculo);
     void dejarDeDoblarDerecha(uint8_t uuidVehiculo);
+    Posicion getPosicionDe(uint8_t idCuerpo);
 };
 
 #endif

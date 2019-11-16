@@ -21,6 +21,7 @@ private:
     Fisicas fisicas_;
     uint8_t contadorObjetos_;
     std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
+    unsigned int snapshotsEnviadosPorSegundo_;
 
 public:
     //TODO: Mundo recibe referencia a partida para avisarle que termino.

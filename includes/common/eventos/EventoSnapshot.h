@@ -9,7 +9,7 @@
 typedef struct {
     uint16_t xCoord_;
     uint16_t yCoord_;
-    uint8_t angulo_;
+    uint16_t angulo_;
     uint8_t salud_;
     uint8_t visible_;
 } datosVehiculo_;
