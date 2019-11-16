@@ -92,5 +92,5 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 }
 
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
-  uint8_t a = e.idDelVehiculo_;
+  
 }
