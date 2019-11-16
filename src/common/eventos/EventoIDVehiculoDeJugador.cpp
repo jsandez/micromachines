@@ -4,7 +4,7 @@
 
 EventoIDVehiculoDeJugador::EventoIDVehiculoDeJugador(uint32_t uuidRemitente, Protocolo& protocolo) :
     Evento(uuidRemitente) {
-        idDelVehiculo_ = protocolo.recibirNumUnsigned32();
+        idDelVehiculo_ = protocolo.recibirNumUnsigned8();
 }
 
 EventoIDVehiculoDeJugador::EventoIDVehiculoDeJugador(uint8_t idDelVehiculo) :
