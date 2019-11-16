@@ -9,11 +9,13 @@ EventoSnapshot::EventoSnapshot(uint32_t uuidRemitente, Protocolo& protocolo) :
         uint8_t id = protocolo.recibirNumUnsigned8();
         uint16_t xCoord = protocolo.recibirNumUnsigned16();
         uint16_t yCoord = protocolo.recibirNumUnsigned16();
+        uint16_t angulo = protocolo.recibirNumUnsigned16();
         uint8_t salud = protocolo.recibirNumUnsigned8();
         uint8_t visible = protocolo.recibirNumUnsigned8();
         idsADatosVehiculos_.emplace(id, datosVehiculo_{
             xCoord,
             yCoord,
+            angulo,
             salud,
             visible
         });

@@ -5,6 +5,9 @@
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 
+
+//TODO: Fisicas debe conocer de eventos ocurridos?
+//Tiene pinta de que no. Por ende tampoco de snapshots por segundo
 Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos) :
     gravedad_(0, 0),
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
@@ -60,17 +63,25 @@ void Fisicas::dejarDeDoblarDerecha(uint8_t uuidVehiculo) {
 void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
     vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
 }
+
+Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
+    
+    b2Body* cuerpoFisico = vehiculos_.at(idCuerpo)->getB2D();
+    b2Vec2 posicion = cuerpoFisico->GetPosition();
+    float32 angulo = cuerpoFisico->GetAngle();
+    uint16_t anguloDeg = abs((int)(angulo*RADTODEG) % 360);
+    return Posicion(posicion.x, posicion.y, anguloDeg);
+}
+
 #include <iostream>
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
     //Acá se alteran los cuerpos físicos.
     for (const auto& kv : vehiculos_) {
         kv.second->step();
-    }
-
-    if((numeroIteracion % reportesPorSegundo_) == 0) {
-        //TODO: para cada auto, enviar el evento snapshot
-    }
+    }        
+    //TODO: para cada auto, enviar el evento snapshot. Acá? Pareciera que no.
+    
 
     uint32_t escala = numeroIteracion - iteracion_;
     float tiempoAtranscurrir = (float)escala * frecuencia_;

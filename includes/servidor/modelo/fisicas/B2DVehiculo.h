@@ -39,6 +39,7 @@ public:
     ~B2DVehiculo();
     b2Vec2 getVelocidadLateral();
     b2Vec2 getVelocidadFrontal();
+    b2Body* getB2D();
     void actualizarFriccion();
     void actualizarAceleracion();
     void actualizarVolante();

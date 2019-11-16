@@ -12,6 +12,7 @@
 #include "includes/common/Conversor.h"
 #include "includes/servidor/modelo/superficies/SuperficieFactory.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
+#include "includes/common/eventos/EventoSnapshot.h"
 
 //TODO: Crear conversor de coordenadas?
 //Forward declaration
@@ -22,7 +23,8 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::sta
 
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_),
-    contadorObjetos_(0) {
+    contadorObjetos_(0),
+    snapshotsEnviadosPorSegundo_(CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
@@ -48,7 +50,29 @@ Mundo::~Mundo() {
 
 void Mundo::step(uint32_t numeroIteracion) {
     fisicas_.step(numeroIteracion);
-    //TODO: Encolar la serializacion
+    //TODO: Encolar snapshot acá? Parece que sí, en físicas no.
+    //TODO: Chequear por la negativa?
+    if((numeroIteracion % snapshotsEnviadosPorSegundo_) == 0) {
+        std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;
+        for (const auto& kv : jugadoresAIDVehiculo_) {
+            uint8_t idVehiculo = jugadoresAIDVehiculo_[kv.first];
+            //FISICAS DE FISICAS
+            Posicion posicion = fisicas_.getPosicionDe(idVehiculo);
+            //LOGICA DE MUNDO(YO)
+            uint8_t salud = jugadoresAVehiculos_.at(kv.first).salud();
+            //FIXME: No debiera ser así
+            uint8_t visible = 1;
+            idsADatosVehiculo.emplace(idVehiculo, datosVehiculo_{
+                posicion.x_,
+                posicion.y_,
+                posicion.anguloDeg_,
+                salud,
+                visible
+            });
+        }
+        std::shared_ptr<Evento> snapshot = std::make_shared<EventoSnapshot>(std::move(idsADatosVehiculo));
+        eventosOcurridos_.put(snapshot);
+    }
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
