@@ -26,6 +26,24 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_DESACELERAR:
         return std::make_shared<EventoDesacelerar>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_FRENAR:
+        return std::make_shared<EventoFrenar>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DEJAR_DE_FRENAR:
+        return std::make_shared<EventoDejarDeFrenar>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DOBLAR_IZQUIERDA:
+        return std::make_shared<EventoDoblarIzquierda>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DEJAR_DE_DOBLAR_IZQUIERDA:
+        return std::make_shared<EventoDejarDeDoblarIzquierda>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DOBLAR_DERECHA:
+        return std::make_shared<EventoDoblarDerecha>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DEJAR_DE_DOBLAR_DERECHA:
+        return std::make_shared<EventoDejarDeDoblarDerecha>(uuidRemitente, protocolo);
     
     default:
         throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);

@@ -46,7 +46,7 @@ void Fisicas::step(uint32_t numeroIteracion) {
     }
 
     uint32_t escala = numeroIteracion - iteracion_;
-    double tiempoAtranscurrir = (double)escala * frecuencia_;
+    float tiempoAtranscurrir = (float)escala * frecuencia_;
     mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
     iteracion_ = numeroIteracion;
     b2Body* actual = mundoBox2D_->GetBodyList();
@@ -54,7 +54,7 @@ void Fisicas::step(uint32_t numeroIteracion) {
         b2Vec2 position = actual->GetPosition();
 		float32 angle = actual->GetAngle();
         printf("Vehiculo: 1");
-		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+		printf("%4.6f %4.6f %4.2f\n", position.x, position.y, angle);
     
         std::cout << "Speed: " << actual->GetLinearVelocity().Length() << std::endl;
         actual = actual->GetNext();

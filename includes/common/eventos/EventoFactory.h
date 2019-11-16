@@ -3,7 +3,6 @@
 
 #include <memory>
 
-
 #include "includes/common/red/Protocolo.h"
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
@@ -13,6 +12,12 @@
 #include "includes/common/eventos/EventoDesconexion.h"
 #include "includes/common/eventos/EventoAcelerar.h"
 #include "includes/common/eventos/EventoDesacelerar.h"
+#include "includes/common/eventos/EventoFrenar.h"
+#include "includes/common/eventos/EventoDejarDeFrenar.h"
+#include "includes/common/eventos/EventoDoblarIzquierda.h"
+#include "includes/common/eventos/EventoDejarDeDoblarIzquierda.h"
+#include "includes/common/eventos/EventoDoblarDerecha.h"
+#include "includes/common/eventos/EventoDejarDeDoblarDerecha.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 

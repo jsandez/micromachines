@@ -6,18 +6,27 @@
 //Forward declarations
 class Handler;
 
-#define UUID_EVENTO_CREAR_PARTIDA       1
-#define UUID_EVENTO_PARTIDA_AGREGADA    2
-#define UUID_EVENTO_UNIRSE_A_PARTIDA    3
-#define UUID_EVENTO_INICIAR_PARTIDA     4
-#define UUID_EVENTO_DESCONEXION         5
-#define UUID_EVENTO_ACELERAR            6
-#define UUID_EVENTO_DESACELERAR         7
-#define UUID_EVENTO_ID_JUGADOR          8
+#define UUID_EVENTO_ACELERAR                    1
+#define UUID_EVENTO_DESACELERAR                 2
+#define UUID_EVENTO_FRENAR                      3
+#define UUID_EVENTO_DEJAR_DE_FRENAR             4
+#define UUID_EVENTO_DOBLAR_IZQUIERDA            5
+#define UUID_EVENTO_DEJAR_DE_DOBLAR_IZQUIERDA   6
+#define UUID_EVENTO_DOBLAR_DERECHA              7
+#define UUID_EVENTO_DEJAR_DE_DOBLAR_DERECHA     8
+
+#define UUID_EVENTO_CREAR_PARTIDA               9
+#define UUID_EVENTO_PARTIDA_AGREGADA            10
+#define UUID_EVENTO_UNIRSE_A_PARTIDA            11
+#define UUID_EVENTO_INICIAR_PARTIDA             12
+#define UUID_EVENTO_DESCONEXION                 13
+#define UUID_EVENTO_ID_JUGADOR                  14
+
 
 // TODO: Crear constructor por movimiento
 //TODO: Setear id en cada evento creado
 // TODO: implementar envio y construccion
+// TODO: achicar para que el envio sea mas eficiente según el máximo de eventos
 class Evento {
 private:
     uint32_t UUIDRemitente_;
