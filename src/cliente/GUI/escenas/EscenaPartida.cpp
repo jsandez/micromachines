@@ -69,7 +69,7 @@ void EscenaPartida::manejarInput(EventoGUIClick &evento) {
   ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
   carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());*/
   std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
-
+  eventosAEnviar_.put(eventoAcelerar);
 }
 
 void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
@@ -94,5 +94,6 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
   uint8_t a = e.idDelVehiculo_;
-  std::cout << "LLEGO ID " << (int)a << std::endl;
+  std::cout << "LLEGO ID " << (int) a << std::endl;
 }
+
