@@ -32,7 +32,7 @@ void Partida::step(uint32_t nroIteracion) {
     std::shared_ptr<Evento> eventoOcurrido;
     while((obtenido = eventosOcurridos.get(eventoOcurrido))) {
         for (auto& kv : jugadores_) {
-            //FIXME: Copiar el evento ocurrido antes de manejarlo
+            //FIXME: Copiar el evento ocurrido antes de manejarlo, o quitar el move de las colas (se haran copias)
             kv.second->ocurrio(eventoOcurrido);
         }
     }
