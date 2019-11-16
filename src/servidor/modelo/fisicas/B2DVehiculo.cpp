@@ -111,6 +111,30 @@ void B2DVehiculo::acelerando() {
     control_ |= acelerador_;
 }
 
-void B2DVehiculo::frenando() {
+void B2DVehiculo::desacelerando() {
     control_ &= ~acelerador_;
+}
+
+void B2DVehiculo::frenando() {
+    control_ |= freno_;
+}
+
+void B2DVehiculo::dejandoDeFrenar() {
+    control_ &= ~freno_;
+}
+
+void B2DVehiculo::doblandoIzquierda() {
+    control_ |= ~volanteIzquierda_;
+}
+
+void B2DVehiculo::dejandoDeDoblarIzquierda() {
+    control_ &= ~volanteIzquierda_;
+}
+
+void B2DVehiculo::doblandoDerecha() {
+    control_ |= ~volanteDerecha_;
+}
+
+void B2DVehiculo::dejandoDeDoblarDerecha() {
+    control_ &= ~volanteDerecha_;
 }

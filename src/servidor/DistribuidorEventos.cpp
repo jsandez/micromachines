@@ -33,6 +33,30 @@ void DistribuidorEventos::manejar(EventoDesacelerar& e) {
     coordinadorPartidas_.manejar(e);
 }
 
+void DistribuidorEventos::manejar(EventoFrenar& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoDejarDeFrenar& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoDoblarIzquierda& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoDejarDeDoblarIzquierda& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoDoblarDerecha& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
+void DistribuidorEventos::manejar(EventoDejarDeDoblarDerecha& e) {
+    coordinadorPartidas_.manejar(e);
+}
+
 void DistribuidorEventos::manejar(EventoCrearPartida& e) {
     coordinadorPartidas_.manejar(e);
 }

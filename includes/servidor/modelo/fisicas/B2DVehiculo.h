@@ -44,7 +44,13 @@ public:
     void actualizarVolante();
     void step();
     void acelerando();
+    void desacelerando();
     void frenando();
+    void dejandoDeFrenar();
+    void doblandoIzquierda();
+    void dejandoDeDoblarIzquierda();
+    void doblandoDerecha();
+    void dejandoDeDoblarDerecha();
 };
 
 #endif

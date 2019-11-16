@@ -90,6 +90,36 @@ void Mundo::manejar(EventoDesacelerar& e) {
     fisicas_.desacelerar(jugadoresAIDVehiculo_[jugador]);
 }
 
+void Mundo::manejar(EventoFrenar& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.frenar(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDejarDeFrenar& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.dejarDeFrenar(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDoblarIzquierda& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.doblarIzquierda(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDejarDeDoblarIzquierda& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.dejarDeDoblarIzquierda(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDoblarDerecha& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.doblarDerecha(jugadoresAIDVehiculo_[jugador]);
+}
+
+void Mundo::manejar(EventoDejarDeDoblarDerecha& e) {
+    uint32_t jugador = e.uuidRemitente();
+    fisicas_.dejarDeDoblarDerecha(jugadoresAIDVehiculo_[jugador]);
+}
+
 // El sistema de referencia de la pista está arriba a la izquierda,
 // mientras que en el servidor está abajo a la derecha.
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson) {

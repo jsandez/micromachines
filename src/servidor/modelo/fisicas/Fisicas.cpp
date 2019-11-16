@@ -29,15 +29,36 @@ void Fisicas::acelerar(uint8_t uuidVehiculo) {
 }
 
 void Fisicas::desacelerar(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->desacelerando();
+}
+
+void Fisicas::frenar(uint8_t uuidVehiculo) {
     vehiculos_.at(uuidVehiculo)->frenando();
 }
-#include <iostream>
-void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
-    vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
-    std::cout << "Agrego vehículo en físicas: " << unsigned(vehiculo.uuid()) << std::endl;
+
+void Fisicas::dejarDeFrenar(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->dejandoDeFrenar();
 }
 
+void Fisicas::doblarIzquierda(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->doblandoIzquierda();
+}
 
+void Fisicas::dejarDeDoblarIzquierda(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->dejandoDeDoblarIzquierda();
+}
+
+void Fisicas::doblarDerecha(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->doblandoDerecha();
+}
+
+void Fisicas::dejarDeDoblarDerecha(uint8_t uuidVehiculo) {
+    vehiculos_.at(uuidVehiculo)->dejandoDeDoblarDerecha();
+}
+
+void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
+    vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
+}
 
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
@@ -55,8 +76,6 @@ void Fisicas::step(uint32_t numeroIteracion) {
 		float32 angle = actual->GetAngle();
         printf("Vehiculo: 1");
 		printf("%4.6f %4.6f %4.2f\n", position.x, position.y, angle);
-    
-        std::cout << "Speed: " << actual->GetLinearVelocity().Length() << std::endl;
         actual = actual->GetNext();
     }
 }

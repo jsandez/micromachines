@@ -62,3 +62,45 @@ void CoordinadorPartidas::manejar(EventoDesacelerar& e) {
     std::shared_ptr<Evento> evento = std::make_shared<EventoDesacelerar>(std::move(e));
     partidas_[uuidPartida]->ocurrio(evento);
 }
+
+void CoordinadorPartidas::manejar(EventoFrenar& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoFrenar>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}
+
+void CoordinadorPartidas::manejar(EventoDejarDeFrenar& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDejarDeFrenar>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}
+
+void CoordinadorPartidas::manejar(EventoDoblarIzquierda& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDoblarIzquierda>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}
+
+void CoordinadorPartidas::manejar(EventoDejarDeDoblarIzquierda& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDejarDeDoblarIzquierda>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}
+
+void CoordinadorPartidas::manejar(EventoDoblarDerecha& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDoblarDerecha>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}
+
+void CoordinadorPartidas::manejar(EventoDejarDeDoblarDerecha& e) {
+    uint32_t uuidJugador = e.uuidRemitente();
+    uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
+    std::shared_ptr<Evento> evento = std::make_shared<EventoDejarDeDoblarDerecha>(std::move(e));
+    partidas_[uuidPartida]->ocurrio(evento);
+}

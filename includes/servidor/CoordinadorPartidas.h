@@ -27,6 +27,12 @@ public:
     virtual void manejar(EventoDesconexion& e) override;
     virtual void manejar(EventoAcelerar& e) override;
     virtual void manejar(EventoDesacelerar& e) override;
+    virtual void manejar(EventoFrenar& e) override;
+    virtual void manejar(EventoDejarDeFrenar& e) override;
+    virtual void manejar(EventoDoblarIzquierda& e) override;
+    virtual void manejar(EventoDejarDeDoblarIzquierda& e) override;
+    virtual void manejar(EventoDoblarDerecha& e) override;
+    virtual void manejar(EventoDejarDeDoblarDerecha& e) override;
 };
 
 #endif

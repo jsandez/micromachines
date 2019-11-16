@@ -31,6 +31,12 @@ public:
     void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
     void acelerar(uint8_t uuidVehiculo);
     void desacelerar(uint8_t uuidVehiculo);
+    void frenar(uint8_t uuidVehiculo);
+    void dejarDeFrenar(uint8_t uuidVehiculo);
+    void doblarIzquierda(uint8_t uuidVehiculo);
+    void dejarDeDoblarIzquierda(uint8_t uuidVehiculo);
+    void doblarDerecha(uint8_t uuidVehiculo);
+    void dejarDeDoblarDerecha(uint8_t uuidVehiculo);
 };
 
 #endif
