@@ -18,6 +18,7 @@
 #include "includes/common/eventos/EventoDejarDeDoblarIzquierda.h"
 #include "includes/common/eventos/EventoDoblarDerecha.h"
 #include "includes/common/eventos/EventoDejarDeDoblarDerecha.h"
+#include "includes/common/eventos/EventoSnapshot.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 

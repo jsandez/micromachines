@@ -10,6 +10,7 @@
 #include "includes/common/eventos/EventoDejarDeDoblarIzquierda.h"
 #include "includes/common/eventos/EventoDoblarDerecha.h"
 #include "includes/common/eventos/EventoDejarDeDoblarDerecha.h"
+#include "includes/common/eventos/EventoSnapshot.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
 #include "includes/common/eventos/EventoPartidaAgregada.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
@@ -27,6 +28,7 @@ public:
     virtual void manejar(EventoDejarDeDoblarIzquierda& e);
     virtual void manejar(EventoDoblarDerecha& e);
     virtual void manejar(EventoDejarDeDoblarDerecha& e);
+    virtual void manejar(EventoSnapshot& e);
     virtual void manejar(EventoCrearPartida& e);
     virtual void manejar(EventoPartidaAgregada& e);
     virtual void manejar(EventoUnirseAPartida& e);

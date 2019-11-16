@@ -44,6 +44,9 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_DEJAR_DE_DOBLAR_DERECHA:
         return std::make_shared<EventoDejarDeDoblarDerecha>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_SNAPSHOT:
+        return std::make_shared<EventoSnapshot>(uuidRemitente, protocolo);
     
     default:
         throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);

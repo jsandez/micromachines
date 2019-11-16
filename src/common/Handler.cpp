@@ -24,6 +24,9 @@ void Handler::manejar(EventoDoblarDerecha& e) {
 void Handler::manejar(EventoDejarDeDoblarDerecha& e) {
 }
 
+void Handler::manejar(EventoSnapshot& e) {
+}
+
 void Handler::manejar(EventoCrearPartida& e) {
 }
 
