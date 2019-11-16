@@ -5,6 +5,7 @@
 
 #include "includes/common/red/Protocolo.h"
 #include "includes/common/eventos/Evento.h"
+#include "includes/common/eventos/EventoIDVehiculoDeJugador.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoPartidaAgregada.h"

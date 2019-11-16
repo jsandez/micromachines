@@ -2,14 +2,18 @@
 
 #include "includes/common/Handler.h"
 
-EventoCrearPartida::EventoCrearPartida(uint32_t uuidRemitente, Protocolo& protocolo) :
+EventoCrearPartida::EventoCrearPartida(uint32_t uuidRemitente, Protocolo &protocolo) :
     Evento(uuidRemitente) {
 }
 
-void EventoCrearPartida::enviarse(Protocolo& protocolo) {
-
+EventoCrearPartida::EventoCrearPartida() : Evento(0) {
+  this->UUIDEvento_ = UUID_EVENTO_CREAR_PARTIDA;
 }
 
-void EventoCrearPartida::actualizar(Handler& handler) {
-    handler.manejar(*this);
+void EventoCrearPartida::enviarse(Protocolo &protocolo) {
+  protocolo.enviar(UUIDEvento_);
+}
+
+void EventoCrearPartida::actualizar(Handler &handler) {
+  handler.manejar(*this);
 }

@@ -20,7 +20,7 @@ class EscenaSala : public Escena {
  public:
   EscenaSala(Renderizador &renderizador,
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-             std::stack<std::shared_ptr<Escena>> &escenas);
+             std::stack<std::shared_ptr<Escena>> &escenas, ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;

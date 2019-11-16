@@ -33,6 +33,7 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/Conversor.cpp
         ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIDVehiculoDeJugador.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaAgregada.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseAPartida.cpp

@@ -7,6 +7,7 @@
 class EventoIniciarPartida : public Evento {
 public:
     EventoIniciarPartida(uint32_t uuidRemitente, Protocolo& protocolo);
+    EventoIniciarPartida();
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };

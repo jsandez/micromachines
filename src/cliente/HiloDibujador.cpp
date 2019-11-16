@@ -13,19 +13,21 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   std::shared_ptr<Evento> evento;
   while ((obtenido = eventos_.get(evento))) {
     // ACA SE PROCESAN LOS EVENTOS
-    //ALGO
-    //evento.get()->actualizar(escena);
+    std::cout<<"LLEGO"<<std::endl;
+    evento.get()->actualizar((Handler &) escena);
   }
   renderizador_.dibujar(iteracion, escena);
 }
 
 HiloDibujador::HiloDibujador(Ventana &ventana,
                              Renderizador &renderizador,
-                             ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI) :
+                             ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
+                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) :
     ventana_(ventana),
     renderizador_(renderizador),
-    eventosGUI_(eventosGUI) {
-  escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_));
+    eventosGUI_(eventosGUI),
+    eventosAEnviar_(eventosAEnviar_) {
+    escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_));
 }
 
 void HiloDibujador::correr() {

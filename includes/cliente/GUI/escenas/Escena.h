@@ -3,6 +3,7 @@
 
 #include <stack>
 #include <memory>
+#include <includes/common/ColaBloqueante.h>
 
 #include "includes/cliente/GUI/EventoGUIHandler.h"
 
@@ -11,15 +12,16 @@
 
 #include "includes/common/Handler.h"
 
-class Escena : public EventoGUIHandler, Handler {
-protected:
-    std::stack<std::shared_ptr<Escena>>& escenas_;
-    Renderizador& renderizador_;
+class Escena : public EventoGUIHandler, public Handler {
+ protected:
+  std::stack<std::shared_ptr<Escena>> &escenas_;
+  Renderizador &renderizador_;
+  ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_;
 
-public:
-    Escena(std::stack<std::shared_ptr<Escena>>& escenas, Renderizador& renderizador);
-    virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) = 0;
-    virtual ~Escena();
+ public:
+  Escena(std::stack<std::shared_ptr<Escena>> &escenas, Renderizador &renderizador,ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_);
+  virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) = 0;
+  virtual ~Escena();
 };
 
 #endif

@@ -15,25 +15,27 @@
 #include "includes/common/eventos/EventoPartidaAgregada.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoIniciarPartida.h"
+#include "includes/common/eventos/EventoIDVehiculoDeJugador.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 
 class Handler {
-public:
-    virtual void manejar(Evento& e) = 0;
-    virtual void manejar(EventoAcelerar& e);
-    virtual void manejar(EventoDesacelerar& e);
-    virtual void manejar(EventoFrenar& e);
-    virtual void manejar(EventoDejarDeFrenar& e);
-    virtual void manejar(EventoDoblarIzquierda& e);
-    virtual void manejar(EventoDejarDeDoblarIzquierda& e);
-    virtual void manejar(EventoDoblarDerecha& e);
-    virtual void manejar(EventoDejarDeDoblarDerecha& e);
-    virtual void manejar(EventoSnapshot& e);
-    virtual void manejar(EventoCrearPartida& e);
-    virtual void manejar(EventoPartidaAgregada& e);
-    virtual void manejar(EventoUnirseAPartida& e);
-    virtual void manejar(EventoIniciarPartida& e);
-    virtual void manejar(EventoDesconexion& e);
+ public:
+  virtual void manejar(Evento &e) = 0;
+  virtual void manejar(EventoAcelerar &e);
+  virtual void manejar(EventoDesacelerar &e);
+  virtual void manejar(EventoFrenar &e);
+  virtual void manejar(EventoDejarDeFrenar &e);
+  virtual void manejar(EventoDoblarIzquierda &e);
+  virtual void manejar(EventoDejarDeDoblarIzquierda &e);
+  virtual void manejar(EventoDoblarDerecha &e);
+  virtual void manejar(EventoDejarDeDoblarDerecha &e);
+  virtual void manejar(EventoSnapshot &e);
+  virtual void manejar(EventoCrearPartida &e);
+  virtual void manejar(EventoPartidaAgregada &e);
+  virtual void manejar(EventoUnirseAPartida &e);
+  virtual void manejar(EventoIniciarPartida &e);
+  virtual void manejar(EventoIDVehiculoDeJugador &e);
+  virtual void manejar(EventoDesconexion &e);
 };
 
 #endif

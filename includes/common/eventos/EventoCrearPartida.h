@@ -5,10 +5,11 @@
 #include "includes/common/red/Protocolo.h"
 
 class EventoCrearPartida : public Evento {
-public:
-    EventoCrearPartida(uint32_t uuidRemitente, Protocolo& protocolo);
-    virtual void enviarse(Protocolo& protocolo) override;
-    virtual void actualizar(Handler& handler) override;
+ public:
+  EventoCrearPartida(uint32_t uuidRemitente, Protocolo &protocolo);
+  EventoCrearPartida();
+  virtual void enviarse(Protocolo &protocolo) override;
+  virtual void actualizar(Handler &handler) override;
 };
 
 #endif

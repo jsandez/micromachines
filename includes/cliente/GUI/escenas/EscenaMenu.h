@@ -12,17 +12,19 @@
 #include "includes/cliente/GUI/Textura.h"
 
 class EscenaMenu : public Escena {
-private:
-    Animacion fondoMenu_;
-    ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI_;
+ private:
+  Animacion fondoMenu_;
+  ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
 
-public:
-    EscenaMenu(Renderizador& renderizador, ColaProtegida<std::shared_ptr<EventoGUI>>& eventosGUI, std::stack<std::shared_ptr<Escena>>& escenas);
-    virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
-    virtual void manejarInput(EventoGUI& evento) override;
-    virtual void manejarInput(EventoGUIClick& evento) override;
-    virtual void manejarInput(EventoGUIKeyDown& evento) override;
-    virtual void manejar(Evento &e) override ;
+ public:
+  EscenaMenu(Renderizador &renderizador,
+             ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
+             std::stack<std::shared_ptr<Escena>> &escenas, ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_);
+  virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
+  virtual void manejarInput(EventoGUI &evento) override;
+  virtual void manejarInput(EventoGUIClick &evento) override;
+  virtual void manejarInput(EventoGUIKeyDown &evento) override;
+  virtual void manejar(Evento &e) override;
 };
 
 #endif

@@ -4,12 +4,17 @@
 
 EscenaPartida::EscenaPartida(Renderizador &renderizador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                             std::stack<std::shared_ptr<Escena>> &escenas) : Escena(escenas, renderizador),
-                                                                             eventosGUI_(eventosGUI),
-                                                                             pista("assets/pistas/1.json",
-                                                                                   renderizador),
-                                                                             conversor(25.6, 256),
-                                                                             camara(conversor, pista, renderizador) {
+                             std::stack<std::shared_ptr<Escena>> &escenas,
+                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) : Escena(escenas,
+                                                                                                renderizador,
+                                                                                                eventosAEnviar_),
+                                                                                         eventosGUI_(eventosGUI),
+                                                                                         pista("assets/pistas/1.json",
+                                                                                               renderizador),
+                                                                                         conversor(25.6, 256),
+                                                                                         camara(conversor,
+                                                                                                pista,
+                                                                                                renderizador) {
 
   // ESTO ES SOLO PARA PROBAR! ESTO DEBERIA SER ALGO SETEADO EN UN EVENTO
   std::shared_ptr<ObjetoDinamico>
@@ -54,7 +59,7 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
 }
 
 void EscenaPartida::manejarInput(EventoGUI &evento) {
-  evento.actualizar((EventoGUIHandler &)(*this));
+  evento.actualizar((EventoGUIHandler &) (*this));
 }
 
 void EscenaPartida::manejarInput(EventoGUIClick &evento) {
@@ -75,10 +80,19 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   }
 }
 
+void EscenaPartida::manejar(Evento &e) {
+  e.actualizar((Handler &) (*this));
+}
 
-void EscenaPartida::manejar(Evento &e) {}
+void EscenaPartida::manejar(EventoSnapshot &e) {
+  std::map<uint8_t, datosVehiculo_> datos = e.idsADatosVehiculos_;
+  for (const auto &kv : datos) {
+    this->pista.obtenerObjeto(0).get()->mover(kv.second.xCoord_, kv.second.yCoord_, kv.second.angulo_);
+    this->pista.obtenerObjeto(0).get()->setVida(kv.second.salud_);
+  }
+}
 
-void EscenaPartida::manejar(EventoAcelerar &e) {
-  ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
-  carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());
+void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
+  uint8_t a = e.idDelVehiculo_;
+  std::cout << "LLEGO ID " << (int)a << std::endl;
 }
