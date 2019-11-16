@@ -20,20 +20,22 @@ Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Area dimensiones) {
     return std::move(miTextura);
 }
 
-void EscenaMenu::manejar(EventoGUI& evento) {
+void EscenaMenu::manejarInput(EventoGUI& evento) {
     evento.actualizar(*this);
 }
 
 #include <iostream>
 
-void EscenaMenu::manejar(EventoGUIClick& evento) {
+void EscenaMenu::manejarInput(EventoGUIClick& evento) {
     std::cout << "Click en escena menu\n";
     //escenas_.emplace(std::make_shared<EscenaSala>(renderizador_, eventosGUI_, escenas_));
   escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_));
 }
 
-void EscenaMenu::manejar(EventoGUIKeyDown& evento) {
+void EscenaMenu::manejarInput(EventoGUIKeyDown& evento) {
     if (evento.getTecla() == TECLA_FULLSCREEN) {
         renderizador_.toggleFullScreen();
     }
 }
+
+void EscenaMenu::manejar(Evento &e) {}

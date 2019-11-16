@@ -9,7 +9,9 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Textura.h"
 
-class Escena : public EventoGUIHandler {
+#include "includes/common/Handler.h"
+
+class Escena : public EventoGUIHandler, Handler {
 protected:
     std::stack<std::shared_ptr<Escena>>& escenas_;
     Renderizador& renderizador_;

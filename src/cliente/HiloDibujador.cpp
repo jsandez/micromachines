@@ -55,7 +55,7 @@ void HiloDibujador::correr() {
     bool obtenido = false;
     std::shared_ptr<EventoGUI> evento;
     while ((obtenido = eventosGUI_.get(evento))) {
-      escenaActual.manejar(*evento.get());
+      escenaActual.manejarInput(*evento.get());
     }
   }
 }

@@ -28,6 +28,7 @@ set(SOURCES
 
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp
         ${CMAKE_SOURCE_DIR}/src/common/RecibidorEventos.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Conversor.cpp
         ${CMAKE_SOURCE_DIR}/src/common/EnviadorEventos.cpp

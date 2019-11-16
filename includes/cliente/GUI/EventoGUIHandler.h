@@ -8,9 +8,9 @@
 class EventoGUIHandler {
 
 public:
-    virtual void manejar(EventoGUI& evento) = 0;
-    virtual void manejar(EventoGUIClick& evento) = 0;
-    virtual void manejar(EventoGUIKeyDown& evento) = 0;
+    virtual void manejarInput(EventoGUI& evento) = 0;
+    virtual void manejarInput(EventoGUIClick& evento) = 0;
+    virtual void manejarInput(EventoGUIKeyDown& evento) = 0;
 };
 
 #endif

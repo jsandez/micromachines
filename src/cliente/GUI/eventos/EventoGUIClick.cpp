@@ -8,5 +8,5 @@ EventoGUIClick::EventoGUIClick(unsigned int x, unsigned int y)
 }
 
 void EventoGUIClick::actualizar(EventoGUIHandler& handler) {
-    handler.manejar(*this);
+  handler.manejarInput(*this);
 }

@@ -53,21 +53,32 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   return std::move(miTextura);
 }
 
-void EscenaPartida::manejar(EventoGUI &evento) {
-  evento.actualizar(*this);
+void EscenaPartida::manejarInput(EventoGUI &evento) {
+  evento.actualizar((EventoGUIHandler &)(*this));
 }
 
-void EscenaPartida::manejar(EventoGUIClick &evento) {
+void EscenaPartida::manejarInput(EventoGUIClick &evento) {
   // TODO: ESTO ES UNA PRUEBA PARA VER QUE SE MUEVA EL AUTO Y NADA MAS!!
   std::cout << "LLEGO  EVENTO CLICK" << std::endl;
+  /*
   ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
-  carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());
+  carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());*/
+  std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
+
 }
 
-void EscenaPartida::manejar(EventoGUIKeyDown &evento) {
+void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   if (evento.getTecla() == TECLA_FULLSCREEN) {
     renderizador_.toggleFullScreen();
   } else if (evento.getTecla() == TECLA_ESC) {
     escenas_.pop();
   }
+}
+
+
+void EscenaPartida::manejar(Evento &e) {}
+
+void EscenaPartida::manejar(EventoAcelerar &e) {
+  ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
+  carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());
 }

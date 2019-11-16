@@ -7,7 +7,7 @@ EventoGUIKeyDown::EventoGUIKeyDown(const std::string& tecla)
 }
 
 void EventoGUIKeyDown::actualizar(EventoGUIHandler& handler) {
-    handler.manejar(*this);
+  handler.manejarInput(*this);
 }
 
 std::string& EventoGUIKeyDown::getTecla() {
