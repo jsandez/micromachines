@@ -1,11 +1,9 @@
-#include <iostream>
 #include "includes/common/eventos/EventoFactory.h"
 
 #include "includes/common/excepciones/EventoDesconocidoError.h"
 
 std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protocolo &protocolo) {
   uint16_t UUIDEvento = protocolo.recibirNumUnsigned16();
-  std::cout << "LLEGO EVENTO A FACTORY " << UUIDEvento << std::endl;
   switch (UUIDEvento) {
 
     case UUID_EVENTO_CREAR_PARTIDA:return std::make_shared<EventoCrearPartida>(uuidRemitente, protocolo);

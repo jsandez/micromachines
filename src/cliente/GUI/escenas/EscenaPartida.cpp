@@ -64,7 +64,6 @@ void EscenaPartida::manejarInput(EventoGUI &evento) {
 
 void EscenaPartida::manejarInput(EventoGUIClick &evento) {
   // TODO: ESTO ES UNA PRUEBA PARA VER QUE SE MUEVA EL AUTO Y NADA MAS!!
-  std::cout << "LLEGO  EVENTO CLICK" << std::endl;
   /*
   ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
   carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());*/
@@ -94,5 +93,4 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
   uint8_t a = e.idDelVehiculo_;
-  std::cout << "LLEGO ID " << (int)a << std::endl;
 }
