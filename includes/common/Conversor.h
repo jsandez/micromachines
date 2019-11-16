@@ -21,5 +21,6 @@ Conversor {
   static float tileAMetro(int coordenada) {
     return 10*(float)coordenada;
   }
+  
 };
 #endif
