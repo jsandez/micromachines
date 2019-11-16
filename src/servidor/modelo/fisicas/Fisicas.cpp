@@ -10,7 +10,8 @@ Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos) :
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
     frecuencia_((double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo()),
     iteracion_(0),
-    eventosOcurridos_(eventosOcurridos) {
+    eventosOcurridos_(eventosOcurridos),
+    reportesPorSegundo_(CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
 }
 
 Fisicas::~Fisicas() {
@@ -59,11 +60,16 @@ void Fisicas::dejarDeDoblarDerecha(uint8_t uuidVehiculo) {
 void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
     vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
 }
-
+#include <iostream>
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
+    //Acá se alteran los cuerpos físicos.
     for (const auto& kv : vehiculos_) {
         kv.second->step();
+    }
+
+    if((numeroIteracion % reportesPorSegundo_) == 0) {
+        //TODO: para cada auto, enviar el evento snapshot
     }
 
     uint32_t escala = numeroIteracion - iteracion_;
@@ -72,11 +78,11 @@ void Fisicas::step(uint32_t numeroIteracion) {
     iteracion_ = numeroIteracion;
     b2Body* actual = mundoBox2D_->GetBodyList();
     while (actual) {
+        if ((iteracion_ % 20) != 0) break;
         b2Vec2 position = actual->GetPosition();
 		float32 angle = actual->GetAngle();
-        printf("Vehiculo: 1");
-		printf("%4.6f %4.6f %4.2f\n", position.x, position.y, angle);
+        printf("Vehiculo: 1\n");
+		std::cout << "X: " << position.x << " Y: " << position.y << " Angulo: " << angle << "\n";
         actual = actual->GetNext();
     }
 }
-

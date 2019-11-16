@@ -19,10 +19,10 @@ class Vehiculo;
 
 class B2DVehiculo {
 private:
-    static const uint8_t volanteIzquierda_ = 0x1;
-    static const uint8_t volanteDerecha_ = 0x2;
-    static const uint8_t acelerador_ = 0x4;
-    static const uint8_t freno_ = 0x8;
+    static const int volanteIzquierda_ = 0x1;
+    static const int volanteDerecha_ = 0x2;
+    static const int acelerador_ = 0x4;
+    static const int freno_ = 0x8;
     int control_;
 
     b2Body* cuerpoBox2D_;

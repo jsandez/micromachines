@@ -22,6 +22,10 @@ unsigned int ConfigServidor::maxClientesEnEspera() {
     return json_["red"]["maxClientesEnEspera"].get<unsigned int>();
 }
 
+unsigned int ConfigServidor::snapshotsEnviadosPorSegundo() {
+    return json_["red"]["snapshotsEnviadosPorSegundo"].get<unsigned int>();
+}
+
 std::string ConfigServidor::rutaPistas() {
     return json_["rutaPistas"].get<std::string>();
 }

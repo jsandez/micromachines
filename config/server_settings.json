@@ -1,7 +1,8 @@
 {
     "red": {
         "puerto": "10001",
-        "maxClientesEnEspera": 20
+        "maxClientesEnEspera": 20,
+        "snapshotsEnviadosPorSegundo": 20
     },
     "fisicas": {
         "simulacionesPorSegundo": 60,

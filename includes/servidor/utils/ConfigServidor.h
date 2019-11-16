@@ -21,6 +21,8 @@ public:
     static ConfigServidor& instancia();
     std::string puertoServidor();
     unsigned int maxClientesEnEspera();
+    unsigned int snapshotsEnviadosPorSegundo();
+
     std::string rutaPistas();
     std::vector<int>& tilesTierra();
     std::vector<int>& tilesPista();

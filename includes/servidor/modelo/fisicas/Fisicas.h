@@ -21,6 +21,7 @@ private:
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
+    unsigned int reportesPorSegundo_;
     
 public:
     Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos);
