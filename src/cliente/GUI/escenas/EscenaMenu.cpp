@@ -47,4 +47,6 @@ void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
   }
 }
 
+void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {}
+
 void EscenaMenu::manejar(Evento &e) {}

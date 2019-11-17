@@ -29,9 +29,9 @@ class EscenaPartida : public Escena {
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
   virtual void manejarInput(EventoGUIKeyDown &evento) override;
+  virtual void manejarInput(EventoGUIKeyUp &evento) override;
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoSnapshot &e) override;
   virtual void manejar(EventoIDVehiculoDeJugador &e) override;
-
 };
 #endif

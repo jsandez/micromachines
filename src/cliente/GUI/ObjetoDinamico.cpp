@@ -12,28 +12,28 @@ Animacion &ObjetoDinamico::getAnimacion() {
   return this->animacion_;
 }
 
-void ObjetoDinamico::mover(int x, int y, int angulo) {
+void ObjetoDinamico::mover(uint16_t x, uint16_t y, uint16_t angulo) {
   this->x = x;
   this->y = y;
   this->angulo = angulo;
 }
 
-int ObjetoDinamico::getX() const {
+uint16_t ObjetoDinamico::getX() const {
   return this->x;
 }
 
-int ObjetoDinamico::getY() const {
+uint16_t ObjetoDinamico::getY() const {
   return this->y;
 }
 
-int ObjetoDinamico::getAngulo() const {
+uint16_t ObjetoDinamico::getAngulo() const {
   return this->angulo;
 }
 
-void ObjetoDinamico::setVida(int vida) {
+void ObjetoDinamico::setVida(uint16_t vida) {
   this->vida = vida;
 }
 
-int ObjetoDinamico::getVida() const {
+uint16_t ObjetoDinamico::getVida() const {
   return this->vida;
 }

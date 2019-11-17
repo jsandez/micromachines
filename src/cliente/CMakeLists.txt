@@ -11,6 +11,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/HiloDibujador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIClick.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIKeyDown.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIKeyUp.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Camara.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Area.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp

@@ -6,17 +6,17 @@
 
 class ObjetoDinamico {
  private:
-  int x, y, angulo, vida;
+  uint16_t x, y, angulo, vida;
   Animacion animacion_;
 
  public:
   ObjetoDinamico(int uuid, Renderizador& renderizador);
   Animacion &getAnimacion();
-  void mover(int x,int y, int angulo);
-  void setVida(int vida);
-  int getX() const;
-  int getY() const;
-  int getAngulo() const;
-  int getVida() const;
+  void mover(uint16_t x,uint16_t y, uint16_t angulo);
+  void setVida(uint16_t vida);
+  uint16_t getX() const;
+  uint16_t getY() const;
+  uint16_t getAngulo() const;
+  uint16_t getVida() const;
 };
 #endif

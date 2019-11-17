@@ -72,6 +72,18 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
     case SDLK_c:evento = std::make_shared<EventoGUIKeyDown>(TECLA_C);
       eventosGUI_.put(evento);
       break;
+    case SDLK_a:evento = std::make_shared<EventoGUIKeyDown>(TECLA_A);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_z:evento = std::make_shared<EventoGUIKeyDown>(TECLA_Z);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_LEFT:evento = std::make_shared<EventoGUIKeyDown>(TECLA_IZQ);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_RIGHT:evento = std::make_shared<EventoGUIKeyDown>(TECLA_DER);
+      eventosGUI_.put(evento);
+      break;
     case SDLK_ESCAPE:evento = std::make_shared<EventoGUIKeyDown>(TECLA_ESC);
       eventosGUI_.put(evento);
       break;

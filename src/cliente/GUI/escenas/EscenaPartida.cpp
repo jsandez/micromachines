@@ -1,4 +1,5 @@
 #include <iostream>
+#include <includes/cliente/utils/ConfigCliente.h>
 #include "includes/cliente/GUI/escenas/EscenaPartida.h"
 #include "includes/cliente/GUI/Area.h"
 
@@ -63,11 +64,6 @@ void EscenaPartida::manejarInput(EventoGUI &evento) {
 }
 
 void EscenaPartida::manejarInput(EventoGUIClick &evento) {
-  // TODO: ESTO ES UNA PRUEBA PARA VER QUE SE MUEVA EL AUTO Y NADA MAS!!
-  std::cout << "LLEGO  EVENTO CLICK" << std::endl;
-  /*
-  ObjetoDinamico *carPrincipal = this->pista.obtenerObjeto(id_car).get();
-  carPrincipal->mover(carPrincipal->getX() + 5, carPrincipal->getY() + 5, carPrincipal->getAngulo());*/
   std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
   eventosAEnviar_.put(eventoAcelerar);
 }
@@ -77,6 +73,34 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
     renderizador_.toggleFullScreen();
   } else if (evento.getTecla() == TECLA_ESC) {
     escenas_.pop();
+  } else if (evento.getTecla() == TECLA_A) {
+    std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
+    eventosAEnviar_.put(eventoAcelerar);
+  } else if (evento.getTecla() == TECLA_Z) {
+    std::shared_ptr<Evento> eventoFrenar = std::make_shared<EventoFrenar>();
+    eventosAEnviar_.put(eventoFrenar);
+  } else if (evento.getTecla() == TECLA_IZQ) {
+    std::shared_ptr<Evento> eventoDoblarIzq = std::make_shared<EventoDoblarIzquierda>();
+    eventosAEnviar_.put(eventoDoblarIzq);
+  } else if (evento.getTecla() == TECLA_DER) {
+    std::shared_ptr<Evento> eventoDoblarDer = std::make_shared<EventoDoblarDerecha>();
+    eventosAEnviar_.put(eventoDoblarDer);
+  }
+}
+
+void EscenaPartida::manejarInput(EventoGUIKeyUp &evento) {
+  if (evento.getTecla() == TECLA_A) {
+    std::shared_ptr<Evento> eventoDesacelerar = std::make_shared<EventoDesacelerar>();
+    eventosAEnviar_.put(eventoDesacelerar);
+  } else if (evento.getTecla() == TECLA_Z) {
+    std::shared_ptr<Evento> eventoDejarDeFrenar = std::make_shared<EventoDejarDeFrenar>();
+    eventosAEnviar_.put(eventoDejarDeFrenar);
+  } else if (evento.getTecla() == TECLA_IZQ) {
+    std::shared_ptr<Evento> eventoDejarDeDoblarIzq = std::make_shared<EventoDejarDeDoblarIzquierda>();
+    eventosAEnviar_.put(eventoDejarDeDoblarIzq);
+  } else if (evento.getTecla() == TECLA_DER) {
+    std::shared_ptr<Evento> eventoDejarDeDoblarDer = std::make_shared<EventoDejarDeDoblarDerecha>();
+    eventosAEnviar_.put(eventoDejarDeDoblarDer);
   }
 }
 
@@ -87,13 +111,18 @@ void EscenaPartida::manejar(Evento &e) {
 void EscenaPartida::manejar(EventoSnapshot &e) {
   std::map<uint8_t, datosVehiculo_> datos = e.idsADatosVehiculos_;
   for (const auto &kv : datos) {
-    this->pista.obtenerObjeto(0).get()->mover(kv.second.xCoord_, kv.second.yCoord_, kv.second.angulo_);
-    this->pista.obtenerObjeto(0).get()->setVida(kv.second.salud_);
+    uint16_t posX = this->conversor.metroAPixel(kv.second.xCoord_);
+    std::cout << "POSX " << posX;
+    // TODO: Fijarse como convertir esto
+    uint16_t posY = this->conversor.bloqueAPixel(45) - this->conversor.metroAPixel(kv.second.yCoord_);
+    std::cout << "POSY " << posY;
+    this->pista.obtenerObjeto(kv.first).get()->mover(posX, posY, kv.second.angulo_);
+    this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }
 }
 
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
   uint8_t a = e.idDelVehiculo_;
-  std::cout << "LLEGO ID " << (int) a << std::endl;
+  this->id_car = a;
 }
 

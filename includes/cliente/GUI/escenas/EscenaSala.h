@@ -25,6 +25,7 @@ class EscenaSala : public Escena {
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
   virtual void manejarInput(EventoGUIKeyDown &evento) override;
+  virtual void manejarInput(EventoGUIKeyUp &evento) override;
   virtual void manejar(Evento &e) override;
 };
 
