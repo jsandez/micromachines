@@ -36,9 +36,9 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
   pista.agregarObjeto(3, salud);
   camara.setCar(carPrincipal);
   this->id_car = 0;
-  pista.obtenerObjeto(0).get()->mover(3000, 3000, -90);
-  pista.obtenerObjeto(1).get()->mover(3100, 3100, -90);
-  pista.obtenerObjeto(2).get()->mover(3200, 3200, -90);
+  pista.obtenerObjeto(0).get()->mover(3000, 3000, 0);
+  pista.obtenerObjeto(1).get()->mover(3100, 3100, 0);
+  pista.obtenerObjeto(2).get()->mover(3200, 3200, 0);
   pista.obtenerObjeto(3).get()->mover(3300, 3300, 0);
 }
 
@@ -114,7 +114,7 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
     uint16_t posX = this->conversor.metroAPixel(kv.second.xCoord_);
     std::cout << "POSX " << posX;
     // TODO: Fijarse como convertir esto
-    uint16_t posY = this->conversor.bloqueAPixel(45) - this->conversor.metroAPixel(kv.second.yCoord_);
+    uint16_t posY = this->conversor.bloqueAPixel(pista.getSizeY()) - this->conversor.metroAPixel(kv.second.yCoord_);
     std::cout << "POSY " << posY;
     this->pista.obtenerObjeto(kv.first).get()->mover(posX, posY, kv.second.angulo_);
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
