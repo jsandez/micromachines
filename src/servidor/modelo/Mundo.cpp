@@ -52,7 +52,7 @@ void Mundo::step(uint32_t numeroIteracion) {
     fisicas_.step(numeroIteracion);
     //TODO: Encolar snapshot acá? Parece que sí, en físicas no.
     //TODO: Chequear por la negativa?
-    if((numeroIteracion % snapshotsEnviadosPorSegundo_) == 0) {
+    if((numeroIteracion % 1) == 0) {
         std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;
         for (const auto& kv : jugadoresAIDVehiculo_) {
             uint8_t idVehiculo = jugadoresAIDVehiculo_[kv.first];

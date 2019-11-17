@@ -13,8 +13,7 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   std::shared_ptr<Evento> evento;
   while ((obtenido = eventos_.get(evento))) {
     // ACA SE PROCESAN LOS EVENTOS
-    std::cout<<"LLEGO"<<std::endl;
-    evento.get()->actualizar((Handler &) escena);
+    evento.get()->actualizar(escena);
   }
   renderizador_.dibujar(iteracion, escena);
 }

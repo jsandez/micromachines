@@ -4,6 +4,7 @@
 
 #include "includes/cliente/GUI/eventos/EventoGUIClick.h"
 #include "includes/cliente/GUI/eventos/EventoGUIKeyDown.h"
+#include "includes/cliente/GUI/eventos/EventoGUIKeyUp.h"
 
 Cliente::Cliente(unsigned int anchoVentana,
                  unsigned int altoVentana,
@@ -90,12 +91,43 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
     case SDLK_F11:evento = std::make_shared<EventoGUIKeyDown>(TECLA_FULLSCREEN);
       eventosGUI_.put(evento);
       break;
-    default:break;
+    default:
+      break;
   }
 }
 
 void Cliente::manejarKeyUp(SDL_Event &eventoSDL) {
-
+  SDL_KeyboardEvent &keyEvent = (SDL_KeyboardEvent &) eventoSDL;
+  if (eventoSDL.key.repeat != 0) {
+    return;
+  }
+  std::shared_ptr<EventoGUI> evento;
+  switch (keyEvent.keysym.sym) {
+    //FIXME: QUITAR LA C, Y NO USAR A Y Z PORQUE ES LO MISMO QUE ARRIBA Y ABAJO LITERALMENTE TIENEN EL MISMO SENTIDO
+    case SDLK_c:evento = std::make_shared<EventoGUIKeyUp>(TECLA_C);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_a:evento = std::make_shared<EventoGUIKeyUp>(TECLA_A);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_z:evento = std::make_shared<EventoGUIKeyUp>(TECLA_Z);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_LEFT:evento = std::make_shared<EventoGUIKeyUp>(TECLA_IZQ);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_RIGHT:evento = std::make_shared<EventoGUIKeyUp>(TECLA_DER);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_ESCAPE:evento = std::make_shared<EventoGUIKeyUp>(TECLA_ESC);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_F11:evento = std::make_shared<EventoGUIKeyUp>(TECLA_FULLSCREEN);
+      eventosGUI_.put(evento);
+      break;
+    default:
+      break;
+  }
 }
 
 void Cliente::manejarMouseDown(SDL_Event &eventoSDL) {

@@ -60,12 +60,11 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
 }
 
 void EscenaPartida::manejarInput(EventoGUI &evento) {
-  evento.actualizar((EventoGUIHandler &) (*this));
+  evento.actualizar(*this);
 }
 
 void EscenaPartida::manejarInput(EventoGUIClick &evento) {
-  std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
-  eventosAEnviar_.put(eventoAcelerar);
+  
 }
 
 void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
@@ -76,46 +75,52 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   } else if (evento.getTecla() == TECLA_A) {
     std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
     eventosAEnviar_.put(eventoAcelerar);
+    std::cout << "Acelerar\n";
   } else if (evento.getTecla() == TECLA_Z) {
     std::shared_ptr<Evento> eventoFrenar = std::make_shared<EventoFrenar>();
     eventosAEnviar_.put(eventoFrenar);
+    std::cout << "Frenar\n";
   } else if (evento.getTecla() == TECLA_IZQ) {
     std::shared_ptr<Evento> eventoDoblarIzq = std::make_shared<EventoDoblarIzquierda>();
     eventosAEnviar_.put(eventoDoblarIzq);
+    std::cout << "DoblarIzq\n";
   } else if (evento.getTecla() == TECLA_DER) {
     std::shared_ptr<Evento> eventoDoblarDer = std::make_shared<EventoDoblarDerecha>();
     eventosAEnviar_.put(eventoDoblarDer);
+    std::cout << "DesdoblarDer\n";
   }
 }
 
 void EscenaPartida::manejarInput(EventoGUIKeyUp &evento) {
   if (evento.getTecla() == TECLA_A) {
     std::shared_ptr<Evento> eventoDesacelerar = std::make_shared<EventoDesacelerar>();
+    std::cout << "Desacelerar\n";
     eventosAEnviar_.put(eventoDesacelerar);
   } else if (evento.getTecla() == TECLA_Z) {
     std::shared_ptr<Evento> eventoDejarDeFrenar = std::make_shared<EventoDejarDeFrenar>();
     eventosAEnviar_.put(eventoDejarDeFrenar);
+    std::cout << "DesFrenar\n";
   } else if (evento.getTecla() == TECLA_IZQ) {
     std::shared_ptr<Evento> eventoDejarDeDoblarIzq = std::make_shared<EventoDejarDeDoblarIzquierda>();
     eventosAEnviar_.put(eventoDejarDeDoblarIzq);
+    std::cout << "desdoblarizq\n";
   } else if (evento.getTecla() == TECLA_DER) {
     std::shared_ptr<Evento> eventoDejarDeDoblarDer = std::make_shared<EventoDejarDeDoblarDerecha>();
     eventosAEnviar_.put(eventoDejarDeDoblarDer);
+    std::cout << "desdoblarder\n";
   }
 }
 
 void EscenaPartida::manejar(Evento &e) {
-  e.actualizar((Handler &) (*this));
+  e.actualizar(*this);
 }
 
 void EscenaPartida::manejar(EventoSnapshot &e) {
   std::map<uint8_t, datosVehiculo_> datos = e.idsADatosVehiculos_;
   for (const auto &kv : datos) {
-    uint16_t posX = this->conversor.metroAPixel(kv.second.xCoord_);
-    std::cout << "POSX " << posX;
+    float posX = this->conversor.metroAPixel((float)kv.second.xCoord_/100.0f);
     // TODO: Fijarse como convertir esto
-    uint16_t posY = this->conversor.bloqueAPixel(45) - this->conversor.metroAPixel(kv.second.yCoord_);
-    std::cout << "POSY " << posY;
+    float posY = this->conversor.bloqueAPixel(45) - this->conversor.metroAPixel((float)kv.second.yCoord_/100.0f);
     this->pista.obtenerObjeto(kv.first).get()->mover(posX, posY, kv.second.angulo_);
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }

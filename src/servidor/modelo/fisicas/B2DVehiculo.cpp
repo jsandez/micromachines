@@ -110,35 +110,43 @@ void B2DVehiculo::step() {
     actualizarAceleracion();
     actualizarVolante();
 }
-
+#include <iostream>
 void B2DVehiculo::acelerando() {
+    std::cout << "AcenerandoServer\n";
     control_ |= acelerador_;
 }
 
 void B2DVehiculo::desacelerando() {
     control_ &= ~acelerador_;
+    std::cout << "DesacelerandoServer\n";
 }
 
 void B2DVehiculo::frenando() {
     control_ |= freno_;
+    std::cout << "FrenandoServer\n";
 }
 
 void B2DVehiculo::dejandoDeFrenar() {
     control_ &= ~freno_;
+    std::cout << "DesFrenandoServer\n";
 }
 
 void B2DVehiculo::doblandoIzquierda() {
-    control_ |= ~volanteIzquierda_;
+    control_ |= volanteIzquierda_;
+    std::cout << "DoblandoIzquierdaServer\n";
 }
 
 void B2DVehiculo::dejandoDeDoblarIzquierda() {
     control_ &= ~volanteIzquierda_;
+    std::cout << "DesdoblandoizquierdaServer\n";
 }
 
 void B2DVehiculo::doblandoDerecha() {
-    control_ |= ~volanteDerecha_;
+    control_ |= volanteDerecha_;
+    std::cout << "DoblandoDerechaServer\n";
 }
 
 void B2DVehiculo::dejandoDeDoblarDerecha() {
     control_ &= ~volanteDerecha_;
+    std::cout << "DesdoblandoDerechaServer\n";
 }

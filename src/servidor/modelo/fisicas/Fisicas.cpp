@@ -66,16 +66,20 @@ void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
     vehiculos_.at(vehiculo.uuid())->getB2D()->SetTransform(posicionBox2D, (float)posicion.anguloDeg_);
 }
 
+#include <iostream>
+
+
 Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
     
     b2Body* cuerpoFisico = vehiculos_.at(idCuerpo)->getB2D();
     b2Vec2 posicion = cuerpoFisico->GetPosition();
     float32 angulo = cuerpoFisico->GetAngle();
     uint16_t anguloDeg = abs((int)(angulo*RADTODEG) % 360);
-    return Posicion(posicion.x, posicion.y, anguloDeg);
+    std::cout << anguloDeg << std::endl;
+    return Posicion(posicion.x*100, posicion.y*100, anguloDeg);
 }
 
-#include <iostream>
+
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
     //Acá se alteran los cuerpos físicos.
@@ -86,10 +90,12 @@ void Fisicas::step(uint32_t numeroIteracion) {
     
 
     uint32_t escala = numeroIteracion - iteracion_;
+    //std::cout << "Escala " << escala << std::endl;
     float tiempoAtranscurrir = (float)escala * frecuencia_;
+    //std::cout << "Tiempo a transcurrir: " << tiempoAtranscurrir << std::endl;
     mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
     iteracion_ = numeroIteracion;
-    b2Body* actual = mundoBox2D_->GetBodyList();
+    /*b2Body* actual = mundoBox2D_->GetBodyList();
     while (actual) {
         if ((iteracion_ % 20) != 0) break;
         b2Vec2 position = actual->GetPosition();
@@ -97,5 +103,5 @@ void Fisicas::step(uint32_t numeroIteracion) {
         printf("Vehiculo: 1\n");
 		std::cout << "X: " << position.x << " Y: " << position.y << " Angulo: " << angle << "\n";
         actual = actual->GetNext();
-    }
+    }*/
 }
