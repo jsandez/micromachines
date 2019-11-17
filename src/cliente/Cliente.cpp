@@ -1,6 +1,7 @@
 #include "includes/cliente/Cliente.h"
 
 #include <iostream>
+#include <includes/cliente/GUI/eventos/EventoGUIKeyUp.h>
 
 #include "includes/cliente/GUI/eventos/EventoGUIClick.h"
 #include "includes/cliente/GUI/eventos/EventoGUIKeyDown.h"
@@ -95,7 +96,26 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
 }
 
 void Cliente::manejarKeyUp(SDL_Event &eventoSDL) {
-
+  SDL_KeyboardEvent &keyEvent = (SDL_KeyboardEvent &) eventoSDL;
+  if (eventoSDL.key.repeat != 0) {
+    return;
+  }
+  std::shared_ptr<EventoGUI> evento;
+  switch (keyEvent.keysym.sym) {
+    case SDLK_a:evento = std::make_shared<EventoGUIKeyUp>(TECLA_A);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_z:evento = std::make_shared<EventoGUIKeyUp>(TECLA_Z);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_LEFT:evento = std::make_shared<EventoGUIKeyUp>(TECLA_IZQ);
+      eventosGUI_.put(evento);
+      break;
+    case SDLK_RIGHT:evento = std::make_shared<EventoGUIKeyUp>(TECLA_DER);
+      eventosGUI_.put(evento);
+      break;
+    default:break;
+  }
 }
 
 void Cliente::manejarMouseDown(SDL_Event &eventoSDL) {
