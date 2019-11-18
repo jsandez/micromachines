@@ -111,11 +111,9 @@ void EscenaPartida::manejar(Evento &e) {
 void EscenaPartida::manejar(EventoSnapshot &e) {
   std::map<uint8_t, datosVehiculo_> datos = e.idsADatosVehiculos_;
   for (const auto &kv : datos) {
-    uint16_t posX = this->conversor.metroAPixel(kv.second.xCoord_);
-    std::cout << "POSX " << posX;
+    float posX = this->conversor.metroAPixel(kv.second.xCoord_);
     // TODO: Fijarse como convertir esto
-    uint16_t posY = this->conversor.bloqueAPixel(pista.getSizeY()) - this->conversor.metroAPixel(kv.second.yCoord_);
-    std::cout << "POSY " << posY;
+    float posY = this->conversor.bloqueAPixel(pista.getSizeY()) - this->conversor.metroAPixel(kv.second.yCoord_);
     this->pista.obtenerObjeto(kv.first).get()->mover(posX, posY, kv.second.angulo_);
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }
