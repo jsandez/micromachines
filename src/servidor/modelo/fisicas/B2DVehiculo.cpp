@@ -128,7 +128,7 @@ void B2DVehiculo::dejandoDeFrenar() {
 }
 
 void B2DVehiculo::doblandoIzquierda() {
-    control_ |= ~volanteIzquierda_;
+    control_ |= volanteIzquierda_;
 }
 
 void B2DVehiculo::dejandoDeDoblarIzquierda() {
@@ -136,7 +136,7 @@ void B2DVehiculo::dejandoDeDoblarIzquierda() {
 }
 
 void B2DVehiculo::doblandoDerecha() {
-    control_ |= ~volanteDerecha_;
+    control_ |= volanteDerecha_;
 }
 
 void B2DVehiculo::dejandoDeDoblarDerecha() {
