@@ -71,7 +71,11 @@ Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
     b2Body* cuerpoFisico = vehiculos_.at(idCuerpo)->getB2D();
     b2Vec2 posicion = cuerpoFisico->GetPosition();
     float32 angulo = cuerpoFisico->GetAngle();
-    uint16_t anguloDeg = abs((int)(angulo*RADTODEG) % 360);
+    int anguloDeg = (int)(angulo*RADTODEG) % 360;
+    anguloDeg *= -1;
+    if (anguloDeg < 0) {
+        anguloDeg += 360;
+    }
     return Posicion(posicion.x, posicion.y, anguloDeg);
 }
 
