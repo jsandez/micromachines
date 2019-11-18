@@ -5,11 +5,11 @@
 
 class Posicion {
 public:
-    uint16_t x_;
-    uint16_t y_;
+    float x_;
+    float y_;
     uint16_t anguloDeg_;
 
-    Posicion(uint16_t x, uint16_t y, uint16_t anguloDeg);
+    Posicion(float x, float y, uint16_t anguloDeg);
 };
 
 #endif
