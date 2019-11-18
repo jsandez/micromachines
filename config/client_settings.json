@@ -28,19 +28,18 @@
     },
     "autoRojo": {
       "uuid": 800,
-      "ancho": 46,
-      "alto": 100,
+      "ancho": 80,
+      "alto": 148,
       "sprites": [
         "assets/autos/800.png",
         "assets/autos/801.png",
         "assets/autos/802.png",
         "assets/autos/803.png",
         "assets/autos/804.png",
-        "assets/autos/800.png",
-        "assets/autos/801.png",
-        "assets/autos/802.png",
-        "assets/autos/803.png",
-        "assets/autos/804.png"
+        "assets/autos/805.png",
+        "assets/autos/806.png",
+        "assets/autos/807.png",
+        "assets/autos/808.png"
         ]
     },
     "autoBlanco": {
@@ -57,14 +56,18 @@
     },
     "autoNegro": {
       "uuid": 820,
-      "ancho": 46,
-      "alto": 100,
+      "ancho": 80,
+      "alto": 148,
       "sprites": [
         "assets/autos/820.png",
         "assets/autos/821.png",
         "assets/autos/822.png",
         "assets/autos/823.png",
-        "assets/autos/824.png"
+        "assets/autos/824.png",
+        "assets/autos/825.png",
+        "assets/autos/826.png",
+        "assets/autos/827.png",
+        "assets/autos/828.png"
         ]
     },
     "autoAzul": {
