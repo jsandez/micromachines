@@ -13,12 +13,14 @@
 #include "includes/cliente/GUI/eventos/EventoGUI.h"
 #include "includes/cliente/HiloDibujador.h"
 #include "includes/cliente/red/SocketTCPCliente.h"
+#include "includes/cliente/HiloGrabador.h"
 
 class Cliente {
 private:
     ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
     Ventana ventana_;
     Renderizador renderizador_;
+    HiloGrabador grabador_;      
     HiloDibujador dibujador_;
     SocketTCPCliente socket_;
     RecibidorEventos recibidor_;

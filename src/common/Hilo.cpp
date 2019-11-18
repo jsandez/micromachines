@@ -35,3 +35,7 @@ void Hilo::dormir(double milisegundos) {
 void Hilo::join() {
     hilo_.join();
 }
+
+bool Hilo::joinable() {
+    return hilo_.joinable();
+}

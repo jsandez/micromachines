@@ -2,6 +2,7 @@
 #define _RENDERIZADOR_H_
 
 #include "includes/cliente/GUI/Textura.h"
+#include <vector>
 
 //Forward declarations:
 class SDL_Renderer;
@@ -31,6 +32,7 @@ class Renderizador {
   void toggleFullScreen();
 
   SDL_Renderer *getSDL();
+  std::vector<char> getVectorRGB() const ;
 };
 
 #endif
