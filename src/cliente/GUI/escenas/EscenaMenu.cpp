@@ -36,8 +36,6 @@ void EscenaMenu::manejarInput(EventoGUIClick &evento) {
   eventosAEnviar_.put(eventoCrearPartida);
   std::shared_ptr<Evento> eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
   eventosAEnviar_.put(eventoUnirseAPartida);
-  std::shared_ptr<Evento> eventoIniciarPartida = std::make_shared<EventoIniciarPartida>();
-  eventosAEnviar_.put(eventoIniciarPartida);
   escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_));
 }
 

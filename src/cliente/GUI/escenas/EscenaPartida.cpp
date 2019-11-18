@@ -85,6 +85,9 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   } else if (evento.getTecla() == TECLA_DER) {
     std::shared_ptr<Evento> eventoDoblarDer = std::make_shared<EventoDoblarDerecha>();
     eventosAEnviar_.put(eventoDoblarDer);
+  } else if (evento.getTecla() == TECLA_C) {
+    std::shared_ptr<Evento> eventoIniciarPartida = std::make_shared<EventoIniciarPartida>();
+    eventosAEnviar_.put(eventoIniciarPartida);
   }
 }
 
@@ -122,5 +125,6 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
   uint8_t a = e.idDelVehiculo_;
   this->id_car = a;
+  std::cout << (unsigned int)id_car << "\n";
 }
 
