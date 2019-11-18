@@ -85,10 +85,7 @@ void Fisicas::step(uint32_t numeroIteracion) {
     //Acá se alteran los cuerpos físicos.
     for (const auto& kv : vehiculos_) {
         kv.second->step();
-    }        
-    //TODO: para cada auto, enviar el evento snapshot. Acá? Pareciera que no.
-    
-
+    }
     uint32_t escala = numeroIteracion - iteracion_;
     float tiempoAtranscurrir = (float)escala * frecuencia_;
     mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
@@ -102,4 +99,5 @@ void Fisicas::step(uint32_t numeroIteracion) {
 		std::cout << "X: " << position.x << " Y: " << position.y << " Angulo: " << angle << "\n";
         actual = actual->GetNext();
     }
+    //TODO: Aplicar transformaciones y encolar eventos pertinentes.
 }
