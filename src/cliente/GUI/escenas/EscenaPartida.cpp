@@ -24,22 +24,22 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
   std::shared_ptr<ObjetoDinamico>
       carSecundario = std::make_shared<ObjetoDinamico>(820, renderizador);
 
-  std::shared_ptr<ObjetoDinamico>
+  /*std::shared_ptr<ObjetoDinamico>
       explosion = std::make_shared<ObjetoDinamico>(900, renderizador);
 
   std::shared_ptr<ObjetoDinamico>
-      salud = std::make_shared<ObjetoDinamico>(1000, renderizador);
+      salud = std::make_shared<ObjetoDinamico>(1000, renderizador);*/
 
   pista.agregarObjeto(0, carPrincipal);
   pista.agregarObjeto(1, carSecundario);
-  pista.agregarObjeto(2, explosion);
-  pista.agregarObjeto(3, salud);
+  //pista.agregarObjeto(2, explosion);
+  //pista.agregarObjeto(3, salud);
   camara.setCar(carPrincipal);
   this->id_car = 0;
-  pista.obtenerObjeto(0).get()->mover(3000, 3000, 0);
+  /*pista.obtenerObjeto(0).get()->mover(3000, 3000, 0);
   pista.obtenerObjeto(1).get()->mover(3100, 3100, 0);
   pista.obtenerObjeto(2).get()->mover(3200, 3200, 0);
-  pista.obtenerObjeto(3).get()->mover(3300, 3300, 0);
+  pista.obtenerObjeto(3).get()->mover(3300, 3300, 0);*/
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -125,6 +125,6 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
   uint8_t a = e.idDelVehiculo_;
   this->id_car = a;
-  std::cout << (unsigned int)id_car << "\n";
+  camara.setCar(pista.obtenerObjeto(a));
 }
 
