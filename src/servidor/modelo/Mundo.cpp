@@ -24,7 +24,7 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::sta
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_),
     contadorObjetos_(0),
-    snapshotsEnviadosPorSegundo_(CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
+    snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
