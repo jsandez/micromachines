@@ -7,8 +7,8 @@
 #include "includes/common/red/Protocolo.h"
 
 typedef struct {
-    uint16_t xCoord_;
-    uint16_t yCoord_;
+    float xCoord_;
+    float yCoord_;
     uint16_t angulo_;
     uint8_t salud_;
     uint8_t visible_;
