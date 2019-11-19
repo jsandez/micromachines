@@ -14,7 +14,7 @@ Cliente::Cliente(unsigned int anchoVentana,
                  const std::string &puerto) :
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
     renderizador_(ventana_),
-    dibujador_(ventana_, renderizador_, eventosGUI_, eventosAEnviar_),
+    dibujador_(ventana_, renderizador_, grabador_, eventosGUI_, eventosAEnviar_),
     socket_(host, puerto),
     recibidor_(socket_, dibujador_.eventosEntrantes(), 0),
     enviador_(socket_, eventosAEnviar_) {
@@ -24,6 +24,9 @@ Cliente::~Cliente() {
   dibujador_.join();
   enviador_.join();
   recibidor_.join();
+  if (grabador_.joinable()){
+    grabador_.join();
+  }
 }
 
 void Cliente::correr() {
@@ -90,6 +93,16 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
       break;
     case SDLK_F11:evento = std::make_shared<EventoGUIKeyDown>(TECLA_FULLSCREEN);
       eventosGUI_.put(evento);
+      break;
+    case SDLK_g:
+      if (grabador_.estaCorriendo()){
+          grabador_.detener();
+      } else {
+          if (grabador_.joinable()){
+              grabador_.join();
+          }
+          grabador_.iniciar();
+      } 
       break;
     default:break;
   }

@@ -27,6 +27,8 @@ public:
 
     virtual void join();
 
+    bool joinable();
+
     virtual ~Hilo();
 
     Hilo(const Hilo&) = delete;

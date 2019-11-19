@@ -12,11 +12,14 @@
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/eventos/EventoGUI.h"
+#include "includes/cliente/HiloGrabador.h"
+
 
 class HiloDibujador : public Hilo {
  private:
   Ventana &ventana_;
   Renderizador &renderizador_;
+  HiloGrabador& grabador_;
   ColaProtegida<std::shared_ptr<Evento>> eventos_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_;
@@ -26,6 +29,7 @@ class HiloDibujador : public Hilo {
  public:
   HiloDibujador(Ventana &ventana,
                 Renderizador &renderizador,
+                HiloGrabador &grabador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                 ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_);
   virtual void correr() override;

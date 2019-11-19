@@ -16,14 +16,20 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
     evento.get()->actualizar((Handler &) escena);
   }
   renderizador_.dibujar(iteracion, escena);
+  if (grabador_.estaCorriendo()){
+    std::vector<char> linea = renderizador_.getVectorRGB();
+    grabador_.insertar_linea_rgb(linea);
+  }
 }
 
 HiloDibujador::HiloDibujador(Ventana &ventana,
                              Renderizador &renderizador,
+                             HiloGrabador &grabador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                              ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) :
     ventana_(ventana),
     renderizador_(renderizador),
+    grabador_(grabador),
     eventosGUI_(eventosGUI),
     eventosAEnviar_(eventosAEnviar_) {
     escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_));

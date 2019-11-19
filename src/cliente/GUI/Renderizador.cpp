@@ -74,3 +74,13 @@ void Renderizador::toggleFullScreen() {
 SDL_Renderer *Renderizador::getSDL() {
   return renderizadorSDL_;
 }
+
+
+std::vector<char> Renderizador::getVectorRGB() const {
+    int ancho_rgb = ventana_.ancho() * 3;
+    std::vector<char> v(ancho_rgb * ventana_.alto());
+    SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, v.data(), ancho_rgb);
+    return std::move(v);
+}
+
+
