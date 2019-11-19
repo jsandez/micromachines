@@ -19,9 +19,8 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     float largo = CONFIG_SERVIDOR.largoVehiculo() / 2.0f;
     polygonShape.SetAsBox(ancho, largo);
     b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, DENSIDAD);
-    fixture->SetUserData(nullptr);
     //TODO: Propiedades de la rueda, sublcase que tiene datos (?)
-    //fixture->SetUserData( new CarTireFUD() );
+    fixture->SetUserData(nullptr);
     cuerpoBox2D_->SetUserData(&vehiculo);
     
     //TODO: Revisar agarre
@@ -50,7 +49,7 @@ b2Vec2 B2DVehiculo::getVelocidadFrontal() {
 void B2DVehiculo::actualizarFriccion() {
     //Derrape
     //FIXME: Hacerlo f(velocidadActual) o agregar mas ruedas
-    float maxImpulsoLateral = 5.0f / (CONFIG_SERVIDOR.agarreVehiculo() / 100.0f);
+    float maxImpulsoLateral = 25.0f / (CONFIG_SERVIDOR.agarreVehiculo() / 100.0f);
     b2Vec2 impulso = cuerpoBox2D_->GetMass() * -getVelocidadLateral();
     if (impulso.Length() > maxImpulsoLateral) {
         impulso *= maxImpulsoLateral / impulso.Length();
