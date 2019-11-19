@@ -5,42 +5,36 @@
 #include "includes/cliente/GUI/Area.h"
 
 EscenaPartida::EscenaPartida(Renderizador &renderizador,
-                             ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                             std::stack<std::shared_ptr<Escena>> &escenas,
-                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) : Escena(escenas,
-                                                                                                renderizador,
-                                                                                                eventosAEnviar_),
-                                                                                         eventosGUI_(eventosGUI),
-                                                                                         pista("assets/pistas/1.json",
-                                                                                               renderizador),
-                                                                                         conversor(25.6, 256),
-                                                                                         camara(conversor,
-                                                                                                pista,
-                                                                                                renderizador) {
+  ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
+  std::stack<std::shared_ptr<Escena>> &escenas,
+  ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+  EventoPartidaIniciada& estadoInicial)
+  : Escena(escenas, renderizador, eventosAEnviar_)
+  , eventosGUI_(eventosGUI)
+  , pista("assets/pistas/1.json", renderizador)
+  //FIXME: NO HARDCODEAR
+  , conversor(25.6, 256)
+  , camara(conversor, pista, renderizador) {
+  
 
-  // ESTO ES SOLO PARA PROBAR! ESTO DEBERIA SER ALGO SETEADO EN UN EVENTO
-  std::shared_ptr<ObjetoDinamico>
-      carPrincipal = std::make_shared<ObjetoDinamico>(800, renderizador);
+  const std::map<uint8_t, datosVehiculo_>& idsADatosVehiculos = estadoInicial.estadoInicial_.idsADatosVehiculos_;
+  //FIXME: Esto no esta bueno
+  int vehiculoActual = 800;
+  for (const auto& kv : idsADatosVehiculos) {
+        uint8_t id = kv.first;
+        std::shared_ptr<ObjetoDinamico> vehiculo = std::make_shared<ObjetoDinamico>(vehiculoActual, renderizador);
+        pista.agregarObjeto(id, vehiculo);
+        //FIXME: ESTO TAMBIEN ESTA FEO, LA PISTA DEBERIA DEJAR AGREGAR EN X; Y; ANGULO; TAMBIEN CON VIDA?
+        int xCoord = conversor.metroAPixel(kv.second.xCoord_);
+        int yCoord = conversor.metroAPixel(kv.second.yCoord_);
+        uint16_t angulo = kv.second.angulo_;
 
-  std::shared_ptr<ObjetoDinamico>
-      carSecundario = std::make_shared<ObjetoDinamico>(820, renderizador);
-
-  /*std::shared_ptr<ObjetoDinamico>
-      explosion = std::make_shared<ObjetoDinamico>(900, renderizador);
-
-  std::shared_ptr<ObjetoDinamico>
-      salud = std::make_shared<ObjetoDinamico>(1000, renderizador);*/
-
-  pista.agregarObjeto(0, carPrincipal);
-  pista.agregarObjeto(1, carSecundario);
-  //pista.agregarObjeto(2, explosion);
-  //pista.agregarObjeto(3, salud);
-  camara.setCar(carPrincipal);
-  this->id_car = 0;
-  /*pista.obtenerObjeto(0).get()->mover(3000, 3000, 0);
-  pista.obtenerObjeto(1).get()->mover(3100, 3100, 0);
-  pista.obtenerObjeto(2).get()->mover(3200, 3200, 0);
-  pista.obtenerObjeto(3).get()->mover(3300, 3300, 0);*/
+        pista.obtenerObjeto(id)->mover(xCoord, yCoord, angulo);
+        vehiculoActual += 10;
+  }
+ 
+  camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
+  this->id_car = estadoInicial.idDelVehiculo_;
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -125,10 +119,3 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }
 }
-
-void EscenaPartida::manejar(EventoIDVehiculoDeJugador &e) {
-  uint8_t a = e.idDelVehiculo_;
-  this->id_car = a;
-  camara.setCar(pista.obtenerObjeto(a));
-}
-

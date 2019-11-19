@@ -30,21 +30,34 @@ void EscenaMenu::manejarInput(EventoGUI &evento) {
 #include <iostream>
 
 void EscenaMenu::manejarInput(EventoGUIClick &evento) {
-  std::cout << "Click en escena menu\n";
-  //escenas_.emplace(std::make_shared<EscenaSala>(renderizador_, eventosGUI_, escenas_));
+  //FIXME: Segun boton presionado, realizar accion
+  std::cout << "Click en escena menu: HABRIA QUE PASAR A ESCENA SALA\n";
   std::shared_ptr<Evento> eventoCrearPartida = std::make_shared<EventoCrearPartida>();
   eventosAEnviar_.put(eventoCrearPartida);
   std::shared_ptr<Evento> eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
   eventosAEnviar_.put(eventoUnirseAPartida);
-  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_));
+  
+  
 }
 
 void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
   if (evento.getTecla() == TECLA_FULLSCREEN) {
     renderizador_.toggleFullScreen();
   }
+  if (evento.getTecla() == TECLA_C) {
+    std::shared_ptr<Evento> jugar = std::make_shared<EventoIniciarPartida>();
+    eventosAEnviar_.put(jugar);
+  }
 }
 
-void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {}
+void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {
 
-void EscenaMenu::manejar(Evento &e) {}
+}
+
+void EscenaMenu::manejar(Evento &e) {
+  e.actualizar(*this);
+}
+
+void EscenaMenu::manejar(EventoPartidaIniciada& estadoInicial) {
+  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_, estadoInicial));
+}

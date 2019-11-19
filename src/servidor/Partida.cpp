@@ -72,10 +72,17 @@ void Partida::detener() {
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
     eventosEntrantes_.put(unEvento);
 }
+#include <iostream>
 
 void Partida::asignarVehiculos() {
+    std::map <uint32_t, uint8_t> jugadoresAVehiculos_;
+    
     for (const auto& kv : jugadores_) {
         uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second->uuid());
+        jugadoresAVehiculos_.emplace(kv.first, idVehiculo);
+    }
+    for (const auto& kv : jugadores_) {
+        uint8_t idVehiculo = jugadoresAVehiculos_.at(kv.first);
         std::map<uint8_t, datosVehiculo_> estadoInicial = mundo_.getEstadoInicial();
         std::shared_ptr<Evento> eventoInicial = std::make_shared<EventoPartidaIniciada>(idVehiculo, std::move(estadoInicial));
         kv.second->ocurrio(eventoInicial);

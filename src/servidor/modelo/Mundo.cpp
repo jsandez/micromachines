@@ -173,7 +173,7 @@ static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile,
 std::map<uint8_t, datosVehiculo_> Mundo::serializarEstado() {
     std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;
     for (const auto& kv : jugadoresAIDVehiculo_) {
-        uint8_t idVehiculo = jugadoresAIDVehiculo_[kv.first];
+        uint8_t idVehiculo = jugadoresAIDVehiculo_.at(kv.first);
         //FISICAS DE FISICAS
         Posicion posicion = fisicas_.getPosicionDe(idVehiculo);
         //LOGICA DE MUNDO(YO)

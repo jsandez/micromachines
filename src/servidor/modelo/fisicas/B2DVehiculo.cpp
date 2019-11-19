@@ -56,7 +56,7 @@ void B2DVehiculo::actualizarFriccion() {
     }        
     cuerpoBox2D_->ApplyLinearImpulse(traccion_*impulso, cuerpoBox2D_->GetWorldCenter(), true);
 
-    cuerpoBox2D_->ApplyAngularImpulse(traccion_ * CORRECCION_DERRAPE * cuerpoBox2D_->GetInertia() * -cuerpoBox2D_->GetAngularVelocity(), true);
+    cuerpoBox2D_->ApplyAngularImpulse(0.166f * -cuerpoBox2D_->GetAngularVelocity(), true);
 
     b2Vec2 normal = getVelocidadFrontal();
     float velocidadActual = normal.Normalize();

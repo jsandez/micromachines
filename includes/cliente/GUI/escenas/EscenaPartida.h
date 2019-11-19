@@ -24,7 +24,7 @@ class EscenaPartida : public Escena {
  public:
   EscenaPartida(Renderizador &renderizador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                std::stack<std::shared_ptr<Escena>> &escenas, ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_);
+                std::stack<std::shared_ptr<Escena>> &escenas, ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_, EventoPartidaIniciada& estadoInicial);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
@@ -32,6 +32,5 @@ class EscenaPartida : public Escena {
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoSnapshot &e) override;
-  virtual void manejar(EventoIDVehiculoDeJugador &e) override;
 };
 #endif
