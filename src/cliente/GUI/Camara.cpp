@@ -67,8 +67,8 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
             bloqueCarY >= yInicial &&
             bloqueCarY <= yFinal) {
           Animacion &animacion = objeto.get()->getAnimacion();
-          Area areaFondo = Area(objeto.get()->getX() - (this->car.get()->getX() - width / 2),
-                                objeto.get()->getY() - (this->car.get()->getY() - height / 2),
+          Area areaFondo = Area(objeto.get()->getX() - (this->car.get()->getX() - width / 2) - (float)objeto->getAnimacion().ancho() / 2.0f,
+                                objeto.get()->getY() - (this->car.get()->getY() - height / 2) - (float)objeto->getAnimacion().alto() / 2.0f,
                                 animacion.ancho(),
                                 animacion.alto());
           renderizador_.dibujar(animacion.get(iteracion), areaFondo, objeto.get()->getAngulo(), false);
