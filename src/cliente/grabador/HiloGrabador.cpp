@@ -24,17 +24,17 @@ void HiloGrabador::correr(){
     
     av_register_all();
     FormatContext context;
-    OutputFormat videoOutput(context, "asd.mpeg");
+    OutputFormat videoOutput(context, "asd.mp4");
 
     SwsContext * ctx = sws_getContext(BUFFER_WIDTH, BUFFER_HEIGHT,
                                   AV_PIX_FMT_RGB24, BUFFER_WIDTH, BUFFER_HEIGHT,
-                                  AV_PIX_FMT_RGB24, 0, 0, 0, 0);
+                                  AV_PIX_FMT_YUV420P, 0, 0, 0, 0);
 
     
     while (seguirCorriendo_) {
         std::vector<char> lineaEscribir = lineas_rgb_.get(false);
         videoOutput.writeFrame(lineaEscribir.data(), ctx);
-        std::this_thread::sleep_for(std::chrono::milliseconds(25));
+        std::this_thread::sleep_for(std::chrono::milliseconds(40));
     }
     videoOutput.close();
     // Libero escalador

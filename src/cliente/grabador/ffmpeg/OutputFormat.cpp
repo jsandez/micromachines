@@ -46,7 +46,7 @@ OutputFormat::OutputFormat(FormatContext& context,
         throw std::runtime_error("No se encontró formato de salida");
     }
     // h.264 es bastante popular, pero hay mejores
-    this->avOutputFormat->video_codec = AV_CODEC_ID_H264;
+    this->avOutputFormat->video_codec = AV_CODEC_ID_MPEG4;
     AVCodec *codec = avcodec_find_encoder(this->avOutputFormat->video_codec);
     if (!codec) {
         throw std::runtime_error("No se pudo instanciar codec");
@@ -75,7 +75,7 @@ void OutputFormat::initFrame() {
 void OutputFormat::writeFrame(const char* data, SwsContext* ctx ) {
     const u_int8_t* tmp = (const u_int8_t*) data;
     // El ancho del video x3 por la cantidad de bytes
-    int width = 352 * 3;
+    int width = 640 * 3;
     sws_scale(ctx, &tmp, &width, 0, frame->height, frame->data, frame->linesize);
     //drawFrame(frame, data);
     frame->pts = currentPts;
@@ -87,8 +87,8 @@ void OutputFormat::writeFrame(const char* data, SwsContext* ctx ) {
 void OutputFormat::codecContextInit(AVCodec* codec){
     this->codecContext = avcodec_alloc_context3(codec);
     // La resolución debe ser múltiplo de 2
-    this->codecContext->width = 352;
-    this->codecContext->height = 288;
+    this->codecContext->width = 640;
+    this->codecContext->height = 480;
     this->codecContext->time_base = {1,25};
     this->codecContext->framerate = {25,1};
     this->codecContext->pix_fmt = AV_PIX_FMT_YUV420P;
