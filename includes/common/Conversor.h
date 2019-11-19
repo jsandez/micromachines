@@ -18,8 +18,8 @@ Conversor {
   int bloqueAPixel(int coord);
   int pixelABloque(int coord);
   //TODO: Refactor this
-  static float tileAMetro(int coordenada) {
-    return 10*(float)coordenada;
+  static float tileAMetro(float coordenada) {
+    return 10.0f * coordenada;
   }
   
 };

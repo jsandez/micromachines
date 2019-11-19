@@ -2,7 +2,7 @@
 #define _MUNDO_H_
 
 #include <memory>
-#include <stack>
+#include <queue>
 
 #include "includes/common/Handler.h"
 #include "includes/common/ColaProtegida.h"
@@ -15,7 +15,7 @@ class Mundo : public Handler {
 private:
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
     //std::map<Tile, std::shared_ptr<Superficie>> tileAModificador_;
-    std::stack<Tile> posicionesIniciales_;
+    std::queue<Posicion> posicionesIniciales_;
     std::map<uint32_t, Vehiculo> jugadoresAVehiculos_;
     ColaProtegida<std::shared_ptr<Evento>> eventosOcurridos_;
     Fisicas fisicas_;

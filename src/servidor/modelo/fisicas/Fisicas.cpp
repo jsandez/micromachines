@@ -62,7 +62,7 @@ void Fisicas::dejarDeDoblarDerecha(uint8_t uuidVehiculo) {
 
 void Fisicas::agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion) {
     vehiculos_.emplace(vehiculo.uuid(), std::make_shared<B2DVehiculo>(mundoBox2D_.get(), vehiculo));
-    b2Vec2 posicionBox2D = {(float)posicion.x_, (float)posicion.y_};
+    b2Vec2 posicionBox2D = {posicion.x_, posicion.y_};
     vehiculos_.at(vehiculo.uuid())->getB2D()->SetTransform(posicionBox2D, (float)posicion.anguloDeg_);
 }
 

@@ -17,7 +17,7 @@
 //TODO: Crear conversor de coordenadas?
 //Forward declaration
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
-static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::stack<Tile>& tiles_, Json& pistaJson);
+static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles_, Json& pistaJson);
 //TODO: implementar
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
@@ -82,10 +82,9 @@ Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
 uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     //TODO: En cual de los casilleros?
     //FIXME: Nada impide top() de pila vacia si hay mas jugadores
-    Tile tile = posicionesIniciales_.top();
-    float xMetros = Conversor::tileAMetro(tile.x_);
-    float yMetros = Conversor::tileAMetro(tile.y_);
-    Posicion posicion(xMetros, yMetros, 0.0);
+    Posicion posicion = posicionesIniciales_.front();
+    posicion.x_ = Conversor::tileAMetro(posicion.x_);
+    posicion.y_ = Conversor::tileAMetro(posicion.y_);
     jugadoresAVehiculos_.emplace(uuidJugador, Vehiculo(contadorObjetos_,
             CONFIG_SERVIDOR.velocidadMaxVehiculoAdelante(),
             CONFIG_SERVIDOR.velocidadMaxVehiculoAtras(),
@@ -161,12 +160,12 @@ static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::sh
     }
 }
 
-static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::stack<Tile>& tiles_, Json& pistaJson) {
+static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles_, Json& pistaJson) {
     int cupos = pistaJson["posicionesIniciales"]["cantidad"].get<int>();
     for (int i = 0; i < cupos; ++i) {
-        int x = pistaJson["posicionesIniciales"][std::to_string(i)]["x"].get<int>();
-        int y = largoY - pistaJson["posicionesIniciales"][std::to_string(i)]["y"].get<int>();
-        tiles_.emplace(Tile(x, y));
+        float x = pistaJson["posicionesIniciales"][std::to_string(i)]["x"].get<float>();
+        float y = largoY - pistaJson["posicionesIniciales"][std::to_string(i)]["y"].get<float>();
+        tiles_.emplace(Posicion(x, y, 0.0f));
     }
 }
 
