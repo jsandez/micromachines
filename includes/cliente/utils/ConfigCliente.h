@@ -36,6 +36,11 @@ class ConfigCliente {
   unsigned int ancho(std::string nombreAnimacion);
   unsigned int alto(std::string nombreAnimacion);
   std::vector<std::string> sprites(std::string nombreAnimacion);
+
+  unsigned int anchoGrabadora();
+  unsigned int altoGrabadora();
+  std::string formatoGrabadora();
+  unsigned int fpsGrabadora();
 };
 
 #endif

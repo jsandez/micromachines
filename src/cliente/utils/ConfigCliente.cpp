@@ -67,3 +67,19 @@ unsigned int ConfigCliente::alto(std::string nombreAnimacion) {
 std::vector<std::string> ConfigCliente::sprites(std::string nombreAnimacion) {
   return std::move(json_["animaciones"][nombreAnimacion]["sprites"].get<std::vector<std::string>>());
 }
+
+unsigned int ConfigCliente::anchoGrabadora() {
+  return json_["grabadora"]["resolucion"]["ancho"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::altoGrabadora() {
+  return json_["grabadora"]["resolucion"]["alto"].get<unsigned int>();
+}
+
+std::string ConfigCliente::formatoGrabadora() {
+  return std::move(json_["grabadora"]["formato"].get<std::string>());
+}
+
+unsigned int ConfigCliente::fpsGrabadora() {
+  return json_["grabadora"]["fps"].get<unsigned int>();
+}

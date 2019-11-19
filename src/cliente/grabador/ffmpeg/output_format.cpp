@@ -5,6 +5,7 @@
 #include <exception>
 
 OutputFormat::OutputFormat(const std::string &file) : filename(file) {
+	av_register_all();
 	avformat_alloc_output_context2(&ctx, NULL, NULL, filename.c_str());
 	if (!ctx) {
 		// Si no se encuentra el formato del archivo, se usa MP4
