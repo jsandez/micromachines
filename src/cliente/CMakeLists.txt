@@ -34,7 +34,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_format.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_stream.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_video.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp        
 
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

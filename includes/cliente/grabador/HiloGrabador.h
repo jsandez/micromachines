@@ -9,10 +9,7 @@
 
 class HiloGrabador : public Hilo {
 public:
-    HiloGrabador(){}
-
     virtual void correr() override;
-
 
     virtual void detener() override;
 

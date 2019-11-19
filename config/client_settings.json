@@ -188,5 +188,13 @@
         "assets/modificadores/1400.png"
       ]
     }
+  },
+  "grabadora": {
+    "resolucion": {
+      "ancho": 352,
+      "alto" : 288
+    },
+    "formato" : "mp4",
+    "fps" : 30
   }
 }

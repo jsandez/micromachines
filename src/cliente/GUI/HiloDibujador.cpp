@@ -1,4 +1,4 @@
-#include "includes/cliente/HiloDibujador.h"
+#include "includes/cliente/GUI/HiloDibujador.h"
 
 #include "includes/cliente/GUI/escenas/EscenaMenu.h"
 

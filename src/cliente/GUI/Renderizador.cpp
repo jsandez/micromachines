@@ -82,5 +82,3 @@ std::vector<char> Renderizador::getVectorRGB() const {
     SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, v.data(), ancho_rgb);
     return std::move(v);
 }
-
-

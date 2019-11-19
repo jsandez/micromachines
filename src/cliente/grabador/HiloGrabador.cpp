@@ -1,12 +1,10 @@
+#include "includes/cliente/grabador/HiloGrabador.h"
+
 #include "includes/cliente/utils/ConfigCliente.h"
-#include "includes/cliente/HiloGrabador.h"
-#include "src/cliente/grabador/ffmepg/video/output_video.cpp"
-#include "src/cliente/grabador/ffmepg/common/output_format.cpp"
+#include "includes/cliente/grabador/ffmpeg/output_video.h"
+#include "includes/cliente/grabador/ffmpeg/output_format.h"
 
 #include <ctime>
-
-
-HiloGrabador::HiloGrabador(){}
 
 void HiloGrabador::correr(){
     time_t t = std::time(0);
@@ -17,7 +15,7 @@ void HiloGrabador::correr(){
     OutputVideo videoOutput(fmt, frame_rate, CONFIG_CLIENTE.anchoGrabadora(), CONFIG_CLIENTE.altoGrabadora(), AV_PIX_FMT_RGB24);
     fmt.open();				
 	while (seguirCorriendo_){
-		std::vector<char> linea;
+		std::vector<char> linea ;
         lineas_rgb_.swap();
 		lineas_rgb_.get(linea);
         videoOutput.rgb_line_to_frame(linea.data());

@@ -104,7 +104,8 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
           grabador_.iniciar();
       } 
       break;
-    default:break;
+    default:
+      break;
   }
 }
 

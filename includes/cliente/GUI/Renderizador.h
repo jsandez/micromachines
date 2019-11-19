@@ -32,7 +32,7 @@ class Renderizador {
   void toggleFullScreen();
 
   SDL_Renderer *getSDL();
-  std::vector<char> getVectorRGB() const ;
+  std::vector<char> getVectorRGB() const;
 };
 
 #endif
