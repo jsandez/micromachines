@@ -7,9 +7,10 @@
 template <typename T>
 class DobleBuffer {
 private:
-    T datos[2];
-    int actual{0};
-    std::mutex mutex;
+    T datos_[2];
+    int actual_{0};
+    bool valido_{false};
+    std::mutex mutex_;
 
 public:
     DobleBuffer() {}
@@ -17,25 +18,30 @@ public:
 
     void swap();
     void set(const T& instance);
-    T get();
+    bool get(T& destino);
 };
 
 template <typename T>
 void DobleBuffer<T>::swap() {
-    std::unique_lock<std::mutex> lock(this->mutex);
-    this->actual = !this->actual;
+    std::unique_lock<std::mutex> lock(mutex_);
+    actual_ = !actual_;
 }
 
 template <typename T>
 void DobleBuffer<T>::set(const T& instance) {
-    std::unique_lock<std::mutex> lock(this->mutex);
-    this->datos[!this->actual] = instance;
+    std::unique_lock<std::mutex> lock(mutex_);
+    datos_[!actual_] = instance;
+    valido_ = true;
 }
 
 template <typename T>
-T DobleBuffer<T>::get() {
-    std::unique_lock<std::mutex> lock(this->mutex);
-    return this->datos[this->actual];
+bool DobleBuffer<T>::get(T& destino) {
+    std::unique_lock<std::mutex> lock(mutex_);
+    if (!valido_) {
+        return false;
+    }
+    destino = datos_[actual_];
+    return true;
 }
 
 #endif
