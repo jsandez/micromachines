@@ -1,5 +1,6 @@
 #include <iostream>
 #include <includes/cliente/utils/ConfigCliente.h>
+#include <includes/cliente/GUI/Texto.h>
 #include "includes/cliente/GUI/escenas/EscenaPartida.h"
 #include "includes/cliente/GUI/Area.h"
 
@@ -49,12 +50,18 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   camara.dibujarPista(numeroIteracion);
   std::shared_ptr<ObjetoDinamico> principalCar = pista.obtenerObjeto(id_car);
   Animacion &animacion = principalCar.get()->getAnimacion();
-  Area areaFondo = Area(dimensiones.ancho() / 2 - (float)animacion.ancho()/2.0f,
-                        dimensiones.alto() / 2 - (float)animacion.alto()/2.0f,
+  Area areaFondo = Area(dimensiones.ancho() / 2 - (float) animacion.ancho() / 2.0f,
+                        dimensiones.alto() / 2 - (float) animacion.alto() / 2.0f,
                         animacion.ancho(),
                         animacion.alto());
   renderizador_.dibujar(animacion.get(numeroIteracion), areaFondo, principalCar.get()->getAngulo(), false);
   camara.dibujarObjetos(id_car, numeroIteracion);
+  Texto textoHola("hola", 12, renderizador_);
+  Area areaHola = Area(0,
+                       0,
+                       100,
+                       100);
+  renderizador_.dibujarTexto(textoHola, areaHola);
   renderizador_.resetDestino();
   return std::move(miTextura);
 }

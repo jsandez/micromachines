@@ -4,7 +4,6 @@
 #include <SDL2/SDL_image.h>
 
 #include "includes/cliente/GUI/Ventana.h"
-#include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/escenas/Escena.h"
 
 Renderizador::Renderizador(Ventana &ventana) :
@@ -41,6 +40,17 @@ void Renderizador::dibujar(Textura &textura, Area &area) {
   };
   SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
 }
+
+void Renderizador::dibujarTexto(Texto &texto, Area &area) {
+  SDL_Rect SDLDestino = {
+      (int) area.x(),
+      (int) area.y(),
+      (int) area.ancho(),
+      (int) area.alto()
+  };
+  SDL_RenderCopy(renderizadorSDL_, texto.getSDL(), NULL, &SDLDestino);
+}
+
 
 void Renderizador::dibujar(Textura &textura, Area &area, double grados, bool flipVertical) {
   SDL_Rect SDLDestino = {

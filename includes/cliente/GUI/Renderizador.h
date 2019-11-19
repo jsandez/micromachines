@@ -2,6 +2,7 @@
 #define _RENDERIZADOR_H_
 
 #include "includes/cliente/GUI/Textura.h"
+#include "includes/cliente/GUI/Texto.h"
 #include <vector>
 
 //Forward declarations:
@@ -28,6 +29,7 @@ class Renderizador {
   void setDestino(Textura &textura);
   void resetDestino();
   void dibujar(Textura &textura, Area &destino);
+  void dibujarTexto(Texto &texto, Area &destino);
   void dibujar(Textura &textura, Area &destino, double grados, bool flipVertical);
   void toggleFullScreen();
 
