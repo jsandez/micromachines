@@ -24,11 +24,11 @@ void HiloGrabador::correr(){
     
     av_register_all();
     FormatContext context;
-    OutputFormat videoOutput(context, nombreGrabacion);
+    OutputFormat videoOutput(context, "asd.mpeg");
 
     SwsContext * ctx = sws_getContext(BUFFER_WIDTH, BUFFER_HEIGHT,
                                   AV_PIX_FMT_RGB24, BUFFER_WIDTH, BUFFER_HEIGHT,
-                                  AV_PIX_FMT_YUV420P, 0, 0, 0, 0);
+                                  AV_PIX_FMT_RGB24, 0, 0, 0, 0);
 
     
     while (seguirCorriendo_) {
