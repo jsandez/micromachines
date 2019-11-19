@@ -4,8 +4,11 @@
 
 ### Se instalan con apt install en ubuntu
 cmake
+
 libsdl2-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-image-dev
+
 lua5.3 liblua5.3-dev
+
 libavutil-dev libavformat-dev libavcodec-dev libswscale-dev libswresample-dev
 
 ## Compilacion
