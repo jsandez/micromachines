@@ -11,7 +11,6 @@ class HiloGrabador : public Hilo {
 public:
     virtual void correr() override;
 
-
     virtual void detener() override;
 
     void insertar_linea_rgb(std::vector<char>& linea);
