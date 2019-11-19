@@ -49,7 +49,8 @@ b2Vec2 B2DVehiculo::getVelocidadFrontal() {
 
 void B2DVehiculo::actualizarFriccion() {
     //Derrape
-    float maxImpulsoLateral = 5.0f * CONFIG_SERVIDOR.agarreVehiculo() / 100.0f;
+    //FIXME: Hacerlo f(velocidadActual) o agregar mas ruedas
+    float maxImpulsoLateral = 5.0f / (CONFIG_SERVIDOR.agarreVehiculo() / 100.0f);
     b2Vec2 impulso = cuerpoBox2D_->GetMass() * -getVelocidadLateral();
     if (impulso.Length() > maxImpulsoLateral) {
         impulso *= maxImpulsoLateral / impulso.Length();

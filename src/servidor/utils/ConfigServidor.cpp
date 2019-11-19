@@ -76,10 +76,10 @@ unsigned int ConfigServidor::aceleracionVehiculo() {
     return json_["modelo"]["vehiculo"]["aceleracionVehiculo"].get<unsigned int>();
 }
 unsigned int ConfigServidor::maniobrabilidadVehiculo() {
-    return json_["modelo"]["vehiculo"]["agarreVehiculo"].get<unsigned int>();
+    return json_["modelo"]["vehiculo"]["maniobrabilidadVehiculo"].get<unsigned int>();
 }
 unsigned int ConfigServidor::agarreVehiculo() {
-    return json_["modelo"]["vehiculo"]["maniobrabilidadVehiculo"].get<unsigned int>();
+    return json_["modelo"]["vehiculo"]["agarreVehiculo"].get<unsigned int>();
 }
 unsigned int ConfigServidor::saludVehiculo() {
     return json_["modelo"]["vehiculo"]["saludVehiculo"].get<unsigned int>();
