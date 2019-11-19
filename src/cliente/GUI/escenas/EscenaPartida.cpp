@@ -65,7 +65,6 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.dibujar(animacion.get(numeroIteracion), areaFondo, principalCar.get()->getAngulo(), false);
   camara.dibujarObjetos(id_car, numeroIteracion);
   dibujarInterfaz(numeroIteracion);
-  renderizador_.resetDestino();
   return std::move(miTextura);
 }
 

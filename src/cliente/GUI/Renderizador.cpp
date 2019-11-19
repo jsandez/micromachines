@@ -29,6 +29,7 @@ void Renderizador::setDestino(Textura &textura) {
 
 void Renderizador::resetDestino() {
   SDL_SetRenderTarget(renderizadorSDL_, NULL);
+  clear();
 }
 
 void Renderizador::dibujar(Textura &textura, Area &area) {
@@ -73,8 +74,36 @@ void Renderizador::dibujar(uint32_t numeroIteracion, Escena &escena) {
       0,
       (int) ventana_.ancho(),
       (int) ventana_.alto()};
+  resetDestino();
   SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
   SDL_RenderPresent(renderizadorSDL_);
+}
+
+void Renderizador::dibujar(uint32_t numeroIteracion, Escena &escena, DobleBuffer<std::vector<char>>& buffer) {
+  Textura textura = escena.dibujate(numeroIteracion, ventana_.dimensiones());
+  SDL_Rect SDLDestino = {
+      0,
+      0,
+      (int) ventana_.ancho(),
+      (int) ventana_.alto()};  
+  
+  SDL_RenderPresent(renderizadorSDL_);
+  int anchoRGB = ventana_.ancho() * 3;
+  std::vector<char> pixeles(anchoRGB * ventana_.alto());
+  SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, pixeles.data(), anchoRGB);
+  buffer.set(pixeles);
+  
+  resetDestino();
+  SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
+  SDL_RenderPresent(renderizadorSDL_);
+  
+  //SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
+  
+  
+  
+  //resetDestino();
+ //SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
+  //SDL_RenderPresent(renderizadorSDL_);
 }
 
 void Renderizador::toggleFullScreen() {
@@ -83,12 +112,4 @@ void Renderizador::toggleFullScreen() {
 
 SDL_Renderer *Renderizador::getSDL() {
   return renderizadorSDL_;
-}
-
-
-std::vector<char> Renderizador::getVectorRGB() const {
-    int ancho_rgb = ventana_.ancho() * 3;
-    std::vector<char> v(ancho_rgb * ventana_.alto());
-    SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, v.data(), ancho_rgb);
-    return std::move(v);
 }

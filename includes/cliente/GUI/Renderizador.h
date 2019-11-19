@@ -3,6 +3,7 @@
 
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Texto.h"
+#include "includes/cliente/utils/DobleBuffer.h"
 #include <vector>
 
 //Forward declarations:
@@ -26,6 +27,7 @@ class Renderizador {
   Renderizador(Ventana &ventana);
   ~Renderizador();
   void dibujar(uint32_t numeroIteracion, Escena &escena);
+  void dibujar(uint32_t numeroIteracion, Escena &escena, DobleBuffer<std::vector<char>>& buffer);
   void setDestino(Textura &textura);
   void resetDestino();
   void dibujar(Textura &textura, Area &destino);
@@ -34,7 +36,6 @@ class Renderizador {
   void toggleFullScreen();
 
   SDL_Renderer *getSDL();
-  std::vector<char> getVectorRGB() const;
 };
 
 #endif

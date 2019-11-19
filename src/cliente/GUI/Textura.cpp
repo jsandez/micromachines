@@ -27,7 +27,7 @@ Textura& Textura::operator=(Textura&& otraTextura) {
 
 Textura::Textura(Renderizador& renderizador, Area dimensiones) {
     texturaSDL_ = SDL_CreateTexture(renderizador.getSDL(),
-        SDL_PIXELFORMAT_RGBA8888,
+        SDL_PIXELFORMAT_RGB24,
         SDL_TEXTUREACCESS_TARGET,
         dimensiones.ancho(),
         dimensiones.alto());

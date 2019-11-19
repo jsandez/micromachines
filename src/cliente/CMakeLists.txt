@@ -29,12 +29,8 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaPartida.cpp
 
         ${PROJECT_SOURCE_DIR}/grabador/HiloGrabador.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/codec.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/frame.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_format.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_stream.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_video.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp        
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/FormatContext.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/OutputFormat.cpp      
 
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

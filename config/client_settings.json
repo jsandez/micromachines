@@ -1,7 +1,7 @@
 {
   "ventana": {
-    "ancho": 1280,
-    "alto": 720,
+    "ancho": 640,
+    "alto": 480,
     "pantallaCompleta": false,
     "titulo": "rpn",
     "fps": 60

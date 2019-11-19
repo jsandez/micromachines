@@ -18,7 +18,6 @@ Textura EscenaSala::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.setDestino(miTextura);
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
-  renderizador_.resetDestino();
   return std::move(miTextura);
 }
 
