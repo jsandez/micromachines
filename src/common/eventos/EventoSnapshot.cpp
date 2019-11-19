@@ -34,6 +34,14 @@ EventoSnapshot::EventoSnapshot(std::map<uint8_t, datosVehiculo_>&& datos) :
 
 void EventoSnapshot::enviarse(Protocolo& protocolo) {
     protocolo.enviar(UUIDEvento_);
+    enviarSoloDatos(protocolo);
+}
+
+void EventoSnapshot::actualizar(Handler& handler) {
+    handler.manejar(*this);
+}
+
+void EventoSnapshot::enviarSoloDatos(Protocolo& protocolo) {
     protocolo.enviar(cantidadVehiculos_);
     for (const auto& kv : idsADatosVehiculos_) {
         //ID
@@ -47,8 +55,4 @@ void EventoSnapshot::enviarse(Protocolo& protocolo) {
         protocolo.enviar(kv.second.salud_);
         protocolo.enviar(kv.second.visible_);
     }
-}
-
-void EventoSnapshot::actualizar(Handler& handler) {
-    handler.manejar(*this);
 }

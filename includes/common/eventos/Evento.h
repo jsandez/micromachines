@@ -20,7 +20,7 @@ class Handler;
 #define UUID_EVENTO_UNIRSE_A_PARTIDA            11
 #define UUID_EVENTO_INICIAR_PARTIDA             12
 #define UUID_EVENTO_DESCONEXION                 13
-#define UUID_EVENTO_ID_JUGADOR                  14
+#define UUID_EVENTO_PARTIDA_INICIADA            14
 #define UUID_EVENTO_SNAPSHOT                    15
 
 

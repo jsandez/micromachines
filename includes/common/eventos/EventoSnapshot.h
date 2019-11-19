@@ -16,7 +16,7 @@ typedef struct {
 
 class EventoSnapshot : public Evento {
 public:
-    //TODO: OPTIMIZAR?
+    //TODO: Esto queda por si queremos usar tamaño fijo para envio recepcion mas eficiente
     uint8_t cantidadVehiculos_;
     std::map<uint8_t, datosVehiculo_> idsADatosVehiculos_;
     
@@ -24,6 +24,7 @@ public:
     EventoSnapshot(std::map<uint8_t, datosVehiculo_>&& datos);
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
+    void enviarSoloDatos(Protocolo& protocolo);
 };
 
 #endif

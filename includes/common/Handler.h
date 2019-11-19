@@ -15,7 +15,7 @@
 #include "includes/common/eventos/EventoPartidaAgregada.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoIniciarPartida.h"
-#include "includes/common/eventos/EventoIDVehiculoDeJugador.h"
+#include "includes/common/eventos/EventoPartidaIniciada.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 
 class Handler {
@@ -34,7 +34,7 @@ class Handler {
   virtual void manejar(EventoPartidaAgregada &e);
   virtual void manejar(EventoUnirseAPartida &e);
   virtual void manejar(EventoIniciarPartida &e);
-  virtual void manejar(EventoIDVehiculoDeJugador &e);
+  virtual void manejar(EventoPartidaIniciada &e);
   virtual void manejar(EventoDesconexion &e);
 };
 

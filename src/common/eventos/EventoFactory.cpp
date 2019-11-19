@@ -38,7 +38,7 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_SNAPSHOT:return std::make_shared<EventoSnapshot>(uuidRemitente, protocolo);
 
-    case UUID_EVENTO_ID_JUGADOR:return std::make_shared<EventoIDVehiculoDeJugador>(uuidRemitente, protocolo);
+    case UUID_EVENTO_PARTIDA_INICIADA:return std::make_shared<EventoPartidaIniciada>(uuidRemitente, protocolo);
 
     default:throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);
   }

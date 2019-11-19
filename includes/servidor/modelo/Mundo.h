@@ -23,6 +23,8 @@ private:
     std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
     unsigned int snapshotsEnviadosPorSegundo_;
 
+    std::map<uint8_t, datosVehiculo_> serializarEstado();
+
 public:
     //TODO: Mundo recibe referencia a partida para avisarle que termino.
     Mundo(uint16_t uuidPista);
@@ -34,6 +36,8 @@ public:
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
 
     uint8_t agregarVehiculo(uint32_t uuidJugador);
+
+    std::map<uint8_t, datosVehiculo_> getEstadoInicial();
     
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoAcelerar& e) override;

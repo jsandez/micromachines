@@ -7,7 +7,7 @@
 #include "includes/common/Cronometro.h"
 #include "includes/common/Cola.h"
 #include "includes/servidor/utils/ConfigServidor.h"
-#include "includes/common/eventos/EventoIDVehiculoDeJugador.h"
+#include "includes/common/eventos/EventoPartidaIniciada.h"
 
 Partida::Partida(uint16_t uuidPista) :
     mundo_(uuidPista) {
@@ -32,7 +32,6 @@ void Partida::step(uint32_t nroIteracion) {
     std::shared_ptr<Evento> eventoOcurrido;
     while((obtenido = eventosOcurridos.get(eventoOcurrido))) {
         for (auto& kv : jugadores_) {
-            //FIXME: Copiar el evento ocurrido antes de manejarlo, o quitar el move de las colas (se haran copias)
             kv.second->ocurrio(eventoOcurrido);
         }
     }
@@ -77,7 +76,8 @@ void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {
 void Partida::asignarVehiculos() {
     for (const auto& kv : jugadores_) {
         uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second->uuid());
-        std::shared_ptr<Evento> eventoID = std::make_shared<EventoIDVehiculoDeJugador>(idVehiculo);
-        kv.second->ocurrio(eventoID);
+        std::map<uint8_t, datosVehiculo_> estadoInicial = mundo_.getEstadoInicial();
+        std::shared_ptr<Evento> eventoInicial = std::make_shared<EventoPartidaIniciada>(idVehiculo, std::move(estadoInicial));
+        kv.second->ocurrio(eventoInicial);
     }
 }

@@ -53,23 +53,7 @@ void Mundo::step(uint32_t numeroIteracion) {
     //TODO: Encolar snapshot acá? Parece que sí, en físicas no.
     //TODO: Chequear por la negativa?
     if((numeroIteracion % snapshotsEnviadosPorSegundo_) == 0) {
-        std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;
-        for (const auto& kv : jugadoresAIDVehiculo_) {
-            uint8_t idVehiculo = jugadoresAIDVehiculo_[kv.first];
-            //FISICAS DE FISICAS
-            Posicion posicion = fisicas_.getPosicionDe(idVehiculo);
-            //LOGICA DE MUNDO(YO)
-            uint8_t salud = jugadoresAVehiculos_.at(kv.first).salud();
-            //FIXME: No debiera ser así
-            uint8_t visible = 1;
-            idsADatosVehiculo.emplace(idVehiculo, datosVehiculo_{
-                posicion.x_,
-                posicion.y_,
-                posicion.anguloDeg_,
-                salud,
-                visible
-            });
-        }
+        std::map<uint8_t, datosVehiculo_> idsADatosVehiculo = serializarEstado();
         std::shared_ptr<Evento> snapshot = std::make_shared<EventoSnapshot>(std::move(idsADatosVehiculo));
         eventosOcurridos_.put(snapshot);
     }
@@ -97,6 +81,11 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     posicionesIniciales_.pop();
     //Wizardry
     return contadorObjetos_++;
+}
+
+std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {
+    //FIXME No devuelve el estado inicial en llamadas sucesivas
+    return serializarEstado();
 }
 
 void Mundo::manejar(Evento& e) {
@@ -180,3 +169,24 @@ static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile,
     }
 }
 */
+
+std::map<uint8_t, datosVehiculo_> Mundo::serializarEstado() {
+    std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;
+    for (const auto& kv : jugadoresAIDVehiculo_) {
+        uint8_t idVehiculo = jugadoresAIDVehiculo_[kv.first];
+        //FISICAS DE FISICAS
+        Posicion posicion = fisicas_.getPosicionDe(idVehiculo);
+        //LOGICA DE MUNDO(YO)
+        uint8_t salud = jugadoresAVehiculos_.at(kv.first).salud();
+        //FIXME: No debiera ser así
+        uint8_t visible = 1;
+        idsADatosVehiculo.emplace(idVehiculo, datosVehiculo_{
+            posicion.x_,
+            posicion.y_,
+            posicion.anguloDeg_,
+            salud,
+            visible
+        });
+    }
+    return std::move(idsADatosVehiculo);
+}
