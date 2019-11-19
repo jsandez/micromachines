@@ -40,7 +40,8 @@ class ConfigCliente {
   unsigned int anchoGrabadora();
   unsigned int altoGrabadora();
   std::string formatoGrabadora();
-  unsigned int fpsGrabadora();
+  uint32_t fpsGrabadora();
+  unsigned int bitrateGrabadora();
 };
 
 #endif

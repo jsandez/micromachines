@@ -1,5 +1,7 @@
 #include "includes/cliente/grabador/ffmpeg/video_codec.h"
 
+#include "includes/cliente/utils/ConfigCliente.h"
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -7,10 +9,12 @@
 #include "includes/cliente/grabador/ffmpeg/codec.h"
 #include "includes/cliente/grabador/ffmpeg/frame.h"
 
+#include <iostream>
+
 VideoCodec::VideoCodec(enum AVCodecID id, AVRational avr, Frame& fr, int width, int height, AVPixelFormat pix_fmt, bool header_flag) :
 	Codec(id) {
 	enc->codec_id = id;
-	enc->bit_rate = 400000;
+	enc->bit_rate = CONFIG_CLIENTE.bitrateGrabadora();
 
 	/* Resolution must be a multiple of two. */
 	enc->width    = width;

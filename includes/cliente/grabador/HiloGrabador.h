@@ -13,7 +13,7 @@ public:
 
     virtual void detener() override;
 
-    void insertar_linea_rgb(std::vector<char>& linea);
+    DobleBuffer<std::vector<char>>& getBuffer();
 
 private:
 	DobleBuffer<std::vector<char>> lineas_rgb_;

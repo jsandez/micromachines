@@ -14,11 +14,12 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   while ((obtenido = eventos_.get(evento))) {
     // ACA SE PROCESAN LOS EVENTOS
     evento.get()->actualizar((Handler &) escena);
-  }
-  renderizador_.dibujar(iteracion, escena);
+  }  
   if (grabador_.estaCorriendo()){
-    std::vector<char> linea = renderizador_.getVectorRGB();
-    grabador_.insertar_linea_rgb(linea);
+    renderizador_.dibujar(iteracion, escena, grabador_.getBuffer());
+    grabador_.getBuffer().swap();
+  } else {
+    renderizador_.dibujar(iteracion, escena);
   }
 }
 

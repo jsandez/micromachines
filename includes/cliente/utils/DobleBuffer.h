@@ -4,57 +4,38 @@
 
 #include <mutex>
 
-
 template <typename T>
 class DobleBuffer {
-   public:
+private:
+    T datos[2];
+    int actual{0};
+    std::mutex mutex;
+
+public:
     DobleBuffer() {}
     ~DobleBuffer() {}
 
-    DobleBuffer& operator=(const DobleBuffer& rhs) = delete;
-    DobleBuffer(const DobleBuffer& rhs) = delete;
-    
-
-    DobleBuffer(DobleBuffer&& rhs){
-        this->buff2_[this->actual_] = std::move(rhs.buff2_[rhs.actual_]);
-        this->buff2_[!this->actual_] = std::move(rhs.buff2_[!rhs.actual_]);
-    }
-
-    DobleBuffer& operator=(DobleBuffer&& rhs){
-        this->buff2_[this->actual_] = std::move(rhs.buff2_[rhs.actual_]);
-        this->buff2_[!this->actual_] = std::move(rhs.buff2_[!rhs.actual_]);
-        return *this;
-    }
-
-
     void swap();
-    void set(T& objeto);
-    void get(T& objeto);
-
-
-   private:
-    T buff2_[2];
-    int actual_{0};
-    std::mutex mtx_;
+    void set(const T& instance);
+    T get();
 };
 
 template <typename T>
 void DobleBuffer<T>::swap() {
-    std::unique_lock<std::mutex> lock(mtx_);
-    this->actual_ = !this->actual_;
+    std::unique_lock<std::mutex> lock(this->mutex);
+    this->actual = !this->actual;
 }
 
 template <typename T>
-void DobleBuffer<T>::set(T& objeto) {
-    std::unique_lock<std::mutex> lock(mtx_);
-    this->buff2_[!this->actual_] = std::move(objeto);
+void DobleBuffer<T>::set(const T& instance) {
+    std::unique_lock<std::mutex> lock(this->mutex);
+    this->datos[!this->actual] = instance;
 }
 
 template <typename T>
-void DobleBuffer<T>::get(T& objeto) {
-    std::unique_lock<std::mutex> lock(mtx_);
-    objeto = std::move(this->buff2_[this->actual_]);
+T DobleBuffer<T>::get() {
+    std::unique_lock<std::mutex> lock(this->mutex);
+    return this->datos[this->actual];
 }
-
 
 #endif

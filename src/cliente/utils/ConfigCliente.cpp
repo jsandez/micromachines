@@ -83,3 +83,7 @@ std::string ConfigCliente::formatoGrabadora() {
 unsigned int ConfigCliente::fpsGrabadora() {
   return json_["grabadora"]["fps"].get<unsigned int>();
 }
+
+uint32_t ConfigCliente::bitrateGrabadora() {
+  return json_["grabadora"]["bitrate"].get<uint32_t>();
+}

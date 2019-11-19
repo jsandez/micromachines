@@ -6,6 +6,9 @@
 
 #include <ctime>
 
+#include <thread>
+#include <chrono>
+
 void HiloGrabador::correr(){
     time_t t = std::time(0);
 	long int ahora = static_cast<long int> (t);
@@ -15,15 +18,15 @@ void HiloGrabador::correr(){
     OutputVideo videoOutput(fmt, frame_rate, CONFIG_CLIENTE.anchoGrabadora(), CONFIG_CLIENTE.altoGrabadora(), AV_PIX_FMT_RGB24);
     fmt.open();				
 	while (seguirCorriendo_){
-		std::vector<char> linea ;
-        lineas_rgb_.swap();
-		lineas_rgb_.get(linea);
+		std::vector<char> linea = lineas_rgb_.get();
         videoOutput.rgb_line_to_frame(linea.data());
-        videoOutput.write_frame();		
+        videoOutput.write_frame();
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
 	}   
 	fmt.write_trailer();
 	// Reinicio el doble buffer
-	lineas_rgb_ = DobleBuffer<std::vector<char>>();
+    //FIXME: HACER UN VACIAR, no se pueden reasignar/mover mutexes. En realidad no es necesario vaciarlo
+	//lineas_rgb_ = DobleBuffer<std::vector<char>>();
 }
 
 
@@ -31,6 +34,6 @@ void HiloGrabador::detener(){
     seguirCorriendo_ = false;
 }
 
-void HiloGrabador::insertar_linea_rgb(std::vector<char>& linea){
-    lineas_rgb_.set(linea);
+DobleBuffer<std::vector<char>>& HiloGrabador::getBuffer() {
+    return lineas_rgb_;
 }
