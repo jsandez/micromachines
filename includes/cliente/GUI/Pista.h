@@ -16,7 +16,6 @@ class Pista {
   std::map<int, std::vector<std::vector<std::shared_ptr<Animacion>>>> mapa;
   std::map<int, std::shared_ptr<Animacion>> texturas;
   std::map<int, std::shared_ptr<ObjetoDinamico>> objetosDinamicos;
-  std::mutex mtx_;
 
   void agregarBloque(int capa, int x, int y, std::shared_ptr<Animacion> animacion);
   void crearPista(nlohmann::json pistaJson);

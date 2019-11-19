@@ -40,6 +40,10 @@ std::string ConfigCliente::puerto() {
   return std::move(json_["red"]["puerto"].get<std::string>());
 }
 
+std::string ConfigCliente::fuente() {
+  return std::move(json_["fuente"]["path"].get<std::string>());
+}
+
 unsigned int ConfigCliente::anchoBloquesPista() {
   return json_["bloques"]["ancho"].get<unsigned int>();
 }
