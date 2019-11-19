@@ -11,20 +11,20 @@ class SDL_Texture;
 class Renderizador;
 
 class Textura {
-private:
-    SDL_Texture* texturaSDL_;
+ protected:
+  SDL_Texture *texturaSDL_;
+ private:
+  Textura(const Textura &) = delete;
+  Textura &operator=(const Textura &) = delete;
 
-    Textura(const Textura&) = delete;
-    Textura& operator=(const Textura&) = delete;
+ public:
+  Textura(const std::string &rutaArchivo, Renderizador &renderizador);
+  Textura(Renderizador &renderizador, Area dimensiones);
+  Textura(Textura &&otraTextura);
+  Textura &operator=(Textura &&otraTextura);
+  ~Textura();
 
-public:
-    Textura(const std::string& rutaArchivo, Renderizador& renderizador);
-    Textura(Renderizador& renderizador, Area dimensiones);
-    Textura(Textura&& otraTextura);
-    Textura& operator=(Textura&& otraTextura);
-    ~Textura();
-
-    SDL_Texture* getSDL();
+  SDL_Texture *getSDL();
 };
 
 #endif
