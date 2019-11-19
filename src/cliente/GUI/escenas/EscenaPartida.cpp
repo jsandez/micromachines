@@ -63,10 +63,7 @@ void EscenaPartida::manejarInput(EventoGUI &evento) {
   evento.actualizar((EventoGUIHandler &) (*this));
 }
 
-void EscenaPartida::manejarInput(EventoGUIClick &evento) {
-  std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
-  eventosAEnviar_.put(eventoAcelerar);
-}
+void EscenaPartida::manejarInput(EventoGUIClick &evento) {}
 
 void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   if (evento.getTecla() == TECLA_FULLSCREEN) {
