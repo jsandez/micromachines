@@ -11,6 +11,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
   unsigned int ancho_ = 0;
   unsigned int alto_ = 0;
   switch (uuidAnimacion) {
+    case UUID_ANIMACION_SALUD:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("salud")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("salud");
+      alto_ = CONFIG_CLIENTE.alto("salud");
+      break;
     case UUID_ANIMACION_AUTO_ROJO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("autoRojo")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));

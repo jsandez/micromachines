@@ -27,6 +27,8 @@ class ConfigCliente {
   std::string host();
   std::string puerto();
 
+  std::string fuente();
+
   unsigned int anchoBloquesPista();
   unsigned int altoBloquesPista();
 

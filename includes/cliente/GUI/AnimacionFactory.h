@@ -7,6 +7,7 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Animacion.h"
 
+#define UUID_ANIMACION_SALUD 200
 #define UUID_ANIMACION_FONDO_MENU 700
 #define UUID_ANIMACION_AUTO_ROJO 800
 #define UUID_ANIMACION_AUTO_AMARILLO 810
