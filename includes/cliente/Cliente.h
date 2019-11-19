@@ -11,9 +11,9 @@
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/eventos/EventoGUI.h"
-#include "includes/cliente/HiloDibujador.h"
+#include "includes/cliente/GUI/HiloDibujador.h"
 #include "includes/cliente/red/SocketTCPCliente.h"
-#include "includes/cliente/HiloGrabador.h"
+#include "includes/cliente/grabador/HiloGrabador.h"
 
 class Cliente {
 private:
@@ -25,8 +25,7 @@ private:
     SocketTCPCliente socket_;
     RecibidorEventos recibidor_;
     ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
-    EnviadorEventos enviador_;
-    
+    EnviadorEventos enviador_;    
 
     void manejarKeyUp(SDL_Event& eventoSDL);
     void manejarKeyDown(SDL_Event& eventoSDL);

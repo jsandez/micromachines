@@ -1,12 +1,10 @@
+#include "includes/cliente/grabador/HiloGrabador.h"
+
 #include "includes/cliente/utils/ConfigCliente.h"
-#include "includes/cliente/HiloGrabador.h"
-#include "src/cliente/grabador/ffmepg/video/output_video.cpp"
-#include "src/cliente/grabador/ffmepg/common/output_format.cpp"
+#include "includes/cliente/grabador/ffmpeg/output_video.h"
+#include "includes/cliente/grabador/ffmpeg/output_format.h"
 
 #include <ctime>
-
-
-HiloGrabador::HiloGrabador(){}
 
 void HiloGrabador::correr(){
     time_t t = std::time(0);

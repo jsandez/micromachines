@@ -9,8 +9,6 @@
 
 class HiloGrabador : public Hilo {
 public:
-    HiloGrabador(){}
-
     virtual void correr() override;
 
 

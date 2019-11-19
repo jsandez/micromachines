@@ -12,7 +12,7 @@
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/eventos/EventoGUI.h"
-#include "includes/cliente/HiloGrabador.h"
+#include "includes/cliente/grabador/HiloGrabador.h"
 
 
 class HiloDibujador : public Hilo {

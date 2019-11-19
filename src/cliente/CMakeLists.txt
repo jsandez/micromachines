@@ -8,7 +8,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/excepciones/SDLException.cpp
 
         ${PROJECT_SOURCE_DIR}/Cliente.cpp
-        ${PROJECT_SOURCE_DIR}/HiloDibujador.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/HiloDibujador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIClick.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIKeyDown.cpp
         ${PROJECT_SOURCE_DIR}/GUI/eventos/EventoGUIKeyUp.cpp
@@ -26,6 +26,14 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaMenu.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaSala.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaPartida.cpp
+
+        ${PROJECT_SOURCE_DIR}/grabador/HiloGrabador.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/codec.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/frame.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_format.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_stream.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_video.cpp
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp        
 
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
