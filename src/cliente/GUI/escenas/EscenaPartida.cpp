@@ -4,6 +4,20 @@
 #include "includes/cliente/GUI/escenas/EscenaPartida.h"
 #include "includes/cliente/GUI/Area.h"
 
+// TODO: Refactorizar
+void EscenaPartida::dibujarInterfaz(int iteracion) {
+  Texto textoHola("VIDA", 30, renderizador_);
+  Area areaHola = Area(5,
+                       5,
+                       80,
+                       20);
+  renderizador_.dibujarTexto(textoHola, areaHola);
+  Animacion salud(AnimacionFactory::instanciar(200, this->renderizador_));
+  std::shared_ptr<ObjetoDinamico> principalCar = pista.obtenerObjeto(id_car);
+  Area areaSalud = Area(90, 5, round(principalCar.get()->getVida() * salud.ancho() / 100), salud.alto());
+  renderizador_.dibujar(salud.get(iteracion), areaSalud);
+}
+
 EscenaPartida::EscenaPartida(Renderizador &renderizador,
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
   std::stack<std::shared_ptr<Escena>> &escenas,
@@ -50,12 +64,7 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
                         animacion.alto());
   renderizador_.dibujar(animacion.get(numeroIteracion), areaFondo, principalCar.get()->getAngulo(), false);
   camara.dibujarObjetos(id_car, numeroIteracion);
-  Texto textoHola("hola", 12, renderizador_);
-  Area areaHola = Area(0,
-                       0,
-                       100,
-                       100);
-  renderizador_.dibujarTexto(textoHola, areaHola);
+  dibujarInterfaz(numeroIteracion);
   renderizador_.resetDestino();
   return std::move(miTextura);
 }
