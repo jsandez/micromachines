@@ -1,6 +1,5 @@
 cmake-build-debug
 .idea
-*.md
 /build*
 .vscode
 /src/3rd-party/ffmepg/build
