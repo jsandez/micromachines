@@ -13,9 +13,6 @@ extern "C" {
 #include "includes/cliente/grabador/ffmpeg/codec.h"
 #include "includes/cliente/grabador/ffmpeg/output_format.h"
 
-//TODO: Esto no tiene que estar hardcodeado
-#define STREAM_DURATION   10.0
-#define STREAM_FRAME_RATE 25 /* 25 images/s */
 #define STREAM_PIX_FMT    AV_PIX_FMT_YUV420P /* default pix_fmt */
 #define SCALE_FLAGS SWS_BICUBIC
 

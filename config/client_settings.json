@@ -191,8 +191,8 @@
   },
   "grabadora": {
     "resolucion": {
-      "ancho": 252,
-      "alto" : 342
+      "ancho": 352,
+      "alto" : 288
     },
     "formato" : "mp4",
     "fps" : 30

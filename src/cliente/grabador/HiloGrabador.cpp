@@ -15,7 +15,7 @@ void HiloGrabador::correr(){
     OutputVideo videoOutput(fmt, frame_rate, CONFIG_CLIENTE.anchoGrabadora(), CONFIG_CLIENTE.altoGrabadora(), AV_PIX_FMT_RGB24);
     fmt.open();				
 	while (seguirCorriendo_){
-		std::vector<char> linea;
+		std::vector<char> linea ;
         lineas_rgb_.swap();
 		lineas_rgb_.get(linea);
         videoOutput.rgb_line_to_frame(linea.data());
