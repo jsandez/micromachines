@@ -49,7 +49,7 @@ b2Vec2 B2DVehiculo::getVelocidadFrontal() {
 
 void B2DVehiculo::actualizarFriccion() {
     //Derrape
-    float maxImpulsoLateral = MAX_IMPULSO_LATERAL;
+    float maxImpulsoLateral = 5.0f * CONFIG_SERVIDOR.agarreVehiculo() / 100.0f;
     b2Vec2 impulso = cuerpoBox2D_->GetMass() * -getVelocidadLateral();
     if (impulso.Length() > maxImpulsoLateral) {
         impulso *= maxImpulsoLateral / impulso.Length();
@@ -60,7 +60,7 @@ void B2DVehiculo::actualizarFriccion() {
 
     b2Vec2 normal = getVelocidadFrontal();
     float velocidadActual = normal.Normalize();
-    float rozamientoFrenado = -(fuerzaManejoMaxima_/velocidadMaxAdelante_)*velocidadActual;
+    float rozamientoFrenado = -(fuerzaManejoMaxima_/velocidadMaxAdelante_)*velocidadActual*0.000001f;
     cuerpoBox2D_->ApplyForce(rozamientoFrenado * normal, cuerpoBox2D_->GetWorldCenter(), true);
 }
 
