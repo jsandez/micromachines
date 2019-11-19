@@ -44,8 +44,7 @@ set (FFMPEG_LIBRARIES
     libswscale
 )
 
-target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image SDL2_mixer SDL2_ttf lua5.3 avutil avformat avcodec swscale swresample)
-# ¿-lz -lm ?????
+target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image SDL2_mixer SDL2_ttf lua5.3 avutil avformat avcodec swscale swresample z m)
 
 INSTALL(TARGETS Servidor DESTINATION ${RUTA_INSTALACION})
 INSTALL(TARGETS Cliente DESTINATION ${RUTA_INSTALACION})
