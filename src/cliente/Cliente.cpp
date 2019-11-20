@@ -64,6 +64,9 @@ void Cliente::cerrar() {
   enviador_.detener();
   recibidor_.detener();
   socket_.cerrarLectoEscritura();
+  if (grabador_.estaCorriendo()){
+    grabador_.detener();
+  }
 }
 
 void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
