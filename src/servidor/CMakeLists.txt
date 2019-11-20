@@ -15,6 +15,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/Jugador.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Mundo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/Identificable.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/Colisionable.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/Superficie.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/Vehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/NoSuperficie.cpp
@@ -23,6 +24,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieTierra.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieFactory.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/ContactListener.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/B2DVehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/movimiento/Posicion.cpp
   

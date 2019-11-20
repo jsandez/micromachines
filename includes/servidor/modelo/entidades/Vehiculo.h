@@ -28,6 +28,9 @@ public:
     unsigned int maniobrabilidad();
     unsigned int agarre();
     unsigned int salud();
+
+    virtual void enColisionCon(Colisionable& otro) override;
+    virtual void colisionarContra(Vehiculo& vehiculo) override;
 };
 
 #endif

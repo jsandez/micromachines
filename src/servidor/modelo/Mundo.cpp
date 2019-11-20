@@ -22,7 +22,7 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
-    fisicas_(eventosOcurridos_),
+    fisicas_(eventosOcurridos_, contactListener_),
     contadorObjetos_(0),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir

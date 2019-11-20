@@ -40,3 +40,11 @@ unsigned int Vehiculo::agarre() {
 unsigned int Vehiculo::salud() {
     return salud_;
 }
+
+void Vehiculo::enColisionCon(Colisionable& otro) {
+    otro.colisionarContra(*this);
+}
+#include <iostream>
+void Vehiculo::colisionarContra(Vehiculo& vehiculo) {
+    std::cout << "Gil!" << std::endl;
+}

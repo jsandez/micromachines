@@ -11,6 +11,7 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 #include "includes/servidor/modelo/fisicas/B2DVehiculo.h"
+#include "includes/servidor/modelo/fisicas/ContactListener.h"
 
 #ifndef DEGTORAD
 #define DEGTORAD 0.0174532925199432957f
@@ -26,16 +27,15 @@ private:
     double frecuencia_;
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
-    //TODO: Quitar reportesporsegundo de acà?
-    unsigned int reportesPorSegundo_;
     
 public:
-    Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos);
+    Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener);
     ~Fisicas();
     void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
     //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
     void step(uint32_t numeroIteracion);
     void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
+    
     void acelerar(uint8_t uuidVehiculo);
     void desacelerar(uint8_t uuidVehiculo);
     void frenar(uint8_t uuidVehiculo);
@@ -44,6 +44,7 @@ public:
     void dejarDeDoblarIzquierda(uint8_t uuidVehiculo);
     void doblarDerecha(uint8_t uuidVehiculo);
     void dejarDeDoblarDerecha(uint8_t uuidVehiculo);
+    
     Posicion getPosicionDe(uint8_t idCuerpo);
 };
 

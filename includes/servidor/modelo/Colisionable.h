@@ -6,9 +6,8 @@ class Vehiculo;
 
 class Colisionable {
 public:
-    //virtual void enColisionCon(Colisionable& otro) = 0;
-    //virtual void colisionarContra(Vehiculo& vehiculo);
-
+    virtual void enColisionCon(Colisionable& otro) = 0;
+    virtual void colisionarContra(Vehiculo& vehiculo);
 };
 
 #endif

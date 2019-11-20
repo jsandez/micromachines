@@ -8,13 +8,14 @@
 
 //TODO: Fisicas debe conocer de eventos ocurridos?
 //Tiene pinta de que no. Por ende tampoco de snapshots por segundo
-Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos) :
+Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener) :
     gravedad_(0, 0),
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
     frecuencia_((double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo()),
     iteracion_(0),
-    eventosOcurridos_(eventosOcurridos),
-    reportesPorSegundo_(CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
+    eventosOcurridos_(eventosOcurridos) {
+    
+    mundoBox2D_->SetContactListener(&contactListener);
 }
 
 Fisicas::~Fisicas() {
