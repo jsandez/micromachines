@@ -110,6 +110,14 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       alto_ = CONFIG_CLIENTE.alto("barro");
       break;
 
+    case UUID_ANIMACION_PASTO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("pasto")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("pasto");
+      alto_ = CONFIG_CLIENTE.alto("pasto");
+      break;
+
     default:frames_.emplace_back(Textura("assets/pistas/" + std::to_string(uuidAnimacion) + ".png", renderizador));
       ancho_ = CONFIG_CLIENTE.anchoBloquesPista();
       alto_ = CONFIG_CLIENTE.altoBloquesPista();
