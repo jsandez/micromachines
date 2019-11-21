@@ -6,5 +6,12 @@ Tile::Tile(int x, int y) :
 }
 
 bool Tile::operator<(const Tile& otro) const {
-    return (this->x_ < otro.x_) && (this->y_ < otro.y_);
+    if (this->x_ < otro.x_) {
+        return true;
+    } else if (this->x_ == otro.x_) {
+        if (this->y_ < otro.y_) {
+            return true;
+        }
+    }   
+    return false;
 }
