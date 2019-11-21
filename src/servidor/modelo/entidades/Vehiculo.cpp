@@ -41,10 +41,12 @@ unsigned int Vehiculo::salud() {
     return salud_;
 }
 
+// Yo en colision con un abstracto, le digo que 
+// Choque contra yo específico.
 void Vehiculo::enColisionCon(Colisionable& otro) {
     otro.colisionarContra(*this);
 }
-#include <iostream>
+
 void Vehiculo::colisionarContra(Vehiculo& vehiculo) {
-    std::cout << "Gil!" << std::endl;
+    
 }
