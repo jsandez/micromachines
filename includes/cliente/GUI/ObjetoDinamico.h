@@ -3,11 +3,14 @@
 #include "includes/cliente/GUI/AnimacionFactory.h"
 #include "includes/cliente/GUI/Animacion.h"
 #include "includes/cliente/GUI/Renderizador.h"
+#include "includes/cliente/GUI/Sonido.h"
+#include "includes/cliente/utils/ConfigCliente.h"
 
 class ObjetoDinamico {
  private:
   uint16_t x, y, angulo, vida;
   Animacion animacion_;
+  Sonido sonido;
 
  public:
   ObjetoDinamico(int uuid, Renderizador& renderizador);
@@ -18,5 +21,6 @@ class ObjetoDinamico {
   uint16_t getY() const;
   uint16_t getAngulo() const;
   uint16_t getVida() const;
+  Sonido& getSonido();
 };
 #endif

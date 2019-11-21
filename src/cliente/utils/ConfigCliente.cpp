@@ -44,6 +44,18 @@ std::string ConfigCliente::fuente() {
   return std::move(json_["fuente"]["path"].get<std::string>());
 }
 
+std::string ConfigCliente::musicaAmbiente() {
+  return std::move(json_["musica"]["ambiente"].get<std::string>());
+}
+
+std::string ConfigCliente::musicaMotor() {
+  return std::move(json_["musica"]["motor"].get<std::string>());
+}
+
+std::string ConfigCliente::musicaExplosion() {
+  return std::move(json_["musica"]["explosion"].get<std::string>());
+}
+
 unsigned int ConfigCliente::anchoBloquesPista() {
   return json_["bloques"]["ancho"].get<unsigned int>();
 }
