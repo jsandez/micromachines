@@ -17,6 +17,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Textura.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Texto.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/Sonido.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Animacion.cpp
         ${PROJECT_SOURCE_DIR}/GUI/AnimacionFactory.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Pista.cpp

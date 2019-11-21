@@ -6,6 +6,11 @@
     "titulo": "rpn",
     "fps": 60
   },
+  "musica": {
+    "ambiente":"assets/sonidos/menu.wav",
+    "motor": "assets/sonidos/motor.wav",
+    "explosion": "assets/sonidos/explosion.wav"
+  } ,
   "red": {
     "host": "localhost",
     "puerto": "10001"

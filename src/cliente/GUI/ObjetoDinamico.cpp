@@ -1,11 +1,13 @@
 #include "includes/cliente/GUI/ObjetoDinamico.h"
 
 ObjetoDinamico::ObjetoDinamico(int uuid, Renderizador &renderizador) :
-    animacion_(AnimacionFactory::instanciar(uuid, renderizador)) {
+    animacion_(AnimacionFactory::instanciar(uuid, renderizador)), sonido(CONFIG_CLIENTE.musicaMotor()) {
   this->x = 0;
   this->y = 0;
   this->angulo = 0;
   this->vida = 100;
+  this->sonido.setVolume(100);
+  this->sonido.play(true);
 }
 
 Animacion &ObjetoDinamico::getAnimacion() {
@@ -36,4 +38,8 @@ void ObjetoDinamico::setVida(uint16_t vida) {
 
 uint16_t ObjetoDinamico::getVida() const {
   return this->vida;
+}
+
+Sonido &ObjetoDinamico::getSonido() {
+  return this->sonido;
 }

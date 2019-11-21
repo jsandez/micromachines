@@ -29,6 +29,10 @@ class ConfigCliente {
 
   std::string fuente();
 
+  std::string musicaAmbiente();
+  std::string musicaMotor();
+  std::string musicaExplosion();
+
   unsigned int anchoBloquesPista();
   unsigned int altoBloquesPista();
 

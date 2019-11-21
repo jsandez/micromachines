@@ -14,8 +14,8 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   while ((obtenido = eventos_.get(evento))) {
     // ACA SE PROCESAN LOS EVENTOS
     evento.get()->actualizar((Handler &) escena);
-  }  
-  if (grabador_.estaCorriendo()){
+  }
+  if (grabador_.estaCorriendo()) {
     renderizador_.dibujar(iteracion, escena, grabador_.getBuffer());
     grabador_.getBuffer().swap();
   } else {
@@ -27,13 +27,19 @@ HiloDibujador::HiloDibujador(Ventana &ventana,
                              Renderizador &renderizador,
                              HiloGrabador &grabador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) :
+                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_)
+    :
     ventana_(ventana),
     renderizador_(renderizador),
     grabador_(grabador),
     eventosGUI_(eventosGUI),
-    eventosAEnviar_(eventosAEnviar_) {
-    escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_));
+    eventosAEnviar_(eventosAEnviar_),
+    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente()) {
+  escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_,
+                                                eventosGUI_,
+                                                escenas_,
+                                                eventosAEnviar_,
+                                                musicaAmbiente));
 }
 
 void HiloDibujador::correr() {

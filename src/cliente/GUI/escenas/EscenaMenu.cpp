@@ -8,10 +8,15 @@
 EscenaMenu::EscenaMenu(Renderizador &renderizador,
                        ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                        std::stack<std::shared_ptr<Escena>> &escenas,
-                       ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) :
-    Escena(escenas, renderizador, eventosAEnviar_),
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"), renderizador)),
+                       ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+                       Sonido &musicaAmbiente) :
+    Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
+                                            renderizador)),
     eventosGUI_(eventosGUI) {
+  // TODO: el volume fue hecho setead "ojo", tendria que ser un config tmb?
+  this->musicaAmbiente.setVolume(25);
+  this->musicaAmbiente.play(true);
 }
 
 Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -31,12 +36,13 @@ void EscenaMenu::manejarInput(EventoGUI &evento) {
 void EscenaMenu::manejarInput(EventoGUIClick &evento) {
   //FIXME: Segun boton presionado, realizar accion
   std::cout << "Click en escena menu: HABRIA QUE PASAR A ESCENA SALA\n";
-  std::shared_ptr<Evento> eventoCrearPartida = std::make_shared<EventoCrearPartida>();
+  std::shared_ptr<Evento>
+      eventoCrearPartida = std::make_shared<EventoCrearPartida>();
   eventosAEnviar_.put(eventoCrearPartida);
-  std::shared_ptr<Evento> eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
+  std::shared_ptr<Evento>
+      eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
   eventosAEnviar_.put(eventoUnirseAPartida);
-  
-  
+
 }
 
 void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
@@ -57,6 +63,11 @@ void EscenaMenu::manejar(Evento &e) {
   e.actualizar(*this);
 }
 
-void EscenaMenu::manejar(EventoPartidaIniciada& estadoInicial) {
-  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_, eventosGUI_, escenas_, eventosAEnviar_, estadoInicial));
+void EscenaMenu::manejar(EventoPartidaIniciada &estadoInicial) {
+  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_,
+                                                   eventosGUI_,
+                                                   escenas_,
+                                                   eventosAEnviar_,
+                                                   estadoInicial,
+                                                   this->musicaAmbiente));
 }

@@ -7,9 +7,11 @@
 EscenaSala::EscenaSala(Renderizador &renderizador,
                        ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                        std::stack<std::shared_ptr<Escena>> &escenas,
-                       ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_) :
-    Escena(escenas, renderizador, eventosAEnviar_),
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("sorlo"), renderizador)),
+                       ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+                       Sonido &musicaAmbiente) :
+    Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("sorlo"),
+                                            renderizador)),
     eventosGUI_(eventosGUI) {
 }
 

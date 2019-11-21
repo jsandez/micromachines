@@ -9,6 +9,7 @@
 
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/ColaProtegida.h"
+#include "includes/cliente/GUI/Sonido.h"
 #include "includes/cliente/GUI/Ventana.h"
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/eventos/EventoGUI.h"
@@ -25,6 +26,7 @@ class HiloDibujador : public Hilo {
   ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_;
   //TODO: Abstraer en "Escenario" ?
   std::stack<std::shared_ptr<Escena>> escenas_;
+  Sonido musicaAmbiente;
   void step(uint32_t nroIteracion, Escena &escena);
  public:
   HiloDibujador(Ventana &ventana,
