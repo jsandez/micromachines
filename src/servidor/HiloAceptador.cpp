@@ -4,8 +4,8 @@
 
 #include "includes/servidor/utils/ConfigServidor.h"
 
-HiloAceptador::HiloAceptador(const std::string& puerto, SalaDeEspera& salaDeEspera) :
-    sktAceptador_(puerto),
+HiloAceptador::HiloAceptador(const std::string& unHost, const std::string& puerto, SalaDeEspera& salaDeEspera) :
+    sktAceptador_(unHost, puerto),
     salaDeEspera_(salaDeEspera) {
 }
 

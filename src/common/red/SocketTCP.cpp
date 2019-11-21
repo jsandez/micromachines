@@ -19,7 +19,7 @@ SocketTCP::SocketTCP(const std::string& unHost, const std::string& unPuerto) :
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = IP_VERSION;    
     hints.ai_socktype = SOCKET_TYPE;
-    hints.ai_flags = FLAGS;
+    hints.ai_flags = AI_PASSIVE;
     status = getaddrinfo(unHost.c_str(), unPuerto.c_str(), &hints, &hints_);
     if (status != 0) { 
         throw std::runtime_error(ERROR_GET_ADDRINFO);

@@ -27,5 +27,5 @@ std::shared_ptr<Superficie> SuperficieFactory::instanciar(int uuid) {
         return std::make_shared<SuperficieArena>();
     }
     
-    return std::make_shared<NoSuperficie>();
+    throw std::runtime_error("No hay datos de superficie en el mapa");
 }

@@ -20,7 +20,7 @@ private:
     HiloAceptador& operator=(const HiloAceptador& otro) = delete;
     
 public:
-    HiloAceptador(const std::string& puerto, SalaDeEspera& salaDeEspera);
+    HiloAceptador(const std::string& unHost, const std::string& puerto, SalaDeEspera& salaDeEspera);
 
     ~HiloAceptador();
 

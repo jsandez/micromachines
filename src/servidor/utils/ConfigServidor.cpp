@@ -14,6 +14,10 @@ ConfigServidor::ConfigServidor(const std::string& rutaArchivo) {
     tilesPista_ = json_["tiles"]["tilesPista"].get<std::vector<int>>();
 }
 
+std::string ConfigServidor::hostServidor() {
+    return json_["red"]["host"].get<std::string>();
+}
+
 std::string ConfigServidor::puertoServidor() {
     return json_["red"]["puerto"].get<std::string>();
 }
@@ -91,4 +95,12 @@ float ConfigServidor::anchoVehiculo() {
 
 float ConfigServidor::largoVehiculo() {
     return json_["modelo"]["vehiculo"]["largo"].get<float>();
+}
+
+float ConfigServidor::ladoSuperficie() {
+    return json_["modelo"]["superficies"]["lado"].get<float>();
+}
+
+float ConfigServidor::anchoTile() {
+    return json_["modelo"]["anchoTile"].get<float>();
 }

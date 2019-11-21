@@ -20,9 +20,12 @@ private:
 public:
     static ConfigServidor& instancia();
     std::string puertoServidor();
+    std::string hostServidor();
     unsigned int maxClientesEnEspera();
     unsigned int snapshotsEnviadosPorSegundo();
 
+    float anchoTile();
+    
     std::string rutaPistas();
     std::vector<int>& tilesTierra();
     std::vector<int>& tilesPista();
@@ -43,6 +46,8 @@ public:
     unsigned int saludVehiculo();
     float anchoVehiculo();
     float largoVehiculo();
+
+    float ladoSuperficie();
 };
 
 #endif
