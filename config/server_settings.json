@@ -22,7 +22,8 @@
         },
         "superficies": {
             "lado" : 9.5
-        }
+        },
+        "anchoTile" : 10.0
     },
     "rutaPistas": "assets/pistas/",
     "tiles": {

@@ -23,6 +23,8 @@ public:
     unsigned int maxClientesEnEspera();
     unsigned int snapshotsEnviadosPorSegundo();
 
+    float anchoTile();
+    
     std::string rutaPistas();
     std::vector<int>& tilesTierra();
     std::vector<int>& tilesPista();
