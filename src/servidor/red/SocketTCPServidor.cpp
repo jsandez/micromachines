@@ -2,8 +2,8 @@
 
 #include <stdexcept>
 
-SocketTCPServidor::SocketTCPServidor(const std::string& unPuerto) :
-    SocketTCP(LOCALHOST, unPuerto) {
+SocketTCPServidor::SocketTCPServidor(const std::string& unHost, const std::string& unPuerto) :
+    SocketTCP(unHost, unPuerto) {
 }
 
 void SocketTCPServidor::enlazar() {

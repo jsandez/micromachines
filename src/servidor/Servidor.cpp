@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-Servidor::Servidor(const std::string& puerto) :
+Servidor::Servidor(const std::string& unHost, const std::string& puerto) :
     salaDeEspera_(eventosRecibidos_),
-    hiloAceptador_(puerto, salaDeEspera_),
+    hiloAceptador_(unHost, puerto, salaDeEspera_),
     distribuidorEventos_(eventosRecibidos_, salaDeEspera_, coordinadorPartidas_),
     coordinadorPartidas_(salaDeEspera_) {
 }

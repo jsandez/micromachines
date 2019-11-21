@@ -19,7 +19,7 @@ private:
     CoordinadorPartidas coordinadorPartidas_;
     
 public:
-    Servidor(const std::string& puerto);
+    Servidor(const std::string& unHost, const std::string& puerto);
     void correr();
     void cerrar();
 };

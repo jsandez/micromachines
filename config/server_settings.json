@@ -1,8 +1,9 @@
 {
     "red": {
+        "host" : "0.0.0.0",
         "puerto": "10001",
         "maxClientesEnEspera": 20,
-        "snapshotsEnviadosPorSegundo": 20
+        "snapshotsEnviadosPorSegundo": 30
     },
     "fisicas": {
         "simulacionesPorSegundo": 60,

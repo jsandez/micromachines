@@ -14,6 +14,10 @@ ConfigServidor::ConfigServidor(const std::string& rutaArchivo) {
     tilesPista_ = json_["tiles"]["tilesPista"].get<std::vector<int>>();
 }
 
+std::string ConfigServidor::hostServidor() {
+    return json_["red"]["host"].get<std::string>();
+}
+
 std::string ConfigServidor::puertoServidor() {
     return json_["red"]["puerto"].get<std::string>();
 }

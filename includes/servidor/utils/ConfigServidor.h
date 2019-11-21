@@ -20,6 +20,7 @@ private:
 public:
     static ConfigServidor& instancia();
     std::string puertoServidor();
+    std::string hostServidor();
     unsigned int maxClientesEnEspera();
     unsigned int snapshotsEnviadosPorSegundo();
 
