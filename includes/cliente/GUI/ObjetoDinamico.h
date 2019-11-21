@@ -4,7 +4,6 @@
 #include "includes/cliente/GUI/Animacion.h"
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Sonido.h"
-#include "includes/cliente/utils/ConfigCliente.h"
 
 class ObjetoDinamico {
  private:
@@ -13,7 +12,9 @@ class ObjetoDinamico {
   Sonido sonido;
 
  public:
-  ObjetoDinamico(int uuid, Renderizador& renderizador);
+  ObjetoDinamico(int uuid,
+                 Renderizador &renderizador,
+                 std::string sonido);
   Animacion &getAnimacion();
   void mover(uint16_t x,uint16_t y, uint16_t angulo);
   void setVida(uint16_t vida);
