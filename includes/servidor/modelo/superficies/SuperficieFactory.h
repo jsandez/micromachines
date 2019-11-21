@@ -7,7 +7,6 @@
 #include "includes/servidor/modelo/superficies/SuperficieTierra.h"
 #include "includes/servidor/modelo/superficies/SuperficiePista.h"
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
-#include "includes/servidor/modelo/superficies/NoSuperficie.h"
 
 #define MENSAJE_ERROR_SUPERFICIE_DESCONOCIDA "Error al instanciar la superficie, se utilizó un UUID desconocido."
 
