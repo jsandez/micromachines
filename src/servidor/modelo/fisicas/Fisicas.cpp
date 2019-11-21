@@ -80,7 +80,6 @@ Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
     return Posicion(posicion.x, posicion.y, anguloDeg);
 }
 
-#include <iostream>
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
     //Acá se alteran los cuerpos físicos.
@@ -91,14 +90,5 @@ void Fisicas::step(uint32_t numeroIteracion) {
     float tiempoAtranscurrir = (float)escala * frecuencia_;
     mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
     iteracion_ = numeroIteracion;
-    /*b2Body* actual = mundoBox2D_->GetBodyList();
-    while (actual) {
-        if ((iteracion_ % 20) != 0) break;
-        b2Vec2 position = actual->GetPosition();
-		float32 angle = actual->GetAngle();
-        printf("Vehiculo: 1\n");
-		std::cout << "X: " << position.x << " Y: " << position.y << " Angulo: " << angle << "\n";
-        actual = actual->GetNext();
-    }*/
     //TODO: Aplicar transformaciones y encolar eventos pertinentes.
 }
