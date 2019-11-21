@@ -17,7 +17,6 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   }
   if (grabador_.estaCorriendo()) {
     renderizador_.dibujar(iteracion, escena, grabador_.getBuffer());
-    grabador_.getBuffer().swap();
   } else {
     renderizador_.dibujar(iteracion, escena);
   }
