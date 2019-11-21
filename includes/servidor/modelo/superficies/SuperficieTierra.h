@@ -5,6 +5,8 @@
 
 class SuperficieTierra : public Superficie {
 
+public:
+    virtual int getTipo() override;
 };
 
 #endif

@@ -12,6 +12,6 @@ bool Tile::operator<(const Tile& otro) const {
         if (this->y_ < otro.y_) {
             return true;
         }
-    }   
+    }
     return false;
 }

@@ -2,7 +2,6 @@
 
 #include <string>
 #include <fstream>
-#include <iostream>
 #include <map>
 #include <vector>
 
@@ -134,15 +133,15 @@ void Mundo::manejar(EventoDejarDeDoblarDerecha& e) {
 // El sistema de referencia de la pista está arriba a la izquierda,
 // mientras que en el servidor está abajo a la derecha.
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson) {
-    for (uint16_t i = 0; i < largoX; ++i) {
-        for (uint16_t j = 0; j < largoY; ++j) {
+    for (int i = 0; i < largoX; ++i) {
+        for (int j = 0; j < largoY; ++j) {
             int uuidTerreno = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<int>();
             int uuidPista = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>();
             // Hay pista
             if (uuidPista != CONFIG_SERVIDOR.tileVacio()) {
-                tilesASuelo[Tile(i, largoY - j)] = SuperficieFactory::instanciar(uuidPista);
+                tilesASuelo[Tile(i, largoY - j - 1)] = SuperficieFactory::instanciar(uuidPista);
             } else {
-                tilesASuelo[Tile(i, largoY - j)] = SuperficieFactory::instanciar(uuidTerreno);
+                tilesASuelo[Tile(i, largoY - j - 1)] = SuperficieFactory::instanciar(uuidTerreno);
             }
         }
     }

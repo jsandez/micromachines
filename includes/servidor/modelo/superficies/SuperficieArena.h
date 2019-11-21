@@ -5,6 +5,8 @@
 
 class SuperficieArena : public Superficie {
     
+public:
+    virtual int getTipo() override;
 };
 
 #endif

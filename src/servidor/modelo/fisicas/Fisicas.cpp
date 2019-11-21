@@ -20,10 +20,28 @@ Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListene
 
 Fisicas::~Fisicas() {
 }
-
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
     //TODO: Implementar: es arena tierra y pista.
     
+    for (const auto& kv : tileASuelo) {
+        //uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second->uuid());
+        //jugadoresAVehiculos.emplace(kv.first, idVehiculo);
+        b2BodyDef bodyDef;
+        bodyDef.userData = kv.second.get();
+        
+        float anchoTile = CONFIG_SERVIDOR.anchoTile();
+        float x = anchoTile*(float)kv.first.x_ + 0.5f*anchoTile; 
+        float y = anchoTile*(float)kv.first.y_ + 0.5f*anchoTile;
+	    bodyDef.position.Set(x, y);
+        
+        b2Body* cuerpo = mundoBox2D_->CreateBody(&bodyDef);
+        b2PolygonShape forma;        
+        forma.SetAsBox(CONFIG_SERVIDOR.ladoSuperficie(), CONFIG_SERVIDOR.ladoSuperficie());
+	    b2FixtureDef caracteristicas;
+	    caracteristicas.shape = &forma;
+        caracteristicas.isSensor = true;
+	    cuerpo->CreateFixture(&caracteristicas);
+    }
 }
 
 /*void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {

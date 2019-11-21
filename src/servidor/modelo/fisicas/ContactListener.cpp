@@ -17,7 +17,7 @@ void ContactListener::BeginContact(b2Contact* contact) {
     // las colisiones
     Colisionable* colisionableA = contact->GetFixtureA()->GetBody()->GetUserData();
     Colisionable* colisionableB = contact->GetFixtureB()->GetBody()->GetUserData();
-    
+
     ordenar(&colisionableA, &colisionableB);
 
     // No debería ocurrir porque no le puse data a los fixtures.
@@ -25,12 +25,12 @@ void ContactListener::BeginContact(b2Contact* contact) {
     //    return;
     //}
 
-
-
-
     if (colisionableA->getTipo() == Colisionable::tipos::VEHICULO_) {
         if (colisionableB->getTipo() == Colisionable::tipos::VEHICULO_) {
             std::cout << "Vehiculo vs Vehiculo\n";
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_ARENA_) {
+            std::cout << "Vehiculo vs Arena\n";
         }
     }
 }
@@ -67,6 +67,6 @@ static void ordenar(Colisionable** A, Colisionable** B) {
     if (tipoDeB < tipoDeA) {
         Colisionable* tmp = *B;
         *B = *A;
-        *B = tmp;
+        *A = tmp;
     }
 }
