@@ -60,15 +60,16 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
-  Textura miTextura(renderizador_, dimensiones);
+  Area nueva = Area(0, 0, dimensiones.ancho()*2, dimensiones.alto()*2);
+  Textura miTextura(renderizador_, nueva);
   renderizador_.setDestino(miTextura);
-  this->camara.setWidthHeight(dimensiones.ancho(), dimensiones.alto());
+  this->camara.setWidthHeight(nueva.ancho(), nueva.alto());
   camara.dibujarPista(numeroIteracion);
   std::shared_ptr<ObjetoDinamico> principalCar = pista.obtenerObjeto(id_car);
   Animacion &animacion = principalCar.get()->getAnimacion();
   Area areaFondo =
-      Area(dimensiones.ancho() / 2 - (float) animacion.ancho() / 2.0f,
-           dimensiones.alto() / 2 - (float) animacion.alto() / 2.0f,
+      Area(nueva.ancho() / 2 - (float) animacion.ancho() / 2.0f,
+           nueva.alto() / 2 - (float) animacion.alto() / 2.0f,
            animacion.ancho(),
            animacion.alto());
   renderizador_.dibujar(animacion.get(numeroIteracion),
