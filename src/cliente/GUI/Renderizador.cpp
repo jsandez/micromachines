@@ -11,6 +11,7 @@ Renderizador::Renderizador(Ventana &ventana) :
   renderizadorSDL_ = SDL_CreateRenderer(ventana.getSDL(),
                                         SDL_PRIMER_DISPONIBLE,
                                         SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+  clear();
 }
 
 Renderizador::~Renderizador() {

@@ -34,6 +34,7 @@ Textura::Textura(Renderizador& renderizador, Area dimensiones) {
     if (!texturaSDL_) {
         throw SDLException("Error al crear textura vacía", SDL_GetError());
     }
+    renderizador.clear();
 }
 
 Textura::~Textura() {

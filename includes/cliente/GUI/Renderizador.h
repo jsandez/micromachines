@@ -21,11 +21,10 @@ class Renderizador {
   Renderizador(const Renderizador &) = delete;
   Renderizador &operator=(const Renderizador &) = delete;
 
-  void clear();
-
  public:
   Renderizador(Ventana &ventana);
   ~Renderizador();
+  void clear();
   void dibujar(uint32_t numeroIteracion, Escena &escena);
   void dibujar(uint32_t numeroIteracion, Escena &escena, DobleBuffer<std::vector<char>>& buffer);
   void setDestino(Textura &textura);
