@@ -42,7 +42,9 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
   for (const auto &kv : idsADatosVehiculos) {
     uint8_t id = kv.first;
     std::shared_ptr<ObjetoDinamico> vehiculo =
-        std::make_shared<ObjetoDinamico>(vehiculoActual, renderizador);
+        std::make_shared<ObjetoDinamico>(vehiculoActual,
+                                         renderizador,
+                                         CONFIG_CLIENTE.musicaMotor());
     pista.agregarObjeto(id, vehiculo);
     //FIXME: ESTO TAMBIEN ESTA FEO, LA PISTA DEBERIA DEJAR AGREGAR EN X; Y; ANGULO; TAMBIEN CON VIDA?
     int xCoord = conversor.metroAPixel(kv.second.xCoord_);

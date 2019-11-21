@@ -42,10 +42,11 @@ void Camara::dibujarPista(int iteracion) {
       for (int j = yInicial; j < yFinal; j++) {
         std::shared_ptr<Animacion> animacion = pista.getBloque(k, i, j);
         if (animacion != nullptr) {
-          Area areaFondo = Area(i * animacion.get()->ancho() - (car.get()->getX() - width / 2),
-                                j * animacion.get()->alto() - (car.get()->getY() - height / 2),
-                                animacion.get()->ancho(),
-                                animacion.get()->alto());
+          Area areaFondo = Area(
+              i * animacion.get()->ancho() - (car.get()->getX() - width / 2),
+              j * animacion.get()->alto() - (car.get()->getY() - height / 2),
+              animacion.get()->ancho(),
+              animacion.get()->alto());
           renderizador_.dibujar(animacion.get()->get(iteracion), areaFondo);
         }
       }
@@ -58,7 +59,9 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
   pista.obtenerIds(idObjetos);
   for (uint16_t i = 0; i < idObjetos.size(); i++) {
     if (idObjetos[i] != car_id) {
-      std::shared_ptr<ObjetoDinamico> objeto = pista.obtenerObjeto(idObjetos[i]);
+      std::shared_ptr<ObjetoDinamico>
+          objeto = pista.obtenerObjeto(idObjetos[i]);
+      objeto.get()->getSonido().setVolume(0);
       if (objeto != nullptr) {
         int bloqueCarX = conversor.pixelABloque(objeto.get()->getX());
         int bloqueCarY = conversor.pixelABloque(objeto.get()->getY());
@@ -66,12 +69,19 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
             bloqueCarX <= xFinal &&
             bloqueCarY >= yInicial &&
             bloqueCarY <= yFinal) {
+          objeto.get()->getSonido().setVolume(50);
           Animacion &animacion = objeto.get()->getAnimacion();
-          Area areaFondo = Area(objeto.get()->getX() - (this->car.get()->getX() - width / 2) - (float)objeto->getAnimacion().ancho() / 2.0f,
-                                objeto.get()->getY() - (this->car.get()->getY() - height / 2) - (float)objeto->getAnimacion().alto() / 2.0f,
-                                animacion.ancho(),
-                                animacion.alto());
-          renderizador_.dibujar(animacion.get(iteracion), areaFondo, objeto.get()->getAngulo(), false);
+          Area areaFondo = Area(
+              objeto.get()->getX() - (this->car.get()->getX() - width / 2)
+                  - (float) objeto->getAnimacion().ancho() / 2.0f,
+              objeto.get()->getY() - (this->car.get()->getY() - height / 2)
+                  - (float) objeto->getAnimacion().alto() / 2.0f,
+              animacion.ancho(),
+              animacion.alto());
+          renderizador_.dibujar(animacion.get(iteracion),
+                                areaFondo,
+                                objeto.get()->getAngulo(),
+                                false);
         }
       }
     }

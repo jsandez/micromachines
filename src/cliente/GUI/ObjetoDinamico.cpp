@@ -1,7 +1,9 @@
 #include "includes/cliente/GUI/ObjetoDinamico.h"
 
-ObjetoDinamico::ObjetoDinamico(int uuid, Renderizador &renderizador) :
-    animacion_(AnimacionFactory::instanciar(uuid, renderizador)), sonido(CONFIG_CLIENTE.musicaMotor()) {
+ObjetoDinamico::ObjetoDinamico(int uuid,
+                               Renderizador &renderizador,
+                               std::string sonido) :
+    animacion_(AnimacionFactory::instanciar(uuid, renderizador)), sonido(sonido) {
   this->x = 0;
   this->y = 0;
   this->angulo = 0;
