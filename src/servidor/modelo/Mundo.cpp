@@ -37,8 +37,6 @@ Mundo::Mundo(uint16_t uuidPista) :
     cargarSuelo(largoX, largoY, tileASuelo_, pistaJson);
     cargarPosicionesIniciales(largoX, largoY, posicionesIniciales_, pistaJson);
     //cargarSuperficies(x, y, tileAModificador_, pistaJson);
-
-    //TODO: Cargar posiciones de Vehículos
     
     fisicas_.generarSuelo(tileASuelo_);
     //fisicas_.generarSuperficies(tileAModificador_);
@@ -50,8 +48,8 @@ Mundo::~Mundo() {
 
 void Mundo::step(uint32_t numeroIteracion) {
     fisicas_.step(numeroIteracion);
-    //TODO: Encolar snapshot acá? Parece que sí, en físicas no.
     //TODO: Chequear por la negativa?
+    //FIXME: NO DEBIERA ESTAR LIGADO AL STEP DEL MUNDO, PERO MUNDO TENDRÍA QUE SER MONITOR
     if((numeroIteracion % snapshotsEnviadosPorSegundo_) == 0) {
         std::map<uint8_t, datosVehiculo_> idsADatosVehiculo = serializarEstado();
         std::shared_ptr<Evento> snapshot = std::make_shared<EventoSnapshot>(std::move(idsADatosVehiculo));

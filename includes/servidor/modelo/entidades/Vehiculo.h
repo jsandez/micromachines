@@ -29,8 +29,7 @@ public:
     unsigned int agarre();
     unsigned int salud();
 
-    virtual void enColisionCon(Colisionable& otro) override;
-    virtual void colisionarContra(Vehiculo& vehiculo) override;
+    virtual int getTipo() override;
 };
 
 #endif

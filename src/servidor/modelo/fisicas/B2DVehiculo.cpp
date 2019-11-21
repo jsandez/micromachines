@@ -19,7 +19,7 @@ B2DVehiculo::B2DVehiculo(b2World* mundoBox2D, Vehiculo& vehiculo)
     float largo = CONFIG_SERVIDOR.largoVehiculo() / 2.0f;
     polygonShape.SetAsBox(ancho, largo);
     b2Fixture* fixture = cuerpoBox2D_->CreateFixture(&polygonShape, DENSIDAD);
-    //TODO: Propiedades de la rueda, sublcase que tiene datos (?)
+    //TODO: Propiedades del auto, sublcase que tiene datos (?)
     fixture->SetUserData(nullptr);
     cuerpoBox2D_->SetUserData(&vehiculo);
     

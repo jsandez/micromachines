@@ -41,12 +41,6 @@ unsigned int Vehiculo::salud() {
     return salud_;
 }
 
-// Yo en colision con un abstracto, le digo que 
-// Choque contra yo específico.
-void Vehiculo::enColisionCon(Colisionable& otro) {
-    otro.colisionarContra(*this);
-}
-
-void Vehiculo::colisionarContra(Vehiculo& vehiculo) {
-    
+int Vehiculo::getTipo() {
+    return VEHICULO_;
 }
