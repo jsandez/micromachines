@@ -34,7 +34,7 @@ HiloDibujador::HiloDibujador(Ventana &ventana,
     grabador_(grabador),
     eventosGUI_(eventosGUI),
     eventosAEnviar_(eventosAEnviar_),
-    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente()) {
+    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente(), true) {
   escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_,
                                                 eventosGUI_,
                                                 escenas_,

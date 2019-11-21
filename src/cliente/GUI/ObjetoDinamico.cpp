@@ -2,14 +2,15 @@
 
 ObjetoDinamico::ObjetoDinamico(int uuid,
                                Renderizador &renderizador,
-                               std::string sonido) :
-    animacion_(AnimacionFactory::instanciar(uuid, renderizador)), sonido(sonido) {
+                               std::string sonido,
+                               bool loopSonido) :
+    animacion_(AnimacionFactory::instanciar(uuid, renderizador)), sonido(sonido,loopSonido) {
   this->x = 0;
   this->y = 0;
   this->angulo = 0;
   this->vida = 100;
   this->sonido.setVolume(100);
-  this->sonido.play(true);
+  this->sonido.play();
 }
 
 Animacion &ObjetoDinamico::getAnimacion() {

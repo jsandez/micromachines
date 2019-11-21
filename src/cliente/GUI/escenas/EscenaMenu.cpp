@@ -13,10 +13,11 @@ EscenaMenu::EscenaMenu(Renderizador &renderizador,
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
                                             renderizador)),
-    eventosGUI_(eventosGUI) {
+    eventosGUI_(eventosGUI),
+    crearPartida("Crear partida",20,renderizador){
   // TODO: el volume fue hecho setead "ojo", tendria que ser un config tmb?
   this->musicaAmbiente.setVolume(25);
-  this->musicaAmbiente.play(true);
+  this->musicaAmbiente.play();
 }
 
 Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -24,6 +25,8 @@ Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.setDestino(miTextura);
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
+  Area areaCrearPartida = Area(0,0,200,200);
+  renderizador_.dibujarTexto(this->crearPartida,areaCrearPartida);
   return std::move(miTextura);
 }
 

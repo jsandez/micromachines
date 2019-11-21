@@ -55,6 +55,7 @@ void Camara::dibujarPista(int iteracion) {
 }
 
 void Camara::dibujarObjetos(int car_id, int iteracion) {
+  int cantidadEventos = 0;
   std::vector<int> idObjetos;
   pista.obtenerIds(idObjetos);
   for (uint16_t i = 0; i < idObjetos.size(); i++) {
@@ -69,7 +70,10 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
             bloqueCarX <= xFinal &&
             bloqueCarY >= yInicial &&
             bloqueCarY <= yFinal) {
-          objeto.get()->getSonido().setVolume(50);
+          if (cantidadEventos <= 8) {
+            objeto.get()->getSonido().setVolume(50);
+            cantidadEventos++;
+          }
           Animacion &animacion = objeto.get()->getAnimacion();
           Area areaFondo = Area(
               objeto.get()->getX() - (this->car.get()->getX() - width / 2)

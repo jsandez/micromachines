@@ -9,10 +9,10 @@
 class Sonido {
  private:
   Mix_Chunk* efectoSonido;
-
+  bool loop;
  public:
-  Sonido(std::string filename);
-  void play(bool loop);
+  Sonido(std::string filename,bool loop);
+  void play();
   void stop();
   void setVolume(int volume);
   ~Sonido();

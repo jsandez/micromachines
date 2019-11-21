@@ -2,7 +2,7 @@
 
 #include "includes/cliente/excepciones/SDLException.h"
 
-Sonido::Sonido(std::string filename) {
+Sonido::Sonido(std::string filename,bool loop): loop(loop) {
   if (SDL_Init(SDL_INIT_AUDIO) < 0) {
     throw SDLException("Error al iniciar audio con SDL", SDL_GetError());
   }
@@ -19,7 +19,7 @@ void Sonido::setVolume(int volume) {
   this->efectoSonido->volume = volume;
 }
 
-void Sonido::play(bool loop) {
+void Sonido::play() {
   Mix_PlayChannel(-1, this->efectoSonido, -1 * loop);
 }
 
