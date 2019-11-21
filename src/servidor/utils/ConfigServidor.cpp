@@ -92,3 +92,7 @@ float ConfigServidor::anchoVehiculo() {
 float ConfigServidor::largoVehiculo() {
     return json_["modelo"]["vehiculo"]["largo"].get<float>();
 }
+
+float ConfigServidor::ladoSuperficie() {
+    return json_["modelo"]["superficies"]["lado"].get<float>();
+}

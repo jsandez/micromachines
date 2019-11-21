@@ -43,6 +43,8 @@ public:
     unsigned int saludVehiculo();
     float anchoVehiculo();
     float largoVehiculo();
+
+    float ladoSuperficie();
 };
 
 #endif

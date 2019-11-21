@@ -19,6 +19,9 @@
             "saludVehiculo": 100,
             "ancho" : 3.125,
             "largo" : 5.78
+        },
+        "superficies": {
+            "lado" : 9.5
         }
     },
     "rutaPistas": "assets/pistas/",
