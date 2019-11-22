@@ -9,7 +9,7 @@ ObjetoDinamico::ObjetoDinamico(int uuid,
   this->y = 0;
   this->angulo = 0;
   this->vida = 100;
-  this->sonido.setVolume(100);
+  this->sonido.setVolume(0);
   this->sonido.play();
 }
 

@@ -14,7 +14,9 @@ EscenaMenu::EscenaMenu(Renderizador &renderizador,
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
                                             renderizador)),
     eventosGUI_(eventosGUI),
-    crearPartida("Crear partida",20,renderizador){
+    crearPartida("Crear partida", 40, renderizador, UUID_TEXTO_BLANCO),
+    unirseAPartida("Unirse a partida", 40, renderizador, UUID_TEXTO_BLANCO),
+    salir("Salir", 40, renderizador, UUID_TEXTO_BLANCO) {
   // TODO: el volume fue hecho setead "ojo", tendria que ser un config tmb?
   this->musicaAmbiente.setVolume(25);
   this->musicaAmbiente.play();
@@ -25,8 +27,15 @@ Textura EscenaMenu::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.setDestino(miTextura);
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
-  Area areaCrearPartida = Area(0,0,200,200);
-  renderizador_.dibujarTexto(this->crearPartida,areaCrearPartida);
+  Area areaCrearPartida =
+      Area(0.41 * dimensiones.ancho(), 0.52 * dimensiones.alto(), 240, 30);
+  renderizador_.dibujarTexto(this->crearPartida, areaCrearPartida);
+  Area areaUnirseAPartida =
+      Area(0.395 * dimensiones.ancho(), 0.62 * dimensiones.alto(), 270, 30);
+  renderizador_.dibujarTexto(this->unirseAPartida, areaUnirseAPartida);
+  Area areaSalir =
+      Area(0.46 * dimensiones.ancho(), 0.72 * dimensiones.alto(), 90, 30);
+  renderizador_.dibujarTexto(this->salir, areaSalir);
   return std::move(miTextura);
 }
 

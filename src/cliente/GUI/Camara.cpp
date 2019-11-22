@@ -14,6 +14,7 @@ void Camara::setWidthHeight(int width, int height) {
 }
 void Camara::setCar(std::shared_ptr<ObjetoDinamico> car) {
   this->car = car;
+  car.get()->getSonido().setVolume(30);
 }
 
 void Camara::dibujarPista(int iteracion) {
@@ -71,7 +72,7 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
             bloqueCarY >= yInicial &&
             bloqueCarY <= yFinal) {
           if (cantidadEventos <= 8) {
-            objeto.get()->getSonido().setVolume(50);
+            objeto.get()->getSonido().setVolume(20);
             cantidadEventos++;
           }
           Animacion &animacion = objeto.get()->getAnimacion();
