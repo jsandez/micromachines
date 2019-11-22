@@ -17,14 +17,18 @@ class EscenaMenu : public Escena {
  private:
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
-  std::map<int,std::shared_ptr<Boton>> botones;
+  std::map<int, std::shared_ptr<Boton>> botones;
+
+  void inicializarBotones();
   void dibujarBotones(int iteracion);
+  void handlerBotones(int uuid);
+
  public:
   EscenaMenu(Renderizador &renderizador,
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
              std::stack<std::shared_ptr<Escena>> &escenas,
              ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-             Sonido& musicaAmbiente);
+             Sonido &musicaAmbiente);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;

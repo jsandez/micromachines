@@ -5,6 +5,40 @@
 #include "includes/cliente/utils/ConfigCliente.h"
 #include "includes/cliente/GUI/Area.h"
 
+void EscenaMenu::inicializarBotones() {
+  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
+      UUID_BOTON_CREAR_PARTIDA,
+      std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
+                              renderizador_,
+                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
+                                  UUID_BOTON_CREAR_PARTIDA))
+                                  * CONFIG_CLIENTE.anchoVentana(),
+                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
+                                  UUID_BOTON_CREAR_PARTIDA))
+                                  * CONFIG_CLIENTE.altoVentana())));
+  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
+      UUID_BOTON_UNIRSE_A_PARTIDA,
+      std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
+                              renderizador_,
+                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
+                                  UUID_BOTON_UNIRSE_A_PARTIDA))
+                                  * CONFIG_CLIENTE.anchoVentana(),
+                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
+                                  UUID_BOTON_UNIRSE_A_PARTIDA))
+                                  * CONFIG_CLIENTE.altoVentana())));
+
+  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
+      UUID_BOTON_SALIR,
+      std::make_shared<Boton>(UUID_BOTON_SALIR,
+                              renderizador_,
+                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
+                                  UUID_BOTON_SALIR))
+                                  * CONFIG_CLIENTE.anchoVentana(),
+                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
+                                  UUID_BOTON_SALIR))
+                                  * CONFIG_CLIENTE.altoVentana())));
+}
+
 void EscenaMenu::dibujarBotones(int nroIteracion) {
   for (const auto &boton: botones) {
     Animacion &animacion = boton.second.get()->getAnimacion();
@@ -13,6 +47,24 @@ void EscenaMenu::dibujarBotones(int nroIteracion) {
                           animacion.ancho(),
                           animacion.alto());
     renderizador_.dibujar(animacion.get(nroIteracion), areaBoton);
+  }
+}
+
+void EscenaMenu::handlerBotones(int uuid) {
+  switch (uuid) {
+    case UUID_BOTON_CREAR_PARTIDA: {
+      std::shared_ptr<Evento>
+          eventoCrearPartida = std::make_shared<EventoCrearPartida>();
+      eventosAEnviar_.put(eventoCrearPartida);
+      break;
+    }
+    case UUID_BOTON_UNIRSE_A_PARTIDA: {
+      std::shared_ptr<Evento>
+          eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
+      eventosAEnviar_.put(eventoUnirseAPartida);
+      break;
+    }
+    default:break;
   }
 }
 
@@ -25,25 +77,7 @@ EscenaMenu::EscenaMenu(Renderizador &renderizador,
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_CREAR_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
-                              renderizador,
-                              0.41 * CONFIG_CLIENTE.anchoVentana(),
-                              0.52 * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_UNIRSE_A_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
-                              renderizador,
-                              0.41 * CONFIG_CLIENTE.anchoVentana(),
-                              0.62 * CONFIG_CLIENTE.altoVentana())));
-
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_SALIR,
-      std::make_shared<Boton>(UUID_BOTON_SALIR,
-                              renderizador,
-                              0.41 * CONFIG_CLIENTE.anchoVentana(),
-                              0.72 * CONFIG_CLIENTE.altoVentana())));
+  inicializarBotones();
   this->musicaAmbiente.setVolume(CONFIG_CLIENTE.volumenAmbiente());
   this->musicaAmbiente.play();
 }
@@ -61,20 +95,15 @@ void EscenaMenu::manejarInput(EventoGUI &evento) {
   evento.actualizar(*this);
 }
 
-#include <iostream>
-
 void EscenaMenu::manejarInput(EventoGUIClick &evento) {
-  //FIXME: Segun boton presionado, realizar accion
   int x, y;
   SDL_GetMouseState(&x, &y);
-  std::cout << "Click en escena menu: HABRIA QUE PASAR A ESCENA SALA\n";
-  std::shared_ptr<Evento>
-      eventoCrearPartida = std::make_shared<EventoCrearPartida>();
-  eventosAEnviar_.put(eventoCrearPartida);
-  std::shared_ptr<Evento>
-      eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
-  eventosAEnviar_.put(eventoUnirseAPartida);
-
+  for (const auto &boton: botones) {
+    if (boton.second.get()->estaSeleccionado(x, y)) {
+      handlerBotones(boton.first);
+      break;
+    }
+  }
 }
 
 void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
@@ -87,9 +116,7 @@ void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
   }
 }
 
-void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {
-
-}
+void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {}
 
 void EscenaMenu::manejar(Evento &e) {
   e.actualizar(*this);
