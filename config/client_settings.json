@@ -9,8 +9,12 @@
   "musica": {
     "ambiente":"assets/sonidos/menu.wav",
     "motor": "assets/sonidos/motor.wav",
-    "explosion": "assets/sonidos/explosion.wav"
-  } ,
+    "explosion": "assets/sonidos/explosion.wav",
+    "empty" : "assets/sonidos/vacio.wav"
+  },
+  "volumen": {
+    "ambiente": 25
+  },
   "red": {
     "host": "localhost",
     "puerto": "10001"
@@ -39,7 +43,31 @@
       "ancho": 300,
       "alto": 23,
       "sprites": [
-        "assets/autos/200.png"
+        "assets/interfaz/200.png"
+      ]
+    },
+    "crearPartida": {
+      "uuid": 300,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/300.png"
+      ]
+    },
+    "unirseAPartida": {
+      "uuid": 310,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/310.png"
+      ]
+    },
+    "salir": {
+      "uuid": 320,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/320.png"
       ]
     },
     "autoRojo": {

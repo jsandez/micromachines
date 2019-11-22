@@ -17,6 +17,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/Renderizador.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Textura.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Texto.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/Boton.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Sonido.cpp
         ${PROJECT_SOURCE_DIR}/GUI/Animacion.cpp
         ${PROJECT_SOURCE_DIR}/GUI/AnimacionFactory.cpp
@@ -35,7 +36,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_format.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_stream.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_video.cpp
-        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp        
+        ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp
 
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

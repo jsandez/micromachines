@@ -11,14 +11,14 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Sonido.h"
+#include "includes/cliente/GUI/Boton.h"
 
 class EscenaMenu : public Escena {
  private:
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
-  Texto crearPartida;
-  Texto unirseAPartida;
-  Texto salir;
+  std::map<int,std::shared_ptr<Boton>> botones;
+  void dibujarBotones(int iteracion);
  public:
   EscenaMenu(Renderizador &renderizador,
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,

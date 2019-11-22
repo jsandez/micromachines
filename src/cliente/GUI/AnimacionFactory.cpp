@@ -18,6 +18,27 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("salud");
       alto_ = CONFIG_CLIENTE.alto("salud");
       break;
+    case UUID_BOTON_CREAR_PARTIDA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("crearPartida")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("crearPartida");
+      alto_ = CONFIG_CLIENTE.alto("crearPartida");
+      break;
+    case UUID_BOTON_UNIRSE_A_PARTIDA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("unirseAPartida")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("unirseAPartida");
+      alto_ = CONFIG_CLIENTE.alto("unirseAPartida");
+      break;
+    case UUID_BOTON_SALIR:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("salir")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("salir");
+      alto_ = CONFIG_CLIENTE.alto("salir");
+      break;
     case UUID_ANIMACION_AUTO_ROJO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("autoRojo")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));

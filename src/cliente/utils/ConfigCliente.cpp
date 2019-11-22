@@ -56,6 +56,10 @@ std::string ConfigCliente::musicaExplosion() {
   return std::move(json_["musica"]["explosion"].get<std::string>());
 }
 
+unsigned int ConfigCliente::volumenAmbiente() {
+  return json_["volumen"]["ambiente"].get<unsigned int>();
+}
+
 unsigned int ConfigCliente::anchoBloquesPista() {
   return json_["bloques"]["ancho"].get<unsigned int>();
 }
