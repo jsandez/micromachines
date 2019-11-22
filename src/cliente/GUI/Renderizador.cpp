@@ -88,23 +88,15 @@ void Renderizador::dibujar(uint32_t numeroIteracion, Escena &escena, DobleBuffer
       (int) ventana_.ancho(),
       (int) ventana_.alto()};  
   
-  SDL_RenderPresent(renderizadorSDL_);
   int anchoRGB = ventana_.ancho() * 3;
   std::vector<char> pixeles(anchoRGB * ventana_.alto());
-  SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, pixeles.data(), anchoRGB);
-  buffer.set(pixeles);
   
+  SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, pixeles.data(), anchoRGB);
+  buffer.set(std::move(pixeles));
+
   resetDestino();
   SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
   SDL_RenderPresent(renderizadorSDL_);
-  
-  //SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
-  
-  
-  
-  //resetDestino();
- //SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
-  //SDL_RenderPresent(renderizadorSDL_);
 }
 
 void Renderizador::toggleFullScreen() {

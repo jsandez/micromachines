@@ -25,6 +25,8 @@
 #define UUID_ANIMACION_ACEITE 1300
 #define UUID_ANIMACION_BARRO 1400
 
+#define UUID_ANIMACION_PASTO 106
+
 class AnimacionFactory {
     
 public:

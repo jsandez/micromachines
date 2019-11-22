@@ -185,6 +185,42 @@
         "assets/fondo_menu.png"
       ]
     },
+    "pasto" : {
+      "uuid" : 106,
+      "ancho": 256,
+      "alto": 256,
+      "sprites": [
+        "assets/pistas/200.png",
+        "assets/pistas/201.png",
+        "assets/pistas/202.png",
+        "assets/pistas/203.png",
+        "assets/pistas/204.png",
+        "assets/pistas/205.png",
+        "assets/pistas/206.png",
+        "assets/pistas/207.png",
+        "assets/pistas/208.png",
+        "assets/pistas/209.png",
+        "assets/pistas/210.png",
+        "assets/pistas/211.png",
+        "assets/pistas/212.png",
+        "assets/pistas/213.png",
+        "assets/pistas/214.png",
+        "assets/pistas/215.png",
+        "assets/pistas/216.png",
+        "assets/pistas/217.png",
+        "assets/pistas/218.png",
+        "assets/pistas/219.png",
+        "assets/pistas/220.png",
+        "assets/pistas/221.png",
+        "assets/pistas/222.png",
+        "assets/pistas/223.png",
+        "assets/pistas/224.png",
+        "assets/pistas/225.png",
+        "assets/pistas/226.png",
+        "assets/pistas/227.png",
+        "assets/pistas/228.png"
+      ]
+    },
     "explosion": {
       "uuid": 900,
       "ancho": 120,
