@@ -6,17 +6,35 @@
     "titulo": "rpn",
     "fps": 60
   },
+  "botones": {
+    "300": {
+      "anchoRelativo": 0.41,
+      "altoRelativo": 0.52
+    },
+    "310": {
+      "anchoRelativo": 0.41,
+      "altoRelativo": 0.62
+    },
+    "320": {
+      "anchoRelativo": 0.41,
+      "altoRelativo": 0.72
+    }
+  },
   "musica": {
-    "ambiente":"assets/sonidos/menu.wav",
+    "ambiente": "assets/sonidos/menu.wav",
     "motor": "assets/sonidos/motor.wav",
-    "explosion": "assets/sonidos/explosion.wav"
-  } ,
+    "explosion": "assets/sonidos/explosion.wav",
+    "empty": "assets/sonidos/vacio.wav"
+  },
+  "volumen": {
+    "ambiente": 25
+  },
   "red": {
     "host": "localhost",
     "puerto": "10001"
   },
   "fuente": {
-    "path" : "assets/fonts/Kenney Pixel Square.ttf"
+    "path": "assets/fonts/Kenney Pixel Square.ttf"
   },
   "bloques": {
     "ancho": 256,
@@ -39,7 +57,31 @@
       "ancho": 300,
       "alto": 23,
       "sprites": [
-        "assets/autos/200.png"
+        "assets/interfaz/200.png"
+      ]
+    },
+    "crearPartida": {
+      "uuid": 300,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/300.png"
+      ]
+    },
+    "unirseAPartida": {
+      "uuid": 310,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/310.png"
+      ]
+    },
+    "salir": {
+      "uuid": 320,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/320.png"
       ]
     },
     "autoRojo": {
@@ -233,10 +275,10 @@
   "grabadora": {
     "resolucion": {
       "ancho": 1280,
-      "alto" : 720
+      "alto": 720
     },
-    "formato" : "mp4",
-    "fps" : 30,
-    "bitrate" : 4000000
+    "formato": "mp4",
+    "fps": 30,
+    "bitrate": 4000000
   }
 }

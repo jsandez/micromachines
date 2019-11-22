@@ -33,6 +33,11 @@ class ConfigCliente {
   std::string musicaMotor();
   std::string musicaExplosion();
 
+  unsigned int volumenAmbiente();
+
+  double anchoRelativoBoton(std::string nombreBoton);
+  double altoRelativoBoton(std::string nombreBoton);
+
   unsigned int anchoBloquesPista();
   unsigned int altoBloquesPista();
 
