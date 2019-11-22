@@ -51,6 +51,13 @@ void HiloDibujador::correr() {
   while (seguirCorriendo_) {
     Escena &escenaActual = *escenas_.top().get();
     step(iteracion, escenaActual);
+    //FIXME: Se arregla haciendo que el metodo manejar evento devuelva true si hay que continuar.
+    // También se puede chequear al hacer pop que no se esté quedando sin escenas
+    bool obtenido = false;
+    std::shared_ptr<EventoGUI> evento;
+    while ((obtenido = eventosGUI_.get(evento))) {
+      escenaActual.manejarInput(*evento.get());
+    }
     double t2 = c.ahora();
     double resto = frecuencia - (t2 - t1);
     if (resto < 0) {
@@ -63,13 +70,7 @@ void HiloDibujador::correr() {
     dormir(resto);
     t1 += frecuencia;
     iteracion += 1;
-    //FIXME: Se arregla haciendo que el metodo manejar evento devuelva true si hay que continuar.
-    // También se puede chequear al hacer pop que no se esté quedando sin escenas
-    bool obtenido = false;
-    std::shared_ptr<EventoGUI> evento;
-    while ((obtenido = eventosGUI_.get(evento))) {
-      escenaActual.manejarInput(*evento.get());
-    }
+    
   }
 }
 
