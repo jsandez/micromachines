@@ -76,6 +76,34 @@ unsigned int ConfigCliente::altoBloquesPista() {
   return json_["bloques"]["alto"].get<unsigned int>();
 }
 
+double ConfigCliente::pixelPorMetro() {
+  return json_["conversor"]["pixelPorMetro"].get<double>();
+}
+
+unsigned int ConfigCliente::pixelPorBloque() {
+  return json_["conversor"]["pixelPorBloque"].get<unsigned int>();
+}
+
+std::string ConfigCliente::texto(std::string sector) {
+  return std::move(json_["interfaz"][sector]["texto"].get<std::string>());
+}
+
+unsigned int ConfigCliente::tamanioTexto(std::string sector) {
+  return json_["interfaz"][sector]["tamañoTexto"].get<unsigned int>();
+}
+
+unsigned int ConfigCliente::anchoTexto(std::string sector) {
+  return json_["interfaz"][sector]["anchoTexto"].get<unsigned int>();
+}
+
+double ConfigCliente::margenX(std::string sector) {
+  return json_["interfaz"][sector]["margenX"].get<double>();
+}
+
+double ConfigCliente::margenY(std::string sector) {
+  return json_["interfaz"][sector]["margenY"].get<double>();
+}
+
 unsigned int ConfigCliente::uuid(std::string nombreAnimacion) {
   return json_["animaciones"][nombreAnimacion]["uuid"].get<unsigned int>();
 }
@@ -89,7 +117,8 @@ unsigned int ConfigCliente::alto(std::string nombreAnimacion) {
 }
 
 std::vector<std::string> ConfigCliente::sprites(std::string nombreAnimacion) {
-  return std::move(json_["animaciones"][nombreAnimacion]["sprites"].get<std::vector<std::string>>());
+  return std::move(json_["animaciones"][nombreAnimacion]["sprites"].get<std::vector<
+      std::string>>());
 }
 
 unsigned int ConfigCliente::anchoGrabadora() {

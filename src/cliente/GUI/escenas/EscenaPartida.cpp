@@ -6,17 +6,22 @@
 
 // TODO: Refactorizar
 void EscenaPartida::dibujarInterfaz(int iteracion) {
-  Texto vida("VIDA", 30, renderizador_, UUID_TEXTO_NEGRO);
-  Area areaVida = Area(5,
-                       5,
-                       80,
-                       20);
-  renderizador_.dibujarTexto(vida, areaVida);
+  Texto vida(CONFIG_CLIENTE.texto("salud"),
+             CONFIG_CLIENTE.tamanioTexto("salud"),
+             renderizador_,
+             UUID_TEXTO_BLANCO);
   Animacion salud
       (AnimacionFactory::instanciar(UUID_ANIMACION_SALUD, this->renderizador_));
+  Area areaVida =
+      Area(CONFIG_CLIENTE.margenX("salud") * CONFIG_CLIENTE.anchoVentana(),
+           CONFIG_CLIENTE.margenY("salud") * CONFIG_CLIENTE.altoVentana(),
+           CONFIG_CLIENTE.anchoTexto("salud"),
+           salud.alto());
+  renderizador_.dibujarTexto(vida, areaVida);
   std::shared_ptr<ObjetoDinamico> principalCar = pista.obtenerObjeto(id_car);
-  Area areaSalud = Area(90,
-                        5,
+  Area areaSalud = Area(CONFIG_CLIENTE.anchoTexto("salud") + 20,
+                        CONFIG_CLIENTE.margenY("salud")
+                            * CONFIG_CLIENTE.altoVentana(),
                         round(principalCar.get()->getVida() * salud.ancho()
                                   / 100),
                         salud.alto());
@@ -32,8 +37,7 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     eventosGUI_(eventosGUI),
     pista("assets/pistas/1.json", renderizador),
-    //FIXME: NO HARDCODEAR
-    conversor(25.6, 256),
+    conversor(CONFIG_CLIENTE.pixelPorMetro(), CONFIG_CLIENTE.pixelPorBloque()),
     camara(conversor, pista, renderizador) {
   this->musicaAmbiente.stop();
   const std::map<uint8_t, datosVehiculo_>
@@ -143,7 +147,6 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
   std::map<uint8_t, datosVehiculo_> datos = e.idsADatosVehiculos_;
   for (const auto &kv : datos) {
     float posX = this->conversor.metroAPixel(kv.second.xCoord_);
-    // TODO: Fijarse como convertir esto
     float posY = this->conversor.bloqueAPixel(pista.getSizeY())
         - this->conversor.metroAPixel(kv.second.yCoord_);
     this->pista.obtenerObjeto(kv.first).get()->mover(posX,

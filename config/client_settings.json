@@ -40,6 +40,19 @@
     "ancho": 256,
     "alto": 256
   },
+  "conversor": {
+    "pixelPorMetro": 25.6,
+    "pixelPorBloque": 256
+  },
+  "interfaz": {
+    "salud": {
+      "texto": "vida",
+      "tamañoTexto": 30,
+      "anchoTexto": 80,
+      "margenX": 0.01,
+      "margenY": 0.01
+    }
+  },
   "animaciones": {
     "sorlo": {
       "uuid": 1,

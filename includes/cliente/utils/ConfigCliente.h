@@ -41,6 +41,15 @@ class ConfigCliente {
   unsigned int anchoBloquesPista();
   unsigned int altoBloquesPista();
 
+  double pixelPorMetro();
+  unsigned int pixelPorBloque();
+
+  std::string texto(std::string sector);
+  unsigned int tamanioTexto(std::string sector);
+  unsigned int anchoTexto(std::string sector);
+  double margenX(std::string sector);
+  double margenY(std::string sector);
+
   unsigned int uuid(std::string nombreAnimacion);
   unsigned int ancho(std::string nombreAnimacion);
   unsigned int alto(std::string nombreAnimacion);
