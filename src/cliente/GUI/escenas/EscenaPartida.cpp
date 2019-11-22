@@ -6,13 +6,14 @@
 
 // TODO: Refactorizar
 void EscenaPartida::dibujarInterfaz(int iteracion) {
-  Texto textoHola("VIDA", 30, renderizador_);
-  Area areaHola = Area(5,
+  Texto vida("VIDA", 30, renderizador_, UUID_TEXTO_NEGRO);
+  Area areaVida = Area(5,
                        5,
                        80,
                        20);
-  renderizador_.dibujarTexto(textoHola, areaHola);
-  Animacion salud(AnimacionFactory::instanciar(200, this->renderizador_));
+  renderizador_.dibujarTexto(vida, areaVida);
+  Animacion salud
+      (AnimacionFactory::instanciar(UUID_ANIMACION_SALUD, this->renderizador_));
   std::shared_ptr<ObjetoDinamico> principalCar = pista.obtenerObjeto(id_car);
   Area areaSalud = Area(90,
                         5,
@@ -44,7 +45,8 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     std::shared_ptr<ObjetoDinamico> vehiculo =
         std::make_shared<ObjetoDinamico>(vehiculoActual,
                                          renderizador,
-                                         CONFIG_CLIENTE.musicaMotor());
+                                         CONFIG_CLIENTE.musicaMotor(),
+                                         true);
     pista.agregarObjeto(id, vehiculo);
     //FIXME: ESTO TAMBIEN ESTA FEO, LA PISTA DEBERIA DEJAR AGREGAR EN X; Y; ANGULO; TAMBIEN CON VIDA?
     int xCoord = conversor.metroAPixel(kv.second.xCoord_);
@@ -60,7 +62,7 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
-  Area nueva = Area(0, 0, dimensiones.ancho()*2, dimensiones.alto()*2);
+  Area nueva = Area(0, 0, dimensiones.ancho() * 2, dimensiones.alto() * 2);
   Textura miTextura(renderizador_, nueva);
   renderizador_.setDestino(miTextura);
   this->camara.setWidthHeight(nueva.ancho(), nueva.alto());

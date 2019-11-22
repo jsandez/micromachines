@@ -16,6 +16,9 @@ class EscenaMenu : public Escena {
  private:
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
+  Texto crearPartida;
+  Texto unirseAPartida;
+  Texto salir;
  public:
   EscenaMenu(Renderizador &renderizador,
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,

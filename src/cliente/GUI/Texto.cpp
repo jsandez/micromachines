@@ -3,12 +3,25 @@
 #include "includes/cliente/excepciones/SDLException.h"
 #include "includes/cliente/GUI/Renderizador.h"
 
-SDL_Texture *Texto::createFromText(const std::string texto, Renderizador &renderizador) {
-  SDL_Color blanco = {255, 255, 255};
-  SDL_Surface *surface = TTF_RenderText_Blended(this->font, texto.c_str(), blanco);
+SDL_Color Texto::getColor(int uuidColor) {
+  switch (uuidColor) {
+    case UUID_TEXTO_BLANCO:return {255, 255, 255};
+    case UUID_TEXTO_NEGRO:return {0, 0, 0};
+    case UUID_TEXTO_ROJO:return {255, 0, 0};
+    default:return {255, 255, 255};
+  }
+}
+
+SDL_Texture *Texto::createFromText(const std::string texto,
+                                   Renderizador &renderizador,
+                                   int uuidColor) {
+  SDL_Surface
+      *surface =
+      TTF_RenderText_Blended(this->font, texto.c_str(), getColor(uuidColor));
   if (!surface)
     throw SDLException("Error con TTF_RenderText_Blended:", SDL_GetError());
-  SDL_Texture *texture = SDL_CreateTextureFromSurface(renderizador.getSDL(), surface);
+  SDL_Texture
+      *texture = SDL_CreateTextureFromSurface(renderizador.getSDL(), surface);
   if (!texture) {
     throw SDLException("Error al cargar la textura", SDL_GetError());
   }
@@ -16,13 +29,15 @@ SDL_Texture *Texto::createFromText(const std::string texto, Renderizador &render
   return texture;
 }
 
-Texto::Texto(const std::string texto, const int size, Renderizador &renderizador) {
+Texto::Texto(const std::string texto,
+             const int size,
+             Renderizador &renderizador, int uuidColor) {
   if (TTF_Init() == -1)
     throw SDLException("Error al iniciar TTF:", SDL_GetError());
   this->font = TTF_OpenFont(CONFIG_CLIENTE.fuente().c_str(), size);
   if (font == NULL)
     throw SDLException("Error al cargar font:", SDL_GetError());
-  this->texturaSDL_ = createFromText(texto, renderizador);
+  this->texturaSDL_ = createFromText(texto, renderizador, uuidColor);
 }
 
 SDL_Texture *Texto::getSDL() {

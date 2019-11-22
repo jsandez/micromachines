@@ -17,7 +17,6 @@ void HiloDibujador::step(uint32_t iteracion, Escena &escena) {
   }
   if (grabador_.estaCorriendo()) {
     renderizador_.dibujar(iteracion, escena, grabador_.getBuffer());
-    grabador_.getBuffer().swap();
   } else {
     renderizador_.dibujar(iteracion, escena);
   }
@@ -34,7 +33,7 @@ HiloDibujador::HiloDibujador(Ventana &ventana,
     grabador_(grabador),
     eventosGUI_(eventosGUI),
     eventosAEnviar_(eventosAEnviar_),
-    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente()) {
+    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente(), true) {
   escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_,
                                                 eventosGUI_,
                                                 escenas_,
