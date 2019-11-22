@@ -19,16 +19,16 @@ public:
     ~DobleBuffer() {}
 
     void swap();
-    void set(const T& instance);
+    void set(T&& instance);
     bool get(T& destino);
     void detener();
 };
 
 
 template <typename T>
-void DobleBuffer<T>::set(const T& instance) {
+void DobleBuffer<T>::set(T&& instance) {
     std::unique_lock<std::mutex> lock(mutex_);
-    datos_[!actual_] = instance;
+    datos_[!actual_] = std::move(instance);
     nuevo_dato_ = true;
     cond_.notify_one();
 }
