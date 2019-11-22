@@ -18,6 +18,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/Colisionable.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/Superficie.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/Vehiculo.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/checkpoints/Checkpoint.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieArena.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficiePista.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieTierra.cpp
@@ -25,6 +26,8 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/Fisicas.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/ContactListener.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/B2DVehiculo.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/transformaciones/Transformacion.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/transformaciones/Reubicar.cpp
   ${PROJECT_SOURCE_DIR}/modelo/movimiento/Posicion.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

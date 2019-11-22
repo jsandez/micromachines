@@ -7,14 +7,16 @@ Vehiculo::Vehiculo(uint8_t uuid,
             unsigned int maniobrabilidad,
             unsigned int agarre,
             //FIXME: CAMBIAR SALUD A UINT8T
-            unsigned int salud) :
+            unsigned int salud,
+            Posicion respawn) :
             Identificable(uuid),
             velocidadMaximaAdelante_(velocidadMaximaAdelante),
             velocidadMaximaAtras_(velocidadMaximaAtras),
             aceleracion_(aceleracion),
             maniobrabilidad_(maniobrabilidad),
             agarre_(agarre),
-            salud_(salud) {
+            salud_(salud),
+            respawn_(respawn) {
 }
 
 unsigned int Vehiculo::velocidadMaximaAdelante() {
@@ -43,4 +45,8 @@ unsigned int Vehiculo::salud() {
 
 int Vehiculo::getTipo() {
     return VEHICULO_;
+}
+
+Posicion& Vehiculo::getPuntoRespawn() {
+    return respawn_;
 }

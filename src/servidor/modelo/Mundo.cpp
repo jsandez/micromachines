@@ -16,14 +16,16 @@
 //TODO: Crear conversor de coordenadas?
 //Forward declaration
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
-static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles_, Json& pistaJson);
+static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
+static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<unsigned int, Checkpoint>& checkpoints, Json& pistaJson);
 //TODO: implementar
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
     contadorObjetos_(0),
-    snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()) {
+    snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
+    contactListener_(fisicas_) {
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
     std::string rutaPista = CONFIG_SERVIDOR.rutaPistas() + std::to_string(uuidPista) + ".json";
@@ -35,10 +37,12 @@ Mundo::Mundo(uint16_t uuidPista) :
 
     cargarSuelo(largoX, largoY, tileASuelo_, pistaJson);
     cargarPosicionesIniciales(largoX, largoY, posicionesIniciales_, pistaJson);
+    cargarCheckpoints(largoX, largoY, checkpoints_, pistaJson);
     //cargarSuperficies(x, y, tileAModificador_, pistaJson);
     
     fisicas_.generarSuelo(tileASuelo_);
     //fisicas_.generarSuperficies(tileAModificador_);
+    fisicas_.generarCheckpoints(checkpoints_);
 }
 
 Mundo::~Mundo() {
@@ -72,7 +76,9 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
             CONFIG_SERVIDOR.aceleracionVehiculo(),
             CONFIG_SERVIDOR.maniobrabilidadVehiculo(),
             CONFIG_SERVIDOR.agarreVehiculo(),
-            CONFIG_SERVIDOR.saludVehiculo()));
+            CONFIG_SERVIDOR.saludVehiculo(),
+            posicion));
+            
     jugadoresAIDVehiculo_[uuidJugador] = contadorObjetos_;
     fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(uuidJugador), posicion);
     posicionesIniciales_.pop();
@@ -154,6 +160,21 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
         float y = largoY - pistaJson["posicionesIniciales"][std::to_string(i)]["y"].get<float>();
         tiles_.emplace(Posicion(x, y, 0.0f));
     }
+}
+
+static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<unsigned int, Checkpoint>& checkpoints, Json& pistaJson) {
+    unsigned int cantidadCheckpoints = pistaJson["checkpoints"]["cantidad"].get<unsigned int>();
+    //FIXME: Por ahora son todos checkpoints
+    for (unsigned int i = 0; i < cantidadCheckpoints; ++i) {
+        float x = pistaJson["checkpoints"][std::to_string(i)]["x"].get<float>();
+        float y = pistaJson["checkpoints"][std::to_string(i)]["y"].get<float>();
+        float ancho = pistaJson["checkpoints"][std::to_string(i)]["ancho"].get<float>();
+        float largo = pistaJson["checkpoints"][std::to_string(i)]["largo"].get<float>();
+        //FIXME: Get angulo segun direccion o otra abstracción.
+        Posicion posicion(x, largoY - y, 0);
+        checkpoints.emplace(i, Checkpoint(i, ancho, largo, posicion));        
+    }
+    
 }
 
 /*

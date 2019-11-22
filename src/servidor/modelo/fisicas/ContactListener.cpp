@@ -2,11 +2,19 @@
 
 #include "includes/servidor/modelo/Colisionable.h"
 
+#include "includes/servidor/modelo/entidades/checkpoints/Checkpoint.h"
+#include "includes/servidor/modelo/superficies/SuperficieArena.h"
+#include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/fisicas/Fisicas.h"
+
 // Métodos privados
 #include <iostream>
 static void ordenar(Colisionable** A, Colisionable** B);
 
-ContactListener::ContactListener() {
+
+
+ContactListener::ContactListener(Fisicas& fisicas) :
+    fisicas_(fisicas) {
 }
 
 ContactListener::~ContactListener() {    
@@ -30,7 +38,11 @@ void ContactListener::BeginContact(b2Contact* contact) {
             std::cout << "Vehiculo vs Vehiculo\n";
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_ARENA_) {
-            std::cout << "Vehiculo vs Arena\n";
+            vehiculoVsArena(*static_cast<Vehiculo*>(colisionableA), *static_cast<SuperficieArena*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::CHECKPOINT_) {
+            Checkpoint* checkpoint = static_cast<Checkpoint*>(colisionableB);
+            std::cout << "Vehículo pasando por el checkpoint: " << checkpoint->getID() << "\n";
         }
     }
 }
@@ -69,4 +81,10 @@ static void ordenar(Colisionable** A, Colisionable** B) {
         *B = *A;
         *A = tmp;
     }
+}
+
+void ContactListener::vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena) {
+    //TODO: ENCOLAR TRANSFORMACION
+    //fisicas_.reubicar(vehiculo);
+    fisicas_.reubicar(vehiculo, vehiculo.getPuntoRespawn());
 }
