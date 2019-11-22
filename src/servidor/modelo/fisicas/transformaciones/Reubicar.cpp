@@ -11,8 +11,7 @@ Reubicar::Reubicar(Fisicas& fisicas, b2Body* cuerpo, Posicion& posicion) :
 }
 
 void Reubicar::aplicar() {
-    //FIXME: Obtener el angulo de la direccion
-    cuerpo_->SetTransform(b2Vec2(posicion_.x_, posicion_.y_), 0.0);
+    cuerpo_->SetTransform(b2Vec2(posicion_.x_, posicion_.y_), (float)posicion_.anguloDeg_);
     cuerpo_->SetLinearVelocity(b2Vec2(0, 0));
     cuerpo_->SetAngularVelocity(0.0f);
 }
