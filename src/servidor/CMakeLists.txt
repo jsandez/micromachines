@@ -18,7 +18,8 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/Colisionable.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/Superficie.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/Vehiculo.cpp
-  ${PROJECT_SOURCE_DIR}/modelo/entidades/checkpoints/Checkpoint.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/carrera/Checkpoint.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/carrera/Carrera.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieArena.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficiePista.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieTierra.cpp

@@ -50,3 +50,7 @@ int Vehiculo::getTipo() {
 Posicion& Vehiculo::getPuntoRespawn() {
     return respawn_;
 }
+
+void Vehiculo::setPuntoRespawn(Posicion& posicion) {
+    respawn_ = posicion;
+}

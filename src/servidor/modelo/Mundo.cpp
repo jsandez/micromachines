@@ -17,7 +17,7 @@
 //Forward declaration
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
 static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
-static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson);
+//static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson);
 //TODO: implementar
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
@@ -25,7 +25,6 @@ Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
     contadorObjetos_(0),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
-    carrera_(pistaJson),
     contactListener_(fisicas_) {
     
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
@@ -39,7 +38,8 @@ Mundo::Mundo(uint16_t uuidPista) :
 
     cargarSuelo(largoX, largoY, tileASuelo_, pistaJson);
     cargarPosicionesIniciales(largoX, largoY, posicionesIniciales_, pistaJson);
-    cargarCheckpoints(largoX, largoY, carrera_.checkpoints(), pistaJson);
+    carrera_.cargarDesdeJson(pistaJson);
+    //cargarCheckpoints(largoX, largoY, carrera_.checkpoints(), pistaJson);
     //cargarSuperficies(x, y, tileAModificador_, pistaJson);
     
     fisicas_.generarSuelo(tileASuelo_);
@@ -84,6 +84,9 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     jugadoresAIDVehiculo_[uuidJugador] = contadorObjetos_;
     fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(uuidJugador), posicion);
     posicionesIniciales_.pop();
+
+    carrera_.registrarVehiculo(jugadoresAVehiculos_.at(uuidJugador));
+
     //Wizardry
     return contadorObjetos_++;
 }
@@ -164,21 +167,10 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
     }
 }
 
-static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson) {
+/*static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson) {
     throw "QUITAR ESTO\n";
-    unsigned int cantidadCheckpoints = pistaJson["checkpoints"]["cantidad"].get<unsigned int>();
-    //FIXME: Por ahora son todos checkpoints
-    //FIXME: Mover a Carrera para que pueda pasar el *this a los checkpoints
-    for (int i = 0; i < cantidadCheckpoints; ++i) {
-        float x = pistaJson["checkpoints"][std::to_string(i)]["x"].get<float>();
-        float y = pistaJson["checkpoints"][std::to_string(i)]["y"].get<float>();
-        float ancho = pistaJson["checkpoints"][std::to_string(i)]["ancho"].get<float>();
-        float largo = pistaJson["checkpoints"][std::to_string(i)]["largo"].get<float>();
-        //FIXME: Get angulo segun direccion o otra abstracción.
-        Posicion posicion(x, largoY - y, 0);
-        checkpoints.emplace(i, Checkpoint(i, (i+1) % cantidadCheckpoints, ancho, largo, posicion));
-    }
-}
+    
+}*/
 
 /*
 static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson) {

@@ -80,11 +80,9 @@ static void ordenar(Colisionable** A, Colisionable** B) {
 }
 
 void ContactListener::vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena) {
-    //TODO: ENCOLAR TRANSFORMACION
-    //fisicas_.reubicar(vehiculo);
+    //TODO: VER DONDE VA LA EXPLOSION Y COMO
     fisicas_.reubicar(vehiculo, vehiculo.getPuntoRespawn());
 }
-
 void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
-    checkpoint.registrarPaso(vehiculo);
+   checkpoint.registrarPaso(vehiculo);
 }

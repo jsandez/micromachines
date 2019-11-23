@@ -4,25 +4,28 @@
 #include "includes/servidor/modelo/Colisionable.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 
+//Forward declarations
+class Carrera;
+class Vehiculo;
+
 class Checkpoint : public Colisionable {
 private:
-    Posicion puntoRespawn_;
+    Carrera& carrera_;
     int id_;
     int idDelSiguiente_;
     float ancho_;
     float alto_;
+    Posicion puntoRespawn_;
 
 public:
-    Checkpoint(int id, int idDelSiguiente, float ancho, float alto, Posicion& posicion);    
+    Checkpoint(Carrera& carrera, int id, int idDelSiguiente, float ancho, float alto, Posicion& posicion);    
+    virtual ~Checkpoint();
     virtual int getTipo() override;
     Posicion& posicion();
     float ancho();
     float alto();
-    //Temporal, de test
-    //FIXME: QUITAR ESTO
-    int getID() {
-        return id_;
-    }
+    void registrarPaso(Vehiculo& vehiculo);
+    int id();
 };
 
 #endif

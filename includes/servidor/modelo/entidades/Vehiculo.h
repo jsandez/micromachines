@@ -34,6 +34,7 @@ public:
 
     virtual int getTipo() override;
     Posicion& getPuntoRespawn();
+    void setPuntoRespawn(Posicion& Posicion);
 };
 
 #endif
