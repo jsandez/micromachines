@@ -15,8 +15,8 @@ void Carrera::cargarDesdeJson(Json& pistaJson) {
         float y = largoY - pistaJson["checkpoints"][std::to_string(i)]["y"].get<float>();
         float ancho = pistaJson["checkpoints"][std::to_string(i)]["ancho"].get<float>();
         float largo = pistaJson["checkpoints"][std::to_string(i)]["largo"].get<float>();
-        //FIXME: Get angulo segun direccion o otra abstracción.
-        Posicion posicion(Conversor::tileAMetro(x), Conversor::tileAMetro(y), 0);
+        uint16_t angulo = pistaJson["checkpoints"][std::to_string(i)]["anguloRespawn"].get<uint16_t>();
+        Posicion posicion(Conversor::tileAMetro(x), Conversor::tileAMetro(y), angulo);
         checkpoints_.emplace(i, Checkpoint(*this, i, (i+1) % cantidadCheckpoints, ancho, largo, posicion));
     }
     //FIXME: Agregar el dummy chekcpoint para que la meta cuente como el primero
