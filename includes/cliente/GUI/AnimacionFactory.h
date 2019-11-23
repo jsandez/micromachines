@@ -7,10 +7,10 @@
 #include "includes/cliente/GUI/Renderizador.h"
 #include "includes/cliente/GUI/Animacion.h"
 
-#define UUID_ANIMACION_SALUD 200
 #define UUID_BOTON_CREAR_PARTIDA 300
 #define UUID_BOTON_UNIRSE_A_PARTIDA 310
 #define UUID_BOTON_SALIR 320
+#define UUID_ANIMACION_SALUD 400
 #define UUID_ANIMACION_FONDO_MENU 700
 #define UUID_ANIMACION_AUTO_ROJO 800
 #define UUID_ANIMACION_AUTO_AMARILLO 810
