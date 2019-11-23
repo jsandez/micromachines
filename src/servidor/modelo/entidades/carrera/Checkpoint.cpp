@@ -1,8 +1,9 @@
-#include "includes/servidor/modelo/entidades/checkpoints/Checkpoint.h"
+#include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
 
-Checkpoint::Checkpoint(unsigned int id, float ancho, float alto, Posicion& posicion) :
+Checkpoint::Checkpoint(int id, int idDelSiguiente, float ancho, float alto, Posicion& posicion) :
     puntoRespawn_(posicion),
     id_(id),
+    idDelSiguiente_(idDelSiguiente),
     ancho_(ancho),
     alto_(alto) {
     

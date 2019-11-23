@@ -7,20 +7,22 @@
 class Checkpoint : public Colisionable {
 private:
     Posicion puntoRespawn_;
-    unsigned int id_;
+    int id_;
+    int idDelSiguiente_;
     float ancho_;
     float alto_;
 
 public:
-    Checkpoint(unsigned int id, float ancho, float alto, Posicion& posicion);    
+    Checkpoint(int id, int idDelSiguiente, float ancho, float alto, Posicion& posicion);    
     virtual int getTipo() override;
-    //Temporal, de test
-    int getID() {
-        return id_;
-    }
     Posicion& posicion();
     float ancho();
     float alto();
+    //Temporal, de test
+    //FIXME: QUITAR ESTO
+    int getID() {
+        return id_;
+    }
 };
 
 #endif
