@@ -13,7 +13,9 @@ public:
         BOOST_ = 5,
         SUPERFICIE_ARENA_ = 6,
         SUPERFICIE_PISTA_ = 7,
-        SUPERFICIE_TIERRA_ = 8
+        SUPERFICIE_TIERRA_ = 8,
+        CHECKPOINT_ = 9,
+        META_ = 10
     };
     
     virtual int getTipo() = 0;    

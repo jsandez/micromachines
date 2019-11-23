@@ -4,6 +4,7 @@
 #include "includes/common/eventos/EventoPartidaAgregada.h"
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
 
 
 //TODO: Fisicas debe conocer de eventos ocurridos?
@@ -47,6 +48,32 @@ void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASue
 /*void Fisicas::generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie) {
     //TODO: Implementar
 }*/
+
+void Fisicas::generarCheckpoints(std::map<unsigned int, Checkpoint>& checkpoints) {
+    for (auto& kv : checkpoints) {
+        b2BodyDef bodyDef;
+        /*https://stackoverflow.com/questions/5377434/does-stdmapiterator-return-a-copy-of-value-or-a-value-itself*/
+        bodyDef.userData = &kv.second;
+        
+        float anchoTile = CONFIG_SERVIDOR.anchoTile();
+        
+        float ancho = kv.second.ancho();
+        float largo = kv.second.alto();
+
+        float x = anchoTile*kv.second.posicion().x_;
+        float y = anchoTile*kv.second.posicion().y_;
+
+        bodyDef.position.Set(x, y);
+        
+        b2Body* cuerpo = mundoBox2D_->CreateBody(&bodyDef);
+        b2PolygonShape forma;        
+        forma.SetAsBox(ancho/2.0f, largo/2.0f);
+	    b2FixtureDef caracteristicas;
+	    caracteristicas.shape = &forma;
+        caracteristicas.isSensor = true;
+	    cuerpo->CreateFixture(&caracteristicas);
+    }
+}
 void Fisicas::acelerar(uint8_t uuidVehiculo) {
     vehiculos_.at(uuidVehiculo)->acelerando();
 }
@@ -109,4 +136,15 @@ void Fisicas::step(uint32_t numeroIteracion) {
     mundoBox2D_->Step(tiempoAtranscurrir, CONFIG_SERVIDOR.iteracionesVelocidad(), CONFIG_SERVIDOR.iteracionesPosicion());
     iteracion_ = numeroIteracion;
     //TODO: Aplicar transformaciones y encolar eventos pertinentes.
+    while(!transformaciones_.empty()) {
+        std::shared_ptr<Transformacion> t = transformaciones_.front();
+        t->aplicar();
+        transformaciones_.pop();
+    }
+}
+
+void Fisicas::reubicar(Vehiculo& vehiculo, Posicion& posicion) {
+    b2Body* cuerpoVehiculo = vehiculos_.at(vehiculo.uuid())->getB2D();
+    std::shared_ptr<Transformacion> t = std::make_shared<Reubicar>(*this, cuerpoVehiculo, posicion);
+    transformaciones_.push(t);
 }

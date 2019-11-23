@@ -3,6 +3,7 @@
 
 #include "includes/servidor/modelo/Identificable.h"
 #include "includes/servidor/modelo/Colisionable.h"
+#include "includes/servidor/modelo/movimiento/Posicion.h"
 
 class Vehiculo : public Identificable, public Colisionable {
 private:
@@ -12,6 +13,7 @@ private:
     unsigned int maniobrabilidad_;
     unsigned int agarre_;
     unsigned int salud_;
+    Posicion respawn_;
     
 public:
     Vehiculo(uint8_t uuid,
@@ -20,7 +22,8 @@ public:
             unsigned int aceleracion,
             unsigned int maniobrabilidad,
             unsigned int agarre,
-            unsigned int salud);
+            unsigned int salud,
+            Posicion respawn);
 
     unsigned int velocidadMaximaAdelante();
     unsigned int velocidadMaximaAtras();
@@ -30,6 +33,7 @@ public:
     unsigned int salud();
 
     virtual int getTipo() override;
+    Posicion& getPuntoRespawn();
 };
 
 #endif

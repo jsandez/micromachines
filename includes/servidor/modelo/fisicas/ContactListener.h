@@ -3,9 +3,19 @@
 
 #include "includes/3rd-party/Box2D/Box2D.h"
 
+//Forward declations
+class Fisicas;
+class SuperficieArena;
+class Vehiculo;
+
 class ContactListener : public b2ContactListener {
+private:
+    Fisicas& fisicas_;
+
+    void vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena);
+    
 public:
-    ContactListener();
+    ContactListener(Fisicas& fisicas);
     virtual ~ContactListener();
     virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) override;
     virtual void BeginContact(b2Contact* contact) override;
