@@ -6395,63 +6395,63 @@
             "y" : 15.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, 1]
+            "anguloRespawn": 0
         },
         "1" : {
             "x" : 27.5,
             "y" : 10.0,
             "ancho" : 10.0,
             "largo" : 40.0,
-            "respawn": [-1, 0]
+            "anguloRespawn": 90
         },
         "2" : {
             "x" : 24.0,
             "y" : 14.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, -1]
+            "anguloRespawn": 180
         },
         "3" : {
             "x" : 20.0,
             "y" : 19.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, -1]
+            "anguloRespawn": 180
         },
         "4" : {
             "x" : 16.0,
             "y" : 27.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, -1]
+            "anguloRespawn": 180
         },
         "5" : {
             "x" : 18.5,
             "y" : 34.0,
             "ancho" : 10.0,
             "largo" : 40.0,
-            "respawn": [1, 0]
+            "anguloRespawn": 270
         },
         "6" : {
             "x" : 25.5,
             "y" : 34.0,
             "ancho" : 10.0,
             "largo" : 40.0,
-            "respawn": [1, 0]
+            "anguloRespawn": 270
         },
         "7" : {
             "x" : 32.0,
             "y" : 31.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, 1]
+            "anguloRespawn": 0
         },
         "8" : {
             "x" : 32.0,
             "y" : 23.5,
             "ancho" : 40.0,
             "largo" : 10.0,
-            "respawn": [0, 1]
+            "anguloRespawn": 0
         }
     }
 }

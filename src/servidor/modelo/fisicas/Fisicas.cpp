@@ -21,6 +21,7 @@ Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListene
 
 Fisicas::~Fisicas() {
 }
+
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
     //TODO: Implementar: es arena tierra y pista.
     
@@ -49,19 +50,17 @@ void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASue
     //TODO: Implementar
 }*/
 
-void Fisicas::generarCheckpoints(std::map<unsigned int, Checkpoint>& checkpoints) {
+void Fisicas::generarCheckpoints(std::map<int, Checkpoint>& checkpoints) {
     for (auto& kv : checkpoints) {
         b2BodyDef bodyDef;
-        /*https://stackoverflow.com/questions/5377434/does-stdmapiterator-return-a-copy-of-value-or-a-value-itself*/
+        //https://stackoverflow.com/questions/5377434/does-stdmapiterator-return-a-copy-of-value-or-a-value-itself
         bodyDef.userData = &kv.second;
-        
-        float anchoTile = CONFIG_SERVIDOR.anchoTile();
-        
+                
         float ancho = kv.second.ancho();
         float largo = kv.second.alto();
 
-        float x = anchoTile*kv.second.posicion().x_;
-        float y = anchoTile*kv.second.posicion().y_;
+        float x = kv.second.posicion().x_;
+        float y = kv.second.posicion().y_;
 
         bodyDef.position.Set(x, y);
         

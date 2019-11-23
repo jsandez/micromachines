@@ -20,6 +20,10 @@ unsigned int ConfigCliente::altoVentana() {
   return json_["ventana"]["alto"].get<unsigned int>();
 }
 
+float ConfigCliente::factorLejaniaCamara() {
+  return json_["factorLejaniaPista"].get<float>();
+}
+
 bool ConfigCliente::pantallaCompleta() {
   return json_["ventana"]["pantallaCompleta"].get<bool>();
 }

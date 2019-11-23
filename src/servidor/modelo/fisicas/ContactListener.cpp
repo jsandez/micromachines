@@ -2,16 +2,13 @@
 
 #include "includes/servidor/modelo/Colisionable.h"
 
-#include "includes/servidor/modelo/entidades/checkpoints/Checkpoint.h"
+#include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 // Métodos privados
-#include <iostream>
 static void ordenar(Colisionable** A, Colisionable** B);
-
-
 
 ContactListener::ContactListener(Fisicas& fisicas) :
     fisicas_(fisicas) {
@@ -35,14 +32,13 @@ void ContactListener::BeginContact(b2Contact* contact) {
 
     if (colisionableA->getTipo() == Colisionable::tipos::VEHICULO_) {
         if (colisionableB->getTipo() == Colisionable::tipos::VEHICULO_) {
-            std::cout << "Vehiculo vs Vehiculo\n";
+            //TODO: IMPLEMENTAR
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_ARENA_) {
             vehiculoVsArena(*static_cast<Vehiculo*>(colisionableA), *static_cast<SuperficieArena*>(colisionableB));
         }
         if (colisionableB->getTipo() == Colisionable::tipos::CHECKPOINT_) {
-            Checkpoint* checkpoint = static_cast<Checkpoint*>(colisionableB);
-            std::cout << "Vehículo pasando por el checkpoint: " << checkpoint->getID() << "\n";
+            vehiculoVsCheckpoint(*static_cast<Vehiculo*>(colisionableA), *static_cast<Checkpoint*>(colisionableB));
         }
     }
 }
@@ -84,7 +80,9 @@ static void ordenar(Colisionable** A, Colisionable** B) {
 }
 
 void ContactListener::vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena) {
-    //TODO: ENCOLAR TRANSFORMACION
-    //fisicas_.reubicar(vehiculo);
+    //TODO: VER DONDE VA LA EXPLOSION Y COMO
     fisicas_.reubicar(vehiculo, vehiculo.getPuntoRespawn());
+}
+void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
+   checkpoint.registrarPaso(vehiculo);
 }

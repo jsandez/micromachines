@@ -10,7 +10,7 @@
 #include "includes/common/eventos/Evento.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
-#include "includes/servidor/modelo/entidades/checkpoints/Checkpoint.h"
+#include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 #include "includes/servidor/modelo/fisicas/B2DVehiculo.h"
 #include "includes/servidor/modelo/fisicas/ContactListener.h"
@@ -37,7 +37,7 @@ public:
     ~Fisicas();
     void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
     //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
-    void generarCheckpoints(std::map<unsigned int, Checkpoint>& checkpoints);
+    void generarCheckpoints(std::map<int, Checkpoint>& checkpoints);
     void step(uint32_t numeroIteracion);
     void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
     

@@ -6,6 +6,7 @@
     "titulo": "rpn",
     "fps": 60
   },
+  "factorLejaniaPista": 2.0,
   "musica": {
     "ambiente": "assets/sonidos/menu.wav",
     "motor": "assets/sonidos/motor.wav",

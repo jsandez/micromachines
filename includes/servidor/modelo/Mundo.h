@@ -11,7 +11,7 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
-#include "includes/servidor/modelo/entidades/checkpoints/Checkpoint.h"
+#include "includes/servidor/modelo/entidades/carrera/Carrera.h"
 
 class Mundo : public Handler {
 private:
@@ -23,8 +23,8 @@ private:
     Fisicas fisicas_;
     uint8_t contadorObjetos_;
     std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
-    std::map<unsigned int, Checkpoint> checkpoints_;
     unsigned int snapshotsEnviadosPorSegundo_;
+    Carrera carrera_;
     ContactListener contactListener_;
 
     std::map<uint8_t, datosVehiculo_> serializarEstado();

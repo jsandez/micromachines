@@ -91,11 +91,10 @@ void Renderizador::dibujar(uint32_t numeroIteracion, Escena &escena, DobleBuffer
   int anchoRGB = ventana_.ancho() * 3;
   std::vector<char> pixeles(anchoRGB * ventana_.alto());
   
-  SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, pixeles.data(), anchoRGB);
-  buffer.set(std::move(pixeles));
-
   resetDestino();
   SDL_RenderCopy(renderizadorSDL_, textura.getSDL(), NULL, &SDLDestino);
+  SDL_RenderReadPixels(renderizadorSDL_, NULL, SDL_PIXELFORMAT_RGB24, pixeles.data(), anchoRGB);
+  buffer.set(std::move(pixeles));
   SDL_RenderPresent(renderizadorSDL_);
 }
 
