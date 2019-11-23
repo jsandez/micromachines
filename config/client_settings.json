@@ -6,20 +6,6 @@
     "titulo": "rpn",
     "fps": 60
   },
-  "botones": {
-    "300": {
-      "anchoRelativo": 0.41,
-      "altoRelativo": 0.52
-    },
-    "310": {
-      "anchoRelativo": 0.41,
-      "altoRelativo": 0.62
-    },
-    "320": {
-      "anchoRelativo": 0.41,
-      "altoRelativo": 0.72
-    }
-  },
   "musica": {
     "ambiente": "assets/sonidos/menu.wav",
     "motor": "assets/sonidos/motor.wav",
@@ -95,6 +81,46 @@
       "alto": 31,
       "sprites": [
         "assets/botones/320.png"
+      ]
+    },
+    "jugar": {
+      "uuid": 330,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/330.png"
+      ]
+    },
+    "atras": {
+      "uuid": 340,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/340.png"
+      ]
+    },
+    "iniciarPartida": {
+      "uuid": 350,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/350.png"
+      ]
+    },
+    "listo": {
+      "uuid": 360,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/360.png"
+      ]
+    },
+    "menu": {
+      "uuid": 370,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/370.png"
       ]
     },
     "autoRojo": {
@@ -185,8 +211,8 @@
         "assets/fondo_menu.png"
       ]
     },
-    "pasto" : {
-      "uuid" : 106,
+    "pasto": {
+      "uuid": 106,
       "ancho": 256,
       "alto": 256,
       "sprites": [

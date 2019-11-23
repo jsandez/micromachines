@@ -56,16 +56,12 @@ std::string ConfigCliente::musicaExplosion() {
   return std::move(json_["musica"]["explosion"].get<std::string>());
 }
 
+std::string ConfigCliente::musicaVacio() {
+  return std::move(json_["musica"]["empty"].get<std::string>());
+}
+
 unsigned int ConfigCliente::volumenAmbiente() {
   return json_["volumen"]["ambiente"].get<unsigned int>();
-}
-
-double ConfigCliente::anchoRelativoBoton(std::string nombreBoton) {
-  return json_["botones"][nombreBoton]["anchoRelativo"].get<double>();
-}
-
-double ConfigCliente::altoRelativoBoton(std::string nombreBoton) {
-  return json_["botones"][nombreBoton]["altoRelativo"].get<double>();
 }
 
 unsigned int ConfigCliente::anchoBloquesPista() {

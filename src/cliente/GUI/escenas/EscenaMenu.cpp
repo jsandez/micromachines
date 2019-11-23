@@ -1,3 +1,4 @@
+#include <iostream>
 #include "includes/cliente/GUI/escenas/EscenaMenu.h"
 #include "includes/cliente/GUI/escenas/EscenaPartida.h"
 #include "includes/cliente/GUI/escenas/EscenaSala.h"
@@ -7,35 +8,20 @@
 
 void EscenaMenu::inicializarBotones() {
   this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_CREAR_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
+      UUID_BOTON_JUGAR,
+      std::make_shared<Boton>(UUID_BOTON_JUGAR,
                               renderizador_,
-                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
-                                  UUID_BOTON_CREAR_PARTIDA))
+                              0.41
                                   * CONFIG_CLIENTE.anchoVentana(),
-                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
-                                  UUID_BOTON_CREAR_PARTIDA))
+                              0.60
                                   * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_UNIRSE_A_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
-                              renderizador_,
-                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
-                                  UUID_BOTON_UNIRSE_A_PARTIDA))
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
-                                  UUID_BOTON_UNIRSE_A_PARTIDA))
-                                  * CONFIG_CLIENTE.altoVentana())));
-
   this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
       UUID_BOTON_SALIR,
       std::make_shared<Boton>(UUID_BOTON_SALIR,
                               renderizador_,
-                              CONFIG_CLIENTE.anchoRelativoBoton(std::to_string(
-                                  UUID_BOTON_SALIR))
+                              0.41
                                   * CONFIG_CLIENTE.anchoVentana(),
-                              CONFIG_CLIENTE.altoRelativoBoton(std::to_string(
-                                  UUID_BOTON_SALIR))
+                              0.70
                                   * CONFIG_CLIENTE.altoVentana())));
 }
 
@@ -52,16 +38,16 @@ void EscenaMenu::dibujarBotones(int nroIteracion) {
 
 void EscenaMenu::handlerBotones(int uuid) {
   switch (uuid) {
-    case UUID_BOTON_CREAR_PARTIDA: {
-      std::shared_ptr<Evento>
-          eventoCrearPartida = std::make_shared<EventoCrearPartida>();
-      eventosAEnviar_.put(eventoCrearPartida);
+    case UUID_BOTON_JUGAR: {
+      escenas_.emplace(std::make_shared<EscenaSala>(renderizador_,
+                                                    eventosGUI_,
+                                                    escenas_,
+                                                    eventosAEnviar_,
+                                                    this->musicaAmbiente));
       break;
     }
-    case UUID_BOTON_UNIRSE_A_PARTIDA: {
-      std::shared_ptr<Evento>
-          eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
-      eventosAEnviar_.put(eventoUnirseAPartida);
+    case UUID_BOTON_SALIR: {
+      std::cout << "SALIO" << std::endl;
       break;
     }
     default:break;
@@ -110,23 +96,10 @@ void EscenaMenu::manejarInput(EventoGUIKeyDown &evento) {
   if (evento.getTecla() == TECLA_FULLSCREEN) {
     renderizador_.toggleFullScreen();
   }
-  if (evento.getTecla() == TECLA_C) {
-    std::shared_ptr<Evento> jugar = std::make_shared<EventoIniciarPartida>();
-    eventosAEnviar_.put(jugar);
-  }
 }
 
 void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {}
 
 void EscenaMenu::manejar(Evento &e) {
   e.actualizar(*this);
-}
-
-void EscenaMenu::manejar(EventoPartidaIniciada &estadoInicial) {
-  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_,
-                                                   eventosGUI_,
-                                                   escenas_,
-                                                   eventosAEnviar_,
-                                                   estadoInicial,
-                                                   this->musicaAmbiente));
 }
