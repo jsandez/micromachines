@@ -21,7 +21,7 @@ class EscenaPartida : public Escena {
   Conversor conversor;
   Camara camara;
   int id_car, screenX, screenY;
-  void dibujarInterfaz(int itreacion);
+  void dibujarInterfaz(int iteracion);
  public:
   EscenaPartida(Renderizador &renderizador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,

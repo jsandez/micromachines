@@ -36,7 +36,6 @@ class EscenaMenu : public Escena {
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
   //FIXME: ESTO NO TENDRIA QUE ESTAR ACA
   virtual void manejar(Evento &e) override;
-  virtual void manejar(EventoPartidaIniciada &e) override;
 };
 
 #endif

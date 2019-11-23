@@ -39,6 +39,41 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("salir");
       alto_ = CONFIG_CLIENTE.alto("salir");
       break;
+    case UUID_BOTON_JUGAR:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("jugar")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("jugar");
+      alto_ = CONFIG_CLIENTE.alto("jugar");
+      break;
+    case UUID_BOTON_ATRAS:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("atras")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("atras");
+      alto_ = CONFIG_CLIENTE.alto("atras");
+      break;
+    case UUID_BOTON_INICIAR_PARTIDA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("iniciarPartida")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("iniciarPartida");
+      alto_ = CONFIG_CLIENTE.alto("iniciarPartida");
+      break;
+    case UUID_BOTON_LISTO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("listo")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("listo");
+      alto_ = CONFIG_CLIENTE.alto("listo");
+      break;
+    case UUID_BOTON_MENU:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("menu")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("menu");
+      alto_ = CONFIG_CLIENTE.alto("menu");
+      break;
     case UUID_ANIMACION_AUTO_ROJO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("autoRojo")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));
