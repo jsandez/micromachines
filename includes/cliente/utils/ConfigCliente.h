@@ -20,6 +20,7 @@ class ConfigCliente {
 
   unsigned int anchoVentana();
   unsigned int altoVentana();
+  float factorLejaniaCamara();
   bool pantallaCompleta();
   std::string tituloVentana();
   unsigned int fps();

@@ -66,7 +66,8 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
-  Area nueva = Area(0, 0, dimensiones.ancho() * 2, dimensiones.alto() * 2);
+  float reescalado = CONFIG_CLIENTE.factorLejaniaCamara();
+  Area nueva = Area(0, 0, dimensiones.ancho() * reescalado, dimensiones.alto() * reescalado);
   Textura miTextura(renderizador_, nueva);
   renderizador_.setDestino(miTextura);
   this->camara.setWidthHeight(nueva.ancho(), nueva.alto());

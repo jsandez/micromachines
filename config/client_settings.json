@@ -6,6 +6,7 @@
     "titulo": "rpn",
     "fps": 60
   },
+  "factorLejaniaPista" : 2.0,
   "botones": {
     "300": {
       "anchoRelativo": 0.41,
