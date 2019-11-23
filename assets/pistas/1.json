@@ -6453,5 +6453,6 @@
             "largo" : 10.0,
             "anguloRespawn": 0
         }
-    }
+    },
+    "vueltas" : 1
 }

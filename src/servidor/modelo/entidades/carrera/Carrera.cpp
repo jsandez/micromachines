@@ -19,7 +19,6 @@ void Carrera::cargarDesdeJson(Json& pistaJson) {
         Posicion posicion(Conversor::tileAMetro(x), Conversor::tileAMetro(y), angulo);
         checkpoints_.emplace(i, Checkpoint(*this, i, (i+1) % cantidadCheckpoints, ancho, largo, posicion));
     }
-    //FIXME: Agregar el dummy chekcpoint para que la meta cuente como el primero
 }
 
 std::map<int, Checkpoint>& Carrera::checkpoints() {
@@ -30,10 +29,16 @@ Checkpoint& Carrera::ultimoCheckpointDe(Vehiculo& vehiculo) {
     return checkpoints_.at(idsVehiculosAidsCheckpoints_.at(vehiculo.uuid()));
 }
 
+#include <iostream>
 void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     idsVehiculosAidsCheckpoints_[vehiculo.uuid()] = checkpoint.id();
+    if (checkpoint.id() == ID_META) {
+        idsVehiculosAVueltas_[vehiculo.uuid()]++;
+        std::cout << "Lleva " << idsVehiculosAVueltas_[vehiculo.uuid()] << " vueltas\n";
+    } 
 }
 
 void Carrera::registrarVehiculo(Vehiculo& vehiculo) {
     idsVehiculosAidsCheckpoints_[vehiculo.uuid()] = 0;
+    idsVehiculosAVueltas_[vehiculo.uuid()] = 0;
 }

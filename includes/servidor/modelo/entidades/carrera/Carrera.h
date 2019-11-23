@@ -1,6 +1,8 @@
 #ifndef _CARRERA_H_
 #define _CARRERA_H_
 
+#define ID_META 0
+
 #include <map>
 
 #include "includes/3rd-party/jsoncpp/json.hpp"
@@ -13,6 +15,7 @@ class Carrera {
 private:
     std::map<int, Checkpoint> checkpoints_;
     std::map<uint8_t, int> idsVehiculosAidsCheckpoints_;
+    std::map<uint8_t, int> idsVehiculosAVueltas_;
 
 public:
     Carrera();

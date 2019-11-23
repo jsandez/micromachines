@@ -35,17 +35,11 @@ int Checkpoint::id() {
     return id_;
 }
 
-#include <iostream>
-
 void Checkpoint::registrarPaso(Vehiculo& vehiculo) {
     Checkpoint& ultimoCheckpoint = carrera_.ultimoCheckpointDe(vehiculo);
     if (ultimoCheckpoint.idDelSiguiente_ == id_) {
         //TODO: EN Meta será sumar vuelta
         vehiculo.setPuntoRespawn(puntoRespawn_);
-        std::cout << "Vehiculo chocando con checkpoint: " << id_ << std::endl;
-        std::cout << "Seteando x: " << puntoRespawn_.x_ << " y: " << puntoRespawn_.y_ << std::endl;
         carrera_.setCheckpoint(vehiculo, *this);
     }
 }
-
-
