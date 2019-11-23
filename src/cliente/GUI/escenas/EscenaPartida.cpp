@@ -113,10 +113,6 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
     std::shared_ptr<Evento>
         eventoDoblarDer = std::make_shared<EventoDoblarDerecha>();
     eventosAEnviar_.put(eventoDoblarDer);
-  } else if (evento.getTecla() == TECLA_C) {
-    std::shared_ptr<Evento>
-        eventoIniciarPartida = std::make_shared<EventoIniciarPartida>();
-    eventosAEnviar_.put(eventoIniciarPartida);
   }
 }
 

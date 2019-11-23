@@ -29,6 +29,7 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaMenu.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaSala.cpp
         ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaPartida.cpp
+        ${PROJECT_SOURCE_DIR}/GUI/escenas/EscenaLobby.cpp
 
         ${PROJECT_SOURCE_DIR}/grabador/HiloGrabador.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/codec.cpp

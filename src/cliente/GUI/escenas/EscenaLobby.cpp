@@ -1,28 +1,18 @@
-#include "includes/cliente/GUI/escenas/EscenaSala.h"
-
 #include "includes/cliente/GUI/escenas/EscenaLobby.h"
+
 #include "includes/cliente/GUI/AnimacionFactory.h"
 #include "includes/cliente/utils/ConfigCliente.h"
 #include "includes/cliente/GUI/Area.h"
 
-void EscenaSala::inicializarBotones() {
+void EscenaLobby::inicializarBotones() {
   this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_CREAR_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
+      UUID_BOTON_INICIAR_PARTIDA,
+      std::make_shared<Boton>(UUID_BOTON_INICIAR_PARTIDA,
                               renderizador_,
                               0.10
                                   * CONFIG_CLIENTE.anchoVentana(),
                               0.60
                                   * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_UNIRSE_A_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
-                              renderizador_,
-                              0.10
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.65
-                                  * CONFIG_CLIENTE.altoVentana())));
-
   this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
       UUID_BOTON_ATRAS,
       std::make_shared<Boton>(UUID_BOTON_ATRAS,
@@ -33,7 +23,7 @@ void EscenaSala::inicializarBotones() {
                                   * CONFIG_CLIENTE.altoVentana())));
 }
 
-void EscenaSala::dibujarBotones(int nroIteracion) {
+void EscenaLobby::dibujarBotones(int nroIteracion) {
   for (const auto &boton: botones) {
     Animacion &animacion = boton.second.get()->getAnimacion();
     Area areaBoton = Area(boton.second.get()->getX(),
@@ -44,23 +34,11 @@ void EscenaSala::dibujarBotones(int nroIteracion) {
   }
 }
 
-void EscenaSala::handlerBotones(int uuid) {
+void EscenaLobby::handlerBotones(int uuid) {
   switch (uuid) {
-    case UUID_BOTON_CREAR_PARTIDA: {
-      std::shared_ptr<Evento>
-          eventoCrearPartida = std::make_shared<EventoCrearPartida>();
-      eventosAEnviar_.put(eventoCrearPartida);
-      break;
-    }
-    case UUID_BOTON_UNIRSE_A_PARTIDA: {
-      std::shared_ptr<Evento>
-          eventoUnirseAPartida = std::make_shared<EventoUnirseAPartida>(1);
-      eventosAEnviar_.put(eventoUnirseAPartida);
-      escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
-                                                     eventosGUI_,
-                                                     escenas_,
-                                                     eventosAEnviar_,
-                                                     this->musicaAmbiente));
+    case UUID_BOTON_INICIAR_PARTIDA: {
+        std::shared_ptr<Evento> jugar = std::make_shared<EventoIniciarPartida>();
+        eventosAEnviar_.put(jugar);
       break;
     }
     case UUID_BOTON_ATRAS: {
@@ -70,7 +48,7 @@ void EscenaSala::handlerBotones(int uuid) {
   }
 }
 
-EscenaSala::EscenaSala(Renderizador &renderizador,
+EscenaLobby::EscenaLobby(Renderizador &renderizador,
                        ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                        std::stack<std::shared_ptr<Escena>> &escenas,
                        ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
@@ -82,7 +60,7 @@ EscenaSala::EscenaSala(Renderizador &renderizador,
   inicializarBotones();
 }
 
-Textura EscenaSala::dibujate(uint32_t numeroIteracion, Area dimensiones) {
+Textura EscenaLobby::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   Textura miTextura(renderizador_, dimensiones);
   renderizador_.setDestino(miTextura);
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
@@ -91,15 +69,14 @@ Textura EscenaSala::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   return std::move(miTextura);
 }
 
-void EscenaSala::manejarInput(EventoGUI &evento) {
+void EscenaLobby::manejarInput(EventoGUI &evento) {
   evento.actualizar(*this);
 }
 
 #include <iostream>
 #include <includes/cliente/GUI/escenas/EscenaPartida.h>
-#include <includes/cliente/GUI/escenas/EscenaLobby.h>
 
-void EscenaSala::manejarInput(EventoGUIClick &evento) {
+void EscenaLobby::manejarInput(EventoGUIClick &evento) {
   int x, y;
   SDL_GetMouseState(&x, &y);
   for (const auto &boton: botones) {
@@ -110,7 +87,7 @@ void EscenaSala::manejarInput(EventoGUIClick &evento) {
   }
 }
 
-void EscenaSala::manejarInput(EventoGUIKeyDown &evento) {
+void EscenaLobby::manejarInput(EventoGUIKeyDown &evento) {
   if (evento.getTecla() == TECLA_ESC) {
     escenas_.pop();
   }
@@ -119,8 +96,17 @@ void EscenaSala::manejarInput(EventoGUIKeyDown &evento) {
   }
 }
 
-void EscenaSala::manejarInput(EventoGUIKeyUp &evento) {}
+void EscenaLobby::manejarInput(EventoGUIKeyUp &evento) {}
 
-void EscenaSala::manejar(Evento &e) {
+void EscenaLobby::manejar(Evento &e) {
   e.actualizar(*this);
+}
+
+void EscenaLobby::manejar(EventoPartidaIniciada &estadoInicial) {
+  escenas_.emplace(std::make_shared<EscenaPartida>(renderizador_,
+                                                   eventosGUI_,
+                                                   escenas_,
+                                                   eventosAEnviar_,
+                                                   estadoInicial,
+                                                   this->musicaAmbiente));
 }
