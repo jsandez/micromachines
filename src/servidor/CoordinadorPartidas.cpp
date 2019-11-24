@@ -9,8 +9,8 @@ CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
         if (kv.second->estaCorriendo()) {
             kv.second->detener();
-            kv.second->join();
-        }        
+        }
+        kv.second->join();
     }
 }
 
