@@ -42,6 +42,10 @@ void ContactListener::BeginContact(b2Contact* contact) {
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_TIERRA_) {
             std::cout << "Bajar la velocidad o aplicar un modificador\n";
+            //TODO: No se pueden modificar valores acá, hay que obtener el b2Vehiculo
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_PISTA_) {
+            std::cout << "De nuevo en la pista\n";
         }
     }
 }
