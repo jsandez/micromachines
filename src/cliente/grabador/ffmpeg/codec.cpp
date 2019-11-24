@@ -38,6 +38,13 @@ int Codec::get_packet(AVPacket * pkt, AVRational *time_base) {
 	return 1;
 }
 
+void Codec::copy_parameters(AVStream * st) {
+	if (avcodec_parameters_from_context(st->codecpar, enc) < 0) {
+		throw std::runtime_error("No se pudieron copiar los parametros del contexto al stream");
+	}
+}
+
+
 Codec::Codec(Codec&& rhs){
 	this->enc = rhs.enc;
 	rhs.enc = NULL;
@@ -50,7 +57,7 @@ Codec& Codec::operator=(Codec&& rhs) {
 }
 
 Codec::~Codec() {
-	if (enc) {
+	if (enc != nullptr) {
 		avcodec_free_context(&enc);
 	}
 }

@@ -7,7 +7,7 @@ OutputVideo::OutputVideo(OutputFormat &fmt, AVRational avr, int w, int h, AVPixe
 	try {
 		st->time_base = avr;
 		enc = new VideoCodec(fmt.get_video_codec_id(), avr, frame, w, h, pix, fmt.is_flag_set(AVFMT_GLOBALHEADER));
-		reinterpret_cast<VideoCodec *>(enc)->copy_parameters(st);
+		enc->copy_parameters(st);
 	}
 	catch (std::runtime_error &e) {
 		throw std::runtime_error(e);
@@ -20,4 +20,5 @@ void OutputVideo::rgb_line_to_frame(const char *v) {
 }
 
 OutputVideo::~OutputVideo() {
+	delete enc;
 }
