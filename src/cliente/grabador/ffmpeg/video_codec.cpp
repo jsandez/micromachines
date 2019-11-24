@@ -58,11 +58,6 @@ VideoCodec::VideoCodec(enum AVCodecID id, AVRational avr, Frame& fr, int width, 
 	fr.VideoFrame(enc->pix_fmt, width, height);
 }
 
-void VideoCodec::copy_parameters(AVStream * st) {
-	if (avcodec_parameters_from_context(st->codecpar, enc) < 0) {
-		throw std::runtime_error("No se pudieron copiar los parametros del contexto al stream");
-	}
-}
 
 void VideoCodec::write_rgb_frame(Frame& dest, const char * data, int pts) {
 	dest.fill_rgb(sws_ctx, data, enc->width, pts);
