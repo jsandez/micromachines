@@ -25,6 +25,7 @@ void SalaDeEspera::manejar(Evento& e) {
 }
 
 void SalaDeEspera::manejar(EventoDesconexion& e) {
+    //FIXME: Mejorar esta lógica
     jugadores_.erase(e.uuidRemitente());
 }
 

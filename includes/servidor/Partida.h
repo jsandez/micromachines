@@ -10,7 +10,7 @@
 #include <map>
 #include <memory>
 
-class Partida : public Hilo {
+class Partida : public Hilo, public Handler {
 //TODO: Devolver al jugador a la sala de espera cuando finaliza la partida
 private:
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
@@ -31,6 +31,9 @@ public:
 
     virtual void correr() override;
     virtual void detener() override;
+
+    virtual void manejar(Evento& e) override;
+    virtual void manejar(EventoFinCarrera& e) override;
 
     void ocurrio(std::shared_ptr<Evento> unEvento);
 };

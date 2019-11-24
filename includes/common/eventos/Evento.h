@@ -22,6 +22,7 @@ class Handler;
 #define UUID_EVENTO_DESCONEXION                 13
 #define UUID_EVENTO_PARTIDA_INICIADA            14
 #define UUID_EVENTO_SNAPSHOT                    15
+#define UUID_EVENTO_FIN_CARRERA                 16
 
 
 // TODO: Crear constructor por movimiento

@@ -54,6 +54,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDoblarDerecha.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDejarDeDoblarDerecha.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshot.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFinCarrera.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp

@@ -20,6 +20,7 @@
 #include "includes/common/eventos/EventoDoblarDerecha.h"
 #include "includes/common/eventos/EventoDejarDeDoblarDerecha.h"
 #include "includes/common/eventos/EventoSnapshot.h"
+#include "includes/common/eventos/EventoFinCarrera.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 

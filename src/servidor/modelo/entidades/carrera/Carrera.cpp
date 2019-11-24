@@ -2,9 +2,11 @@
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/common/Conversor.h"
+#include "includes/common/eventos/EventoFinCarrera.h"
+
 Carrera::Carrera(ColaProtegida<std::shared_ptr<Evento>>& eventosMundo) :
-    eventosMundo_(eventosMundo_),
-    numeroDeVueltas_(0) {
+    numeroDeVueltas_(0),
+    eventosMundo_(eventosMundo) {
 }
 
 void Carrera::cargarDesdeJson(Json& pistaJson) {
@@ -32,7 +34,6 @@ Checkpoint& Carrera::ultimoCheckpointDe(Vehiculo& vehiculo) {
     return checkpoints_.at(idsVehiculosAidsCheckpoints_.at(vehiculo.uuid()));
 }
 
-#include <iostream>
 void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     idsVehiculosAidsCheckpoints_[vehiculo.uuid()] = checkpoint.id();
     if (checkpoint.id() == ID_META) {
@@ -44,7 +45,8 @@ void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     bool termino = finalizada();
     if (termino) {
         //TODO: Acá? Hay que notificar... La partida debe finalizar, el mundo dentenerse, etc.
-        std::shared_ptr<Evento> fin = std::make_shared<EventoFinCarrera>(std::move(podio_));
+        std::shared_ptr<Evento> fin = std::make_shared<EventoFinCarrera>(/*std::move(podio_)*/);
+        eventosMundo_.put(fin);
     }
 }
 

@@ -17,6 +17,7 @@
 #include "includes/common/eventos/EventoIniciarPartida.h"
 #include "includes/common/eventos/EventoPartidaIniciada.h"
 #include "includes/common/eventos/EventoDesconexion.h"
+#include "includes/common/eventos/EventoFinCarrera.h"
 
 class Handler {
  public:
@@ -35,6 +36,7 @@ class Handler {
   virtual void manejar(EventoUnirseAPartida &e);
   virtual void manejar(EventoIniciarPartida &e);
   virtual void manejar(EventoPartidaIniciada &e);
+  virtual void manejar(EventoFinCarrera &e);
   virtual void manejar(EventoDesconexion &e);
 };
 

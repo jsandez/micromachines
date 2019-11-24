@@ -26,12 +26,13 @@ void Partida::step(uint32_t nroIteracion) {
     }
     mundo_.step(nroIteracion);
     Cola<std::shared_ptr<Evento>>& eventosOcurridos = mundo_.eventosOcurridos();
-    //TODO: get snapshot
     std::shared_ptr<Evento> eventoOcurrido;
     while((obtenido = eventosOcurridos.get(eventoOcurrido))) {
         for (auto& kv : jugadores_) {
             kv.second->ocurrio(eventoOcurrido);
         }
+        //TODO: Manejar el evento, acá me entero del fin partida
+        manejar(*eventoOcurrido);
     }
 }
 
@@ -65,6 +66,16 @@ void Partida::correr() {
 
 void Partida::detener() {
     seguirCorriendo_ = false;
+}
+
+void Partida::manejar(Evento& e) {
+    e.actualizar(*this);
+}
+
+void Partida::manejar(EventoFinCarrera& e) {
+    //FIXME: Partida tiene que tener ref a la sala de espera para poder agregar al jugador nuevamente.
+    // Ojo que el contenedor de jugadores ahora tiene que ser protegido.
+    detener();
 }
 
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {

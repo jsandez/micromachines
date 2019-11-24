@@ -44,3 +44,6 @@ void Handler::manejar(EventoPartidaIniciada &e) {
 
 void Handler::manejar(EventoIniciarPartida& e) {
 }
+
+void Handler::manejar(EventoFinCarrera& e) {
+}

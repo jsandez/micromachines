@@ -12,6 +12,7 @@ class SalaDeEspera : public Handler {
 private:
     uint32_t contadorJugadores_;
     ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos_;
+    //FIXME: Proteger esto
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
 
 public:

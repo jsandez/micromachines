@@ -24,8 +24,8 @@ private:
     uint8_t contadorObjetos_;
     std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
     unsigned int snapshotsEnviadosPorSegundo_;
-    Carrera carrera_;
     ContactListener contactListener_;
+    Carrera carrera_;
 
     std::map<uint8_t, datosVehiculo_> serializarEstado();
 
