@@ -18,10 +18,16 @@ class EscenaSala : public Escena {
   //TODO: Mover a Escena
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Boton>> botones;
+  std::map<int, std::shared_ptr<Texto>> textoPartidas;
+  std::map<int,int> partidasId;
+  int partidaSeleccionada;
 
   void inicializarBotones();
+  void inicializarTextoPartidas();
   void dibujarBotones(int iteracion);
+  void dibujarTextoPartidas(int iteracion);
   void handlerBotones(int uuid);
+
  public:
   EscenaSala(Renderizador &renderizador,
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,

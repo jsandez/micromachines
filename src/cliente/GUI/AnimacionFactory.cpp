@@ -74,6 +74,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("menu");
       alto_ = CONFIG_CLIENTE.alto("menu");
       break;
+    case UUID_BOTON_VACIO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("vacio")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("vacio");
+      alto_ = CONFIG_CLIENTE.alto("vacio");
+      break;
     case UUID_ANIMACION_AUTO_ROJO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("autoRojo")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));
@@ -116,6 +123,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       }
       ancho_ = CONFIG_CLIENTE.ancho("fondoMenu");
       alto_ = CONFIG_CLIENTE.alto("fondoMenu");
+      break;
+    case UUID_ANIMACION_FONDO_SALA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("fondoSala")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("fondoSala");
+      alto_ = CONFIG_CLIENTE.alto("fondoSala");
       break;
 
     case UUID_ANIMACION_EXPLOSION:

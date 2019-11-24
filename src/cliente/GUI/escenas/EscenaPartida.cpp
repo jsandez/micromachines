@@ -60,7 +60,6 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     pista.obtenerObjeto(id)->mover(xCoord, yCoord, angulo);
     vehiculoActual += 10;
   }
-
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
   this->id_car = estadoInicial.idDelVehiculo_;
 }

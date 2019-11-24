@@ -3,11 +3,12 @@
 #include "includes/cliente/excepciones/SDLException.h"
 #include "includes/cliente/GUI/Renderizador.h"
 
-SDL_Color Texto::getColor(int uuidColor) {
+SDL_Color Texto::getColorRGB(int uuidColor) {
   switch (uuidColor) {
     case UUID_TEXTO_BLANCO:return {255, 255, 255};
     case UUID_TEXTO_NEGRO:return {0, 0, 0};
     case UUID_TEXTO_ROJO:return {255, 0, 0};
+    case UUID_TEXTO_AMARILLO:return {255, 255, 0};
     default:return {255, 255, 255};
   }
 }
@@ -17,7 +18,7 @@ SDL_Texture *Texto::createFromText(const std::string texto,
                                    int uuidColor) {
   SDL_Surface
       *surface =
-      TTF_RenderText_Blended(this->font, texto.c_str(), getColor(uuidColor));
+      TTF_RenderText_Blended(this->font, texto.c_str(), getColorRGB(uuidColor));
   if (!surface)
     throw SDLException("Error con TTF_RenderText_Blended:", SDL_GetError());
   SDL_Texture
@@ -42,6 +43,11 @@ Texto::Texto(const std::string texto,
 
 SDL_Texture *Texto::getSDL() {
   return texturaSDL_;
+}
+
+void Texto::setColor(int uuidColor) {
+  SDL_Color color = getColorRGB(uuidColor);
+  SDL_SetTextureColorMod(this->texturaSDL_, color.r, color.g, color.b);
 }
 
 Texto::Texto(Texto &&other) {

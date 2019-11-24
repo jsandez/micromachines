@@ -31,5 +31,5 @@ Sonido::~Sonido() {
   if (this->efectoSonido != NULL)
     Mix_FreeChunk(this->efectoSonido);
   Mix_CloseAudio();
-  SDL_Quit();
+  SDL_QuitSubSystem(SDL_INIT_AUDIO);
 }

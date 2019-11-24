@@ -54,7 +54,7 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
                        ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                        Sonido &musicaAmbiente) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
-    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
+    fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
   inicializarBotones();
