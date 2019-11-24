@@ -2,7 +2,9 @@
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/common/Conversor.h"
-Carrera::Carrera() {
+Carrera::Carrera(ColaProtegida<std::shared_ptr<Evento>>& eventosMundo) :
+    eventosMundo_(eventosMundo_),
+    numeroDeVueltas_(0) {
 }
 
 void Carrera::cargarDesdeJson(Json& pistaJson) {
@@ -19,6 +21,7 @@ void Carrera::cargarDesdeJson(Json& pistaJson) {
         Posicion posicion(Conversor::tileAMetro(x), Conversor::tileAMetro(y), angulo);
         checkpoints_.emplace(i, Checkpoint(*this, i, (i+1) % cantidadCheckpoints, ancho, largo, posicion));
     }
+    numeroDeVueltas_ = pistaJson["vueltas"].get<int>();
 }
 
 std::map<int, Checkpoint>& Carrera::checkpoints() {
@@ -34,11 +37,27 @@ void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     idsVehiculosAidsCheckpoints_[vehiculo.uuid()] = checkpoint.id();
     if (checkpoint.id() == ID_META) {
         idsVehiculosAVueltas_[vehiculo.uuid()]++;
-        std::cout << "Lleva " << idsVehiculosAVueltas_[vehiculo.uuid()] << " vueltas\n";
-    } 
+        if (idsVehiculosAVueltas_[vehiculo.uuid()] == numeroDeVueltas_) {
+            podio_.emplace(vehiculo.uuid());
+        }
+    }
+    bool termino = finalizada();
+    if (termino) {
+        //TODO: Acá? Hay que notificar... La partida debe finalizar, el mundo dentenerse, etc.
+        std::shared_ptr<Evento> fin = std::make_shared<EventoFinCarrera>(std::move(podio_));
+    }
 }
 
 void Carrera::registrarVehiculo(Vehiculo& vehiculo) {
     idsVehiculosAidsCheckpoints_[vehiculo.uuid()] = 0;
     idsVehiculosAVueltas_[vehiculo.uuid()] = 0;
+}
+
+bool Carrera::finalizada() {
+    for (auto& kv : idsVehiculosAVueltas_) {
+        if (kv.second < numeroDeVueltas_) {
+            return false;
+        }
+    }
+    return true;
 }

@@ -25,7 +25,8 @@ Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
     contadorObjetos_(0),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
-    contactListener_(fisicas_) {
+    contactListener_(fisicas_),
+    carrera_(eventosOcurridos_) {
     
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
