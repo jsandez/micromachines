@@ -168,11 +168,6 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
     }
 }
 
-/*static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson) {
-    throw "QUITAR ESTO\n";
-    
-}*/
-
 /*
 static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson) {
     for (uint16_t i = 0; i < largoX; ++i) {

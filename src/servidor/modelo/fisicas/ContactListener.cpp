@@ -16,7 +16,7 @@ ContactListener::ContactListener(Fisicas& fisicas) :
 
 ContactListener::~ContactListener() {    
 }
-
+#include <iostream>
 void ContactListener::BeginContact(b2Contact* contact) {
     //Son raw pointers pero b2d garantiza que no se eliminan ni agregan cuerpos durante
     // las colisiones
@@ -39,6 +39,9 @@ void ContactListener::BeginContact(b2Contact* contact) {
         }
         if (colisionableB->getTipo() == Colisionable::tipos::CHECKPOINT_) {
             vehiculoVsCheckpoint(*static_cast<Vehiculo*>(colisionableA), *static_cast<Checkpoint*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_TIERRA_) {
+            std::cout << "Bajar la velocidad o aplicar un modificador\n";
         }
     }
 }
