@@ -25,6 +25,8 @@ public:
 
 	void open();
 
+	void copy_parameters(AVStream * st);
+
 	void encode_frame(const Frame& f);
 
 	int get_packet(AVPacket * pkt, AVRational *time_base);
@@ -33,7 +35,7 @@ public:
 
 	Codec& operator=(Codec&& rhs);
 
-	~Codec();
+	virtual ~Codec();
 };
 
 #endif
