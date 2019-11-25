@@ -4,6 +4,7 @@
 
 EventoPartidaCreada::EventoPartidaCreada(uint32_t uuidRemitente, Protocolo& protocolo) :
     Evento(uuidRemitente) {
+    uuidPartida_ = protocolo.recibirNumUnsigned16();
 }
 
 EventoPartidaCreada::EventoPartidaCreada(uint16_t uuidPartida) :
@@ -15,6 +16,7 @@ EventoPartidaCreada::EventoPartidaCreada(uint16_t uuidPartida) :
 
 void EventoPartidaCreada::enviarse(Protocolo& protocolo) {
     protocolo.enviar(UUIDEvento_);
+    protocolo.enviar(uuidPartida_);
 }
 
 void EventoPartidaCreada::actualizar(Handler& handler) {

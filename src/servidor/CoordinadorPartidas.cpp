@@ -14,8 +14,10 @@ CoordinadorPartidas::~CoordinadorPartidas() {
         }    
     }
 }
-
+#include <iostream>
 void CoordinadorPartidas::agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida) {
+    std::cout << "me llego partida: " << uuidPartida << std::endl;
+    std::cout << "me llego uuid player: " << jugador->uuid() << std::endl;
     partidas_.at(uuidPartida)->agregarJugador(jugador);
     jugadoresAPartidas_[jugador->uuid()] = uuidPartida;
 }
@@ -24,6 +26,10 @@ std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshot() {
     std::map<uint16_t, uint16_t> datosSnapshot;
     uint16_t ordinal = 1;
     for (const auto& kv : partidas_) {
+        //FIXME: PREGUNTAR POR ESTACORRIENDO Y ¿JOINABLE? LA ELIMINACION "ORDENADA" TIENE QUE HACERSE EN UN SOLO LUGAR
+        if (kv.second->estaCorriendo()) {
+            continue;
+        }
         datosSnapshot.emplace(ordinal, kv.first);
         ordinal++;
     }    
@@ -35,13 +41,17 @@ void CoordinadorPartidas::manejar(Evento& e) {
 }
 
 void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
+    //FIXME: Si contadorPartidas da la vuelta a 0, lanzar error o soucionarlo
     contadorPartidas_++;
     // TODO: Acá hay que decir que uuid de mapa se quiere cargar
     // FIXME: No hardcodear esto
     uint16_t uuidPista = 1;
     partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista);
-    salaDeEspera_.ocurrio(getSnapshot());    
+    salaDeEspera_.ocurrio(getSnapshot());
+    std::shared_ptr<Evento> partidaCreada = std::make_shared<EventoPartidaCreada>(contadorPartidas_);
+    salaDeEspera_.getJugador(e.uuidRemitente())->ocurrio(partidaCreada);
     //FIXME: Quitar partidas finalizadas, que no deben tener jugadores dentro.
+
 }
 
 //TODO: Debería esperar que todos envíen jugar.

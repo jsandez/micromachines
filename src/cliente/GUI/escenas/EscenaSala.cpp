@@ -89,15 +89,14 @@ void EscenaSala::dibujarTextoPartidas(int iteracion) {
 void EscenaSala::handlerBotones(int uuid) {
   switch (uuid) {
     case UUID_BOTON_CREAR_PARTIDA: {
-      std::shared_ptr<Evento>
-          eventoCrearPartida = std::make_shared<EventoCrearPartida>();
-      eventosAEnviar_.put(eventoCrearPartida);
-      // RECIBIR EVENTO PARTIDA CREADA
-      escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
+      std::shared_ptr<Evento> crearPartida = std::make_shared<EventoCrearPartida>();
+      eventosAEnviar_.put(crearPartida);
+      //FIXME:  RECIBIR EVENTO PARTIDA CREADA PARA SABER A CUAL ME UNI??
+      /*escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
                                                      eventosGUI_,
                                                      escenas_,
                                                      eventosAEnviar_,
-                                                     this->musicaAmbiente));
+                                                     this->musicaAmbiente));*/
       break;
     }
     case UUID_BOTON_UNIRSE_A_PARTIDA: {
@@ -228,4 +227,15 @@ void EscenaSala::manejar(EventoSnapshotSala& e) {
   }
   inicializarBotones();
   inicializarTextoPartidas();
+}
+
+void EscenaSala::manejar(EventoPartidaCreada& e) {
+  //TODO: EL uuid partida puede servir para mostrar por texto cual es
+  std::shared_ptr<Evento> unirme = std::make_shared<EventoUnirseAPartida>(e.uuidPartida_);
+  eventosAEnviar_.put(unirme);
+  escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
+                                                     eventosGUI_,
+                                                     escenas_,
+                                                     eventosAEnviar_,
+                                                     this->musicaAmbiente));
 }
