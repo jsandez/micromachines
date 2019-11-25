@@ -33,6 +33,7 @@ class EscenaPartida : public Escena {
                 EventoPartidaIniciada& estadoInicial,
                 Sonido& musicaAmbiente,
                 bool juegaComputadora);
+  ~EscenaPartida();
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;

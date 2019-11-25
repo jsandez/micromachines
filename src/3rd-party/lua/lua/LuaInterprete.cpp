@@ -14,23 +14,14 @@ void LuaInterpreter::init_script(const char * filepath){
 	}
 }
 
-template<typename T>
-T LuaInterpreter::get() {
-  int stackSize = lua_gettop(L);
-  if (!stackSize){
-  	throw std::runtime_error("No hay elementos en el stack");
-  }
-  T element;
-  element = lua_get<T>();
-  lua_pop(L, -1);
-
-  return element;
-}
-
-
 void LuaInterpreter::call_function(const char * fname, int params, int outparams){
   lua_call(L, params, outparams);
 }
+
+void LuaInterpreter::get_function_name(const char * fname){
+	lua_getglobal(L, fname);
+}
+
 
 
 void LuaInterpreter::operator<<(const std::string &str){

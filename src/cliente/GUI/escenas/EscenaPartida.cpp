@@ -62,13 +62,15 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     vehiculoActual += 10;
 
     if (juegaComputadora){
-      jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(eventosAEnviar_,"assets/pistas/1.json")));
+      jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(
+                              eventosAEnviar_,"assets/pistas/1.json", conversor)));
     } else {
       jugador_ = std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
     }
   }
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
   this->id_car = estadoInicial.idDelVehiculo_;
+  jugador_->empezar();
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -143,4 +145,9 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
                                                      kv.second.angulo_);
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }
+  jugador_->setEstado(datos[this->id_car].xCoord_, datos[this->id_car].yCoord_, datos[this->id_car].angulo_);
+}
+
+EscenaPartida::~EscenaPartida(){
+  jugador_->terminar();
 }

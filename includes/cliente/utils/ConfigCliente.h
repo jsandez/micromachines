@@ -64,7 +64,7 @@ class ConfigCliente {
 
   std::string rutaLuaScriptUsuario();
   std::string rutaLuaScript();
-  float tiempoReaccionHumano();
+  int tiempoReaccionHumano();
 };
 
 #endif

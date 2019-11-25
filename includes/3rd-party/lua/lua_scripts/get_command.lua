@@ -41,13 +41,15 @@ local function get_nearest_block(x, y)
 	local nearest_block_x = 0
 	local nearest_block_y = 0
 	for i, j in ipairs(matrix) do
-		local a = x-i
-		local b = y-j
-		local distance = math.sqrt(math.pow(a, a) + math.pow(b, b))
-		if distance < nearest_block then
-			nearest_block = distance
-			nearest_block_x = i
-			nearest_block_y = j
+		if (matrix[i][j]) then
+			local a = x - i
+			local b = y - j
+			local distance = math.sqrt(math.pow(a, a) + math.pow(b, b))
+			if distance < nearest_block then
+				nearest_block = distance
+				nearest_block_x = i
+				nearest_block_y = j
+			end
 		end
 	end
 	return nearest_block_x, nearest_block_y
@@ -78,6 +80,10 @@ local function return_to_road(x, y, radians)
 	return go_back_way(radians, new_angle)
 end
 
+local function ret()
+	return upKey
+end
+
 function get_instruction(x, y, angle)
 	local instructions = {}
 	instructions[0] = upKey
@@ -86,19 +92,21 @@ function get_instruction(x, y, angle)
 	if instructions [ math.random( #instructions ) ] == upKey then
 		return upKey
 	end
-	if not matrix[x][y] then 
+	if not matrix[x][y] then
 		return return_to_road(x, y) 
 	end
-	
+	return ret()
+	--[[
 	local radians = math.rad(angle)
 	if exists_block_going(x, y, radians) then
 		mapDirection = radians
 		if curve_coming(x, y, radians) then
 			return leftKey
 		end
-		return spaceKey
+		return upKey
 	end
 	return go_back_way(radians, mapDirection)
+	--]]
 end
 
 
