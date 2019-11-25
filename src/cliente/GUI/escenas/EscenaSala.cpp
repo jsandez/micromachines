@@ -93,10 +93,6 @@ void EscenaSala::handlerBotones(int uuid) {
           eventoCrearPartida = std::make_shared<EventoCrearPartida>();
       eventosAEnviar_.put(eventoCrearPartida);
       // RECIBIR EVENTO PARTIDA CREADA
-      std::shared_ptr<Evento>
-          eventoUnirseAPartida =
-          std::make_shared<EventoUnirseAPartida>(1);
-      eventosAEnviar_.put(eventoUnirseAPartida);
       escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
                                                      eventosGUI_,
                                                      escenas_,
@@ -177,10 +173,6 @@ EscenaSala::EscenaSala(Renderizador &renderizador,
                                             renderizador)),
     eventosGUI_(eventosGUI) {
   
-  
-  // TODO: ESCENA SALA RECIBE EL EVENTO SNAPSHOT SALA PARA INICIALIZAR LA LISTA
-  // SI ESTA VACIO  EL MAPA ENTONCES LA PARTIDA ES -1
-
   for (const auto& kv : e.ordinalAuuidPartida_) {
     partidasId.emplace(kv.first, kv.second);
   }

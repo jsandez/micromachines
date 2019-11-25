@@ -9,8 +9,9 @@ CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
         if (kv.second->estaCorriendo()) {
             kv.second->detener();
+            //FIXME: PREGUNTAR POR JOINABLE<
             kv.second->join();
-        }        
+        }    
     }
 }
 
