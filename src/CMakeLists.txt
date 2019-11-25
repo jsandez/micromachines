@@ -25,7 +25,7 @@ target_link_libraries(Servidor ServidorCMake Box2D)
 
 add_executable(Cliente cliente/main_cliente.cpp)
 
-target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image SDL2_mixer SDL2_ttf lua5.3 avutil avformat avcodec swscale swresample z m lua_interprete)
+target_link_libraries(Cliente ClienteCMake SDL2 SDL2_image SDL2_mixer SDL2_ttf avutil avformat avcodec swscale swresample z m lua_interprete lua5.3)
 
 INSTALL(TARGETS Servidor DESTINATION ${RUTA_INSTALACION})
 INSTALL(TARGETS Cliente DESTINATION ${RUTA_INSTALACION})
