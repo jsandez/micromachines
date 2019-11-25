@@ -20,7 +20,7 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
 }
 
 bool Partida::todosListos() {
-    for (const auto& kv : uuidJugadorAEstaListo_) {
+    for (auto& kv : uuidJugadorAEstaListo_) {
         if (kv.second == false) {
             return false;
         }
@@ -30,7 +30,7 @@ bool Partida::todosListos() {
 
 void Partida::estaListo(uint32_t uuidJugador) {
     //Nunca debería pinchar porque el jugador fue agregado
-    uuidJugadorAEstaListo_.emplace(uuidJugadorAEstaListo_, true);
+    uuidJugadorAEstaListo_.at(uuidJugador) = true;
 }
 
 //TODO: CONST
