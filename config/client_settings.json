@@ -57,7 +57,7 @@
       "ancho": 300,
       "alto": 23,
       "sprites": [
-        "assets/interfaz/200.png"
+        "assets/interfaz/400.png"
       ]
     },
     "crearPartida": {
@@ -356,6 +356,6 @@
   "lua" : {
     "ruta" : "lua_scripts/script.lua",
     "ruta2" : "lua_scripts/get_command.lua",
-    "tiempoHumano" : 0.1
+    "tiempoHumano" : 10
   }
 }

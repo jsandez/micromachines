@@ -72,8 +72,8 @@ std::string ConfigCliente::rutaLuaScript() {
   return std::move(json_["lua"]["ruta"].get<std::string>());
 }
 
-float ConfigCliente::tiempoReaccionHumano() {
-  return json_["lua"]["tiempoHumano"].get<float>();
+int ConfigCliente::tiempoReaccionHumano() {
+  return json_["lua"]["tiempoHumano"].get<int>();
 }
 
 unsigned int ConfigCliente::volumenAmbiente() {

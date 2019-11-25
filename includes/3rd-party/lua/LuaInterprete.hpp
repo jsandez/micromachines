@@ -21,6 +21,7 @@ class LuaInterpreter {
 
 		void call_function(const char * fname, int params, int outparams);
 		
+		void get_function_name(const char * fname);
 
 		~LuaInterpreter();
 
@@ -43,9 +44,19 @@ class LuaInterpreter {
 	      return 0;
 	    }
 
-		template<typename T>
-		T get();
 
+		template<typename T>
+		T get() {
+		  int stackSize = lua_gettop(L);
+		  if (!stackSize){
+		  	throw std::runtime_error("No hay elementos en el stack");
+		  }
+		  T element;
+		  element = lua_get<T>();
+		  lua_pop(L, -1);
+
+		  return element;
+		}
 };
 
 

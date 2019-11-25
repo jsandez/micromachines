@@ -1,9 +1,16 @@
-matrix = {}
+ local mt = {
+   __index =
+      function(t, k)
+         local inner = {}
+         rawset(t, k, inner)
+         return inner
+      end
+}
+matrix = setmetatable({}, mt)
 rigthKey = 0
 upKey = 1
 leftKey = 2
 downKey = 3
-spaceKey = 4
 
 mapDirection = 0
 
