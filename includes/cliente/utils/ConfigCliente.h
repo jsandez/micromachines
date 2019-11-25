@@ -59,6 +59,12 @@ class ConfigCliente {
   std::string formatoGrabadora();
   uint32_t fpsGrabadora();
   unsigned int bitrateGrabadora();
+
+
+
+  std::string rutaLuaScriptUsuario();
+  std::string rutaLuaScript();
+  float tiempoReaccionHumano();
 };
 
 #endif

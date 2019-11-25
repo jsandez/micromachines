@@ -1,4 +1,4 @@
-#include "includes/3rd-paty/lua/LuaInterprete.hpp"
+#include "includes/3rd-party/lua/LuaInterprete.hpp"
 
 
 LuaInterpreter::LuaInterpreter(){
@@ -52,18 +52,5 @@ void LuaInterpreter::operator<<(bool b){
 LuaInterpreter::~LuaInterpreter(){
     if(L){
     	lua_close(L);
-	}
-}
-
-
-int main(int argc, char * agv[]){
-	try{
-		LuaInterpreter lua;
-		lua.init_script("includes/3rd-paty/lua/lua_scripts/script.lua");
-		lua.init_script("includes/3rd-paty/lua/lua_scripts/get_command.lua");
-			
-	}
-	catch(std::runtime_error &e){
-		std::cout << e.what() << std::endl;
 	}
 }
