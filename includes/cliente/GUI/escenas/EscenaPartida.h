@@ -13,6 +13,8 @@
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Pista.h"
 #include "includes/cliente/GUI/Camara.h"
+#include "src/cliente/jugadores/Jugador.cpp"
+#include "src/cliente/jugadores/Computadora.cpp"
 
 class EscenaPartida : public Escena {
  private:
@@ -20,6 +22,7 @@ class EscenaPartida : public Escena {
   Pista pista;
   Conversor conversor;
   Camara camara;
+  std::unique_ptr<Jugador> jugador_;
   int id_car, screenX, screenY;
   void dibujarInterfaz(int iteracion);
  public:
@@ -28,7 +31,8 @@ class EscenaPartida : public Escena {
                 std::stack<std::shared_ptr<Escena>> &escenas,
                 ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                 EventoPartidaIniciada& estadoInicial,
-                Sonido& musicaAmbiente);
+                Sonido& musicaAmbiente,
+                bool juegaComputadora);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
