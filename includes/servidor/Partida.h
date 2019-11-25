@@ -14,6 +14,7 @@ class Partida : public Hilo, public Handler {
 //TODO: Devolver al jugador a la sala de espera cuando finaliza la partida
 private:
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
+    std::map<uint32_t, bool> uuidJugadorAEstaListo_;
     ColaProtegida<std::shared_ptr<Evento>> eventosEntrantes_;
     Mundo mundo_;
 
@@ -29,6 +30,9 @@ public:
 
     void agregarJugador(std::shared_ptr<Jugador> jugador);
     std::map<uint32_t, std::shared_ptr<Jugador>>& jugadores();
+
+    bool todosListos();
+    void estaListo(uint32_t uuidJugador);
 
     virtual void correr() override;
     virtual void detener() override;

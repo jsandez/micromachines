@@ -70,7 +70,11 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
     uint32_t uuidJugador = e.uuidRemitente();
     uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
-    partidas_[uuidPartida]->iniciar();
+    std::shared_ptr<Partida> partida = partidas_.at(uuidPartida);
+    partida->estaListo(uuidJugador);
+    if (partida->todosListos()) {
+        partidas_[uuidPartida]->iniciar();
+    }    
 }
 
 void CoordinadorPartidas::manejar(EventoDesconexion& e) {
