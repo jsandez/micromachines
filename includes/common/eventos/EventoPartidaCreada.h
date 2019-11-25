@@ -7,9 +7,10 @@
 class EventoPartidaCreada : public Evento {
 public:
     uint16_t uuidPartida_;
+    uint32_t uuidCreador_;
 
     EventoPartidaCreada(uint32_t uuidRemitente, Protocolo& protocolo);
-    EventoPartidaCreada(uint16_t uuidPartida);
+    EventoPartidaCreada(uint16_t uuidPartida, uint32_t uuidCreador);
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };

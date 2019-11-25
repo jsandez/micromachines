@@ -18,6 +18,11 @@ void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
     jugadores_[jugador->uuid()] = jugador;
 }
 
+//TODO: CONST
+std::map<uint32_t, std::shared_ptr<Jugador>>& Partida::jugadores() {
+    return jugadores_;
+} 
+
 void Partida::step(uint32_t nroIteracion) {
     bool obtenido = false;
     std::shared_ptr<Evento> evento;

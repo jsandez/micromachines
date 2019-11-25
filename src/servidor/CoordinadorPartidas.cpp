@@ -14,15 +14,16 @@ CoordinadorPartidas::~CoordinadorPartidas() {
         }    
     }
 }
-#include <iostream>
+
 void CoordinadorPartidas::agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida) {
-    std::cout << "me llego partida: " << uuidPartida << std::endl;
-    std::cout << "me llego uuid player: " << jugador->uuid() << std::endl;
     partidas_.at(uuidPartida)->agregarJugador(jugador);
     jugadoresAPartidas_[jugador->uuid()] = uuidPartida;
+    for (const auto& kv : partidas_.at(uuidPartida)->jugadores()) {
+        kv.second->ocurrio(getSnapshotLobby(uuidPartida));
+    }
 }
 
-std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshot() {
+std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshotSala() {
     std::map<uint16_t, uint16_t> datosSnapshot;
     uint16_t ordinal = 1;
     for (const auto& kv : partidas_) {
@@ -36,6 +37,17 @@ std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshot() {
     return std::make_shared<EventoSnapshotSala>(std::move(datosSnapshot));
 }
 
+std::shared_ptr<EventoSnapshotLobby> CoordinadorPartidas::getSnapshotLobby(uint16_t uuidPartida) {
+    std::map<uint32_t, bool> datosDelvento;
+    std::shared_ptr<Partida> partida = partidas_.at(uuidPartida);
+    std::map<uint32_t, std::shared_ptr<Jugador>> jugadoresEnPartida = partida->jugadores();
+    for (const auto& kv : jugadoresEnPartida) {
+        //FIXME: Agregar logica de estoy listo
+        datosDelvento.emplace(kv.first, true);
+    }
+    return std::make_shared<EventoSnapshotLobby>(std::move(datosDelvento));        
+}
+
 void CoordinadorPartidas::manejar(Evento& e) {
     e.actualizar(*this);
 }
@@ -47,14 +59,14 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     // FIXME: No hardcodear esto
     uint16_t uuidPista = 1;
     partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista);
-    salaDeEspera_.ocurrio(getSnapshot());
-    std::shared_ptr<Evento> partidaCreada = std::make_shared<EventoPartidaCreada>(contadorPartidas_);
+    std::shared_ptr<Evento> partidaCreada = std::make_shared<EventoPartidaCreada>(contadorPartidas_, e.uuidRemitente());
     salaDeEspera_.getJugador(e.uuidRemitente())->ocurrio(partidaCreada);
+    salaDeEspera_.ocurrio(getSnapshotSala());
     //FIXME: Quitar partidas finalizadas, que no deben tener jugadores dentro.
 
 }
 
-//TODO: Debería esperar que todos envíen jugar.
+//FIXME: Debería esperar que todos envíen jugar.
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
     uint32_t uuidJugador = e.uuidRemitente();
     uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];

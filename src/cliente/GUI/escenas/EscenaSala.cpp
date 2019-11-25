@@ -41,7 +41,7 @@ void EscenaSala::inicializarBotones() {
     posicionRelativaY += 0.10f;
   }
 
-  this->botones.emplace(4, std::make_shared<Boton>(UUID_BOTON_UP,
+  this->botones.emplace(4, std::make_shared<Boton>(UUID_BOTON_DOWN,
                               renderizador_,
                               0.80 * anchoVentana,
                               0.42 * altoVentana));
@@ -91,12 +91,6 @@ void EscenaSala::handlerBotones(int uuid) {
     case UUID_BOTON_CREAR_PARTIDA: {
       std::shared_ptr<Evento> crearPartida = std::make_shared<EventoCrearPartida>();
       eventosAEnviar_.put(crearPartida);
-      //FIXME:  RECIBIR EVENTO PARTIDA CREADA PARA SABER A CUAL ME UNI??
-      /*escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
-                                                     eventosGUI_,
-                                                     escenas_,
-                                                     eventosAEnviar_,
-                                                     this->musicaAmbiente));*/
       break;
     }
     case UUID_BOTON_UNIRSE_A_PARTIDA: {
@@ -106,11 +100,6 @@ void EscenaSala::handlerBotones(int uuid) {
             std::make_shared<EventoUnirseAPartida>(partidasId.at(
                 partidaSeleccionada));
         eventosAEnviar_.put(eventoUnirseAPartida);
-        escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
-                                                       eventosGUI_,
-                                                       escenas_,
-                                                       eventosAEnviar_,
-                                                       this->musicaAmbiente));
       }
       break;
     }
@@ -237,5 +226,15 @@ void EscenaSala::manejar(EventoPartidaCreada& e) {
                                                      eventosGUI_,
                                                      escenas_,
                                                      eventosAEnviar_,
-                                                     this->musicaAmbiente));
+                                                     this->musicaAmbiente,
+                                                     e));
+}
+
+void EscenaSala::manejar(EventoSnapshotLobby& e) {
+  escenas_.emplace(std::make_shared<EscenaLobby>(renderizador_,
+                                                       eventosGUI_,
+                                                       escenas_,
+                                                       eventosAEnviar_,
+                                                       this->musicaAmbiente,
+                                                       e));
 }

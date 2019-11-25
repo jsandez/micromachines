@@ -44,6 +44,7 @@ class EscenaSala : public Escena {
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoSnapshotSala &e) override;
   virtual void manejar(EventoPartidaCreada& e) override;
+  virtual void manejar(EventoSnapshotLobby& e) override;
 };
 
 #endif
