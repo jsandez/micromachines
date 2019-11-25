@@ -1,7 +1,10 @@
 #include "includes/cliente/GUI/Pista.h"
 #include <fstream>
 
-void Pista::agregarBloque(int capa, int x, int y, std::shared_ptr<Animacion> animacion) {
+void Pista::agregarBloque(int capa,
+                          int x,
+                          int y,
+                          std::shared_ptr<Animacion> animacion) {
   mapa[capa][x][y] = animacion;
 }
 
@@ -10,26 +13,32 @@ void Pista::crearPista(nlohmann::json pistaJson) {
   // DE ESA FORMA NO ES NECESARIO SEPARAR EN DOS CICLOS DIFERENTES
   for (uint16_t i = 0; i < size_x; i++) {
     for (uint16_t j = 0; j < size_y; j++) {
-      int bloqueTerreno = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<int>();
+      int bloqueTerreno =
+          pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<
+              int>();
       if (bloqueTerreno != -1) {
         if (texturas.find(bloqueTerreno) == texturas.end()) {
-          texturas.insert(std::pair<int, std::shared_ptr<Animacion>>(bloqueTerreno,
-                                                                     std::make_shared<Animacion>(AnimacionFactory::instanciar(
-                                                                         bloqueTerreno,
-                                                                         renderizador))));
+          texturas.insert(std::pair<int, std::shared_ptr<Animacion>>(
+              bloqueTerreno,
+              std::make_shared<Animacion>(AnimacionFactory::instanciar(
+                  bloqueTerreno,
+                  renderizador))));
         }
         agregarBloque(0, i, j, texturas.at(bloqueTerreno));
       }
     }
     for (uint16_t i = 0; i < size_x; i++) {
       for (uint16_t j = 0; j < size_y; j++) {
-        int bloqueTerreno = pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>();
+        int bloqueTerreno =
+            pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<
+                int>();
         if (bloqueTerreno != -1) {
           if (texturas.find(bloqueTerreno) == texturas.end()) {
-            texturas.insert(std::pair<int, std::shared_ptr<Animacion>>(bloqueTerreno,
-                                                                       std::make_shared<Animacion>(AnimacionFactory::instanciar(
-                                                                           bloqueTerreno,
-                                                                           renderizador))));
+            texturas.insert(std::pair<int, std::shared_ptr<Animacion>>(
+                bloqueTerreno,
+                std::make_shared<Animacion>(AnimacionFactory::instanciar(
+                    bloqueTerreno,
+                    renderizador))));
           }
           agregarBloque(1, i, j, texturas.at(bloqueTerreno));
         }
@@ -57,7 +66,10 @@ Pista::Pista(std::string
       }
       matrix.push_back(array);
     }
-    mapa.insert(std::pair<int, std::vector<std::vector<std::shared_ptr<Animacion>>>>(i, matrix));
+    mapa.insert(std::pair<int,
+                          std::vector<std::vector<std::shared_ptr<Animacion>>>>(
+        i,
+        matrix));
   }
   crearPista(pistaJson);
 }
@@ -66,8 +78,10 @@ std::shared_ptr<Animacion> Pista::getBloque(int capa, int x, int y) const {
   return mapa.at(capa).at(x).at(y);
 }
 
-void Pista::agregarObjeto(int id, std::shared_ptr<ObjetoDinamico> objetoDinamico) {
-  objetosDinamicos.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(id, objetoDinamico));
+void Pista::agregarObjeto(int id,
+                          std::shared_ptr<ObjetoDinamico> objetoDinamico) {
+  objetosDinamicos.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(id,
+                                                                          objetoDinamico));
 }
 
 std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
@@ -78,7 +92,8 @@ std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
 }
 
 void Pista::obtenerIds(std::vector<int> &ids) {
-  for (std::map<int, std::shared_ptr<ObjetoDinamico>>::iterator it = objetosDinamicos.begin();
+  for (std::map<int, std::shared_ptr<ObjetoDinamico>>::iterator
+           it = objetosDinamicos.begin();
        it != objetosDinamicos.end(); ++it) {
     ids.push_back(it->first);
   }

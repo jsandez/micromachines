@@ -124,6 +124,14 @@
         "assets/botones/370.png"
       ]
     },
+    "vacio": {
+      "uuid": 380,
+      "ancho": 247,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/380.png"
+      ]
+    },
     "autoRojo": {
       "uuid": 800,
       "ancho": 80,
@@ -210,6 +218,14 @@
       "alto": 515,
       "sprites": [
         "assets/fondo_menu.png"
+      ]
+    },
+    "fondoSala": {
+      "uuid": 710,
+      "ancho": 918,
+      "alto": 515,
+      "sprites": [
+        "assets/fondo_sala.png"
       ]
     },
     "pasto": {

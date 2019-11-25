@@ -67,7 +67,6 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
       jugador_ = std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
     }
   }
-
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
   this->id_car = estadoInicial.idDelVehiculo_;
 }
