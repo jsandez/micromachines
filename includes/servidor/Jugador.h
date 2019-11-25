@@ -24,7 +24,7 @@ public:
     Jugador(SocketTCP&& socket, uint32_t uuid, ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
     ~Jugador();
     uint32_t uuid();
-
+    //TODO: QUE ESTO SEA UNA ITNTERFAZ
     void ocurrio(std::shared_ptr<Evento> e);
 };
 

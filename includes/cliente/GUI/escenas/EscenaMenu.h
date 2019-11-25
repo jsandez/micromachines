@@ -18,6 +18,7 @@ class EscenaMenu : public Escena {
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Boton>> botones;
+  bool quiereEntrarASala;
 
   void inicializarBotones();
   void dibujarBotones(int iteracion);
@@ -34,8 +35,9 @@ class EscenaMenu : public Escena {
   virtual void manejarInput(EventoGUIClick &evento) override;
   virtual void manejarInput(EventoGUIKeyDown &evento) override;
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
-  //FIXME: ESTO NO TENDRIA QUE ESTAR ACA
+
   virtual void manejar(Evento &e) override;
+  virtual void manejar(EventoSnapshotSala& e) override;
 };
 
 #endif

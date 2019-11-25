@@ -64,7 +64,7 @@ void DistribuidorEventos::manejar(EventoCrearPartida& e) {
 void DistribuidorEventos::manejar(EventoUnirseAPartida& e) {
     uint32_t uuidJugador = e.uuidRemitente();
     uint16_t uuidPartida = e.uuidPartida_;
-    std::shared_ptr<Jugador> jugador = salaDeEspera_.obtenerJugador(uuidJugador);
+    std::shared_ptr<Jugador> jugador = salaDeEspera_.quitarJugador(uuidJugador);
     coordinadorPartidas_.agregarJugadorAPartida(jugador, uuidPartida);
 }
 
@@ -75,4 +75,10 @@ void DistribuidorEventos::manejar(EventoDesconexion& e) {
 
 void DistribuidorEventos::manejar(EventoIniciarPartida& e) {
     coordinadorPartidas_.manejar(e);   
+}
+
+void DistribuidorEventos::manejar(EventoUnirseASala& e) {
+    std::shared_ptr<EventoSnapshotSala> snapshot = coordinadorPartidas_.getSnapshotSala();
+    snapshot->setRemitente(e.uuidRemitente());
+    salaDeEspera_.ocurrio(snapshot);
 }

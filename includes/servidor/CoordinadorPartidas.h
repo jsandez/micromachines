@@ -21,6 +21,9 @@ public:
 
     void agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida);
 
+    std::shared_ptr<EventoSnapshotSala> getSnapshotSala();
+    std::shared_ptr<EventoSnapshotLobby> getSnapshotLobby(uint16_t uuidPartida);
+
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoCrearPartida& e) override;
     virtual void manejar(EventoIniciarPartida& e) override;

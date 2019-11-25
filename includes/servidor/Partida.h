@@ -28,6 +28,7 @@ public:
     ~Partida();
 
     void agregarJugador(std::shared_ptr<Jugador> jugador);
+    std::map<uint32_t, std::shared_ptr<Jugador>>& jugadores();
 
     virtual void correr() override;
     virtual void detener() override;

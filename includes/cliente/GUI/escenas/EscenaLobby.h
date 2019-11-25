@@ -11,7 +11,7 @@ class EscenaLobby : public Escena {
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Boton>> botones;
   std::map<int, std::shared_ptr<Texto>> textoJugadores;
-  std::map<int,int> jugadoresId;
+  std::map<int,uint32_t> jugadoresId;
 
   void inicializarBotones();
   void inicializarTextoJugadores();
@@ -23,7 +23,15 @@ class EscenaLobby : public Escena {
               ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
               std::stack<std::shared_ptr<Escena>> &escenas,
               ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-              Sonido &musicaAmbiente);
+              Sonido &musicaAmbiente,
+              EventoPartidaCreada& e);
+
+  EscenaLobby(Renderizador &renderizador,
+              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
+              std::stack<std::shared_ptr<Escena>> &escenas,
+              ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+              Sonido &musicaAmbiente,
+              EventoSnapshotLobby& e);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
@@ -31,5 +39,6 @@ class EscenaLobby : public Escena {
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoPartidaIniciada &estadoInicial) override;
+  virtual void manejar(EventoSnapshotLobby &e) override;
 };
 #endif
