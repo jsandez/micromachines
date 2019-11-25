@@ -29,8 +29,8 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     // FIXME: No hardcodear esto
     uint16_t uuidPista = 1;
     partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista);
-    std::shared_ptr<Evento> actualizacion = std::make_shared<EventoPartidaAgregada>(e.uuidRemitente(), contadorPartidas_);
-    salaDeEspera_.manejar(*actualizacion);
+    //std::shared_ptr<Evento> actualizacion = std::make_shared<EventoPartidaAgregada>(e.uuidRemitente(), contadorPartidas_);
+    //salaDeEspera_.manejar(*actualizacion);
     //TODO: Quitar partidas finalizadas, que no deben tener jugadores dentro.
 }
 

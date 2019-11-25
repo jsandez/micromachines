@@ -52,7 +52,6 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/eventos/Evento.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaIniciada.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoCrearPartida.cpp
-        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaAgregada.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseAPartida.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoIniciarPartida.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesconexion.cpp
@@ -66,6 +65,16 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDejarDeDoblarDerecha.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshot.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFinCarrera.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoAparecioConsumible.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoDesaparecioConsumible.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoChoque.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoBarroPisado.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoExplosion.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFinBarro.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoPartidaCreada.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshotLobby.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshotSala.cpp
+        ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseASala.cpp
         ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
         ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
         ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp

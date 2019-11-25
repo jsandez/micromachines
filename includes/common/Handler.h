@@ -12,12 +12,21 @@
 #include "includes/common/eventos/EventoDejarDeDoblarDerecha.h"
 #include "includes/common/eventos/EventoSnapshot.h"
 #include "includes/common/eventos/EventoCrearPartida.h"
-#include "includes/common/eventos/EventoPartidaAgregada.h"
 #include "includes/common/eventos/EventoUnirseAPartida.h"
 #include "includes/common/eventos/EventoIniciarPartida.h"
 #include "includes/common/eventos/EventoPartidaIniciada.h"
 #include "includes/common/eventos/EventoDesconexion.h"
 #include "includes/common/eventos/EventoFinCarrera.h"
+#include "includes/common/eventos/EventoAparecioConsumible.h"
+#include "includes/common/eventos/EventoDesaparecioConsumible.h"
+#include "includes/common/eventos/EventoChoque.h"
+#include "includes/common/eventos/EventoBarroPisado.h"
+#include "includes/common/eventos/EventoExplosion.h"
+#include "includes/common/eventos/EventoFinBarro.h"
+#include "includes/common/eventos/EventoPartidaCreada.h"
+#include "includes/common/eventos/EventoSnapshotLobby.h"
+#include "includes/common/eventos/EventoSnapshotSala.h"
+#include "includes/common/eventos/EventoUnirseASala.h"
 
 class Handler {
  public:
@@ -32,12 +41,21 @@ class Handler {
   virtual void manejar(EventoDejarDeDoblarDerecha &e);
   virtual void manejar(EventoSnapshot &e);
   virtual void manejar(EventoCrearPartida &e);
-  virtual void manejar(EventoPartidaAgregada &e);
   virtual void manejar(EventoUnirseAPartida &e);
   virtual void manejar(EventoIniciarPartida &e);
   virtual void manejar(EventoPartidaIniciada &e);
   virtual void manejar(EventoFinCarrera &e);
+  virtual void manejar(EventoAparecioConsumible &e);
+  virtual void manejar(EventoDesaparecioConsumible &e);
   virtual void manejar(EventoDesconexion &e);
+  virtual void manejar(EventoChoque &e);
+  virtual void manejar(EventoBarroPisado &e);
+  virtual void manejar(EventoExplosion &e);
+  virtual void manejar(EventoFinBarro &e);
+  virtual void manejar(EventoPartidaCreada &e);
+  virtual void manejar(EventoSnapshotLobby &e);
+  virtual void manejar(EventoSnapshotSala &e);
+  virtual void manejar(EventoUnirseASala &e);
 };
 
 #endif

@@ -29,7 +29,9 @@ void SalaDeEspera::manejar(EventoDesconexion& e) {
     jugadores_.erase(e.uuidRemitente());
 }
 
-void SalaDeEspera::manejar(EventoPartidaAgregada& e) {
+
+//FIXME: ES PARTIDACREADA
+/*void SalaDeEspera::manejar(EventoPartidaAgregada& e) {
     //TODO: enviarle a todos los que hay este evento
     // seria un put.
-}
+}*/

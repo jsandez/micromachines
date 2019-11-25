@@ -9,9 +9,6 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
     case UUID_EVENTO_CREAR_PARTIDA:
       return std::make_shared<EventoCrearPartida>(uuidRemitente, protocolo);
 
-    case UUID_EVENTO_PARTIDA_AGREGADA:
-      return std::make_shared<EventoPartidaAgregada>(uuidRemitente, protocolo);
-
     case UUID_EVENTO_UNIRSE_A_PARTIDA:
       return std::make_shared<EventoUnirseAPartida>(uuidRemitente, protocolo);
 
@@ -53,6 +50,36 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_FIN_CARRERA:
       return std::make_shared<EventoFinCarrera>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_APARECIO_CONSUMIBLE:
+      return std::make_shared<EventoAparecioConsumible>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_BARRO_PISADO:
+      return std::make_shared<EventoBarroPisado>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_CHOQUE:
+      return std::make_shared<EventoChoque>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_DESAPARECIO_CONSUMIBLE:
+      return std::make_shared<EventoDesaparecioConsumible>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_EXPLOSION:
+      return std::make_shared<EventoExplosion>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_FIN_BARRO:
+      return std::make_shared<EventoFinBarro>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_PARTIDA_CREADA:
+      return std::make_shared<EventoPartidaCreada>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_SNAPSHOT_LOBBY:
+      return std::make_shared<EventoSnapshotLobby>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_SNAPSHOT_SALA:
+      return std::make_shared<EventoSnapshotSala>(uuidRemitente, protocolo);
+
+    case UUID_EVENTO_UNIRSE_A_SALA:
+      return std::make_shared<EventoUnirseASala>(uuidRemitente, protocolo);
 
     default:
       throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);

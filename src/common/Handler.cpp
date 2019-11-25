@@ -30,12 +30,6 @@ void Handler::manejar(EventoSnapshot& e) {
 void Handler::manejar(EventoCrearPartida& e) {
 }
 
-void Handler::manejar(EventoDesconexion& e) {
-}
-
-void Handler::manejar(EventoPartidaAgregada& e) {
-}
-
 void Handler::manejar(EventoUnirseAPartida& e) {
 }
 
@@ -46,4 +40,37 @@ void Handler::manejar(EventoIniciarPartida& e) {
 }
 
 void Handler::manejar(EventoFinCarrera& e) {
+}
+
+void Handler::manejar(EventoAparecioConsumible &e) {
+}
+
+void Handler::manejar(EventoDesaparecioConsumible &e) {
+}
+
+void Handler::manejar(EventoChoque &e) {
+}
+
+void Handler::manejar(EventoBarroPisado &e) {
+}
+
+void Handler::manejar(EventoFinBarro &e) {
+}
+
+void Handler::manejar(EventoExplosion &e) {
+}
+
+void Handler::manejar(EventoDesconexion &e) {
+}
+
+void Handler::manejar(EventoPartidaCreada &e) {
+}
+
+void Handler::manejar(EventoSnapshotLobby &e) {
+}
+
+void Handler::manejar(EventoSnapshotSala &e) {
+}
+
+void Handler::manejar(EventoUnirseASala &e) {
 }

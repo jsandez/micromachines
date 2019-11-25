@@ -1,7 +1,6 @@
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 #include "includes/servidor/utils/ConfigServidor.h"
-#include "includes/common/eventos/EventoPartidaAgregada.h"
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
