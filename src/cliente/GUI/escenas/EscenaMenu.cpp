@@ -38,12 +38,10 @@ void EscenaMenu::dibujarBotones(int nroIteracion) {
 
 void EscenaMenu::handlerBotones(int uuid) {
   switch (uuid) {
-    case UUID_BOTON_JUGAR: {
-      escenas_.emplace(std::make_shared<EscenaSala>(renderizador_,
-                                                    eventosGUI_,
-                                                    escenas_,
-                                                    eventosAEnviar_,
-                                                    this->musicaAmbiente));
+    case UUID_BOTON_JUGAR: {      
+      std::shared_ptr<Evento> unirme = std::make_shared<EventoUnirseASala>();
+      eventosAEnviar_.put(unirme);
+      quiereEntrarASala = true;
       break;
     }
     case UUID_BOTON_SALIR: {
@@ -62,7 +60,8 @@ EscenaMenu::EscenaMenu(Renderizador &renderizador,
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
                                             renderizador)),
-    eventosGUI_(eventosGUI) {
+    eventosGUI_(eventosGUI),
+    quiereEntrarASala(false) {
   inicializarBotones();
   this->musicaAmbiente.setVolume(CONFIG_CLIENTE.volumenAmbiente());
   this->musicaAmbiente.play();
@@ -102,4 +101,16 @@ void EscenaMenu::manejarInput(EventoGUIKeyUp &evento) {}
 
 void EscenaMenu::manejar(Evento &e) {
   e.actualizar(*this);
+}
+
+void EscenaMenu::manejar(EventoSnapshotSala& e) {
+  if (!quiereEntrarASala) {
+    return;
+  }
+  escenas_.emplace(std::make_shared<EscenaSala>(renderizador_,
+                                                    eventosGUI_,
+                                                    escenas_,
+                                                    eventosAEnviar_,
+                                                    this->musicaAmbiente,
+                                                    e));
 }

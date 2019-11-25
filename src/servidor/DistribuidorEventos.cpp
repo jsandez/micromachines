@@ -76,3 +76,9 @@ void DistribuidorEventos::manejar(EventoDesconexion& e) {
 void DistribuidorEventos::manejar(EventoIniciarPartida& e) {
     coordinadorPartidas_.manejar(e);   
 }
+
+void DistribuidorEventos::manejar(EventoUnirseASala& e) {
+    std::shared_ptr<EventoSnapshotSala> snapshot = coordinadorPartidas_.getSnapshot();
+    snapshot->setRemitente(e.uuidRemitente());
+    salaDeEspera_.ocurrio(snapshot);
+}

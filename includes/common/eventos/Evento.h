@@ -50,6 +50,7 @@ public:
     virtual void enviarse(Protocolo& protocolo) = 0;
     virtual void actualizar(Handler& handler) = 0;
     uint32_t uuidRemitente();
+    void setRemitente(uint32_t uuidRemitente);
 };
 
 #endif

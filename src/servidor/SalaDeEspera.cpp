@@ -20,6 +20,12 @@ std::shared_ptr<Jugador> SalaDeEspera::obtenerJugador(uint32_t uuidJugador) {
     return jugador;
 }
 
+void SalaDeEspera::ocurrio(std::shared_ptr<Evento> unEvento) {
+    for (const auto& kv : jugadores_) {
+        kv.second->ocurrio(unEvento);
+    }
+}
+
 void SalaDeEspera::manejar(Evento& e) {
     e.actualizar(*this);
 }
@@ -28,7 +34,6 @@ void SalaDeEspera::manejar(EventoDesconexion& e) {
     //FIXME: Mejorar esta lógica
     jugadores_.erase(e.uuidRemitente());
 }
-
 
 //FIXME: ES PARTIDACREADA
 /*void SalaDeEspera::manejar(EventoPartidaAgregada& e) {

@@ -7,3 +7,7 @@ Evento::Evento(uint32_t uuidRemitente) :
 uint32_t Evento::uuidRemitente() {
     return UUIDRemitente_;
 }
+
+void Evento::setRemitente(uint32_t uuidRemitente) {
+    UUIDRemitente_ = uuidRemitente;
+}

@@ -20,6 +20,9 @@ public:
     ~SalaDeEspera();
     void agregarJugador(SocketTCP&& socket);
     std::shared_ptr<Jugador> obtenerJugador(uint32_t uuidJugador);
+
+    void ocurrio(std::shared_ptr<Evento> evento);
+
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoDesconexion& e) override;
 };

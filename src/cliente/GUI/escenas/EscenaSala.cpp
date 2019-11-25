@@ -7,124 +7,60 @@
 #include "includes/cliente/GUI/Texto.h"
 
 void EscenaSala::inicializarBotones() {
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_CREAR_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
+  
+  int anchoVentana = CONFIG_CLIENTE.anchoVentana();
+  int altoVentana = CONFIG_CLIENTE.altoVentana();
+  
+  this->botones.emplace(UUID_BOTON_CREAR_PARTIDA,
+    std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
                               renderizador_,
-                              0.10
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.60
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_UNIRSE_A_PARTIDA,
-      std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
-                              renderizador_,
-                              0.10
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.65
-                                  * CONFIG_CLIENTE.altoVentana())));
+                              0.10 * anchoVentana,
+                              0.60 * altoVentana));
 
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      UUID_BOTON_ATRAS,
-      std::make_shared<Boton>(UUID_BOTON_ATRAS,
+  this->botones.emplace(UUID_BOTON_UNIRSE_A_PARTIDA,
+    std::make_shared<Boton>(UUID_BOTON_UNIRSE_A_PARTIDA,
                               renderizador_,
-                              0.10
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.70
-                                  * CONFIG_CLIENTE.altoVentana())));
+                              0.10 * anchoVentana,
+                              0.65 * altoVentana));
+
+  this->botones.emplace(UUID_BOTON_ATRAS,
+    std::make_shared<Boton>(UUID_BOTON_ATRAS,
+                              renderizador_,
+                              0.10 * anchoVentana,
+                              0.70 * altoVentana));
+
   // BOTONES VACIOS PARA LAS PARTIDAS
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      0,
-      std::make_shared<Boton>(UUID_BOTON_VACIO,
+  float posicionRelativaX = 0.45f;
+  float posicionRelativaY = 0.42f;
+  for (size_t i = 0; i < partidasId.size(); ++i) {
+    this->botones.emplace(i, std::make_shared<Boton>(UUID_BOTON_VACIO,
+      renderizador_,
+      posicionRelativaX * anchoVentana,
+      posicionRelativaY * altoVentana
+      ));
+    posicionRelativaY += 0.10f;
+  }
+
+  this->botones.emplace(4, std::make_shared<Boton>(UUID_BOTON_UP,
                               renderizador_,
-                              0.45
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.42
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      1,
-      std::make_shared<Boton>(UUID_BOTON_VACIO,
+                              0.80 * anchoVentana,
+                              0.42 * altoVentana));
+
+  this->botones.emplace(5, std::make_shared<Boton>(UUID_BOTON_UP,
                               renderizador_,
-                              0.45
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.52
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      2,
-      std::make_shared<Boton>(UUID_BOTON_VACIO,
-                              renderizador_,
-                              0.45
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.62
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      3,
-      std::make_shared<Boton>(UUID_BOTON_VACIO,
-                              renderizador_,
-                              0.45
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.72
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      4,
-      std::make_shared<Boton>(UUID_BOTON_UP,
-                              renderizador_,
-                              0.80
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.42
-                                  * CONFIG_CLIENTE.altoVentana())));
-  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
-      5,
-      std::make_shared<Boton>(UUID_BOTON_DOWN,
-                              renderizador_,
-                              0.80
-                                  * CONFIG_CLIENTE.anchoVentana(),
-                              0.72
-                                  * CONFIG_CLIENTE.altoVentana())));
+                              0.80 * anchoVentana,
+                              0.72 * altoVentana));
 }
 
 void EscenaSala::inicializarTextoPartidas() {
-  // ACA AGARRA LAS PARTIDAS DEL EVENTO SIEMPRE SON 4!!
-  textoPartidas.insert(std::pair<int, std::shared_ptr<Texto>>(0,
-                                                              std::make_shared<
-                                                                  Texto>(
-                                                                  "PARTIDA "
-                                                                      + std::to_string(
-                                                                          partidasId.at(
-                                                                              0)),
-                                                                  30,
-                                                                  renderizador_,
-                                                                  UUID_TEXTO_BLANCO)));
-  textoPartidas.insert(std::pair<int, std::shared_ptr<Texto>>(1,
-                                                              std::make_shared<
-                                                                  Texto>(
-                                                                  "PARTIDA "
-                                                                      + std::to_string(
-                                                                          partidasId.at(
-                                                                              1)),
-                                                                  30,
-                                                                  renderizador_,
-                                                                  UUID_TEXTO_BLANCO)));
-  textoPartidas.insert(std::pair<int, std::shared_ptr<Texto>>(2,
-                                                              std::make_shared<
-                                                                  Texto>(
-                                                                  "PARTIDA "
-                                                                      + std::to_string(
-                                                                          partidasId.at(
-                                                                              2)),
-                                                                  30,
-                                                                  renderizador_,
-                                                                  UUID_TEXTO_BLANCO)));
-  textoPartidas.insert(std::pair<int, std::shared_ptr<Texto>>(3,
-                                                              std::make_shared<
-                                                                  Texto>(
-                                                                  "PARTIDA "
-                                                                      + std::to_string(
-                                                                          partidasId.at(
-                                                                              3)),
-                                                                  30,
-                                                                  renderizador_,
-                                                                  UUID_TEXTO_BLANCO)));
+  int tamanioFuente = 30;
+  for (size_t i = 0; i < partidasId.size(); ++i) {
+    std::string texto = "Partida " + std::to_string(partidasId.at(i));
+    textoPartidas.emplace(i, std::make_shared<Texto>(texto,
+      tamanioFuente,
+      renderizador_,
+      UUID_TEXTO_BLANCO));
+  }
 }
 
 void EscenaSala::dibujarBotones(int nroIteracion) {
@@ -234,17 +170,20 @@ EscenaSala::EscenaSala(Renderizador &renderizador,
                        ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                        std::stack<std::shared_ptr<Escena>> &escenas,
                        ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-                       Sonido &musicaAmbiente) :
+                       Sonido &musicaAmbiente,
+                       EventoSnapshotSala& e) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
+  
+  
   // TODO: ESCENA SALA RECIBE EL EVENTO SNAPSHOT SALA PARA INICIALIZAR LA LISTA
   // SI ESTA VACIO  EL MAPA ENTONCES LA PARTIDA ES -1
-  partidasId.insert(std::pair<int, int>(0, 1));
-  partidasId.insert(std::pair<int, int>(1, 23));
-  partidasId.insert(std::pair<int, int>(2, 35));
-  partidasId.insert(std::pair<int, int>(3, 100));
+
+  for (const auto& kv : e.ordinalAuuidPartida_) {
+    partidasId.emplace(kv.first, kv.second);
+  }
   partidaSeleccionada = -1;
   inicializarBotones();
   inicializarTextoPartidas();
@@ -263,10 +202,6 @@ Textura EscenaSala::dibujate(uint32_t numeroIteracion, Area dimensiones) {
 void EscenaSala::manejarInput(EventoGUI &evento) {
   evento.actualizar(*this);
 }
-
-#include <iostream>
-#include <includes/cliente/GUI/escenas/EscenaPartida.h>
-#include <includes/cliente/GUI/escenas/EscenaLobby.h>
 
 void EscenaSala::manejarInput(EventoGUIClick &evento) {
   int x, y;
@@ -292,4 +227,13 @@ void EscenaSala::manejarInput(EventoGUIKeyUp &evento) {}
 
 void EscenaSala::manejar(Evento &e) {
   e.actualizar(*this);
+}
+
+void EscenaSala::manejar(EventoSnapshotSala& e) {
+  partidasId = std::map<uint16_t, uint16_t>();
+  for (const auto& kv : e.ordinalAuuidPartida_) {
+    partidasId.emplace(kv.first, kv.second);
+  }
+  inicializarBotones();
+  inicializarTextoPartidas();
 }

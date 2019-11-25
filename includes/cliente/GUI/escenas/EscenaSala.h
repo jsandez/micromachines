@@ -19,7 +19,7 @@ class EscenaSala : public Escena {
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Boton>> botones;
   std::map<int, std::shared_ptr<Texto>> textoPartidas;
-  std::map<int,int> partidasId;
+  std::map<uint16_t, uint16_t> partidasId;
   int partidaSeleccionada;
 
   void inicializarBotones();
@@ -33,13 +33,16 @@ class EscenaSala : public Escena {
              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
              std::stack<std::shared_ptr<Escena>> &escenas,
              ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-             Sonido &musicaAmbiente);
+             Sonido &musicaAmbiente,
+             EventoSnapshotSala& e);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;
   virtual void manejarInput(EventoGUIKeyDown &evento) override;
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
+  
   virtual void manejar(Evento &e) override;
+  virtual void manejar(EventoSnapshotSala &e) override;
 };
 
 #endif

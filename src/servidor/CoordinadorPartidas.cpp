@@ -9,14 +9,24 @@ CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
         if (kv.second->estaCorriendo()) {
             kv.second->detener();
-        }
-        kv.second->join();
+            kv.second->join();
+        }        
     }
 }
 
 void CoordinadorPartidas::agregarJugadorAPartida(std::shared_ptr<Jugador> jugador, uint16_t uuidPartida) {
     partidas_.at(uuidPartida)->agregarJugador(jugador);
     jugadoresAPartidas_[jugador->uuid()] = uuidPartida;
+}
+
+std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshot() {
+    std::map<uint16_t, uint16_t> datosSnapshot;
+    uint16_t ordinal = 1;
+    for (const auto& kv : partidas_) {
+        datosSnapshot.emplace(ordinal, kv.first);
+        ordinal++;
+    }    
+    return std::make_shared<EventoSnapshotSala>(std::move(datosSnapshot));
 }
 
 void CoordinadorPartidas::manejar(Evento& e) {
@@ -29,9 +39,8 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     // FIXME: No hardcodear esto
     uint16_t uuidPista = 1;
     partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista);
-    //std::shared_ptr<Evento> actualizacion = std::make_shared<EventoPartidaAgregada>(e.uuidRemitente(), contadorPartidas_);
-    //salaDeEspera_.manejar(*actualizacion);
-    //TODO: Quitar partidas finalizadas, que no deben tener jugadores dentro.
+    salaDeEspera_.ocurrio(getSnapshot());    
+    //FIXME: Quitar partidas finalizadas, que no deben tener jugadores dentro.
 }
 
 //TODO: Debería esperar que todos envíen jugar.
