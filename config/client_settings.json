@@ -132,6 +132,22 @@
         "assets/botones/380.png"
       ]
     },
+    "arriba": {
+      "uuid": 390,
+      "ancho": 50,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/391.png"
+      ]
+    },
+    "abajo": {
+      "uuid": 391,
+      "ancho": 50,
+      "alto": 31,
+      "sprites": [
+        "assets/botones/390.png"
+      ]
+    },
     "autoRojo": {
       "uuid": 800,
       "ancho": 80,

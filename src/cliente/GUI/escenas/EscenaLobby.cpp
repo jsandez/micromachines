@@ -23,6 +23,49 @@ void EscenaLobby::inicializarBotones() {
                                   * CONFIG_CLIENTE.altoVentana())));
 }
 
+void EscenaLobby::inicializarTextoJugadores() {
+  textoJugadores.insert(std::pair<int, std::shared_ptr<Texto>>(0,
+                                                               std::make_shared<
+                                                                   Texto>(
+                                                                   "JUGADOR "
+                                                                       + std::to_string(
+                                                                           jugadoresId.at(
+                                                                               0)),
+                                                                   30,
+                                                                   renderizador_,
+                                                                   UUID_TEXTO_BLANCO)));
+  textoJugadores.insert(std::pair<int, std::shared_ptr<Texto>>(1,
+                                                               std::make_shared<
+                                                                   Texto>(
+                                                                   "JUGADOR "
+                                                                       + std::to_string(
+                                                                           jugadoresId.at(
+                                                                               1)),
+                                                                   30,
+                                                                   renderizador_,
+                                                                   UUID_TEXTO_BLANCO)));
+  textoJugadores.insert(std::pair<int, std::shared_ptr<Texto>>(2,
+                                                               std::make_shared<
+                                                                   Texto>(
+                                                                   "JUGADOR "
+                                                                       + std::to_string(
+                                                                           jugadoresId.at(
+                                                                               2)),
+                                                                   30,
+                                                                   renderizador_,
+                                                                   UUID_TEXTO_BLANCO)));
+  textoJugadores.insert(std::pair<int, std::shared_ptr<Texto>>(3,
+                                                               std::make_shared<
+                                                                   Texto>(
+                                                                   "JUGADOR "
+                                                                       + std::to_string(
+                                                                           jugadoresId.at(
+                                                                               3)),
+                                                                   30,
+                                                                   renderizador_,
+                                                                   UUID_TEXTO_BLANCO)));
+}
+
 void EscenaLobby::dibujarBotones(int nroIteracion) {
   for (const auto &boton: botones) {
     Animacion &animacion = boton.second.get()->getAnimacion();
@@ -37,8 +80,8 @@ void EscenaLobby::dibujarBotones(int nroIteracion) {
 void EscenaLobby::handlerBotones(int uuid) {
   switch (uuid) {
     case UUID_BOTON_INICIAR_PARTIDA: {
-        std::shared_ptr<Evento> jugar = std::make_shared<EventoIniciarPartida>();
-        eventosAEnviar_.put(jugar);
+      std::shared_ptr<Evento> jugar = std::make_shared<EventoIniciarPartida>();
+      eventosAEnviar_.put(jugar);
       break;
     }
     case UUID_BOTON_ATRAS: {
@@ -48,16 +91,33 @@ void EscenaLobby::handlerBotones(int uuid) {
   }
 }
 
+void EscenaLobby::dibujarTextoJugadores(int iteracion) {
+  double i = 0;
+  for (const auto &textoJugador: textoJugadores) {
+    Area areaTexto = Area(0.45 * CONFIG_CLIENTE.anchoVentana(),
+                          (0.42 + i) * CONFIG_CLIENTE.altoVentana(),
+                          247,
+                          31);
+    renderizador_.dibujarTexto(*(textoJugador.second.get()), areaTexto);
+    i = i +0.10;
+  }
+}
+
 EscenaLobby::EscenaLobby(Renderizador &renderizador,
-                       ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                       std::stack<std::shared_ptr<Escena>> &escenas,
-                       ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-                       Sonido &musicaAmbiente) :
+                         ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
+                         std::stack<std::shared_ptr<Escena>> &escenas,
+                         ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+                         Sonido &musicaAmbiente) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
+  jugadoresId.insert(std::pair<int, int>(0, 1));
+  jugadoresId.insert(std::pair<int, int>(1, 2));
+  jugadoresId.insert(std::pair<int, int>(2, 3));
+  jugadoresId.insert(std::pair<int, int>(3, 4));
   inicializarBotones();
+  inicializarTextoJugadores();
 }
 
 Textura EscenaLobby::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -66,6 +126,7 @@ Textura EscenaLobby::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
   dibujarBotones(numeroIteracion);
+  dibujarTextoJugadores(numeroIteracion);
   return std::move(miTextura);
 }
 

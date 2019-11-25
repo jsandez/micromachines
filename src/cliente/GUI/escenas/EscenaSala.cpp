@@ -65,6 +65,22 @@ void EscenaSala::inicializarBotones() {
                                   * CONFIG_CLIENTE.anchoVentana(),
                               0.72
                                   * CONFIG_CLIENTE.altoVentana())));
+  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
+      4,
+      std::make_shared<Boton>(UUID_BOTON_UP,
+                              renderizador_,
+                              0.80
+                                  * CONFIG_CLIENTE.anchoVentana(),
+                              0.42
+                                  * CONFIG_CLIENTE.altoVentana())));
+  this->botones.insert(std::pair<int, std::shared_ptr<Boton>>(
+      5,
+      std::make_shared<Boton>(UUID_BOTON_DOWN,
+                              renderizador_,
+                              0.80
+                                  * CONFIG_CLIENTE.anchoVentana(),
+                              0.72
+                                  * CONFIG_CLIENTE.altoVentana())));
 }
 
 void EscenaSala::inicializarTextoPartidas() {

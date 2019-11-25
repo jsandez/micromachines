@@ -10,10 +10,14 @@ class EscenaLobby : public Escena {
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Boton>> botones;
+  std::map<int, std::shared_ptr<Texto>> textoJugadores;
+  std::map<int,int> jugadoresId;
 
   void inicializarBotones();
+  void inicializarTextoJugadores();
   void dibujarBotones(int iteracion);
   void handlerBotones(int uuid);
+  void dibujarTextoJugadores(int iteracion);
  public:
   EscenaLobby(Renderizador &renderizador,
               ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
