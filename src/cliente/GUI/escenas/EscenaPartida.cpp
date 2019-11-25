@@ -27,13 +27,14 @@ void EscenaPartida::dibujarInterfaz(int iteracion) {
                         salud.alto());
   renderizador_.dibujar(salud.get(iteracion), areaSalud);
 }
-
+//TODO: Cargar la pista json una sola vez. Para la computadora y para la Pista
 EscenaPartida::EscenaPartida(Renderizador &renderizador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                              std::stack<std::shared_ptr<Escena>> &escenas,
                              ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                              EventoPartidaIniciada &estadoInicial,
-                             Sonido &musicaAmbiente) :
+                             Sonido &musicaAmbiente,
+                             bool juegaComputadora) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     eventosGUI_(eventosGUI),
     pista("assets/pistas/1.json", renderizador),
@@ -59,6 +60,12 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 
     pista.obtenerObjeto(id)->mover(xCoord, yCoord, angulo);
     vehiculoActual += 10;
+
+    if (juegaComputadora){
+      jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(eventosAEnviar_,"assets/pistas/1.json")));
+    } else {
+      jugador_ = std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
+    }
   }
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
   this->id_car = estadoInicial.idDelVehiculo_;
@@ -99,39 +106,25 @@ void EscenaPartida::manejarInput(EventoGUIKeyDown &evento) {
   } else if (evento.getTecla() == TECLA_ESC) {
     escenas_.pop();
   } else if (evento.getTecla() == TECLA_A) {
-    std::shared_ptr<Evento> eventoAcelerar = std::make_shared<EventoAcelerar>();
-    eventosAEnviar_.put(eventoAcelerar);
+    jugador_->acelerar();
   } else if (evento.getTecla() == TECLA_Z) {
-    std::shared_ptr<Evento> eventoFrenar = std::make_shared<EventoFrenar>();
-    eventosAEnviar_.put(eventoFrenar);
+    jugador_->frenar();
   } else if (evento.getTecla() == TECLA_IZQ) {
-    std::shared_ptr<Evento>
-        eventoDoblarIzq = std::make_shared<EventoDoblarIzquierda>();
-    eventosAEnviar_.put(eventoDoblarIzq);
+    jugador_->doblarIzquierda();
   } else if (evento.getTecla() == TECLA_DER) {
-    std::shared_ptr<Evento>
-        eventoDoblarDer = std::make_shared<EventoDoblarDerecha>();
-    eventosAEnviar_.put(eventoDoblarDer);
+    jugador_->doblarDerecha();
   }
 }
 
 void EscenaPartida::manejarInput(EventoGUIKeyUp &evento) {
   if (evento.getTecla() == TECLA_A) {
-    std::shared_ptr<Evento>
-        eventoDesacelerar = std::make_shared<EventoDesacelerar>();
-    eventosAEnviar_.put(eventoDesacelerar);
+    jugador_->desacelerar();
   } else if (evento.getTecla() == TECLA_Z) {
-    std::shared_ptr<Evento>
-        eventoDejarDeFrenar = std::make_shared<EventoDejarDeFrenar>();
-    eventosAEnviar_.put(eventoDejarDeFrenar);
+    jugador_->dejarDeFrenar();
   } else if (evento.getTecla() == TECLA_IZQ) {
-    std::shared_ptr<Evento> eventoDejarDeDoblarIzq =
-        std::make_shared<EventoDejarDeDoblarIzquierda>();
-    eventosAEnviar_.put(eventoDejarDeDoblarIzq);
+    jugador_->dejarDeDoblarIzquierda();
   } else if (evento.getTecla() == TECLA_DER) {
-    std::shared_ptr<Evento>
-        eventoDejarDeDoblarDer = std::make_shared<EventoDejarDeDoblarDerecha>();
-    eventosAEnviar_.put(eventoDejarDeDoblarDer);
+    jugador_->dejarDeDoblarDerecha();
   }
 }
 

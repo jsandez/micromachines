@@ -39,6 +39,10 @@ set(SOURCES
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/output_video.cpp
         ${PROJECT_SOURCE_DIR}/grabador/ffmpeg/video_codec.cpp
 
+        ${PROJECT_SOURCE_DIR}/jugadores/Jugador.cpp
+        ${PROJECT_SOURCE_DIR}/jugadores/Computadora.cpp
+
+
         ${CMAKE_SOURCE_DIR}/src/common/Cronometro.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp
         ${CMAKE_SOURCE_DIR}/src/common/Handler.cpp

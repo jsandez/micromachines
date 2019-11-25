@@ -11,6 +11,7 @@ include_directories(includes/servidor)
 
 add_subdirectory(src)
 
+INSTALL(DIRECTORY includes/3rd-party/lua/lua_scripts DESTINATION ${RUTA_INSTALACION})
 INSTALL(DIRECTORY config DESTINATION ${RUTA_INSTALACION})
 INSTALL(DIRECTORY assets DESTINATION ${RUTA_INSTALACION})
 INSTALL(FILES extras/supresiones_valgrind/minimal.supp DESTINATION ${RUTA_INSTALACION})

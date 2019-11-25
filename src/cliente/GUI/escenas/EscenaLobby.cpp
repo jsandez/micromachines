@@ -169,5 +169,6 @@ void EscenaLobby::manejar(EventoPartidaIniciada &estadoInicial) {
                                                    escenas_,
                                                    eventosAEnviar_,
                                                    estadoInicial,
-                                                   this->musicaAmbiente));
+                                                   this->musicaAmbiente,
+                                                   false));
 }

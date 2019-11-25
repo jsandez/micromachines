@@ -64,6 +64,18 @@ std::string ConfigCliente::musicaVacio() {
   return std::move(json_["musica"]["empty"].get<std::string>());
 }
 
+std::string ConfigCliente::rutaLuaScriptUsuario() {
+  return std::move(json_["lua"]["ruta2"].get<std::string>());
+}
+
+std::string ConfigCliente::rutaLuaScript() {
+  return std::move(json_["lua"]["ruta"].get<std::string>());
+}
+
+float ConfigCliente::tiempoReaccionHumano() {
+  return json_["lua"]["tiempoHumano"].get<float>();
+}
+
 unsigned int ConfigCliente::volumenAmbiente() {
   return json_["volumen"]["ambiente"].get<unsigned int>();
 }

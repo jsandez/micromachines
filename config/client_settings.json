@@ -352,5 +352,10 @@
     "formato": "mp4",
     "fps": 30,
     "bitrate": 4000000
+  },
+  "lua" : {
+    "ruta" : "lua_scripts/script.lua",
+    "ruta2" : "lua_scripts/get_command.lua",
+    "tiempoHumano" : 0.1
   }
 }
