@@ -20,6 +20,10 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/entidades/Vehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/Modificador.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/CajaVida.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/Barro.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/Aceite.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/Piedra.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/entidades/Boost.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/carrera/Checkpoint.cpp
   ${PROJECT_SOURCE_DIR}/modelo/entidades/carrera/Carrera.cpp
   ${PROJECT_SOURCE_DIR}/modelo/superficies/SuperficieArena.cpp
