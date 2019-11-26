@@ -64,6 +64,7 @@ set(SOURCES
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshotLobby.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoSnapshotSala.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoUnirseASala.cpp
+  ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFrenada.cpp
   ${CMAKE_SOURCE_DIR}/src/common/eventos/EventoFactory.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/SocketTCP.cpp
   ${CMAKE_SOURCE_DIR}/src/common/red/Protocolo.cpp
