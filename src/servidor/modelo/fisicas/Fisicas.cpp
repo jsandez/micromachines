@@ -5,6 +5,8 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
 
+#include "includes/common/eventos/EventoAparecioConsumible.h"
+
 
 //TODO: Fisicas debe conocer de eventos ocurridos?
 //Tiene pinta de que no. Por ende tampoco de snapshots por segundo
@@ -23,6 +25,27 @@ Fisicas::~Fisicas() {
 
 void Fisicas::ocurrio(std::shared_ptr<Evento> unEvento) {
     eventosOcurridos_.put(unEvento);
+}
+
+void Fisicas::agregarModificador(std::shared_ptr<Modificador> modificador, uint8_t tipo, Posicion& posicion) {
+    float ladoModificador = 5.0f;//CONFIG_SEVIDOR.ladoModificador();
+    float anchoTile = CONFIG_SERVIDOR.anchoTile();
+    b2BodyDef bodyDef;
+    bodyDef.userData = modificador.get();
+    float x = anchoTile*(float)posicion.x_; 
+    float y = anchoTile*(float)posicion.y_;
+    bodyDef.position.Set(x, y);
+
+    b2Body* cuerpo = mundoBox2D_->CreateBody(&bodyDef);
+    b2PolygonShape forma;        
+    forma.SetAsBox(ladoModificador/2.0f, ladoModificador/2.0f);
+	b2FixtureDef caracteristicas;
+	caracteristicas.shape = &forma;
+    caracteristicas.isSensor = true;
+	cuerpo->CreateFixture(&caracteristicas);
+    colisionables_[modificador->uuid()] = cuerpo;
+    std::shared_ptr<Evento> aparicion = std::make_shared<EventoAparecioConsumible>(modificador->uuid(), tipo, x, y);
+    eventosOcurridos_.put(aparicion);
 }
 
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {

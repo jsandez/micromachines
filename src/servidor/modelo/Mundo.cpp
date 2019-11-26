@@ -4,6 +4,8 @@
 #include <fstream>
 #include <map>
 #include <vector>
+#include <stdlib.h>
+
 
 #include "includes/servidor/utils/ConfigServidor.h"
 #include "includes/3rd-party/jsoncpp/json.hpp"
@@ -11,11 +13,12 @@
 #include "includes/common/Conversor.h"
 #include "includes/servidor/modelo/superficies/SuperficieFactory.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
+#include "includes/servidor/modelo/entidades/CajaVida.h"
 #include "includes/common/eventos/EventoSnapshot.h"
 
 //TODO: Crear conversor de coordenadas?
 //Forward declaration
-static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, std::vector<Tile>& tilesConPista, Json& pistaJson);
 static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
@@ -37,12 +40,13 @@ Mundo::Mundo(uint16_t uuidPista) :
     uint16_t largoX = pistaJson["dimensiones"]["x"].get<uint16_t>();
     uint16_t largoY = pistaJson["dimensiones"]["y"].get<uint16_t>();
 
-    cargarSuelo(largoX, largoY, tileASuelo_, pistaJson);
+    cargarSuelo(largoX, largoY, tileASuelo_, tilesConPista_, pistaJson);
     cargarPosicionesIniciales(largoX, largoY, posicionesIniciales_, pistaJson);
     carrera_.cargarDesdeJson(pistaJson);
     
     fisicas_.generarSuelo(tileASuelo_);
     fisicas_.generarCheckpoints(carrera_.checkpoints());
+    srand (time(NULL));
 }
 
 Mundo::~Mundo() {
@@ -97,12 +101,28 @@ std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {
 }
 
 void Mundo::agregarModificadores(uint32_t nroIteracion) {
-    if (nroIteracion % CONFIG_SERVIDOR.factorAparicionModificador() == 0) {
-        //VER LUGAR
-        //VER Q NO ESTE OCUPAO?
-        //VER QUE NO SEA EL NUM MAX
-        //TOMAR EL ID, AGREGARLO Y POP AL ID PARA REUTILIZAR
+    if (nroIteracion % CONFIG_SERVIDOR.factorAparicionModificador() != 0) {
+        return;
     }
+    //VER LUGAR
+    //VER QUE NO SEA EL NUM MAX
+    //TOMAR EL ID, AGREGARLO Y POP AL ID PARA REUTILIZAR
+    //SORTEAR EL QUE VA A APARECER
+    if (uuidsObjetos_.size() == 0) {
+        return;
+    }
+    int tile = rand() % tilesConPista_.size();
+    Tile& destino = tilesConPista_[tile];
+    Posicion posicion(Conversor::tileAMetro(destino.x_), Conversor::tileAMetro(destino.y_), 0);
+    uint8_t uuid = uuidsObjetos_.front();
+    
+    int modificador = rand() % 4;
+    if (modificador == 0) {
+        modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid));
+        fisicas_.agregarModificador(modificadores_.at(uuid), UUID_VIDA, posicion);
+    }
+
+    uuidsObjetos_.pop();
 }
 
 void Mundo::manejar(Evento& e) {
@@ -155,7 +175,7 @@ void Mundo::manejar(EventoDejarDeDoblarDerecha& e) {
 //FIXME: No hardcodear
 // El sistema de referencia de la pista está arriba a la izquierda,
 // mientras que en el servidor está abajo a la derecha.
-static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson) {
+static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, std::vector<Tile>& tilesConPista, Json& pistaJson) {
     for (int i = 0; i < largoX; ++i) {
         for (int j = 0; j < largoY; ++j) {
             int uuidTerreno = pistaJson["capas"]["terreno"][std::to_string(i)][std::to_string(j)].get<int>();
@@ -163,6 +183,8 @@ static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::sh
             // Hay pista
             if (uuidPista != CONFIG_SERVIDOR.tileVacio()) {
                 tilesASuelo[Tile(i, largoY - j - 1)] = SuperficieFactory::instanciar(uuidPista);
+                tilesConPista.emplace_back(Tile(i, largoY - j - 1));
+                
             } else {
                 tilesASuelo[Tile(i, largoY - j - 1)] = SuperficieFactory::instanciar(uuidTerreno);
             }

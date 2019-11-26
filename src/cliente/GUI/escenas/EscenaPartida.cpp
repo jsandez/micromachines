@@ -221,6 +221,28 @@ void EscenaPartida::manejar(EventoFinCarrera &e) {
                                                  mapaAutos));
 }
 
+void EscenaPartida::manejar(EventoAparecioConsumible& e) {
+  int idAnimacion = 0;
+  if (e.tipoConsumible_ == UUID_VIDA) {
+    idAnimacion = UUID_ANIMACION_CAJAS_SALUD;
+  }
+
+  std::shared_ptr<ObjetoDinamico> consumible =
+        std::make_shared<ObjetoDinamico>(idAnimacion,
+                                         this->renderizador_,
+                                         CONFIG_CLIENTE.musicaVacio(),
+                                         false);
+    
+
+    float posX = this->conversor.metroAPixel(e.xCoord_);
+    float posY = this->conversor.bloqueAPixel(pista.getSizeY())
+        - this->conversor.metroAPixel(e.yCoord_);
+    
+    consumible->mover(posX, posY, 0);
+
+    pista.agregarObjeto(e.uuidConsumible_, consumible);  
+}
+
 EscenaPartida::~EscenaPartida() {
   jugador_->terminar();
 }

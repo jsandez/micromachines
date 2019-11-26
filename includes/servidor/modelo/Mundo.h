@@ -17,6 +17,7 @@
 class Mundo : public Handler {
 private:
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
+    std::vector<Tile> tilesConPista_;
     std::queue<Posicion> posicionesIniciales_;
     std::map<uint32_t, Vehiculo> jugadoresAVehiculos_;
     ColaProtegida<std::shared_ptr<Evento>> eventosOcurridos_;

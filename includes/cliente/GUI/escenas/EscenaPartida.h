@@ -52,5 +52,6 @@ class EscenaPartida : public Escena {
   virtual void manejar(EventoBarroPisado &e) override ;
   virtual void manejar(EventoFinBarro &e) override ;
   virtual void manejar(EventoFinCarrera &e) override;
+  virtual void manejar(EventoAparecioConsumible& e) override;
 };
 #endif

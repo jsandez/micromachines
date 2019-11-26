@@ -11,6 +11,7 @@
 #include "includes/servidor/modelo/superficies/Superficie.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
+#include "includes/servidor/modelo/entidades/Modificador.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 #include "includes/servidor/modelo/fisicas/B2DVehiculo.h"
 #include "includes/servidor/modelo/fisicas/ContactListener.h"
@@ -25,7 +26,7 @@ class Fisicas {
 private:
     b2Vec2 gravedad_;
     std::shared_ptr<b2World> mundoBox2D_;
-    //std::map<uint8_t, b2Body*> colisionables_;
+    std::map<uint8_t, b2Body*> colisionables_;
     std::map<uint8_t, std::shared_ptr<B2DVehiculo>> vehiculos_;
     double frecuencia_;
     uint32_t iteracion_;
@@ -39,8 +40,8 @@ public:
     //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
     void generarCheckpoints(std::map<int, Checkpoint>& checkpoints);
     void step(uint32_t numeroIteracion);
-    void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
     
+    void agregarVehiculo(Vehiculo& vehiculo, Posicion& posicion);
     void acelerar(uint8_t uuidVehiculo);
     void desacelerar(uint8_t uuidVehiculo);
     void frenar(uint8_t uuidVehiculo);
@@ -50,10 +51,12 @@ public:
     void doblarDerecha(uint8_t uuidVehiculo);
     void dejarDeDoblarDerecha(uint8_t uuidVehiculo);
 
+    void agregarModificador(std::shared_ptr<Modificador> modificador, uint8_t tipo, Posicion& posicion);
+
     void ocurrio(std::shared_ptr<Evento> evento);
     
     Posicion getPosicionDe(uint8_t idCuerpo);
-    //FIXME: TIENE QUE HABER UN REUBICAR VEHICULO QUE LLAME A ESTO, CON FIRMA VEICULO& ?
+    
     void reubicar(Vehiculo& vehiculo, Posicion& Posicion);
 
 };
