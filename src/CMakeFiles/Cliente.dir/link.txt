@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -std=c++11 -pthread -Wall -Werror -pedantic -D__STDC_CONSTANT_MACROS -g   CMakeFiles/Cliente.dir/cliente/main_cliente.cpp.o  -o Cliente cliente/libClienteCMake.a -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lavutil -lavformat -lavcodec -lswscale -lswresample -lz -lm 3rd-party/lua/liblua_interprete.a -llua5.3 
