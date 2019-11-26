@@ -28,6 +28,17 @@ void EscenaPartida::dibujarInterfaz(int iteracion) {
                         salud.alto());
   renderizador_.dibujar(salud.get(iteracion), areaSalud);
 }
+
+void EscenaPartida::dibujarBarro(int iteracion) {
+  Area areaBarro = Area(0,
+                        0,
+                        CONFIG_CLIENTE.anchoVentana()
+                            * CONFIG_CLIENTE.factorLejaniaCamara(),
+                        CONFIG_CLIENTE.altoVentana()
+                            * CONFIG_CLIENTE.factorLejaniaCamara());
+  renderizador_.dibujar(barro.getAnimacion().get(iteracion), areaBarro);
+}
+
 //TODO: Cargar la pista json una sola vez. Para la computadora y para la Pista
 EscenaPartida::EscenaPartida(Renderizador &renderizador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
@@ -40,7 +51,11 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     eventosGUI_(eventosGUI),
     pista("assets/pistas/1.json", renderizador),
     conversor(CONFIG_CLIENTE.pixelPorMetro(), CONFIG_CLIENTE.pixelPorBloque()),
-    camara(conversor, pista, renderizador) {
+    camara(conversor, pista, renderizador),
+    barro(UUID_ANIMACION_BARRO_GRANDE,
+          renderizador,
+          CONFIG_CLIENTE.musicaVacio(),
+          true) {
   this->musicaAmbiente.stop();
   const std::map<uint8_t, datosVehiculo_>
       &idsADatosVehiculos = estadoInicial.estadoInicial_.idsADatosVehiculos_;
@@ -71,6 +86,7 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
   this->id_car = estadoInicial.idDelVehiculo_;
   jugador_->empezar();
+  this->barroActivo = false;
 }
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -96,6 +112,8 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
                         false);
   camara.dibujarObjetos(id_car, numeroIteracion);
   camara.dibujarEventosTemporales(numeroIteracion);
+  if (barroActivo)
+    dibujarBarro(numeroIteracion);
   dibujarInterfaz(numeroIteracion);
   return std::move(miTextura);
 }
@@ -163,7 +181,7 @@ void EscenaPartida::manejar(EventoChoque &e) {
                                        renderizador_,
                                        CONFIG_CLIENTE.musicaChoque(),
                                        false);
-  choque.get()->mover(posX,posY,0);
+  choque.get()->mover(posX, posY, 0);
   pista.agregarEventoTemporal(choque);
 }
 
@@ -176,8 +194,16 @@ void EscenaPartida::manejar(EventoExplosion &e) {
                                        renderizador_,
                                        CONFIG_CLIENTE.musicaExplosion(),
                                        false);
-  explosion.get()->mover(posX,posY,0);
+  explosion.get()->mover(posX, posY, 0);
   pista.agregarEventoTemporal(explosion);
+}
+
+void EscenaPartida::manejar(EventoBarroPisado &e) {
+  this->barroActivo = true;
+}
+
+void EscenaPartida::manejar(EventoFinBarro &e) {
+  this->barroActivo = false;
 }
 
 void EscenaPartida::manejar(EventoFinCarrera &e) {
