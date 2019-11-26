@@ -41,6 +41,8 @@ class EscenaPartida : public Escena {
   virtual void manejarInput(EventoGUIKeyUp &evento) override;
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoSnapshot &e) override;
+  virtual void manejar(EventoChoque &e) override ;
+  virtual void manejar(EventoExplosion &e) override ;
   virtual void manejar(EventoFinCarrera &e) override;
 };
 #endif

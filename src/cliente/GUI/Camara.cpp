@@ -56,7 +56,7 @@ void Camara::dibujarPista(int iteracion) {
 }
 
 void Camara::dibujarObjetos(int car_id, int iteracion) {
-  int cantidadEventos = 0;
+  int cantidadObjetos = 0;
   std::vector<int> idObjetos;
   pista.obtenerIds(idObjetos);
   for (uint16_t i = 0; i < idObjetos.size(); i++) {
@@ -71,9 +71,9 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
             bloqueCarX <= xFinal &&
             bloqueCarY >= yInicial &&
             bloqueCarY <= yFinal) {
-          if (cantidadEventos <= 8) {
+          if (cantidadObjetos <= 3) {
             objeto.get()->getSonido().setVolume(20);
-            cantidadEventos++;
+            cantidadObjetos++;
           }
           Animacion &animacion = objeto.get()->getAnimacion();
           Area areaFondo = Area(
@@ -89,6 +89,45 @@ void Camara::dibujarObjetos(int car_id, int iteracion) {
                                 false);
         }
       }
+    }
+  }
+}
+
+void Camara::dibujarEventosTemporales(int iteracion) {
+  int cantidadEventos = 0;
+  std::vector<int> idEventos;
+  pista.obtenerIdsEventosTemporales(idEventos);
+  for (uint16_t i = 0; i < idEventos.size(); i++) {
+    std::shared_ptr<ObjetoDinamico>
+        objeto = pista.obtenerEventoTemporal(idEventos[i]);
+    objeto.get()->getSonido().setVolume(0);
+    if (objeto != nullptr) {
+      int bloqueCarX = conversor.pixelABloque(objeto.get()->getX());
+      int bloqueCarY = conversor.pixelABloque(objeto.get()->getY());
+      if (bloqueCarX >= xInicial &&
+          bloqueCarX <= xFinal &&
+          bloqueCarY >= yInicial &&
+          bloqueCarY <= yFinal) {
+        if (cantidadEventos <= 4) {
+          objeto.get()->getSonido().setVolume(30);
+          cantidadEventos++;
+        }
+        Animacion &animacion = objeto.get()->getAnimacion();
+        Area areaFondo = Area(
+            objeto.get()->getX() - (this->car.get()->getX() - width / 2)
+                - (float) objeto->getAnimacion().ancho() / 2.0f,
+            objeto.get()->getY() - (this->car.get()->getY() - height / 2)
+                - (float) objeto->getAnimacion().alto() / 2.0f,
+            animacion.ancho(),
+            animacion.alto());
+        renderizador_.dibujar(animacion.get(iteracion),
+                              areaFondo,
+                              objeto.get()->getAngulo(),
+                              false);
+      }
+    }
+    if (objeto.get()->getAnimacion().terminoPrimerIteracion()) {
+      pista.borrarEventoTemporal(idEventos[i]);
     }
   }
 }

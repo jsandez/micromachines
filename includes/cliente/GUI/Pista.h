@@ -16,6 +16,8 @@ class Pista {
   std::map<int, std::vector<std::vector<std::shared_ptr<Animacion>>>> mapa;
   std::map<int, std::shared_ptr<Animacion>> texturas;
   std::map<int, std::shared_ptr<ObjetoDinamico>> objetosDinamicos;
+  std::map<int, std::shared_ptr<ObjetoDinamico>> eventosTemporales;
+  int idEventoTemporal;
 
   void agregarBloque(int capa, int x, int y, std::shared_ptr<Animacion> animacion);
   void crearPista(nlohmann::json pistaJson);
@@ -24,9 +26,13 @@ class Pista {
   Pista(std::string fileName, Renderizador &renderizador);
   std::shared_ptr<Animacion> getBloque(int capa, int x, int y) const;
   void agregarObjeto(int id, std::shared_ptr<ObjetoDinamico>);
+  void agregarEventoTemporal(std::shared_ptr<ObjetoDinamico>);
   std::shared_ptr<ObjetoDinamico> obtenerObjeto(int id);
+  std::shared_ptr<ObjetoDinamico> obtenerEventoTemporal(int id);
   void obtenerIds(std::vector<int> &ids);
+  void obtenerIdsEventosTemporales(std::vector<int> &ids);
   void borrarObjeto(int id);
+  void borrarEventoTemporal(int id);
   int getCapas() const;
   int getSizeX() const;
   int getSizeY() const;

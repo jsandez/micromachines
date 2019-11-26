@@ -34,6 +34,7 @@ class ConfigCliente {
   std::string musicaMotor();
   std::string musicaExplosion();
   std::string musicaVacio();
+  std::string musicaChoque();
 
   unsigned int volumenAmbiente();
 

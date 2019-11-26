@@ -11,7 +11,8 @@
     "ambiente": "assets/sonidos/menu.wav",
     "motor": "assets/sonidos/motor.wav",
     "explosion": "assets/sonidos/explosion.wav",
-    "empty": "assets/sonidos/vacio.wav"
+    "empty": "assets/sonidos/vacio.wav",
+    "choque": "assets/sonidos/choque.wav"
   },
   "volumen": {
     "ambiente": 25
@@ -372,7 +373,7 @@
       "ancho": 1,
       "alto": 1,
       "sprites": [
-        "assets/modificadores/autos/9999.png"
+        "assets/autos/9999.png"
       ]
     }
   },
