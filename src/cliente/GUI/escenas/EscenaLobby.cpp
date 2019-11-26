@@ -10,16 +10,21 @@ void EscenaLobby::inicializarBotones() {
   int altoVentana = CONFIG_CLIENTE.altoVentana();
 
   this->botones.emplace(UUID_BOTON_INICIAR_PARTIDA,
-    std::make_shared<Boton>(UUID_BOTON_INICIAR_PARTIDA,
-      renderizador_,
-      0.10 * anchoVentana,
-      0.60 * altoVentana));
+                        std::make_shared<Boton>(UUID_BOTON_INICIAR_PARTIDA,
+                                                renderizador_,
+                                                0.10 * anchoVentana,
+                                                0.60 * altoVentana));
 
   this->botones.emplace(UUID_BOTON_ATRAS,
-    std::make_shared<Boton>(UUID_BOTON_ATRAS,
-      renderizador_,
-      0.10 * anchoVentana,
-      0.70 * altoVentana));
+                        std::make_shared<Boton>(UUID_BOTON_ATRAS,
+                                                renderizador_,
+                                                0.10 * anchoVentana,
+                                                0.70 * altoVentana));
+  this->botones.emplace(UUID_BOTON_CIRCULAR,
+                        std::make_shared<Boton>(UUID_BOTON_CIRCULAR,
+                                                renderizador_,
+                                                0.40 * anchoVentana,
+                                                0.80 * altoVentana));
 }
 
 void EscenaLobby::inicializarTextoJugadores() {
@@ -33,10 +38,18 @@ void EscenaLobby::inicializarTextoJugadores() {
       color = UUID_TEXTO_VERDE;
     }
     textoJugadores.emplace(i, std::make_shared<Texto>(texto,
-      tamanioFuente,
-      renderizador_,
-      color));
+                                                      tamanioFuente,
+                                                      renderizador_,
+                                                      color));
   }
+  int color = UUID_TEXTO_BLANCO;
+  if (cpu) {
+    color = UUID_TEXTO_VERDE;
+  }
+  textoJugadores.emplace(99, std::make_shared<Texto>("CPU",
+                                                     tamanioFuente,
+                                                     renderizador_,
+                                                     color));
 }
 
 void EscenaLobby::dibujarBotones(int nroIteracion) {
@@ -60,6 +73,13 @@ void EscenaLobby::handlerBotones(int uuid) {
     case UUID_BOTON_ATRAS: {
       escenas_.pop();
     }
+    case UUID_BOTON_CIRCULAR: {
+      if (cpu)
+        cpu = false;
+      else
+        cpu = true;
+      inicializarTextoJugadores();
+    }
     default:break;
   }
 }
@@ -69,13 +89,22 @@ void EscenaLobby::dibujarTextoJugadores(int iteracion) {
   int anchoVentana = CONFIG_CLIENTE.anchoVentana();
   int altoVentana = CONFIG_CLIENTE.altoVentana();
   for (const auto &textoJugador: textoJugadores) {
-    Area areaTexto = Area(0.45 * anchoVentana,
-                          (0.42 + i) * altoVentana,
-                          247,
-                          31);
-    renderizador_.dibujarTexto(*(textoJugador.second.get()), areaTexto);
-    i = i +0.10;
+    if (textoJugador.first != 99) {
+      Area areaTexto = Area(0.45 * anchoVentana,
+                            (0.42 + i) * altoVentana,
+                            247,
+                            31);
+      renderizador_.dibujarTexto(*(textoJugador.second.get()), areaTexto);
+      i = i + 0.10;
+    } else {
+      Area areaTextoCPU = Area(0.41 * anchoVentana,
+                               0.80 * altoVentana,
+                               50,
+                               50);
+      renderizador_.dibujarTexto(*(textoJugadores.at(99)), areaTextoCPU);
+    }
   }
+
 }
 
 EscenaLobby::EscenaLobby(Renderizador &renderizador,
@@ -83,16 +112,17 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
                          std::stack<std::shared_ptr<Escena>> &escenas,
                          ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                          Sonido &musicaAmbiente,
-                         EventoPartidaCreada& e) :
+                         EventoPartidaCreada &e) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
-  
+
   jugadoresId.emplace(0, e.uuidCreador_);
   jugadoresEstaListo.emplace(0, false);
   inicializarBotones();
   inicializarTextoJugadores();
+  this->cpu = false;
 }
 
 EscenaLobby::EscenaLobby(Renderizador &renderizador,
@@ -100,14 +130,14 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
                          std::stack<std::shared_ptr<Escena>> &escenas,
                          ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                          Sonido &musicaAmbiente,
-                         EventoSnapshotLobby& e) :
+                         EventoSnapshotLobby &e) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
     eventosGUI_(eventosGUI) {
-  
+
   int ordinal = 0;
-  for (const auto& kv : e.idJugadorAEstaListo_) {
+  for (const auto &kv : e.idJugadorAEstaListo_) {
     jugadoresId.emplace(ordinal, kv.first);
     jugadoresEstaListo.emplace(ordinal, kv.second);
     ordinal++;
@@ -166,11 +196,11 @@ void EscenaLobby::manejar(EventoPartidaIniciada &estadoInicial) {
                                                    false));
 }
 
-void EscenaLobby::manejar(EventoSnapshotLobby& e) {
+void EscenaLobby::manejar(EventoSnapshotLobby &e) {
   jugadoresId.clear();
   jugadoresEstaListo.clear();
   int ordinal = 0;
-  for (auto& kv : e.idJugadorAEstaListo_) {
+  for (auto &kv : e.idJugadorAEstaListo_) {
     jugadoresId.emplace(ordinal, kv.first);
     jugadoresEstaListo.emplace(ordinal, kv.second);
     ordinal++;

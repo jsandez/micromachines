@@ -148,6 +148,14 @@
         "assets/botones/390.png"
       ]
     },
+    "circular": {
+      "uuid": 392,
+      "ancho": 70,
+      "alto": 50,
+      "sprites": [
+        "assets/botones/392.png"
+      ]
+    },
     "autoRojo": {
       "uuid": 800,
       "ancho": 80,

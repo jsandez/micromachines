@@ -95,6 +95,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("abajo");
       alto_ = CONFIG_CLIENTE.alto("abajo");
       break;
+    case UUID_BOTON_CIRCULAR:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("circular")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("circular");
+      alto_ = CONFIG_CLIENTE.alto("circular");
+      break;
     case UUID_ANIMACION_AUTO_ROJO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("autoRojo")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));
