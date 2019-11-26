@@ -6,10 +6,10 @@
 
 class EventoDesaparecioConsumible : public Evento {
 public:
-    uint8_t idConsumible_;
+    uint8_t uuidConsumible_;
 
     EventoDesaparecioConsumible(uint32_t uuidRemitente, Protocolo& protocolo);
-    EventoDesaparecioConsumible(uint8_t idConsumible);
+    EventoDesaparecioConsumible(uint8_t uuidConsumible);
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };

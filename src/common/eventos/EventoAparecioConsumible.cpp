@@ -5,16 +5,18 @@
 EventoAparecioConsumible::EventoAparecioConsumible(uint32_t uuidRemitente, Protocolo& protocolo) :
     Evento(uuidRemitente) {
     //TODO: QUE EL PROTOCOLO ENVIE FLOATS
-    idConsumible_ = protocolo.recibirNumUnsigned8();
+    uuidConsumible_ = protocolo.recibirNumUnsigned8();
+    tipoConsumible_ = protocolo.recibirNumUnsigned8();
     uint16_t xCoordRed = protocolo.recibirNumUnsigned32();
     xCoord_ = (float)xCoordRed / 100.0f;
     uint16_t yCoordRed = protocolo.recibirNumUnsigned32();
     yCoord_ = (float)yCoordRed / 100.0f;
 }
 
-EventoAparecioConsumible::EventoAparecioConsumible(uint8_t idConsumible, float xCoord, float yCoord) :
+EventoAparecioConsumible::EventoAparecioConsumible(uint8_t uuidConsumible, uint8_t tipoConsumible, float xCoord, float yCoord) :
     Evento(0),
-    idConsumible_(idConsumible),
+    uuidConsumible_(uuidConsumible),
+    tipoConsumible_(tipoConsumible),
     xCoord_(xCoord),
     yCoord_(yCoord) {
     
@@ -23,7 +25,8 @@ EventoAparecioConsumible::EventoAparecioConsumible(uint8_t idConsumible, float x
 
 void EventoAparecioConsumible::enviarse(Protocolo& protocolo) {
     protocolo.enviar(UUIDEvento_);
-    protocolo.enviar(idConsumible_);
+    protocolo.enviar(uuidConsumible_);
+    protocolo.enviar(tipoConsumible_);
     uint32_t xCoordRed = 100 * xCoord_;
     protocolo.enviar(xCoordRed);
     uint32_t yCoordRed = 100 * yCoord_;

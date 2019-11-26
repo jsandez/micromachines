@@ -6,12 +6,13 @@
 
 class EventoAparecioConsumible : public Evento {
 public:
-    uint8_t idConsumible_;
+    uint8_t uuidConsumible_;
+    uint8_t tipoConsumible_;
     float xCoord_;
     float yCoord_;
 
     EventoAparecioConsumible(uint32_t uuidRemitente, Protocolo& protocolo);
-    EventoAparecioConsumible(uint8_t idConsumible, float xCoord, float yCoord);
+    EventoAparecioConsumible(uint8_t uuidConsumible, uint8_t tipoConsumible, float xCoord, float yCoord);
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };
