@@ -13,8 +13,9 @@
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Pista.h"
 #include "includes/cliente/GUI/Camara.h"
-#include "src/cliente/jugadores/Jugador.cpp"
-#include "src/cliente/jugadores/Computadora.cpp"
+#include "includes/cliente/jugadores/Jugador.h"
+#include "includes/cliente/jugadores/Computadora.h"
+
 
 class EscenaPartida : public Escena {
  private:
@@ -48,6 +49,7 @@ class EscenaPartida : public Escena {
   virtual void manejar(Evento &e) override;
   virtual void manejar(EventoSnapshot &e) override;
   virtual void manejar(EventoChoque &e) override ;
+  virtual void manejar(EventoFrenada &e) override;
   virtual void manejar(EventoExplosion &e) override ;
   virtual void manejar(EventoBarroPisado &e) override ;
   virtual void manejar(EventoFinBarro &e) override ;

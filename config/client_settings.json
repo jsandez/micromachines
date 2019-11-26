@@ -12,7 +12,8 @@
     "motor": "assets/sonidos/motor.wav",
     "explosion": "assets/sonidos/explosion.wav",
     "empty": "assets/sonidos/vacio.wav",
-    "choque": "assets/sonidos/choque.wav"
+    "choque": "assets/sonidos/choque.wav",
+    "frenada": "assets/sonidos/frenada.wav"
   },
   "volumen": {
     "ambiente": 25

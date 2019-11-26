@@ -185,6 +185,19 @@ void EscenaPartida::manejar(EventoChoque &e) {
   pista.agregarEventoTemporal(choque);
 }
 
+void EscenaPartida::manejar(EventoFrenada &e) {
+  float posX = this->conversor.metroAPixel(e.xCoord_);
+  float posY = this->conversor.bloqueAPixel(pista.getSizeY())
+      - this->conversor.metroAPixel(e.yCoord_);
+  std::shared_ptr<ObjetoDinamico> frenada =
+      std::make_shared<ObjetoDinamico>(UUID_ANIMACION_VACIA,
+                                       renderizador_,
+                                       CONFIG_CLIENTE.musicaFrenada(),
+                                       false);
+  frenada.get()->mover(posX, posY, 0);
+  pista.agregarEventoTemporal(frenada);
+}
+
 void EscenaPartida::manejar(EventoExplosion &e) {
   float posX = this->conversor.metroAPixel(e.xCoord_);
   float posY = this->conversor.bloqueAPixel(pista.getSizeY())

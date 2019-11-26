@@ -68,6 +68,10 @@ std::string ConfigCliente::musicaChoque() {
   return std::move(json_["musica"]["choque"].get<std::string>());
 }
 
+std::string ConfigCliente::musicaFrenada() {
+  return std::move(json_["musica"]["frenada"].get<std::string>());
+}
+
 std::string ConfigCliente::rutaLuaScriptUsuario() {
   return std::move(json_["lua"]["ruta2"].get<std::string>());
 }
