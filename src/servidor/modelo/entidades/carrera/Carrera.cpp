@@ -39,7 +39,7 @@ void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     if (checkpoint.id() == ID_META) {
         idsVehiculosAVueltas_[vehiculo.uuid()]++;
         if (idsVehiculosAVueltas_[vehiculo.uuid()] == numeroDeVueltas_) {
-            podio_.push_back(vehiculo.uuid());
+            podio_.emplace_back(vehiculo.uuid());
         }
     }
     bool termino = finalizada();

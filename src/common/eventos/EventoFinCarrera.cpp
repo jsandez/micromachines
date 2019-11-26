@@ -5,7 +5,7 @@
 EventoFinCarrera::EventoFinCarrera(std::vector<uint8_t>&& podio) :
     Evento(0) {
     UUIDEvento_ = UUID_EVENTO_FIN_CARRERA;
-    podio = std::move(podio);
+    podio_ = std::move(podio);
 }
 
 EventoFinCarrera::EventoFinCarrera(uint32_t uuidRemitente, Protocolo &protocolo) :
