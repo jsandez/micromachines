@@ -14,6 +14,10 @@ void SalaDeEspera::agregarJugador(SocketTCP&& socket) {
     jugadores_[contadorJugadores_] = std::make_shared<Jugador>(std::move(socket), contadorJugadores_, destinoEventos_);
 }
 
+void SalaDeEspera::agregarJugador(std::shared_ptr<Jugador> unJugador) {
+    jugadores_[unJugador->uuid()] = unJugador;
+}
+
 std::shared_ptr<Jugador> SalaDeEspera::quitarJugador(uint32_t uuidJugador) {
     std::shared_ptr<Jugador> jugador = jugadores_.at(uuidJugador);
     jugadores_.erase(uuidJugador);

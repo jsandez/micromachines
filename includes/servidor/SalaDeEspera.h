@@ -19,6 +19,7 @@ public:
     SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);
     ~SalaDeEspera();
     void agregarJugador(SocketTCP&& socket);
+    void agregarJugador(std::shared_ptr<Jugador> unJugador);
     std::shared_ptr<Jugador> quitarJugador(uint32_t uuidJugador);
     std::shared_ptr<Jugador> getJugador(uint32_t uuidJugador);
 

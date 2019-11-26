@@ -5,10 +5,12 @@
 #include "includes/common/Cronometro.h"
 #include "includes/common/Cola.h"
 #include "includes/servidor/utils/ConfigServidor.h"
+#include "includes/servidor/SalaDeEspera.h"
 #include "includes/common/eventos/EventoPartidaIniciada.h"
 
-Partida::Partida(uint16_t uuidPista) :
-    mundo_(uuidPista) {
+Partida::Partida(uint16_t uuidPista, SalaDeEspera& salaDeEspera) :
+    mundo_(uuidPista),
+    salaDeEspera_(salaDeEspera) {
 }
 
 Partida::~Partida() {
@@ -100,6 +102,10 @@ void Partida::manejar(EventoFinCarrera& e) {
     //FIXME: Partida tiene que tener ref a la sala de espera para poder agregar al jugador nuevamente.
     // Ojo que el contenedor de jugadores ahora tiene que ser protegido.
     detener();
+    for (auto& kv : jugadores_) {
+        salaDeEspera_.agregarJugador(kv.second);
+    }
+    jugadores_.clear();
 }
 
 void Partida::ocurrio(std::shared_ptr<Evento> unEvento) {

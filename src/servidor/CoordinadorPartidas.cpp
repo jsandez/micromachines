@@ -58,7 +58,7 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     // TODO: Acá hay que decir que uuid de mapa se quiere cargar
     // FIXME: No hardcodear esto
     uint16_t uuidPista = 1;
-    partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista);
+    partidas_[contadorPartidas_] = std::make_shared<Partida>(uuidPista, salaDeEspera_);
     std::shared_ptr<Evento> partidaCreada = std::make_shared<EventoPartidaCreada>(contadorPartidas_, e.uuidRemitente());
     salaDeEspera_.getJugador(e.uuidRemitente())->ocurrio(partidaCreada);
     salaDeEspera_.ocurrio(getSnapshotSala());
