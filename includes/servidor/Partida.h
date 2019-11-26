@@ -21,6 +21,7 @@ private:
     ColaProtegida<std::shared_ptr<Evento>> eventosEntrantes_;
     Mundo mundo_;
     SalaDeEspera& salaDeEspera_;
+    bool fueIniciada_;
 
     Partida(const Partida& otra) = delete;
     Partida& operator=(const Partida& otra) = delete;
@@ -48,6 +49,8 @@ public:
     virtual void manejar(EventoFinCarrera& e) override;
 
     void ocurrio(std::shared_ptr<Evento> unEvento);
+
+    bool aceptaJugadores();
 };
 
 #endif

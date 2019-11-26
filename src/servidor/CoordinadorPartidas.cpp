@@ -27,7 +27,7 @@ std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshotSala() {
     uint16_t ordinal = 1;
     for (const auto& kv : partidas_) {
         //FIXME: PREGUNTAR POR ESTACORRIENDO LA ELIMINACION "ORDENADA" TIENE QUE HACERSE EN UN SOLO LUGAR
-        if (kv.second->estaCorriendo()) {
+        if (!kv.second->aceptaJugadores()) {
             continue;
         }
         datosSnapshot.emplace(ordinal, kv.first);
@@ -61,7 +61,7 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
     std::shared_ptr<Evento> partidaCreada = std::make_shared<EventoPartidaCreada>(contadorPartidas_, e.uuidRemitente());
     salaDeEspera_.getJugador(e.uuidRemitente())->ocurrio(partidaCreada);
     salaDeEspera_.ocurrio(getSnapshotSala());
-    //FIXME: Quitar partidas finalizadas, que no deben tener jugadores dentro.
+    //FIXME: Quitar partidas finalizadas, que no deben tener jugadores dentro (En realidad no iporta)
 
 }
 

@@ -10,7 +10,8 @@
 
 Partida::Partida(uint16_t uuidPista, SalaDeEspera& salaDeEspera) :
     mundo_(uuidPista),
-    salaDeEspera_(salaDeEspera) {
+    salaDeEspera_(salaDeEspera),
+    fueIniciada_(false) {
 }
 
 Partida::~Partida() {
@@ -63,6 +64,7 @@ void Partida::step(uint32_t nroIteracion) {
 }
 
 void Partida::correr() {
+    fueIniciada_ = true;
     asignarVehiculos();
     //TODO: Asignar un auto a cada jugador presente, no poner autos vacios
     double frecuencia = (double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo();
@@ -99,8 +101,7 @@ void Partida::manejar(Evento& e) {
 }
 
 void Partida::manejar(EventoFinCarrera& e) {
-    //FIXME: Partida tiene que tener ref a la sala de espera para poder agregar al jugador nuevamente.
-    // Ojo que el contenedor de jugadores ahora tiene que ser protegido.
+    //FIXME: Ojo que el contenedor de jugadores ahora tiene que ser protegido.
     detener();
     for (auto& kv : jugadores_) {
         salaDeEspera_.agregarJugador(kv.second);
@@ -125,4 +126,8 @@ void Partida::asignarVehiculos() {
         std::shared_ptr<Evento> eventoInicial = std::make_shared<EventoPartidaIniciada>(idVehiculo, std::move(estadoInicial));
         kv.second->ocurrio(eventoInicial);
     }
+}
+
+bool Partida::aceptaJugadores() {
+    return !fueIniciada_;
 }
