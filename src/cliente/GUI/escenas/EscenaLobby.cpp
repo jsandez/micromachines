@@ -74,10 +74,7 @@ void EscenaLobby::handlerBotones(int uuid) {
       escenas_.pop();
     }
     case UUID_BOTON_CIRCULAR: {
-      if (cpu)
-        cpu = false;
-      else
-        cpu = true;
+      cpu = !cpu;
       inicializarTextoJugadores();
     }
     default:break;
