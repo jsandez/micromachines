@@ -21,7 +21,6 @@
 class Computadora : public Jugador, Hilo {
 private:
 	LuaInterpreter lua;
-	Conversor& conversor_;
 	std::atomic<uint_least16_t> x_;
 	std::atomic<uint_least16_t> y_;
 	std::atomic<uint_least16_t> angulo_;
@@ -30,10 +29,8 @@ private:
 
 public:
 	Computadora(ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar,
-													 std::string fileName,
-													 	Conversor& conversor) :
-																	 Jugador(eventosAEnviar),
-																		  conversor_(conversor){
+													 std::string fileName) :
+																	 Jugador(eventosAEnviar){
       	std::string rutaPista = std::move(fileName);
 		std::ifstream archivoPista(rutaPista);
 		Json pistaJson;
@@ -42,12 +39,7 @@ public:
         int size_x = pistaJson["dimensiones"]["x"].get<uint16_t>();
  		size_y_ = pistaJson["dimensiones"]["y"].get<uint16_t>(); 
 
-
-		try{
-			lua.init_script(CONFIG_CLIENTE.rutaLuaScript().c_str());
-		} catch (std::runtime_error &e) {
-			std::cout << e.what() << std::endl;
-		}
+		lua.init_script(CONFIG_CLIENTE.rutaLuaScript().c_str());
 	    for (uint16_t i = 0; i < size_x; i++) {
 	      for (uint16_t j = 0; j < size_y_; j++) {
 		        if (pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>() > 0){
@@ -80,12 +72,8 @@ public:
 	}
 
 	virtual void correr() override {
-		try{
-			lua.init_script(CONFIG_CLIENTE.rutaLuaScriptUsuario().c_str());
-		} catch (std::runtime_error &e) {
-			std::cout << e.what() << std::endl;
-		}
-		int frecuencia = 1 / CONFIG_CLIENTE.tiempoReaccionHumano();
+		lua.init_script(CONFIG_CLIENTE.rutaLuaScriptUsuario().c_str());
+		double frecuencia = 1 / CONFIG_CLIENTE.tiempoReaccionHumano();
 	    int iteracion = 0;
 	    frecuencia *= 1000;
 	    Cronometro c;
@@ -93,11 +81,11 @@ public:
 			
 		while (seguirCorriendo_){
 			lua.get_function_name("get_instruction");
-			float x = x_ / 100.0f;
-			float y = y_/ 100.0f;
+			int x = std::floor(x_ /1000.0f);
+			int y = std::floor(y_/1000.0f);
 			uint16_t angulo = angulo_;
-			lua << (int) conversor_.pixelABloque(x);
-			lua << (int) (size_y_ - conversor_.pixelABloque(y) - 1);
+			lua << (int) x;
+			lua << (int) y;
 			lua << (int) angulo;
     		lua.call_function("get_instruction", 3, 1);
 			do_command();

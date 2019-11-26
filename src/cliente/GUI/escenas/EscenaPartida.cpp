@@ -63,7 +63,7 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 
     if (juegaComputadora){
       jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(
-                              eventosAEnviar_,"assets/pistas/1.json", conversor)));
+                              eventosAEnviar_,"assets/pistas/1.json")));
     } else {
       jugador_ = std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
     }

@@ -18,7 +18,7 @@ void HiloGrabador::correr(){
     AVRational frame_rate = { 1, static_cast<int>(CONFIG_CLIENTE.fpsGrabadora()) };
     OutputVideo videoOutput(fmt, frame_rate, CONFIG_CLIENTE.anchoGrabadora(), CONFIG_CLIENTE.altoGrabadora(), AV_PIX_FMT_RGB24);
     fmt.open();
-    int frecuencia = 1 / CONFIG_CLIENTE.fpsGrabadora();
+    double frecuencia = 1 / CONFIG_CLIENTE.fpsGrabadora();
     int iteracion = 0;
     frecuencia *= 1000;
     Cronometro c;
