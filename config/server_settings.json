@@ -24,7 +24,10 @@
         "superficies": {
             "lado" : 9.5
         },
-        "anchoTile" : 10.0
+        "anchoTile" : 10.0,
+        "disminucionVida" : {
+            "vsVehiculo" : 5
+        }
     },
     "rutaPistas": "assets/pistas/",
     "tiles": {

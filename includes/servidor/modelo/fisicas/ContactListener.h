@@ -15,6 +15,7 @@ private:
 
     void vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena);
     void vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint);
+    void vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB);
     
 public:
     ContactListener(Fisicas& fisicas);

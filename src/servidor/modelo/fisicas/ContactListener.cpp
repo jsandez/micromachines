@@ -41,11 +41,9 @@ void ContactListener::BeginContact(b2Contact* contact) {
             vehiculoVsCheckpoint(*static_cast<Vehiculo*>(colisionableA), *static_cast<Checkpoint*>(colisionableB));
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_TIERRA_) {
-            std::cout << "Bajar la velocidad o aplicar un modificador\n";
             //TODO: No se pueden modificar valores acá, hay que obtener el b2Vehiculo
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_PISTA_) {
-            std::cout << "De nuevo en la pista\n";
         }
     }
 }
@@ -92,4 +90,8 @@ void ContactListener::vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena
 }
 void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
    checkpoint.registrarPaso(vehiculo);
+}
+
+void ContactListener::vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB) {
+    uint8_t disminucionVida = CONFIG_SERVIDOR.disminucionVidaChoqueConVehiculo();    
 }

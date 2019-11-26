@@ -48,6 +48,8 @@ public:
     float largoVehiculo();
 
     float ladoSuperficie();
+
+    uint8_t disminucionVidaChoqueConVehiculo();
 };
 
 #endif

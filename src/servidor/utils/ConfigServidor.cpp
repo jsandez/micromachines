@@ -104,3 +104,7 @@ float ConfigServidor::ladoSuperficie() {
 float ConfigServidor::anchoTile() {
     return json_["modelo"]["anchoTile"].get<float>();
 }
+
+uint8_t ConfigServidor::disminucionVidaChoqueConVehiculo() {
+    return json_["modelo"]["disminucionVida"]["vsVehiculo"].get<uint8_t>();
+}
