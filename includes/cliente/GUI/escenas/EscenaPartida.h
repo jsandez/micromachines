@@ -23,8 +23,12 @@ class EscenaPartida : public Escena {
   Conversor conversor;
   Camara camara;
   std::unique_ptr<Jugador> jugador_;
-  int id_car, screenX, screenY;
+  ObjetoDinamico barro;
+
+  int id_car;
+  bool barroActivo;
   void dibujarInterfaz(int iteracion);
+  void dibujarBarro(int iteracion);
  public:
   EscenaPartida(Renderizador &renderizador,
                 ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
@@ -43,6 +47,8 @@ class EscenaPartida : public Escena {
   virtual void manejar(EventoSnapshot &e) override;
   virtual void manejar(EventoChoque &e) override ;
   virtual void manejar(EventoExplosion &e) override ;
+  virtual void manejar(EventoBarroPisado &e) override ;
+  virtual void manejar(EventoFinBarro &e) override ;
   virtual void manejar(EventoFinCarrera &e) override;
 };
 #endif
