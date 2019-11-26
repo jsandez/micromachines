@@ -108,3 +108,11 @@ float ConfigServidor::anchoTile() {
 uint8_t ConfigServidor::disminucionVidaChoqueConVehiculo() {
     return json_["modelo"]["disminucionVida"]["vsVehiculo"].get<uint8_t>();
 }
+
+int ConfigServidor::cantidadMaximaModificadores() {
+    return json_["modelo"]["modificadores"]["cantidadMaxima"].get<int>();
+}
+
+int ConfigServidor::segundosEntreAparicionModificador() {
+    return json_["modelo"]["modificadores"]["segundosEntreAparicion"].get<int>();
+}

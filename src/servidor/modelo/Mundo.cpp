@@ -17,9 +17,6 @@
 //Forward declaration
 static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuelo, Json& pistaJson);
 static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
-//static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson);
-//TODO: implementar
-//static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
@@ -29,8 +26,7 @@ Mundo::Mundo(uint16_t uuidPista) :
 
     for (uint8_t id = 1; id < 255; ++id) {
         uuidsObjetos_.push(id);
-    }
-    
+    }  
     
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
@@ -44,11 +40,8 @@ Mundo::Mundo(uint16_t uuidPista) :
     cargarSuelo(largoX, largoY, tileASuelo_, pistaJson);
     cargarPosicionesIniciales(largoX, largoY, posicionesIniciales_, pistaJson);
     carrera_.cargarDesdeJson(pistaJson);
-    //cargarCheckpoints(largoX, largoY, carrera_.checkpoints(), pistaJson);
-    //cargarSuperficies(x, y, tileAModificador_, pistaJson);
     
     fisicas_.generarSuelo(tileASuelo_);
-    //fisicas_.generarSuperficies(tileAModificador_);
     fisicas_.generarCheckpoints(carrera_.checkpoints());
 }
 
@@ -100,6 +93,10 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
 std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {
     //FIXME No devuelve el estado inicial en llamadas sucesivas
     return serializarEstado();
+}
+
+void Mundo::agregarModificadores() {
+    
 }
 
 void Mundo::manejar(Evento& e) {
@@ -175,18 +172,6 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
         tiles_.emplace(Posicion(x, y, 0.0f));
     }
 }
-
-/*
-static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesASuperficie, Json& pistaJson) {
-    for (uint16_t i = 0; i < largoX; ++i) {
-        for (uint16_t j = 0; j < largoY; ++j) {
-            //TODO: Acá se usa el superficieFactory
-            //TODO: Superficies son barro y aceite
-            //tilesASuperficie[Tile(i, largoY - j)] = pistaJson["capas"]["superficies"][std::to_string(i)][std::to_string(j)];
-        }
-    }
-}
-*/
 
 std::map<uint8_t, datosVehiculo_> Mundo::serializarEstado() {
     std::map<uint8_t, datosVehiculo_> idsADatosVehiculo;

@@ -49,6 +49,9 @@ public:
 
     float ladoSuperficie();
 
+    int cantidadMaximaModificadores();
+    int segundosEntreAparicionModificador();
+
     uint8_t disminucionVidaChoqueConVehiculo();
 };
 

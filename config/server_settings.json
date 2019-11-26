@@ -24,6 +24,10 @@
         "superficies": {
             "lado" : 9.5
         },
+        "modificadores" : {
+            "cantidadMaxima" : 30,
+            "segundosEntreAparicion" : 1
+        },        
         "anchoTile" : 10.0,
         "disminucionVida" : {
             "vsVehiculo" : 5

@@ -9,6 +9,7 @@
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 #include "includes/servidor/modelo/fisicas/ContactListener.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/Modificador.h"
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
 #include "includes/servidor/modelo/entidades/carrera/Carrera.h"
@@ -16,7 +17,6 @@
 class Mundo : public Handler {
 private:
     std::map<Tile, std::shared_ptr<Superficie>> tileASuelo_;
-    //std::map<Tile, std::shared_ptr<Superficie>> tileAModificador_;
     std::queue<Posicion> posicionesIniciales_;
     std::map<uint32_t, Vehiculo> jugadoresAVehiculos_;
     ColaProtegida<std::shared_ptr<Evento>> eventosOcurridos_;
@@ -26,22 +26,19 @@ private:
     unsigned int snapshotsEnviadosPorSegundo_;
     ContactListener contactListener_;
     Carrera carrera_;
+    std::map<uint8_t, std::shared_ptr<Modificador>> modificadores_;
 
     std::map<uint8_t, datosVehiculo_> serializarEstado();
 
 public:
-    //TODO: Mundo recibe referencia a partida para avisarle que termino.
     Mundo(uint16_t uuidPista);
-
     ~Mundo();
 
     void step(uint32_t numeroIteracion);
-
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
-
     uint8_t agregarVehiculo(uint32_t uuidJugador);
-
     std::map<uint8_t, datosVehiculo_> getEstadoInicial();
+    void agregarModificadores();
     
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoAcelerar& e) override;
