@@ -21,6 +21,10 @@ Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListene
 Fisicas::~Fisicas() {
 }
 
+void Fisicas::ocurrio(std::shared_ptr<Evento> unEvento) {
+    eventosOcurridos_.put(unEvento);
+}
+
 void Fisicas::generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo) {
     //TODO: Implementar: es arena tierra y pista.
     float anchoTile = CONFIG_SERVIDOR.anchoTile();

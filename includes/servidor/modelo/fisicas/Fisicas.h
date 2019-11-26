@@ -49,6 +49,8 @@ public:
     void dejarDeDoblarIzquierda(uint8_t uuidVehiculo);
     void doblarDerecha(uint8_t uuidVehiculo);
     void dejarDeDoblarDerecha(uint8_t uuidVehiculo);
+
+    void ocurrio(std::shared_ptr<Evento> evento);
     
     Posicion getPosicionDe(uint8_t idCuerpo);
     //FIXME: TIENE QUE HABER UN REUBICAR VEHICULO QUE LLAME A ESTO, CON FIRMA VEICULO& ?

@@ -8,6 +8,9 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
+#include "includes/common/eventos/EventoChoque.h"
+#include "includes/common/eventos/EventoExplosion.h"
+
 // Métodos privados
 static void ordenar(Colisionable** A, Colisionable** B);
 
@@ -94,15 +97,22 @@ void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& check
 }
 
 void ContactListener::vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB) {
+    Posicion posicionVehiculoA = fisicas_.getPosicionDe(vehiculoA.uuid());
+    std::shared_ptr<Evento> choque = std::make_shared<EventoChoque>(posicionVehiculoA.x_, posicionVehiculoA.y_);
+    fisicas_.ocurrio(choque);
+
     uint8_t disminucionVida = CONFIG_SERVIDOR.disminucionVidaChoqueConVehiculo();
     bool vehiculoAExploto = vehiculoA.disminuirSalud(disminucionVida);
     if (vehiculoAExploto) {
-        //TODO: ENVIAR EXPLOSION
+        std::shared_ptr<Evento> explosion = std::make_shared<EventoExplosion>(posicionVehiculoA.x_, posicionVehiculoA.y_);
+        fisicas_.ocurrio(explosion);
         fisicas_.reubicar(vehiculoA, vehiculoA.getPuntoRespawn());
     }
     bool vehiculoBExploto = vehiculoB.disminuirSalud(disminucionVida);
     if (vehiculoBExploto) {
-        //TODO: ENVIAR EXPLOSION
+        Posicion posicionVehiculoB = fisicas_.getPosicionDe(vehiculoB.uuid());
+        std::shared_ptr<Evento> explosion = std::make_shared<EventoExplosion>(posicionVehiculoB.x_, posicionVehiculoB.y_);
+        fisicas_.ocurrio(explosion);
         fisicas_.reubicar(vehiculoB, vehiculoB.getPuntoRespawn());
     }
 }
