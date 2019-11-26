@@ -36,6 +36,10 @@ void ContactListener::BeginContact(b2Contact* contact) {
     //}
 
     if (colisionableA->getTipo() == Colisionable::tipos::VEHICULO_) {
+        if (colisionableB->yaFueColisionado()) {
+            //No queremos eliminar dos veces o revienta todo
+            return;
+        }
         if (colisionableB->getTipo() == Colisionable::tipos::VEHICULO_) {
             vehiculoVsVehiculo(*static_cast<Vehiculo*>(colisionableA), *static_cast<Vehiculo*>(colisionableB));
         }
