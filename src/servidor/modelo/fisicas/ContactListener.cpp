@@ -171,7 +171,13 @@ void ContactListener::vehiculoVsBoost(Vehiculo& vehiculo, Boost& boost) {
 
 void ContactListener::vehiculoVsPiedra(Vehiculo& vehiculo, Piedra& piedra) {
     //TODO: NO HARDCODEAR
-    vehiculo.disminuirSalud(30);
+    bool exploto = vehiculo.disminuirSalud(30);
+    if (exploto) {
+        Posicion posicionVehiculo = fisicas_.getPosicionDe(vehiculo.uuid());
+        std::shared_ptr<Evento> explosion = std::make_shared<EventoExplosion>(posicionVehiculo.x_, posicionVehiculo.y_);
+        fisicas_.ocurrio(explosion);
+        fisicas_.reubicar(vehiculo, vehiculo.getPuntoRespawn());
+    }
     fisicas_.quitar(piedra);
     
 }

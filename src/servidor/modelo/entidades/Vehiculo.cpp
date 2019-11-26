@@ -67,8 +67,7 @@ void Vehiculo::step() {
         if (futuro.steps == 0) {
             duenio_->ocurrio(futuro.evento);
         }   
-    }
-    
+    }    
 }
 
 bool Vehiculo::disminuirSalud(uint8_t cantidad) {
