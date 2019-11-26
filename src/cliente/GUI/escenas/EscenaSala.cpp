@@ -10,7 +10,7 @@ void EscenaSala::inicializarBotones() {
   
   int anchoVentana = CONFIG_CLIENTE.anchoVentana();
   int altoVentana = CONFIG_CLIENTE.altoVentana();
-  
+  botones.clear();
   this->botones.emplace(UUID_BOTON_CREAR_PARTIDA,
     std::make_shared<Boton>(UUID_BOTON_CREAR_PARTIDA,
                               renderizador_,
@@ -54,6 +54,7 @@ void EscenaSala::inicializarBotones() {
 
 void EscenaSala::inicializarTextoPartidas() {
   int tamanioFuente = 30;
+  textoPartidas.clear();
   for (size_t i = 0; i < partidasId.size(); ++i) {
     std::string texto = "Partida " + std::to_string(partidasId.at(i));
     textoPartidas.emplace(i, std::make_shared<Texto>(texto,
@@ -210,7 +211,7 @@ void EscenaSala::manejar(Evento &e) {
 }
 
 void EscenaSala::manejar(EventoSnapshotSala& e) {
-  partidasId = std::map<uint16_t, uint16_t>();
+  partidasId.clear();
   for (const auto& kv : e.ordinalAuuidPartida_) {
     partidasId.emplace(kv.first, kv.second);
   }

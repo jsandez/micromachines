@@ -24,6 +24,7 @@ void EscenaLobby::inicializarBotones() {
 
 void EscenaLobby::inicializarTextoJugadores() {
   int tamanioFuente = 30;
+  textoJugadores.clear();
   for (size_t i = 0; i < jugadoresId.size(); ++i) {
     std::string texto = "Jugador " + std::to_string(jugadoresId.at(i));
     int color = UUID_TEXTO_AMARILLO;
@@ -175,4 +176,5 @@ void EscenaLobby::manejar(EventoSnapshotLobby& e) {
     ordinal++;
   }
   inicializarTextoJugadores();
+  std::cout << "Redibiendo snapshot loby\n";
 }
