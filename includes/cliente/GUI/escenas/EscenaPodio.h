@@ -11,7 +11,7 @@ class EscenaPodio : public Escena {
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
   std::map<int, std::shared_ptr<Texto>> textoJugadores;
-  std::map<int, std::shared_ptr<ObjetoDinamico>>& mapaAutos;
+  std::map<int, std::shared_ptr<ObjetoDinamico>> mapaAutos;
 
   void dibujarAutos(int nroIteracion);
 //  void inicializarBotones();
