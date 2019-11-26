@@ -24,7 +24,7 @@ class EscenaPartida : public Escena {
   Camara camara;
 
   std::shared_ptr<Jugador> jugador_;
-  int id_car, screenX, screenY;
+  int screenX, screenY;
   ObjetoDinamico barro;
 
   int id_car;
