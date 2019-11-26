@@ -32,8 +32,8 @@ void Fisicas::agregarModificador(std::shared_ptr<Modificador> modificador, uint8
     float anchoTile = CONFIG_SERVIDOR.anchoTile();
     b2BodyDef bodyDef;
     bodyDef.userData = modificador.get();
-    float x = anchoTile*(float)posicion.x_; 
-    float y = anchoTile*(float)posicion.y_;
+    float x = posicion.x_ + 0.5f*anchoTile; 
+    float y = posicion.y_ + 0.5f*anchoTile;
     bodyDef.position.Set(x, y);
 
     b2Body* cuerpo = mundoBox2D_->CreateBody(&bodyDef);
