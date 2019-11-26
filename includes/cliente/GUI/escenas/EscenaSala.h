@@ -21,6 +21,8 @@ class EscenaSala : public Escena {
   std::map<int, std::shared_ptr<Texto>> textoPartidas;
   std::map<uint16_t, uint16_t> partidasId;
   int partidaSeleccionada;
+  uint16_t inicioVentana_;
+  uint16_t finVentana_;
 
   void inicializarBotones();
   void inicializarTextoPartidas();

@@ -7,7 +7,7 @@
 #include "includes/cliente/GUI/Texto.h"
 
 void EscenaSala::inicializarBotones() {
-  
+  botones.clear();
   int anchoVentana = CONFIG_CLIENTE.anchoVentana();
   int altoVentana = CONFIG_CLIENTE.altoVentana();
   botones.clear();
@@ -32,35 +32,58 @@ void EscenaSala::inicializarBotones() {
   // BOTONES VACIOS PARA LAS PARTIDAS
   float posicionRelativaX = 0.45f;
   float posicionRelativaY = 0.42f;
+
+  int restanDibujar = partidasId.size() > 4 ? 4 : partidasId.size();
+
   for (size_t i = 0; i < partidasId.size(); ++i) {
+    if (restanDibujar == 0) {
+      break;
+    }
     this->botones.emplace(i, std::make_shared<Boton>(UUID_BOTON_VACIO,
       renderizador_,
       posicionRelativaX * anchoVentana,
       posicionRelativaY * altoVentana
       ));
     posicionRelativaY += 0.10f;
+    restanDibujar--;
   }
 
-  this->botones.emplace(4, std::make_shared<Boton>(UUID_BOTON_DOWN,
+  this->botones.emplace(4, std::make_shared<Boton>(UUID_BOTON_UP,
                               renderizador_,
                               0.80 * anchoVentana,
                               0.42 * altoVentana));
 
-  this->botones.emplace(5, std::make_shared<Boton>(UUID_BOTON_UP,
+  this->botones.emplace(5, std::make_shared<Boton>(UUID_BOTON_DOWN,
                               renderizador_,
                               0.80 * anchoVentana,
                               0.72 * altoVentana));
 }
 
 void EscenaSala::inicializarTextoPartidas() {
-  int tamanioFuente = 30;
   textoPartidas.clear();
-  for (size_t i = 0; i < partidasId.size(); ++i) {
-    std::string texto = "Partida " + std::to_string(partidasId.at(i));
-    textoPartidas.emplace(i, std::make_shared<Texto>(texto,
+  if (finVentana_ > partidasId.size()) {
+    inicioVentana_ = 0;
+    finVentana_ = 4;
+  }
+  int tamanioFuente = 30;
+  int restanDibujar = partidasId.size() > 4 ? 4 : partidasId.size();
+  uint16_t skips = inicioVentana_;
+  int dibujadas = 0;
+  for (auto i = partidasId.begin(); i != partidasId.end(); i++) {
+    if (skips > 0) {
+      skips--;
+      continue;
+    }
+    if (restanDibujar == 0) {
+      break;
+    }
+    std::string texto = "Partida " + std::to_string(i->second);
+    textoPartidas.emplace(dibujadas, std::make_shared<Texto>(texto,
       tamanioFuente,
       renderizador_,
       UUID_TEXTO_BLANCO));
+    restanDibujar--;
+    dibujadas++;
   }
 }
 
@@ -147,8 +170,29 @@ void EscenaSala::handlerBotones(int uuid) {
     case UUID_BOTON_ATRAS: {
       escenas_.pop();
     }
+    //TOCO BOTON UP
+    case 4:
+      if (inicioVentana_ <= 0) {
+        return;
+      }
+      inicioVentana_--;
+      finVentana_--;
+      inicializarBotones();
+      inicializarTextoPartidas();
+      break;
+    //TOCO BOTON DOWN
+    case 5:
+      if (finVentana_ == 0xFFFF || finVentana_ == partidasId.size()) {
+        return;
+      }
+      inicioVentana_++;
+      finVentana_++;
+      inicializarBotones();
+      inicializarTextoPartidas();
+      break;
     default:break;
   }
+  partidaSeleccionada += inicioVentana_;
 }
 
 EscenaSala::EscenaSala(Renderizador &renderizador,
@@ -160,7 +204,9 @@ EscenaSala::EscenaSala(Renderizador &renderizador,
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
-    eventosGUI_(eventosGUI) {
+    eventosGUI_(eventosGUI),
+    inicioVentana_(0),
+    finVentana_(4) {
   
   for (const auto& kv : e.ordinalAuuidPartida_) {
     partidasId.emplace(kv.first, kv.second);
@@ -215,6 +261,8 @@ void EscenaSala::manejar(EventoSnapshotSala& e) {
   for (const auto& kv : e.ordinalAuuidPartida_) {
     partidasId.emplace(kv.first, kv.second);
   }
+  inicioVentana_ = 0;
+  finVentana_ = 4;
   inicializarBotones();
   inicializarTextoPartidas();
 }
