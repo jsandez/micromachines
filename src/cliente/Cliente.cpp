@@ -12,7 +12,7 @@ Cliente::Cliente(unsigned int anchoVentana,
                  const std::string &tituloVentana,
                  const std::string &host,
                  const std::string &puerto) :
-    seguirCorriendo(true),
+    seguirCorriendo(false),
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
     renderizador_(ventana_),
     dibujador_(ventana_, renderizador_, grabador_, eventosGUI_, eventosAEnviar_,seguirCorriendo),
@@ -29,31 +29,31 @@ Cliente::~Cliente() {
 }
 
 void Cliente::correr() {
-  try {
-    socket_.conectar();
-  }
-  catch (const std::exception &e) {
-    std::cerr << e.what() << '\n';
-  }
-
-  recibidor_.iniciar();
-  enviador_.iniciar();
-  dibujador_.iniciar();
-  //TODO: Mover a inputhandler, que será de teclas o LUA
-  SDL_Event evento;
-  while (SDL_WaitEvent(&evento) && seguirCorriendo) {
-    switch (evento.type) {
-      case SDL_KEYDOWN:manejarKeyDown(evento);
-        break;
-      case SDL_KEYUP:manejarKeyUp(evento);
-        break;
-      case SDL_MOUSEBUTTONDOWN:manejarMouseDown(evento);
-        break;
-      case SDL_QUIT:seguirCorriendo = false;
-        break;
-      default:break;
+    try {
+      socket_.conectar();
     }
-  }
+    catch (const std::exception &e) {
+      std::cerr << e.what() << '\n';
+    }
+    this->seguirCorriendo = true;
+    recibidor_.iniciar();
+    enviador_.iniciar();
+    dibujador_.iniciar();
+    //TODO: Mover a inputhandler, que será de teclas o LUA
+    SDL_Event evento;
+    while (SDL_WaitEvent(&evento) && seguirCorriendo) {
+      switch (evento.type) {
+        case SDL_KEYDOWN:manejarKeyDown(evento);
+          break;
+        case SDL_KEYUP:manejarKeyUp(evento);
+          break;
+        case SDL_MOUSEBUTTONDOWN:manejarMouseDown(evento);
+          break;
+        case SDL_QUIT:seguirCorriendo = false;
+          break;
+        default:break;
+      }
+    }
 }
 
 void Cliente::cerrar() {
@@ -101,7 +101,7 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
       } else {
           grabador_.join();
           grabador_.iniciar();
-      } 
+      }
       break;
     default:
       break;
