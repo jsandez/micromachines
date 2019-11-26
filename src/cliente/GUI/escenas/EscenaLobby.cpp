@@ -116,13 +116,13 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoSala"),
                                             renderizador)),
-    eventosGUI_(eventosGUI) {
+    eventosGUI_(eventosGUI),
+    cpu(false) {
 
   jugadoresId.emplace(0, e.uuidCreador_);
   jugadoresEstaListo.emplace(0, false);
   inicializarBotones();
   inicializarTextoJugadores();
-  this->cpu = false;
 }
 
 EscenaLobby::EscenaLobby(Renderizador &renderizador,
@@ -206,5 +206,4 @@ void EscenaLobby::manejar(EventoSnapshotLobby &e) {
     ordinal++;
   }
   inicializarTextoJugadores();
-  std::cout << "Redibiendo snapshot loby\n";
 }
