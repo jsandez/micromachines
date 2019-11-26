@@ -58,6 +58,7 @@ void Mundo::step(uint32_t numeroIteracion) {
         std::shared_ptr<Evento> snapshot = std::make_shared<EventoSnapshot>(std::move(idsADatosVehiculo));
         eventosOcurridos_.put(snapshot);
     }
+    agregarModificadores(numeroIteracion);
 }
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
@@ -96,7 +97,12 @@ std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {
 }
 
 void Mundo::agregarModificadores(uint32_t nroIteracion) {
-
+    if (nroIteracion % CONFIG_SERVIDOR.factorAparicionModificador() == 0) {
+        //VER LUGAR
+        //VER Q NO ESTE OCUPAO?
+        //VER QUE NO SEA EL NUM MAX
+        //TOMAR EL ID, AGREGARLO Y POP AL ID PARA REUTILIZAR
+    }
 }
 
 void Mundo::manejar(Evento& e) {
