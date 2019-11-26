@@ -24,9 +24,7 @@ Cliente::~Cliente() {
   dibujador_.join();
   enviador_.join();
   recibidor_.join();
-  if (grabador_.joinable()){
-    grabador_.join();
-  }
+  grabador_.join();
 }
 
 void Cliente::correr() {
@@ -101,9 +99,7 @@ void Cliente::manejarKeyDown(SDL_Event &eventoSDL) {
       if (grabador_.estaCorriendo()){
           grabador_.detener();
       } else {
-          if (grabador_.joinable()){
-              grabador_.join();
-          }
+          grabador_.join();
           grabador_.iniciar();
       } 
       break;

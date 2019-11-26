@@ -9,9 +9,8 @@ CoordinadorPartidas::~CoordinadorPartidas() {
     for (const auto& kv : partidas_) {
         if (kv.second->estaCorriendo()) {
             kv.second->detener();
-            //FIXME: PREGUNTAR POR JOINABLE<
-            kv.second->join();
-        }    
+        }
+        kv.second->join();
     }
 }
 
@@ -27,7 +26,7 @@ std::shared_ptr<EventoSnapshotSala> CoordinadorPartidas::getSnapshotSala() {
     std::map<uint16_t, uint16_t> datosSnapshot;
     uint16_t ordinal = 1;
     for (const auto& kv : partidas_) {
-        //FIXME: PREGUNTAR POR ESTACORRIENDO Y ¿JOINABLE? LA ELIMINACION "ORDENADA" TIENE QUE HACERSE EN UN SOLO LUGAR
+        //FIXME: PREGUNTAR POR ESTACORRIENDO LA ELIMINACION "ORDENADA" TIENE QUE HACERSE EN UN SOLO LUGAR
         if (kv.second->estaCorriendo()) {
             continue;
         }
