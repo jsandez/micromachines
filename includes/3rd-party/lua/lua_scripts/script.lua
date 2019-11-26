@@ -19,4 +19,8 @@ function insert_road_block(x, y)
   matrix[x][y] = true
 end
 
+function insert_bad_block(x, y)
+  matrix[x][y] = false
+end
+
 math.randomseed(os.time())
