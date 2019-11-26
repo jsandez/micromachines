@@ -20,13 +20,18 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
 //static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson);
 //TODO: implementar
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
-
+#include <iostream>
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
-    contadorObjetos_(0),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
     contactListener_(fisicas_),
     carrera_(eventosOcurridos_) {
+
+    for (uint8_t id = 1; id < 255; ++id) {
+        uuidsObjetos_.push(id);
+        std::cout << (int) id<< "\n";
+    }
+    
     
     //TODO: Es mejor cargar todas las pistas al inicio y luego hacer un get() para no tener que ir
     // siempre a disco.
@@ -73,7 +78,8 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     Posicion posicion = posicionesIniciales_.front();
     posicion.x_ = Conversor::tileAMetro(posicion.x_);
     posicion.y_ = Conversor::tileAMetro(posicion.y_);
-    jugadoresAVehiculos_.emplace(uuidJugador, Vehiculo(contadorObjetos_,
+    uint8_t uuid = uuidsObjetos_.front();
+    jugadoresAVehiculos_.emplace(uuidJugador, Vehiculo(uuid,
             CONFIG_SERVIDOR.velocidadMaxVehiculoAdelante(),
             CONFIG_SERVIDOR.velocidadMaxVehiculoAtras(),
             CONFIG_SERVIDOR.aceleracionVehiculo(),
@@ -82,14 +88,14 @@ uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
             CONFIG_SERVIDOR.saludVehiculo(),
             posicion));
             
-    jugadoresAIDVehiculo_[uuidJugador] = contadorObjetos_;
+    jugadoresAIDVehiculo_[uuidJugador] = uuid;
     fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(uuidJugador), posicion);
     posicionesIniciales_.pop();
 
     carrera_.registrarVehiculo(jugadoresAVehiculos_.at(uuidJugador));
 
-    //Wizardry
-    return contadorObjetos_++;
+    uuidsObjetos_.pop();
+    return uuid;
 }
 
 std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {

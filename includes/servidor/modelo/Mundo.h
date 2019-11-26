@@ -20,8 +20,8 @@ private:
     std::queue<Posicion> posicionesIniciales_;
     std::map<uint32_t, Vehiculo> jugadoresAVehiculos_;
     ColaProtegida<std::shared_ptr<Evento>> eventosOcurridos_;
-    Fisicas fisicas_;
-    uint8_t contadorObjetos_;
+    Fisicas fisicas_;    
+    std::queue<uint8_t> uuidsObjetos_;
     std::map<uint32_t, uint8_t> jugadoresAIDVehiculo_;
     unsigned int snapshotsEnviadosPorSegundo_;
     ContactListener contactListener_;
