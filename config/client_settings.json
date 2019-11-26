@@ -366,6 +366,14 @@
       "sprites": [
         "assets/modificadores/1500.png"
       ]
+    },
+    "animacionVacia": {
+      "uuid": 9999,
+      "ancho": 1,
+      "alto": 1,
+      "sprites": [
+        "assets/modificadores/autos/9999.png"
+      ]
     }
   },
   "grabadora": {
