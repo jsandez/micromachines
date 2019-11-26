@@ -225,7 +225,15 @@ void EscenaPartida::manejar(EventoAparecioConsumible& e) {
   int idAnimacion = 0;
   if (e.tipoConsumible_ == UUID_VIDA) {
     idAnimacion = UUID_ANIMACION_CAJAS_SALUD;
-  }
+  } else if (e.tipoConsumible_ == UUID_BOOST) {
+    idAnimacion = UUID_ANIMACION_BOOST;
+  } else if (e.tipoConsumible_ == UUID_BARRO) {
+    idAnimacion = UUID_ANIMACION_BARRO;
+  } else if (e.tipoConsumible_ == UUID_PIEDRA) {
+    idAnimacion = UUID_ANIMACION_PIEDRA;
+  } else if (e.tipoConsumible_ == UUID_ACEITE) {
+    idAnimacion = UUID_ANIMACION_ACEITE;
+  } 
 
   std::shared_ptr<ObjetoDinamico> consumible =
         std::make_shared<ObjetoDinamico>(idAnimacion,

@@ -9,6 +9,10 @@ class SuperficieArena;
 class Vehiculo;
 class Checkpoint;
 class CajaVida;
+class Aceite;
+class Barro;
+class Boost;
+class Piedra;
 
 class ContactListener : public b2ContactListener {
 private:
@@ -18,6 +22,10 @@ private:
     void vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint);
     void vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB);
     void vehiculoVsCajaVida(Vehiculo& vehiculo, CajaVida& cajaVida);
+    void vehiculoVsAceite(Vehiculo& vehiculo, Aceite& aceite);
+    void vehiculoVsBarro(Vehiculo& vehiculo, Barro& barro);
+    void vehiculoVsBoost(Vehiculo& vehiculo, Boost& boost);
+    void vehiculoVsPiedra(Vehiculo& vehiculo, Piedra& piedra);
     
 public:
     ContactListener(Fisicas& fisicas);

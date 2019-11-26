@@ -7,6 +7,10 @@
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/entidades/CajaVida.h"
+#include "includes/servidor/modelo/entidades/Aceite.h"
+#include "includes/servidor/modelo/entidades/Barro.h"
+#include "includes/servidor/modelo/entidades/Piedra.h"
+#include "includes/servidor/modelo/entidades/Boost.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 #include "includes/common/eventos/EventoChoque.h"
@@ -56,6 +60,18 @@ void ContactListener::BeginContact(b2Contact* contact) {
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SALUD_) {
             vehiculoVsCajaVida(*static_cast<Vehiculo*>(colisionableA), *static_cast<CajaVida*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::ACEITE_) {
+            vehiculoVsAceite(*static_cast<Vehiculo*>(colisionableA), *static_cast<Aceite*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::BARRO_) {
+            vehiculoVsBarro(*static_cast<Vehiculo*>(colisionableA), *static_cast<Barro*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::PIEDRA_) {
+            vehiculoVsPiedra(*static_cast<Vehiculo*>(colisionableA), *static_cast<Piedra*>(colisionableB));
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::BOOST_) {
+            vehiculoVsBoost(*static_cast<Vehiculo*>(colisionableA), *static_cast<Boost*>(colisionableB));
         }
     }
 }
@@ -132,4 +148,20 @@ void ContactListener::vehiculoVsCajaVida(Vehiculo& vehiculo, CajaVida& cajaVida)
     int deltaVida = cajaVida.deltaVida();
     vehiculo.sumarSalud(deltaVida);
     fisicas_.quitar(cajaVida);
+}
+
+void ContactListener::vehiculoVsAceite(Vehiculo& vehiculo, Aceite& aceite) {
+    fisicas_.quitar(aceite);
+}
+
+void ContactListener::vehiculoVsBarro(Vehiculo& vehiculo, Barro& barro) {
+    fisicas_.quitar(barro);
+}
+
+void ContactListener::vehiculoVsBoost(Vehiculo& vehiculo, Boost& boost) {
+    fisicas_.quitar(boost);
+}
+
+void ContactListener::vehiculoVsPiedra(Vehiculo& vehiculo, Piedra& piedra) {
+    fisicas_.quitar(piedra);
 }

@@ -64,6 +64,10 @@ public:
     
     void reubicar(Vehiculo& vehiculo, Posicion& Posicion);
     void quitar(CajaVida& cajaVida);
+    void quitar(Barro& barro);
+    void quitar(Aceite& aceite);
+    void quitar(Boost& boost);
+    void quitar(Piedra& piedra);
 
 };
 

@@ -4,11 +4,11 @@
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/red/Protocolo.h"
 
-#define UUID_PIEDRA     0
-#define UUID_VIDA       1
-#define UUID_ACEITE     2
-#define UUID_BARRO      3
-#define UUID_BOOST      4
+#define UUID_PIEDRA     1
+#define UUID_VIDA       2
+#define UUID_ACEITE     3
+#define UUID_BARRO      4
+#define UUID_BOOST      5
 
 class EventoAparecioConsumible : public Evento {
 public:

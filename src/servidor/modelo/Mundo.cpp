@@ -14,6 +14,10 @@
 #include "includes/servidor/modelo/superficies/SuperficieFactory.h"
 #include "includes/servidor/modelo/movimiento/Posicion.h"
 #include "includes/servidor/modelo/entidades/CajaVida.h"
+#include "includes/servidor/modelo/entidades/Barro.h"
+#include "includes/servidor/modelo/entidades/Boost.h"
+#include "includes/servidor/modelo/entidades/Aceite.h"
+#include "includes/servidor/modelo/entidades/Piedra.h"
 #include "includes/common/eventos/EventoSnapshot.h"
 
 //TODO: Crear conversor de coordenadas?
@@ -108,9 +112,6 @@ void Mundo::agregarModificadores(uint32_t nroIteracion) {
     if (nroIteracion % CONFIG_SERVIDOR.factorAparicionModificador() != 0) {
         return;
     }
-    //VER LUGAR
-    //VER QUE NO SEA EL NUM MAX
-    //TOMAR EL ID, AGREGARLO Y POP AL ID PARA REUTILIZAR
     //SORTEAR EL QUE VA A APARECER
     if (uuidsObjetos_.size() == 0) {
         return;
@@ -121,13 +122,25 @@ void Mundo::agregarModificadores(uint32_t nroIteracion) {
         Conversor::tileAMetro(destino.y_) + 0.5f*CONFIG_SERVIDOR.anchoTile(), 0);
     uint8_t uuid = uuidsObjetos_.front();
     
-    int modificador = rand() % 4;
-    if (modificador == 0) {
+    int modificador = rand() % 5 + 1;
+    //TODO: REFACTOIRZAR ESTE HORROR
+    if (modificador == UUID_VIDA) {
         //TODO: AL CONFIG SERVIDOR LOS 20 DE VIDA
         modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid, 20));
         fisicas_.agregarModificador(modificadores_.at(uuid), UUID_VIDA, posicion);
+    } else if (modificador == UUID_BARRO) {
+        modificadores_.emplace(uuid, std::make_shared<Barro>(uuid));
+        fisicas_.agregarModificador(modificadores_.at(uuid), UUID_BARRO, posicion);
+    } else if (modificador == UUID_PIEDRA) {
+        modificadores_.emplace(uuid, std::make_shared<Piedra>(uuid));
+        fisicas_.agregarModificador(modificadores_.at(uuid), UUID_PIEDRA, posicion);
+    } else if (modificador == UUID_ACEITE) {
+        modificadores_.emplace(uuid, std::make_shared<Aceite>(uuid));
+        fisicas_.agregarModificador(modificadores_.at(uuid), UUID_ACEITE, posicion);
+    } else if (modificador == UUID_BOOST) {
+        modificadores_.emplace(uuid, std::make_shared<Boost>(uuid));
+        fisicas_.agregarModificador(modificadores_.at(uuid), UUID_BOOST, posicion);
     }
-
     uuidsObjetos_.pop();
 }
 

@@ -5,6 +5,10 @@
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/entidades/CajaVida.h"
+#include "includes/servidor/modelo/entidades/Barro.h"
+#include "includes/servidor/modelo/entidades/Boost.h"
+#include "includes/servidor/modelo/entidades/Aceite.h"
+#include "includes/servidor/modelo/entidades/Piedra.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Quitar.h"
 
@@ -172,9 +176,34 @@ void Fisicas::step(uint32_t numeroIteracion) {
     }
 }
 
+//TODO: REFACTORIZAR, TODOS HACEN LO MISMO
 void Fisicas::reubicar(Vehiculo& vehiculo, Posicion& posicion) {
     b2Body* cuerpoVehiculo = vehiculos_.at(vehiculo.uuid())->getB2D();
     std::shared_ptr<Transformacion> t = std::make_shared<Reubicar>(*this, cuerpoVehiculo, posicion);
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(Barro& barro) {
+    b2Body* cuerpo = colisionables_.at(barro.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, barro.uuid());
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(Boost& boost) {
+    b2Body* cuerpo = colisionables_.at(boost.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, boost.uuid());
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(Aceite& aceite) {
+    b2Body* cuerpo = colisionables_.at(aceite.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, aceite.uuid());
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(Piedra& piedra) {
+    b2Body* cuerpo = colisionables_.at(piedra.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, piedra.uuid());
     transformaciones_.push(t);
 }
 
