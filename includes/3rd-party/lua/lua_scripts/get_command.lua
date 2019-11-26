@@ -91,8 +91,9 @@ function get_instruction(x, y, angle)
 	local instructions = {}
 	instructions[0] = upKey
 	instructions[1] = upKey
-	instructions [2] = downKey
-	if instructions [ math.random( #instructions ) ] == upKey then
+	instructions[2] = downKey
+	instructions [3] = downKey
+	if instructions [ math.random(0,  #instructions - 1) ] == upKey then
 		return upKey
 	end
 

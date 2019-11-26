@@ -25,7 +25,6 @@ private:
 	std::atomic<uint_least16_t> y_;
 	std::atomic<uint_least16_t> angulo_;
 	int last_command_ = -1;
-	int size_y_;
 
 public:
 	Computadora(ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar,
@@ -37,16 +36,23 @@ public:
 		archivoPista >> pistaJson;
 
         int size_x = pistaJson["dimensiones"]["x"].get<uint16_t>();
- 		size_y_ = pistaJson["dimensiones"]["y"].get<uint16_t>(); 
+ 		int size_y = pistaJson["dimensiones"]["y"].get<uint16_t>(); 
 
 		lua.init_script(CONFIG_CLIENTE.rutaLuaScript().c_str());
 	    for (uint16_t i = 0; i < size_x; i++) {
-	      for (uint16_t j = 0; j < size_y_; j++) {
+	      for (uint16_t j = 0; j < size_y; j++) {
+	      		int x = i;
+	      		int y = size_y - j - 1;
 		        if (pistaJson["capas"]["pista"][std::to_string(i)][std::to_string(j)].get<int>() > 0){
 					lua.get_function_name("insert_road_block");
-		        	lua << i;
-		        	lua << (size_y_ - j - 1); 	
+		        	lua << x;
+		        	lua << y; 	
 		    		lua.call_function("insert_road_block", 2, 0);
+		        } else {
+					lua.get_function_name("insert_bad_block");
+		        	lua << x;
+		        	lua << y; 	
+		    		lua.call_function("insert_bad_block", 2, 0);
 		        }
     		}
     	}
@@ -73,7 +79,7 @@ public:
 
 	virtual void correr() override {
 		lua.init_script(CONFIG_CLIENTE.rutaLuaScriptUsuario().c_str());
-		double frecuencia = 1 / CONFIG_CLIENTE.tiempoReaccionHumano();
+		double frecuencia = (double) 1 / (double) CONFIG_CLIENTE.tiempoReaccionHumano();
 	    int iteracion = 0;
 	    frecuencia *= 1000;
 	    Cronometro c;
