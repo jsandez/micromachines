@@ -113,6 +113,6 @@ int ConfigServidor::cantidadMaximaModificadores() {
     return json_["modelo"]["modificadores"]["cantidadMaxima"].get<int>();
 }
 
-int ConfigServidor::segundosEntreAparicionModificador() {
-    return json_["modelo"]["modificadores"]["segundosEntreAparicion"].get<int>();
+int ConfigServidor::factorAparicionModificador() {
+    return json_["modelo"]["modificadores"]["factorAparicion"].get<int>();
 }

@@ -95,8 +95,8 @@ std::map<uint8_t, datosVehiculo_> Mundo::getEstadoInicial() {
     return serializarEstado();
 }
 
-void Mundo::agregarModificadores() {
-    
+void Mundo::agregarModificadores(uint32_t nroIteracion) {
+
 }
 
 void Mundo::manejar(Evento& e) {

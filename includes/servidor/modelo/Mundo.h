@@ -38,7 +38,7 @@ public:
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
     uint8_t agregarVehiculo(uint32_t uuidJugador);
     std::map<uint8_t, datosVehiculo_> getEstadoInicial();
-    void agregarModificadores();
+    void agregarModificadores(uint32_t numeroIteracion);
     
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoAcelerar& e) override;
