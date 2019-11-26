@@ -113,7 +113,8 @@ void Mundo::agregarModificadores(uint32_t nroIteracion) {
     }
     int tile = rand() % tilesConPista_.size();
     Tile& destino = tilesConPista_[tile];
-    Posicion posicion(Conversor::tileAMetro(destino.x_), Conversor::tileAMetro(destino.y_), 0);
+    Posicion posicion(Conversor::tileAMetro(destino.x_) + 0.5f*CONFIG_SERVIDOR.anchoTile(),
+        Conversor::tileAMetro(destino.y_) + 0.5f*CONFIG_SERVIDOR.anchoTile(), 0);
     uint8_t uuid = uuidsObjetos_.front();
     
     int modificador = rand() % 4;
