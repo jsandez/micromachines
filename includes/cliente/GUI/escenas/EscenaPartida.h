@@ -13,8 +13,9 @@
 #include "includes/cliente/GUI/Textura.h"
 #include "includes/cliente/GUI/Pista.h"
 #include "includes/cliente/GUI/Camara.h"
-#include "src/cliente/jugadores/Jugador.cpp"
-#include "src/cliente/jugadores/Computadora.cpp"
+#include "includes/cliente/jugadores/Jugador.h"
+#include "includes/cliente/jugadores/Computadora.h"
+
 
 class EscenaPartida : public Escena {
  private:
