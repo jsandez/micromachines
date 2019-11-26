@@ -17,7 +17,7 @@ public:
     virtual ~Cola() {
     }
 
-    virtual void put(T& unElemento) = 0;
+    virtual void put(T unElemento) = 0;
     
     virtual bool get(T& unElemento) = 0;
 };

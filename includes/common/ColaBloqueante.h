@@ -31,9 +31,9 @@ private:
     ~ColaBloqueante() {
     }
 
-    void put(T& unElemento) override {
+    void put(T unElemento) override {
         std::lock_guard<std::mutex> lck(mtx_);
-        elementos_.push(std::move(unElemento));
+        elementos_.push(unElemento);
         cond_.notify_one();
     }
     
@@ -43,7 +43,7 @@ private:
         if (detenida_) {
             return false;
         }
-        unElemento = std::move(elementos_.front());
+        unElemento = elementos_.front();
         elementos_.pop();
         return true;
     }

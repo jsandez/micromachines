@@ -1,5 +1,7 @@
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 
+#include <algorithm>
+
 Vehiculo::Vehiculo(uint8_t uuid,
             unsigned int velocidadMaximaAdelante,
             unsigned int velocidadMaximaAtras,
@@ -8,7 +10,8 @@ Vehiculo::Vehiculo(uint8_t uuid,
             unsigned int agarre,
             //FIXME: CAMBIAR SALUD A UINT8T
             unsigned int salud,
-            Posicion respawn) :
+            Posicion respawn,
+            std::shared_ptr<Jugador> duenio) :
             Identificable(uuid),
             velocidadMaximaAdelante_(velocidadMaximaAdelante),
             velocidadMaximaAtras_(velocidadMaximaAtras),
@@ -17,7 +20,8 @@ Vehiculo::Vehiculo(uint8_t uuid,
             agarre_(agarre),
             salud_(salud),
             saludDefault_(salud),
-            respawn_(respawn) {
+            respawn_(respawn),
+            duenio_(duenio) {
 }
 
 unsigned int Vehiculo::velocidadMaximaAdelante() {
@@ -42,6 +46,29 @@ unsigned int Vehiculo::agarre() {
 
 unsigned int Vehiculo::salud() {
     return salud_;
+}
+
+std::shared_ptr<Jugador> Vehiculo::duenio() {
+    return duenio_;
+}
+
+void Vehiculo::ocurrira(std::shared_ptr<Evento> unEvento, uint32_t steps) {
+    futuros_.push_back(futuro_t{unEvento, steps});
+}
+
+static bool termino(futuro_t& futuro) {
+    return (futuro.steps == 0) && (futuro.evento.use_count() > 2);
+}
+
+void Vehiculo::step() {
+    std::remove_if(futuros_.begin(), futuros_.end(), termino);
+    for (auto& futuro : futuros_) {
+        futuro.steps--;
+        if (futuro.steps == 0) {
+            duenio_->ocurrio(futuro.evento);
+        }   
+    }
+    
 }
 
 bool Vehiculo::disminuirSalud(uint8_t cantidad) {

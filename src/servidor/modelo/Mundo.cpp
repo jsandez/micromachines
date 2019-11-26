@@ -50,7 +50,7 @@ Mundo::Mundo(uint16_t uuidPista) :
     
     fisicas_.generarSuelo(tileASuelo_);
     fisicas_.generarCheckpoints(carrera_.checkpoints());
-    srand (time(NULL));
+    srand(time(NULL));
 }
 
 Mundo::~Mundo() {
@@ -59,6 +59,9 @@ Mundo::~Mundo() {
 
 void Mundo::step(uint32_t numeroIteracion) {
     fisicas_.step(numeroIteracion);
+    for (auto& kv : jugadoresAVehiculos_) {
+        kv.second.step();
+    }
     //TODO: Chequear por la negativa?
     //FIXME: NO DEBIERA ESTAR LIGADO AL STEP DEL MUNDO, PERO MUNDO TENDRÍA QUE SER MONITOR
     if((numeroIteracion % snapshotsEnviadosPorSegundo_) == 0) {
@@ -77,27 +80,28 @@ void Mundo::recuperarUuid(uint8_t uuid) {
     uuidsObjetos_.push(uuid);
 }
 
-uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
+uint8_t Mundo::agregarVehiculo(std::shared_ptr<Jugador> unJugador) {
     //TODO: En cual de los casilleros?
     //FIXME: Nada impide top() de pila vacia si hay mas jugadores
     Posicion posicion = posicionesIniciales_.front();
     posicion.x_ = Conversor::tileAMetro(posicion.x_);
     posicion.y_ = Conversor::tileAMetro(posicion.y_);
     uint8_t uuid = uuidsObjetos_.front();
-    jugadoresAVehiculos_.emplace(uuidJugador, Vehiculo(uuid,
+    jugadoresAVehiculos_.emplace(unJugador->uuid(), Vehiculo(uuid,
             CONFIG_SERVIDOR.velocidadMaxVehiculoAdelante(),
             CONFIG_SERVIDOR.velocidadMaxVehiculoAtras(),
             CONFIG_SERVIDOR.aceleracionVehiculo(),
             CONFIG_SERVIDOR.maniobrabilidadVehiculo(),
             CONFIG_SERVIDOR.agarreVehiculo(),
             CONFIG_SERVIDOR.saludVehiculo(),
-            posicion));
+            posicion,
+            unJugador));
             
-    jugadoresAIDVehiculo_[uuidJugador] = uuid;
-    fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(uuidJugador), posicion);
+    jugadoresAIDVehiculo_[unJugador->uuid()] = uuid;
+    fisicas_.agregarVehiculo(jugadoresAVehiculos_.at(unJugador->uuid()), posicion);
     posicionesIniciales_.pop();
 
-    carrera_.registrarVehiculo(jugadoresAVehiculos_.at(uuidJugador));
+    carrera_.registrarVehiculo(jugadoresAVehiculos_.at(unJugador->uuid()));
 
     uuidsObjetos_.pop();
     return uuid;

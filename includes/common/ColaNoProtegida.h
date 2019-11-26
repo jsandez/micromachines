@@ -20,7 +20,7 @@ private:
     ~ColaNoProtegida() {
     }
 
-    void put(T& unElemento) override {
+    void put(T unElemento) override {
         elementos_.push(std::move(unElemento));
     }
     

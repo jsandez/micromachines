@@ -117,7 +117,7 @@ void Partida::asignarVehiculos() {
     std::map <uint32_t, uint8_t> jugadoresAVehiculos;
     
     for (const auto& kv : jugadores_) {
-        uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second->uuid());
+        uint8_t idVehiculo = mundo_.agregarVehiculo(kv.second);
         jugadoresAVehiculos.emplace(kv.first, idVehiculo);
     }
     for (const auto& kv : jugadores_) {

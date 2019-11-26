@@ -15,6 +15,8 @@
 
 #include "includes/common/eventos/EventoChoque.h"
 #include "includes/common/eventos/EventoExplosion.h"
+#include "includes/common/eventos/EventoBarroPisado.h"
+#include "includes/common/eventos/EventoFinBarro.h"
 
 // Métodos privados
 static void ordenar(Colisionable** A, Colisionable** B);
@@ -155,7 +157,12 @@ void ContactListener::vehiculoVsAceite(Vehiculo& vehiculo, Aceite& aceite) {
 }
 
 void ContactListener::vehiculoVsBarro(Vehiculo& vehiculo, Barro& barro) {
+    std::shared_ptr<Evento> pisoBarro = std::make_shared<EventoBarroPisado>();
     fisicas_.quitar(barro);
+    vehiculo.duenio()->ocurrio(pisoBarro);
+    std::shared_ptr<Evento> noMasBarro = std::make_shared<EventoFinBarro>();
+    //TODO: No hardcodear
+    vehiculo.ocurrira(noMasBarro, 300);
 }
 
 void ContactListener::vehiculoVsBoost(Vehiculo& vehiculo, Boost& boost) {
@@ -163,5 +170,8 @@ void ContactListener::vehiculoVsBoost(Vehiculo& vehiculo, Boost& boost) {
 }
 
 void ContactListener::vehiculoVsPiedra(Vehiculo& vehiculo, Piedra& piedra) {
+    //TODO: NO HARDCODEAR
+    vehiculo.disminuirSalud(30);
     fisicas_.quitar(piedra);
+    
 }

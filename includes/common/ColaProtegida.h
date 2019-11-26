@@ -27,9 +27,9 @@ private:
     ~ColaProtegida() {
     }
 
-    void put(T& unElemento) override {
+    void put(T unElemento) override {
         std::lock_guard<std::mutex> lck(mtx_);
-        elementos_.push(std::move(unElemento));
+        elementos_.push(unElemento);
     }
     
     bool get(T& unElemento) override {
@@ -37,7 +37,7 @@ private:
         if (elementos_.empty()) {
             return false;
         }
-        unElemento = std::move(elementos_.front());
+        unElemento = elementos_.front();
         elementos_.pop();
         return true;
     }

@@ -13,6 +13,7 @@
 #include "includes/common/Tile.h"
 #include "includes/servidor/modelo/superficies/Superficie.h"
 #include "includes/servidor/modelo/entidades/carrera/Carrera.h"
+#include "includes/servidor/Jugador.h"
 
 class Mundo : public Handler {
 private:
@@ -37,7 +38,7 @@ public:
 
     void step(uint32_t numeroIteracion);
     Cola<std::shared_ptr<Evento>>& eventosOcurridos();
-    uint8_t agregarVehiculo(uint32_t uuidJugador);
+    uint8_t agregarVehiculo(std::shared_ptr<Jugador> unJugador);
     std::map<uint8_t, datosVehiculo_> getEstadoInicial();
     void agregarModificadores(uint32_t numeroIteracion);
     
