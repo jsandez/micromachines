@@ -22,7 +22,7 @@ class EscenaPartida : public Escena {
   Pista pista;
   Conversor conversor;
   Camara camara;
-  std::unique_ptr<Jugador> jugador_;
+  std::shared_ptr<Jugador> jugador_;
   int id_car, screenX, screenY;
   void dibujarInterfaz(int iteracion);
  public:

@@ -3,6 +3,7 @@
 
 #include <map>
 #include <memory>
+#include <mutex>
 
 #include "includes/common/Handler.h"
 #include "includes/common/red/SocketTCP.h"
@@ -14,6 +15,7 @@ private:
     ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos_;
     //FIXME: Proteger esto
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadores_;
+    std::mutex mtx_;
 
 public:
     SalaDeEspera(ColaBloqueante<std::shared_ptr<Evento>>& destinoEventos);

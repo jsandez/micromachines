@@ -63,11 +63,9 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     vehiculoActual += 10;
 
     if (juegaComputadora) {
-      jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(
-          eventosAEnviar_, "assets/pistas/1.json")));
+      jugador_ = std::make_shared<Computadora>(eventosAEnviar_, "assets/pistas/1.json");
     } else {
-      jugador_ =
-          std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
+      jugador_ =std::make_shared<Jugador>(eventosAEnviar_);
     }
   }
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
