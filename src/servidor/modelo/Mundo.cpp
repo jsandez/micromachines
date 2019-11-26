@@ -22,7 +22,7 @@ static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::sh
 static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
-    fisicas_(eventosOcurridos_, contactListener_),
+    fisicas_(eventosOcurridos_, contactListener_, *this),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
     contactListener_(fisicas_),
     carrera_(eventosOcurridos_) {
@@ -67,6 +67,10 @@ void Mundo::step(uint32_t numeroIteracion) {
 
 Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
     return eventosOcurridos_;
+}
+
+void Mundo::recuperarUuid(uint8_t uuid) {
+    uuidsObjetos_.push(uuid);
 }
 
 uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {

@@ -14,4 +14,5 @@ void Quitar::aplicar() {
     cuerpo_->GetWorld()->DestroyBody(cuerpo_);
     std::shared_ptr<Evento> desaparicion = std::make_shared<EventoDesaparecioConsumible>(uuidCuerpo_);
     fisicas_.ocurrio(desaparicion);
+    fisicas_.nuevoUuidDisponible(uuidCuerpo_);
 }

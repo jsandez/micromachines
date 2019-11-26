@@ -1,6 +1,7 @@
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 #include "includes/servidor/utils/ConfigServidor.h"
+#include "includes/servidor/modelo/Mundo.h"
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
 #include "includes/servidor/modelo/entidades/CajaVida.h"
@@ -12,12 +13,13 @@
 
 //TODO: Fisicas debe conocer de eventos ocurridos?
 //Tiene pinta de que no. Por ende tampoco de snapshots por segundo
-Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener) :
+Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener, Mundo& mundo) :
     gravedad_(0, 0),
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
     frecuencia_((double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo()),
     iteracion_(0),
-    eventosOcurridos_(eventosOcurridos) {
+    eventosOcurridos_(eventosOcurridos),
+    mundo_(mundo) {
     
     mundoBox2D_->SetContactListener(&contactListener);
 }
@@ -146,6 +148,10 @@ Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
         anguloDeg += 360;
     }
     return Posicion(posicion.x, posicion.y, anguloDeg);
+}
+
+void Fisicas::nuevoUuidDisponible(uint8_t uuid) {
+    mundo_.recuperarUuid(uuid);
 }
 
 void Fisicas::step(uint32_t numeroIteracion) {
