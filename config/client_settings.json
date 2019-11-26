@@ -322,8 +322,8 @@
     },
     "cajaSalud": {
       "uuid": 1000,
-      "ancho": 110,
-      "alto": 110,
+      "ancho": 128,
+      "alto": 128,
       "sprites": [
         "assets/modificadores/1000.png"
       ]
