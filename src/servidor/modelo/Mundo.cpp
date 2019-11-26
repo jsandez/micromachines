@@ -22,7 +22,7 @@ static void cargarSuelo(uint16_t largoX, uint16_t largoY, std::map<Tile, std::sh
 static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::queue<Posicion>& tiles, Json& pistaJson);
 
 Mundo::Mundo(uint16_t uuidPista) :
-    fisicas_(eventosOcurridos_, contactListener_),
+    fisicas_(eventosOcurridos_, contactListener_, *this),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
     contactListener_(fisicas_),
     carrera_(eventosOcurridos_) {
@@ -69,6 +69,10 @@ Cola<std::shared_ptr<Evento>>& Mundo::eventosOcurridos() {
     return eventosOcurridos_;
 }
 
+void Mundo::recuperarUuid(uint8_t uuid) {
+    uuidsObjetos_.push(uuid);
+}
+
 uint8_t Mundo::agregarVehiculo(uint32_t uuidJugador) {
     //TODO: En cual de los casilleros?
     //FIXME: Nada impide top() de pila vacia si hay mas jugadores
@@ -113,12 +117,14 @@ void Mundo::agregarModificadores(uint32_t nroIteracion) {
     }
     int tile = rand() % tilesConPista_.size();
     Tile& destino = tilesConPista_[tile];
-    Posicion posicion(Conversor::tileAMetro(destino.x_), Conversor::tileAMetro(destino.y_), 0);
+    Posicion posicion(Conversor::tileAMetro(destino.x_) + 0.5f*CONFIG_SERVIDOR.anchoTile(),
+        Conversor::tileAMetro(destino.y_) + 0.5f*CONFIG_SERVIDOR.anchoTile(), 0);
     uint8_t uuid = uuidsObjetos_.front();
     
     int modificador = rand() % 4;
     if (modificador == 0) {
-        modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid));
+        //TODO: AL CONFIG SERVIDOR LOS 20 DE VIDA
+        modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid, 20));
         fisicas_.agregarModificador(modificadores_.at(uuid), UUID_VIDA, posicion);
     }
 

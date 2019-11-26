@@ -22,6 +22,9 @@
 #define RADTODEG 57.295779513082320876f
 #endif
 
+//FD
+class Mundo;
+
 class Fisicas {
 private:
     b2Vec2 gravedad_;
@@ -32,9 +35,10 @@ private:
     uint32_t iteracion_;
     Cola<std::shared_ptr<Evento>>& eventosOcurridos_;
     std::queue<std::shared_ptr<Transformacion>> transformaciones_;
+    Mundo& mundo_;
     
 public:
-    Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener);
+    Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener, Mundo& mundo);
     ~Fisicas();
     void generarSuelo(std::map<Tile, std::shared_ptr<Superficie>>& tileASuelo);
     //void generarSuperficies(std::map<Tile, std::shared_ptr<Superficie>>& tileASuperficie);
@@ -56,8 +60,10 @@ public:
     void ocurrio(std::shared_ptr<Evento> evento);
     
     Posicion getPosicionDe(uint8_t idCuerpo);
+    void nuevoUuidDisponible(uint8_t uuid);
     
     void reubicar(Vehiculo& vehiculo, Posicion& Posicion);
+    void quitar(CajaVida& cajaVida);
 
 };
 

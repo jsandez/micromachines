@@ -31,6 +31,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/B2DVehiculo.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/transformaciones/Transformacion.cpp
   ${PROJECT_SOURCE_DIR}/modelo/fisicas/transformaciones/Reubicar.cpp
+  ${PROJECT_SOURCE_DIR}/modelo/fisicas/transformaciones/Quitar.cpp
   ${PROJECT_SOURCE_DIR}/modelo/movimiento/Posicion.cpp
   
   ${CMAKE_SOURCE_DIR}/src/common/Hilo.cpp

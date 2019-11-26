@@ -8,6 +8,7 @@ class Fisicas;
 class SuperficieArena;
 class Vehiculo;
 class Checkpoint;
+class CajaVida;
 
 class ContactListener : public b2ContactListener {
 private:
@@ -16,6 +17,7 @@ private:
     void vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena);
     void vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint);
     void vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB);
+    void vehiculoVsCajaVida(Vehiculo& vehiculo, CajaVida& cajaVida);
     
 public:
     ContactListener(Fisicas& fisicas);

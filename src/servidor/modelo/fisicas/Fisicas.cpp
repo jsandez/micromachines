@@ -1,21 +1,25 @@
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 #include "includes/servidor/utils/ConfigServidor.h"
+#include "includes/servidor/modelo/Mundo.h"
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/CajaVida.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
+#include "includes/servidor/modelo/fisicas/transformaciones/Quitar.h"
 
 #include "includes/common/eventos/EventoAparecioConsumible.h"
 
 
 //TODO: Fisicas debe conocer de eventos ocurridos?
 //Tiene pinta de que no. Por ende tampoco de snapshots por segundo
-Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener) :
+Fisicas::Fisicas(Cola<std::shared_ptr<Evento>>& eventosOcurridos, ContactListener& contactListener, Mundo& mundo) :
     gravedad_(0, 0),
     mundoBox2D_(std::make_shared<b2World>(gravedad_)),
     frecuencia_((double)1 / (double)CONFIG_SERVIDOR.simulacionesPorSegundo()),
     iteracion_(0),
-    eventosOcurridos_(eventosOcurridos) {
+    eventosOcurridos_(eventosOcurridos),
+    mundo_(mundo) {
     
     mundoBox2D_->SetContactListener(&contactListener);
 }
@@ -29,11 +33,10 @@ void Fisicas::ocurrio(std::shared_ptr<Evento> unEvento) {
 
 void Fisicas::agregarModificador(std::shared_ptr<Modificador> modificador, uint8_t tipo, Posicion& posicion) {
     float ladoModificador = 5.0f;//CONFIG_SEVIDOR.ladoModificador();
-    float anchoTile = CONFIG_SERVIDOR.anchoTile();
     b2BodyDef bodyDef;
     bodyDef.userData = modificador.get();
-    float x = anchoTile*(float)posicion.x_; 
-    float y = anchoTile*(float)posicion.y_;
+    float x = posicion.x_; 
+    float y = posicion.y_;
     bodyDef.position.Set(x, y);
 
     b2Body* cuerpo = mundoBox2D_->CreateBody(&bodyDef);
@@ -147,6 +150,10 @@ Posicion Fisicas::getPosicionDe(uint8_t idCuerpo) {
     return Posicion(posicion.x, posicion.y, anguloDeg);
 }
 
+void Fisicas::nuevoUuidDisponible(uint8_t uuid) {
+    mundo_.recuperarUuid(uuid);
+}
+
 void Fisicas::step(uint32_t numeroIteracion) {
     //TODO: Todos haran step
     //Acá se alteran los cuerpos físicos.
@@ -168,5 +175,11 @@ void Fisicas::step(uint32_t numeroIteracion) {
 void Fisicas::reubicar(Vehiculo& vehiculo, Posicion& posicion) {
     b2Body* cuerpoVehiculo = vehiculos_.at(vehiculo.uuid())->getB2D();
     std::shared_ptr<Transformacion> t = std::make_shared<Reubicar>(*this, cuerpoVehiculo, posicion);
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(CajaVida& cajaVida) {
+    b2Body* cuerpo = colisionables_.at(cajaVida.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, cajaVida.uuid());
     transformaciones_.push(t);
 }

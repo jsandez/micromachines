@@ -243,6 +243,10 @@ void EscenaPartida::manejar(EventoAparecioConsumible& e) {
     pista.agregarObjeto(e.uuidConsumible_, consumible);  
 }
 
+void EscenaPartida::manejar(EventoDesaparecioConsumible& e) {
+  pista.borrarObjeto(e.uuidConsumible_);
+}
+
 EscenaPartida::~EscenaPartida() {
   jugador_->terminar();
 }

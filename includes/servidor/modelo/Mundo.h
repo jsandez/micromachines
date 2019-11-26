@@ -41,6 +41,8 @@ public:
     std::map<uint8_t, datosVehiculo_> getEstadoInicial();
     void agregarModificadores(uint32_t numeroIteracion);
     
+    void recuperarUuid(uint8_t uuid);
+
     virtual void manejar(Evento& e) override;
     virtual void manejar(EventoAcelerar& e) override;
     virtual void manejar(EventoDesacelerar& e) override;

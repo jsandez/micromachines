@@ -54,6 +54,15 @@ bool Vehiculo::disminuirSalud(uint8_t cantidad) {
     return false;
 }
 
+void Vehiculo::sumarSalud(int delta) {
+    unsigned int saludFinal = salud_ + delta;
+    if (saludFinal > saludDefault_) {
+        salud_ = saludDefault_;
+    } else {
+        salud_ = saludFinal;
+    }
+}
+
 int Vehiculo::getTipo() {
     return VEHICULO_;
 }
