@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lua_interprete"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\3rd-party\;CMake Files\src\3rd-party\Box2D\;CMake Files\src\3rd-party\lua\;CMake Files\src\cliente\;CMake Files\src\servidor\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jorge/Taller/micromachines/src/3rd-party/lua"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lua_interprete">
+				<Option output="/home/jorge/Taller/micromachines/src/3rd-party/lua/liblua_interprete.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jorge/Taller/micromachines/src/3rd-party/lua"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jorge/Taller/micromachines/includes/servidor"/>
+					<Add directory="/usr/include/lua5.3"/>
+					<Add directory="/home/jorge/Taller/micromachines/includes/3rd-party"/>
+					<Add directory="/home/jorge/Taller/micromachines"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 lua_interprete"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lua_interprete/fast">
+				<Option output="/home/jorge/Taller/micromachines/src/3rd-party/lua/liblua_interprete.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jorge/Taller/micromachines/src/3rd-party/lua"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jorge/Taller/micromachines/includes/servidor"/>
+					<Add directory="/usr/include/lua5.3"/>
+					<Add directory="/home/jorge/Taller/micromachines/includes/3rd-party"/>
+					<Add directory="/home/jorge/Taller/micromachines"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 lua_interprete/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/jorge/Taller/micromachines/src/3rd-party/lua/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jorge/Taller/micromachines/src/3rd-party/lua/lua/LuaInterprete.cpp">
+			<Option target="lua_interprete"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/src/3rd-party/Box2D/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\3rd-party\Box2D\"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/src/3rd-party/lua/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\3rd-party\lua\"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/src/cliente/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\cliente\"/>
+		</Unit>
+		<Unit filename="/home/jorge/Taller/micromachines/src/servidor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\servidor\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -12,9 +12,10 @@ Cliente::Cliente(unsigned int anchoVentana,
                  const std::string &tituloVentana,
                  const std::string &host,
                  const std::string &puerto) :
+    seguirCorriendo(true),
     ventana_(anchoVentana, altoVentana, pantallaCompleta, tituloVentana),
     renderizador_(ventana_),
-    dibujador_(ventana_, renderizador_, grabador_, eventosGUI_, eventosAEnviar_),
+    dibujador_(ventana_, renderizador_, grabador_, eventosGUI_, eventosAEnviar_,seguirCorriendo),
     socket_(host, puerto),
     recibidor_(socket_, dibujador_.eventosEntrantes(), 0),
     enviador_(socket_, eventosAEnviar_) {
@@ -39,7 +40,6 @@ void Cliente::correr() {
   enviador_.iniciar();
   dibujador_.iniciar();
   //TODO: Mover a inputhandler, que será de teclas o LUA
-  bool seguirCorriendo = true;
   SDL_Event evento;
   while (SDL_WaitEvent(&evento) && seguirCorriendo) {
     switch (evento.type) {
