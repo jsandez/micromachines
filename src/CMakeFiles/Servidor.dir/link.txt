@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -std=c++11 -pthread -Wall -Werror -pedantic -D__STDC_CONSTANT_MACROS -g   CMakeFiles/Servidor.dir/servidor/main_servidor.cpp.o  -o Servidor servidor/libServidorCMake.a 3rd-party/Box2D/libBox2D.a 

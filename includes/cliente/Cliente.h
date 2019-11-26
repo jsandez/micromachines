@@ -16,26 +16,32 @@
 #include "includes/cliente/grabador/HiloGrabador.h"
 
 class Cliente {
-private:
-    ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
-    Ventana ventana_;
-    Renderizador renderizador_;
-    HiloGrabador grabador_;      
-    HiloDibujador dibujador_;
-    SocketTCPCliente socket_;
-    RecibidorEventos recibidor_;
-    ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
-    EnviadorEventos enviador_;    
+ private:
+  ColaProtegida<std::shared_ptr<EventoGUI>> eventosGUI_;
+  bool seguirCorriendo;
+  Ventana ventana_;
+  Renderizador renderizador_;
+  HiloGrabador grabador_;
+  HiloDibujador dibujador_;
+  SocketTCPCliente socket_;
+  RecibidorEventos recibidor_;
+  ColaBloqueante<std::shared_ptr<Evento>> eventosAEnviar_;
+  EnviadorEventos enviador_;
 
-    void manejarKeyUp(SDL_Event& eventoSDL);
-    void manejarKeyDown(SDL_Event& eventoSDL);
-    void manejarMouseDown(SDL_Event& eventoSDL);
+  void manejarKeyUp(SDL_Event &eventoSDL);
+  void manejarKeyDown(SDL_Event &eventoSDL);
+  void manejarMouseDown(SDL_Event &eventoSDL);
 
-public:
-    Cliente(unsigned int anchoVentana, unsigned int altoVentana, bool pantallaCompleta, const std::string& tituloVentana, const std::string& host, const std::string& puerto);
-    void correr();
-    void cerrar();
-    ~Cliente();
+ public:
+  Cliente(unsigned int anchoVentana,
+          unsigned int altoVentana,
+          bool pantallaCompleta,
+          const std::string &tituloVentana,
+          const std::string &host,
+          const std::string &puerto);
+  void correr();
+  void cerrar();
+  ~Cliente();
 };
 
 #endif

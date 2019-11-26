@@ -26,19 +26,22 @@ HiloDibujador::HiloDibujador(Ventana &ventana,
                              Renderizador &renderizador,
                              HiloGrabador &grabador,
                              ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
-                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_)
+                             ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
+                             bool &seguirCorriendo)
     :
     ventana_(ventana),
     renderizador_(renderizador),
     grabador_(grabador),
     eventosGUI_(eventosGUI),
     eventosAEnviar_(eventosAEnviar_),
-    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente(), true) {
+    musicaAmbiente(CONFIG_CLIENTE.musicaAmbiente(), true),
+    seguirCorriendoCliente(seguirCorriendo) {
   escenas_.emplace(std::make_shared<EscenaMenu>(renderizador_,
                                                 eventosGUI_,
                                                 escenas_,
                                                 eventosAEnviar_,
-                                                musicaAmbiente));
+                                                musicaAmbiente,
+                                                seguirCorriendoCliente));
 }
 
 void HiloDibujador::correr() {
@@ -70,7 +73,7 @@ void HiloDibujador::correr() {
     dormir(resto);
     t1 += frecuencia;
     iteracion += 1;
-    
+
   }
 }
 

@@ -38,14 +38,14 @@ void EscenaMenu::dibujarBotones(int nroIteracion) {
 
 void EscenaMenu::handlerBotones(int uuid) {
   switch (uuid) {
-    case UUID_BOTON_JUGAR: {      
+    case UUID_BOTON_JUGAR: {
       std::shared_ptr<Evento> unirme = std::make_shared<EventoUnirseASala>();
       eventosAEnviar_.put(unirme);
       quiereEntrarASala = true;
       break;
     }
     case UUID_BOTON_SALIR: {
-      std::cout << "SALIO" << std::endl;
+      seguirCorriendoCliente = false;
       break;
     }
     default:break;
@@ -56,12 +56,13 @@ EscenaMenu::EscenaMenu(Renderizador &renderizador,
                        ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                        std::stack<std::shared_ptr<Escena>> &escenas,
                        ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
-                       Sonido &musicaAmbiente) :
+                       Sonido &musicaAmbiente, bool &seguirCorriendo) :
     Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoMenu"),
                                             renderizador)),
     eventosGUI_(eventosGUI),
-    quiereEntrarASala(false) {
+    quiereEntrarASala(false),
+    seguirCorriendoCliente(seguirCorriendo) {
   inicializarBotones();
   this->musicaAmbiente.setVolume(CONFIG_CLIENTE.volumenAmbiente());
   this->musicaAmbiente.play();
@@ -103,14 +104,14 @@ void EscenaMenu::manejar(Evento &e) {
   e.actualizar(*this);
 }
 
-void EscenaMenu::manejar(EventoSnapshotSala& e) {
+void EscenaMenu::manejar(EventoSnapshotSala &e) {
   if (!quiereEntrarASala) {
     return;
   }
   escenas_.emplace(std::make_shared<EscenaSala>(renderizador_,
-                                                    eventosGUI_,
-                                                    escenas_,
-                                                    eventosAEnviar_,
-                                                    this->musicaAmbiente,
-                                                    e));
+                                                eventosGUI_,
+                                                escenas_,
+                                                eventosAEnviar_,
+                                                this->musicaAmbiente,
+                                                e));
 }

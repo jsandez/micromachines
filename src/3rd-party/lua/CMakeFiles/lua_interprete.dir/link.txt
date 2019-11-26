@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblua_interprete.a  CMakeFiles/lua_interprete.dir/lua/LuaInterprete.cpp.o
+/usr/bin/ranlib liblua_interprete.a
