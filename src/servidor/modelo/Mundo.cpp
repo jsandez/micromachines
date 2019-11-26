@@ -114,6 +114,9 @@ void Mundo::manejar(EventoDesacelerar& e) {
 void Mundo::manejar(EventoFrenar& e) {
     uint32_t jugador = e.uuidRemitente();
     fisicas_.frenar(jugadoresAIDVehiculo_[jugador]);
+    Posicion p = fisicas_.getPosicionDe(jugadoresAIDVehiculo_.at(e.uuidRemitente()));
+    std::shared_ptr<Evento> frenada = std::make_shared<EventoFrenada>(p.x_, p.y_);
+    eventosOcurridos_.put(frenada);
 }
 
 void Mundo::manejar(EventoDejarDeFrenar& e) {
