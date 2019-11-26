@@ -89,9 +89,12 @@ static void ordenar(Colisionable** A, Colisionable** B) {
 }
 
 void ContactListener::vehiculoVsArena(Vehiculo& vehiculo, SuperficieArena& arena) {
-    //TODO: VER DONDE VA LA EXPLOSION Y COMO
+    Posicion posicionVehiculo = fisicas_.getPosicionDe(vehiculo.uuid());
+    std::shared_ptr<Evento> explosion = std::make_shared<EventoExplosion>(posicionVehiculo.x_, posicionVehiculo.y_);
+    fisicas_.ocurrio(explosion);
     fisicas_.reubicar(vehiculo, vehiculo.getPuntoRespawn());
 }
+
 void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
    checkpoint.registrarPaso(vehiculo);
 }
