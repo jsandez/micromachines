@@ -97,6 +97,7 @@ Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
                         principalCar.get()->getAngulo(),
                         false);
   camara.dibujarObjetos(id_car, numeroIteracion);
+  camara.dibujarEventosTemporales(numeroIteracion);
   dibujarInterfaz(numeroIteracion);
   return std::move(miTextura);
 }
@@ -153,6 +154,32 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
   jugador_->setEstado(datos[this->id_car].xCoord_,
                       datos[this->id_car].yCoord_,
                       datos[this->id_car].angulo_);
+}
+
+void EscenaPartida::manejar(EventoChoque &e) {
+  float posX = this->conversor.metroAPixel(e.xCoord_);
+  float posY = this->conversor.bloqueAPixel(pista.getSizeY())
+      - this->conversor.metroAPixel(e.yCoord_);
+  std::shared_ptr<ObjetoDinamico> choque =
+      std::make_shared<ObjetoDinamico>(UUID_ANIMACION_VACIA,
+                                       renderizador_,
+                                       CONFIG_CLIENTE.musicaChoque(),
+                                       false);
+  choque.get()->mover(posX,posY,0);
+  pista.agregarEventoTemporal(choque);
+}
+
+void EscenaPartida::manejar(EventoExplosion &e) {
+  float posX = this->conversor.metroAPixel(e.xCoord_);
+  float posY = this->conversor.bloqueAPixel(pista.getSizeY())
+      - this->conversor.metroAPixel(e.yCoord_);
+  std::shared_ptr<ObjetoDinamico> explosion =
+      std::make_shared<ObjetoDinamico>(UUID_ANIMACION_EXPLOSION,
+                                       renderizador_,
+                                       CONFIG_CLIENTE.musicaExplosion(),
+                                       false);
+  explosion.get()->mover(posX,posY,0);
+  pista.agregarEventoTemporal(explosion);
 }
 
 void EscenaPartida::manejar(EventoFinCarrera &e) {

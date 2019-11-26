@@ -20,6 +20,7 @@ Animacion::Animacion(std::vector<Textura> &texturas, unsigned int ancho, unsigne
     ancho_(ancho),
     alto_(alto),
     iterations_(CONFIG_CLIENTE.fps(), 0) {
+  this->primerIteracion = false;
   for (Textura &t : texturas) {
     frames_.push_back(std::move(t));
   }
@@ -27,7 +28,15 @@ Animacion::Animacion(std::vector<Textura> &texturas, unsigned int ancho, unsigne
 }
 
 Textura &Animacion::get(uint32_t numeroIteracion) {
-  return frames_[iterations_[numeroIteracion % iterations_.size()]];
+  int resto = numeroIteracion % iterations_.size();
+  if (numeroIteracion != 0 && resto == 0){
+    primerIteracion = true;
+  }
+  return frames_[iterations_[resto]];
+}
+
+bool Animacion::terminoPrimerIteracion() const {
+  return primerIteracion;
 }
 
 unsigned int Animacion::ancho() {

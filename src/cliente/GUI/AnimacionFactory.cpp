@@ -213,6 +213,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("barroGrande");
       alto_ = CONFIG_CLIENTE.alto("barroGrande");
       break;
+    case UUID_ANIMACION_VACIA:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("animacionVacia")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("animacionVacia");
+      alto_ = CONFIG_CLIENTE.alto("animacionVacia");
+      break;
 
     case UUID_ANIMACION_PASTO:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("pasto")) {

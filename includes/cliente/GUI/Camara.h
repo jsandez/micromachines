@@ -20,7 +20,7 @@ class Camara {
   void setCar(std::shared_ptr<ObjetoDinamico> car);
   void dibujarPista(int iteracion);
   void dibujarObjetos(int car_id, int iteracion);
-
+  void dibujarEventosTemporales(int iteracion);
 };
 
 #endif

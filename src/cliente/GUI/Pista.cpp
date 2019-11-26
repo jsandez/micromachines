@@ -9,8 +9,6 @@ void Pista::agregarBloque(int capa,
 }
 
 void Pista::crearPista(nlohmann::json pistaJson) {
-  // TODO: CREO QUE SE DEBERIA CAMBIAR LOS NOMBRES DEL JSON TERRENO Y PISTA POR NUMEROS
-  // DE ESA FORMA NO ES NECESARIO SEPARAR EN DOS CICLOS DIFERENTES
   for (uint16_t i = 0; i < size_x; i++) {
     for (uint16_t j = 0; j < size_y; j++) {
       int bloqueTerreno =
@@ -72,6 +70,7 @@ Pista::Pista(std::string
         matrix));
   }
   crearPista(pistaJson);
+  idEventoTemporal = 0;
 }
 
 std::shared_ptr<Animacion> Pista::getBloque(int capa, int x, int y) const {
@@ -84,11 +83,22 @@ void Pista::agregarObjeto(int id,
                                                                           objetoDinamico));
 }
 
+void Pista::agregarEventoTemporal(std::shared_ptr<ObjetoDinamico> eventoTemporal) {
+  eventosTemporales.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(
+      idEventoTemporal,
+      eventoTemporal));
+  this->idEventoTemporal++;
+}
+
 std::shared_ptr<ObjetoDinamico> Pista::obtenerObjeto(int id) {
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     return objetosDinamicos.at(id);
   }
   return nullptr;
+}
+
+std::shared_ptr<ObjetoDinamico> Pista::obtenerEventoTemporal(int id) {
+  return eventosTemporales.at(id);
 }
 
 void Pista::obtenerIds(std::vector<int> &ids) {
@@ -99,10 +109,22 @@ void Pista::obtenerIds(std::vector<int> &ids) {
   }
 }
 
+void Pista::obtenerIdsEventosTemporales(std::vector<int> &ids) {
+  for (std::map<int, std::shared_ptr<ObjetoDinamico>>::iterator
+           it = eventosTemporales.begin();
+       it != eventosTemporales.end(); ++it) {
+    ids.push_back(it->first);
+  }
+}
+
 void Pista::borrarObjeto(int id) {
   if (objetosDinamicos.find(id) != objetosDinamicos.end()) {
     objetosDinamicos.erase(id);
   }
+}
+
+void Pista::borrarEventoTemporal(int id) {
+  eventosTemporales.erase(id);
 }
 
 int Pista::getCapas() const {

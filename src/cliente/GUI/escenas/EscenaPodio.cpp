@@ -4,10 +4,13 @@
 
 void EscenaPodio::dibujarAutos(int nroIteracion) {
   for (auto &kv: this->mapaAutos) {
+    kv.second.get()->getSonido().setVolume(0);
     Animacion &animacion = kv.second.get()->getAnimacion();
-    Area areaAuto = Area(0, 0,
-                         animacion.ancho(),
-                         animacion.alto());
+    Area areaAuto =
+        Area(areasPodio.at(kv.first).x_ * CONFIG_CLIENTE.anchoVentana(),
+             areasPodio.at(kv.first).y_ * CONFIG_CLIENTE.altoVentana(),
+             animacion.ancho(),
+             animacion.alto());
     renderizador_.dibujar(animacion.get(nroIteracion),
                           areaAuto,
                           0,
@@ -30,7 +33,9 @@ EscenaPodio::EscenaPodio(Renderizador &renderizador,
     eventosGUI_(eventosGUI), mapaAutos(mapaAuto) {
   this->musicaAmbiente.play();
   this->musicaAmbiente.setVolume(CONFIG_CLIENTE.volumenAmbiente());
-  //inicializarTextoJugadores();
+  areasPodio.insert(std::pair<int, area_t>(0, {0.46, 0.52}));
+  areasPodio.insert(std::pair<int, area_t>(1, {0.30, 0.56}));
+  areasPodio.insert(std::pair<int, area_t>(2, {0.64, 0.60}));
 }
 
 Textura EscenaPodio::dibujate(uint32_t numeroIteracion, Area dimensiones) {
@@ -38,8 +43,6 @@ Textura EscenaPodio::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.setDestino(miTextura);
   Area areaFondo = Area(0, 0, dimensiones.ancho(), dimensiones.alto());
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
-  //dibujarBotones(numeroIteracion);
-  //dibujarTextoJugadores(numeroIteracion);
   dibujarAutos(numeroIteracion);
   return std::move(miTextura);
 }
