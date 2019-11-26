@@ -20,7 +20,7 @@ static void cargarPosicionesIniciales(uint16_t largoX, uint16_t largoY, std::que
 //static void cargarCheckpoints(uint16_t largoX, uint16_t largoY, std::map<int, Checkpoint>& checkpoints, Json& pistaJson);
 //TODO: implementar
 //static void cargarModificadores(uint16_t largoX, uint16_t largoY, std::map<Tile, std::shared_ptr<Superficie>>& tilesAModificadores, Json& pistaJson);
-#include <iostream>
+
 Mundo::Mundo(uint16_t uuidPista) :
     fisicas_(eventosOcurridos_, contactListener_),
     snapshotsEnviadosPorSegundo_(60/CONFIG_SERVIDOR.snapshotsEnviadosPorSegundo()),
@@ -29,7 +29,6 @@ Mundo::Mundo(uint16_t uuidPista) :
 
     for (uint8_t id = 1; id < 255; ++id) {
         uuidsObjetos_.push(id);
-        std::cout << (int) id<< "\n";
     }
     
     
