@@ -26,10 +26,15 @@ void EscenaLobby::inicializarTextoJugadores() {
   int tamanioFuente = 30;
   for (size_t i = 0; i < jugadoresId.size(); ++i) {
     std::string texto = "Jugador " + std::to_string(jugadoresId.at(i));
+    int color = UUID_TEXTO_AMARILLO;
+    if (jugadoresEstaListo.at(i)) {
+      std::cout << "Es true\n";
+      color = UUID_TEXTO_VERDE;
+    }
     textoJugadores.emplace(i, std::make_shared<Texto>(texto,
       tamanioFuente,
       renderizador_,
-      UUID_TEXTO_BLANCO));
+      color));
   }
 }
 
@@ -84,6 +89,7 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
     eventosGUI_(eventosGUI) {
   
   jugadoresId.emplace(0, e.uuidCreador_);
+  jugadoresEstaListo.emplace(0, false);
   inicializarBotones();
   inicializarTextoJugadores();
 }
@@ -102,6 +108,7 @@ EscenaLobby::EscenaLobby(Renderizador &renderizador,
   int ordinal = 0;
   for (const auto& kv : e.idJugadorAEstaListo_) {
     jugadoresId.emplace(ordinal, kv.first);
+    jugadoresEstaListo.emplace(ordinal, kv.second);
     ordinal++;
   }
   inicializarBotones();
@@ -159,10 +166,12 @@ void EscenaLobby::manejar(EventoPartidaIniciada &estadoInicial) {
 }
 
 void EscenaLobby::manejar(EventoSnapshotLobby& e) {
-  jugadoresId = std::map<int, uint32_t>();
+  jugadoresId.clear();
+  jugadoresEstaListo.clear();
   int ordinal = 0;
-  for (const auto& kv : e.idJugadorAEstaListo_) {
+  for (auto& kv : e.idJugadorAEstaListo_) {
     jugadoresId.emplace(ordinal, kv.first);
+    jugadoresEstaListo.emplace(ordinal, kv.second);
     ordinal++;
   }
   inicializarTextoJugadores();

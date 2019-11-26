@@ -9,6 +9,7 @@
 #define UUID_TEXTO_NEGRO 2
 #define UUID_TEXTO_ROJO 3
 #define UUID_TEXTO_AMARILLO 4
+#define UUID_TEXTO_VERDE 5
 
 class Renderizador;
 

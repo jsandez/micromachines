@@ -28,9 +28,13 @@ bool Partida::todosListos() {
     return true;
 }
 
-void Partida::estaListo(uint32_t uuidJugador) {
+void Partida::marcarListo(uint32_t uuidJugador) {
     //Nunca debería pinchar porque el jugador fue agregado
     uuidJugadorAEstaListo_.at(uuidJugador) = true;
+}
+
+bool Partida::estaListo(uint32_t uuidJugador) {
+    return uuidJugadorAEstaListo_.at(uuidJugador);
 }
 
 //TODO: CONST

@@ -5,10 +5,11 @@
 
 SDL_Color Texto::getColorRGB(int uuidColor) {
   switch (uuidColor) {
-    case UUID_TEXTO_BLANCO:return {255, 255, 255};
-    case UUID_TEXTO_NEGRO:return {0, 0, 0};
-    case UUID_TEXTO_ROJO:return {255, 0, 0};
-    case UUID_TEXTO_AMARILLO:return {255, 255, 0};
+    case UUID_TEXTO_BLANCO:return {255, 255, 255}; break;
+    case UUID_TEXTO_NEGRO:return {0, 0, 0}; break;
+    case UUID_TEXTO_ROJO:return {255, 0, 0}; break;
+    case UUID_TEXTO_AMARILLO:return {255, 255, 0}; break;
+    case UUID_TEXTO_VERDE: return {0, 255, 0}; break;
     default:return {255, 255, 255};
   }
 }

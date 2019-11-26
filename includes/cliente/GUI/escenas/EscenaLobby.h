@@ -12,6 +12,7 @@ class EscenaLobby : public Escena {
   std::map<int, std::shared_ptr<Boton>> botones;
   std::map<int, std::shared_ptr<Texto>> textoJugadores;
   std::map<int,uint32_t> jugadoresId;
+  std::map<int,bool> jugadoresEstaListo;
 
   void inicializarBotones();
   void inicializarTextoJugadores();

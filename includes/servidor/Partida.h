@@ -32,7 +32,8 @@ public:
     std::map<uint32_t, std::shared_ptr<Jugador>>& jugadores();
 
     bool todosListos();
-    void estaListo(uint32_t uuidJugador);
+    bool estaListo(uint32_t uuidJugador);
+    void marcarListo(uint32_t uuidJugador);
 
     virtual void correr() override;
     virtual void detener() override;
