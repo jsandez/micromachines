@@ -13,6 +13,7 @@ private:
     unsigned int maniobrabilidad_;
     unsigned int agarre_;
     unsigned int salud_;
+    unsigned int saludDefault_;
     Posicion respawn_;
     
 public:
@@ -31,6 +32,7 @@ public:
     unsigned int maniobrabilidad();
     unsigned int agarre();
     unsigned int salud();
+    bool disminuirSalud(uint8_t cantidad);
 
     virtual int getTipo() override;
     Posicion& getPuntoRespawn();

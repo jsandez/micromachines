@@ -1,6 +1,7 @@
 #include "includes/servidor/modelo/fisicas/ContactListener.h"
 
 #include "includes/servidor/modelo/Colisionable.h"
+#include "includes/servidor/utils/ConfigServidor.h"
 
 #include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
@@ -32,7 +33,7 @@ void ContactListener::BeginContact(b2Contact* contact) {
 
     if (colisionableA->getTipo() == Colisionable::tipos::VEHICULO_) {
         if (colisionableB->getTipo() == Colisionable::tipos::VEHICULO_) {
-            //TODO: IMPLEMENTAR
+            vehiculoVsVehiculo(*static_cast<Vehiculo*>(colisionableA), *static_cast<Vehiculo*>(colisionableB));
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_ARENA_) {
             vehiculoVsArena(*static_cast<Vehiculo*>(colisionableA), *static_cast<SuperficieArena*>(colisionableB));
@@ -93,5 +94,15 @@ void ContactListener::vehiculoVsCheckpoint(Vehiculo& vehiculo, Checkpoint& check
 }
 
 void ContactListener::vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculoB) {
-    uint8_t disminucionVida = CONFIG_SERVIDOR.disminucionVidaChoqueConVehiculo();    
+    uint8_t disminucionVida = CONFIG_SERVIDOR.disminucionVidaChoqueConVehiculo();
+    bool vehiculoAExploto = vehiculoA.disminuirSalud(disminucionVida);
+    if (vehiculoAExploto) {
+        //TODO: ENVIAR EXPLOSION
+        fisicas_.reubicar(vehiculoA, vehiculoA.getPuntoRespawn());
+    }
+    bool vehiculoBExploto = vehiculoB.disminuirSalud(disminucionVida);
+    if (vehiculoBExploto) {
+        //TODO: ENVIAR EXPLOSION
+        fisicas_.reubicar(vehiculoB, vehiculoB.getPuntoRespawn());
+    }
 }

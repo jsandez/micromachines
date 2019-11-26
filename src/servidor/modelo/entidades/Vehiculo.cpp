@@ -16,6 +16,7 @@ Vehiculo::Vehiculo(uint8_t uuid,
             maniobrabilidad_(maniobrabilidad),
             agarre_(agarre),
             salud_(salud),
+            saludDefault_(salud),
             respawn_(respawn) {
 }
 
@@ -41,6 +42,16 @@ unsigned int Vehiculo::agarre() {
 
 unsigned int Vehiculo::salud() {
     return salud_;
+}
+
+bool Vehiculo::disminuirSalud(uint8_t cantidad) {
+    int saludFinal = salud_ - cantidad;
+    if (saludFinal <= 0) {
+        salud_ = saludDefault_;
+        return true;
+    }
+    salud_ = saludFinal;
+    return false;
 }
 
 int Vehiculo::getTipo() {
