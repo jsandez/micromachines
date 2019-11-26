@@ -80,6 +80,9 @@ std::shared_ptr<Evento> EventoFactory::instanciar(uint32_t uuidRemitente, Protoc
 
     case UUID_EVENTO_UNIRSE_A_SALA:
       return std::make_shared<EventoUnirseASala>(uuidRemitente, protocolo);
+    
+    case UUID_EVENTO_FRENADA:
+      return std::make_shared<EventoFrenada>(uuidRemitente, protocolo);
 
     default:
       throw EventoDesconocidoError(ERROR_EVENTO_DESCONOCIDO);

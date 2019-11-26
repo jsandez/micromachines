@@ -33,6 +33,7 @@ class Handler;
 #define UUID_EVENTO_SNAPSHOT_LOBBY              24
 #define UUID_EVENTO_SNAPSHOT_SALA               25
 #define UUID_EVENTO_UNIRSE_A_SALA               26
+#define UUID_EVENTO_FRENADA                     27
 
 
 // TODO: Crear constructor por movimiento

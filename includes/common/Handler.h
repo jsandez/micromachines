@@ -27,9 +27,12 @@
 #include "includes/common/eventos/EventoSnapshotLobby.h"
 #include "includes/common/eventos/EventoSnapshotSala.h"
 #include "includes/common/eventos/EventoUnirseASala.h"
+#include "includes/common/eventos/EventoFrenada.h"
 
 class Handler {
  public:
+  virtual ~Handler();
+  
   virtual void manejar(Evento &e) = 0;
   virtual void manejar(EventoAcelerar &e);
   virtual void manejar(EventoDesacelerar &e);
@@ -56,6 +59,7 @@ class Handler {
   virtual void manejar(EventoSnapshotLobby &e);
   virtual void manejar(EventoSnapshotSala &e);
   virtual void manejar(EventoUnirseASala &e);
+  virtual void manejar(EventoFrenada &e);
 };
 
 #endif

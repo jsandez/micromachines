@@ -30,6 +30,7 @@
 #include "includes/common/eventos/EventoSnapshotLobby.h"
 #include "includes/common/eventos/EventoSnapshotSala.h"
 #include "includes/common/eventos/EventoUnirseASala.h"
+#include "includes/common/eventos/EventoFrenada.h"
 
 #define ERROR_EVENTO_DESCONOCIDO "Error al instanciar evento, se utilizó un UUID desconocido."
 

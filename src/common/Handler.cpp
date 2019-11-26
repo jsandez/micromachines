@@ -1,5 +1,9 @@
 #include "includes/common/Handler.h"
 
+Handler::~Handler() {
+    
+}
+
 void Handler::manejar(EventoAcelerar& e) {
 }
 
@@ -73,4 +77,7 @@ void Handler::manejar(EventoSnapshotSala &e) {
 }
 
 void Handler::manejar(EventoUnirseASala &e) {
+}
+
+void Handler::manejar(EventoFrenada& e) {
 }
