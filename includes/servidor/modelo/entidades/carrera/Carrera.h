@@ -2,7 +2,7 @@
 #define _CARRERA_H_
 
 #include <map>
-#include <queue>
+#include <vector>
 
 #include "includes/3rd-party/jsoncpp/json.hpp"
 #include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
@@ -20,7 +20,7 @@ private:
     std::map<uint8_t, int> idsVehiculosAidsCheckpoints_;
     std::map<uint8_t, int> idsVehiculosAVueltas_;
     int numeroDeVueltas_;
-    std::queue<int> podio_;
+    std::vector<uint8_t> podio_;
     ColaProtegida<std::shared_ptr<Evento>>& eventosMundo_;
     
     bool finalizada();

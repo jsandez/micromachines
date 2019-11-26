@@ -39,13 +39,12 @@ void Carrera::setCheckpoint(Vehiculo& vehiculo, Checkpoint& checkpoint) {
     if (checkpoint.id() == ID_META) {
         idsVehiculosAVueltas_[vehiculo.uuid()]++;
         if (idsVehiculosAVueltas_[vehiculo.uuid()] == numeroDeVueltas_) {
-            podio_.emplace(vehiculo.uuid());
+            podio_.push_back(vehiculo.uuid());
         }
     }
     bool termino = finalizada();
     if (termino) {
-        //TODO: Acá? Hay que notificar... La partida debe finalizar, el mundo dentenerse, etc.
-        std::shared_ptr<Evento> fin = std::make_shared<EventoFinCarrera>(/*std::move(podio_)*/);
+        std::shared_ptr<Evento> fin = std::make_shared<EventoFinCarrera>(std::move(podio_));
         eventosMundo_.put(fin);
     }
 }

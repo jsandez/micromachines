@@ -4,14 +4,15 @@
 #include "includes/common/eventos/Evento.h"
 #include "includes/common/red/Protocolo.h"
 
+#include <vector>
 
 class EventoFinCarrera : public Evento {
 public:
-       
+    
+    std::vector<uint8_t> podio_;
+
     EventoFinCarrera(uint32_t uuidRemitente, Protocolo& protocolo);
-    //FIXME: Constructor local
-    //EventoFinCarrera(args);
-    EventoFinCarrera();
+    EventoFinCarrera(std::vector<uint8_t>&& podio);
     virtual void enviarse(Protocolo& protocolo) override;
     virtual void actualizar(Handler& handler) override;
 };
