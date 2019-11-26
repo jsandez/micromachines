@@ -3,16 +3,17 @@
 
 #include <includes/cliente/GUI/Animacion.h>
 #include <includes/common/ColaProtegida.h>
+#include <includes/cliente/GUI/ObjetoDinamico.h>
 #include "includes/cliente/GUI/escenas/Escena.h"
 
 class EscenaPodio : public Escena {
  private:
   Animacion fondoMenu_;
   ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI_;
-  //std::map<int, std::shared_ptr<Boton>> botones;
   std::map<int, std::shared_ptr<Texto>> textoJugadores;
-  //std::map<int, uint32_t> jugadoresId;
+  std::map<int, std::shared_ptr<ObjetoDinamico>>& mapaAutos;
 
+  void dibujarAutos(int nroIteracion);
 //  void inicializarBotones();
   // void inicializarTextoJugadores();
   // void dibujarBotones(int iteracion);
@@ -24,7 +25,7 @@ class EscenaPodio : public Escena {
               std::stack<std::shared_ptr<Escena>> &escenas,
               ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
               Sonido &musicaAmbiente,
-              EventoFinCarrera &e);
+              std::map<int, std::shared_ptr<ObjetoDinamico>>& mapaAutos);
   virtual Textura dibujate(uint32_t numeroIteracion, Area dimensiones) override;
   virtual void manejarInput(EventoGUI &evento) override;
   virtual void manejarInput(EventoGUIClick &evento) override;

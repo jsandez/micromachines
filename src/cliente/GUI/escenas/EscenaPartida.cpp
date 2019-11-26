@@ -156,12 +156,18 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
 }
 
 void EscenaPartida::manejar(EventoFinCarrera &e) {
+  std::map<int, std::shared_ptr<ObjetoDinamico>> mapaAutos;
+  for (uint8_t i = 0; i < e.podio_.size(); i++) {
+    mapaAutos.insert(std::pair<int, std::shared_ptr<ObjetoDinamico>>(i,
+                                                                     pista.obtenerObjeto(
+                                                                         e.podio_[i])));
+  }
   escenas_.emplace(std::make_shared<EscenaPodio>(renderizador_,
                                                  eventosGUI_,
                                                  escenas_,
                                                  eventosAEnviar_,
                                                  this->musicaAmbiente,
-                                                 e));
+                                                 mapaAutos));
 }
 
 EscenaPartida::~EscenaPartida() {

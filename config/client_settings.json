@@ -358,6 +358,14 @@
       "sprites": [
         "assets/modificadores/1400.png"
       ]
+    },
+    "barroGrande": {
+      "uuid": 1500,
+      "ancho": 1000,
+      "alto": 1000,
+      "sprites": [
+        "assets/modificadores/1500.png"
+      ]
     }
   },
   "grabadora": {
@@ -369,9 +377,9 @@
     "fps": 30,
     "bitrate": 4000000
   },
-  "lua" : {
-    "ruta" : "lua_scripts/script.lua",
-    "ruta2" : "lua_scripts/get_command.lua",
-    "tiempoHumano" : 10
+  "lua": {
+    "ruta": "lua_scripts/script.lua",
+    "ruta2": "lua_scripts/get_command.lua",
+    "tiempoHumano": 10
   }
 }

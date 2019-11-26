@@ -2,16 +2,32 @@
 #include <includes/cliente/utils/ConfigCliente.h>
 #include "includes/cliente/GUI/escenas/EscenaPodio.h"
 
+void EscenaPodio::dibujarAutos(int nroIteracion) {
+  for (auto &kv: this->mapaAutos) {
+    Animacion &animacion = kv.second.get()->getAnimacion();
+    Area areaAuto = Area(0, 0,
+                         animacion.ancho(),
+                         animacion.alto());
+    renderizador_.dibujar(animacion.get(nroIteracion),
+                          areaAuto,
+                          0,
+                          false);
+  }
+}
+
 EscenaPodio::EscenaPodio(Renderizador &renderizador,
                          ColaProtegida<std::shared_ptr<EventoGUI>> &eventosGUI,
                          std::stack<std::shared_ptr<Escena>> &escenas,
                          ColaBloqueante<std::shared_ptr<Evento>> &eventosAEnviar_,
                          Sonido &musicaAmbiente,
-                         EventoFinCarrera &e) :
-    Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente),
+                         std::map<int,
+                                  std::shared_ptr<ObjetoDinamico>> &mapaAuto) :
+    Escena(escenas, renderizador, eventosAEnviar_, musicaAmbiente
+    ),
     fondoMenu_(AnimacionFactory::instanciar(CONFIG_CLIENTE.uuid("fondoPodio"),
-                                            renderizador)),
-    eventosGUI_(eventosGUI) {
+                                            renderizador)
+    ),
+    eventosGUI_(eventosGUI), mapaAutos(mapaAuto) {
   this->musicaAmbiente.play();
   this->musicaAmbiente.setVolume(CONFIG_CLIENTE.volumenAmbiente());
   //inicializarTextoJugadores();
@@ -24,6 +40,7 @@ Textura EscenaPodio::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   renderizador_.dibujar(fondoMenu_.get(numeroIteracion), areaFondo);
   //dibujarBotones(numeroIteracion);
   //dibujarTextoJugadores(numeroIteracion);
+  dibujarAutos(numeroIteracion);
   return std::move(miTextura);
 }
 
