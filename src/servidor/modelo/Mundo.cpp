@@ -119,7 +119,8 @@ void Mundo::agregarModificadores(uint32_t nroIteracion) {
     
     int modificador = rand() % 4;
     if (modificador == 0) {
-        modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid));
+        //TODO: AL CONFIG SERVIDOR LOS 20 DE VIDA
+        modificadores_.emplace(uuid, std::make_shared<CajaVida>(uuid, 20));
         fisicas_.agregarModificador(modificadores_.at(uuid), UUID_VIDA, posicion);
     }
 

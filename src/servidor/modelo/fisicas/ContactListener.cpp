@@ -6,6 +6,7 @@
 #include "includes/servidor/modelo/entidades/carrera/Checkpoint.h"
 #include "includes/servidor/modelo/superficies/SuperficieArena.h"
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/CajaVida.h"
 #include "includes/servidor/modelo/fisicas/Fisicas.h"
 
 #include "includes/common/eventos/EventoChoque.h"
@@ -48,6 +49,9 @@ void ContactListener::BeginContact(b2Contact* contact) {
             //TODO: No se pueden modificar valores acá, hay que obtener el b2Vehiculo
         }
         if (colisionableB->getTipo() == Colisionable::tipos::SUPERFICIE_PISTA_) {
+        }
+        if (colisionableB->getTipo() == Colisionable::tipos::SALUD_) {
+            vehiculoVsCajaVida(*static_cast<Vehiculo*>(colisionableA), *static_cast<CajaVida*>(colisionableB));
         }
     }
 }
@@ -118,4 +122,10 @@ void ContactListener::vehiculoVsVehiculo(Vehiculo& vehiculoA, Vehiculo& vehiculo
         fisicas_.ocurrio(explosion);
         fisicas_.reubicar(vehiculoB, vehiculoB.getPuntoRespawn());
     }
+}
+
+void ContactListener::vehiculoVsCajaVida(Vehiculo& vehiculo, CajaVida& cajaVida) {
+    int deltaVida = cajaVida.deltaVida();
+    vehiculo.sumarSalud(deltaVida);
+    fisicas_.quitar(cajaVida);
 }

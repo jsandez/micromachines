@@ -3,7 +3,9 @@
 #include "includes/servidor/utils/ConfigServidor.h"
 
 #include "includes/servidor/modelo/entidades/Vehiculo.h"
+#include "includes/servidor/modelo/entidades/CajaVida.h"
 #include "includes/servidor/modelo/fisicas/transformaciones/Reubicar.h"
+#include "includes/servidor/modelo/fisicas/transformaciones/Quitar.h"
 
 #include "includes/common/eventos/EventoAparecioConsumible.h"
 
@@ -29,7 +31,6 @@ void Fisicas::ocurrio(std::shared_ptr<Evento> unEvento) {
 
 void Fisicas::agregarModificador(std::shared_ptr<Modificador> modificador, uint8_t tipo, Posicion& posicion) {
     float ladoModificador = 5.0f;//CONFIG_SEVIDOR.ladoModificador();
-    float anchoTile = CONFIG_SERVIDOR.anchoTile();
     b2BodyDef bodyDef;
     bodyDef.userData = modificador.get();
     float x = posicion.x_; 
@@ -168,5 +169,11 @@ void Fisicas::step(uint32_t numeroIteracion) {
 void Fisicas::reubicar(Vehiculo& vehiculo, Posicion& posicion) {
     b2Body* cuerpoVehiculo = vehiculos_.at(vehiculo.uuid())->getB2D();
     std::shared_ptr<Transformacion> t = std::make_shared<Reubicar>(*this, cuerpoVehiculo, posicion);
+    transformaciones_.push(t);
+}
+
+void Fisicas::quitar(CajaVida& cajaVida) {
+    b2Body* cuerpo = colisionables_.at(cajaVida.uuid());
+    std::shared_ptr<Transformacion> t = std::make_shared<Quitar>(*this, cuerpo, cajaVida.uuid());
     transformaciones_.push(t);
 }

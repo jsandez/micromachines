@@ -33,6 +33,7 @@ public:
     unsigned int agarre();
     unsigned int salud();
     bool disminuirSalud(uint8_t cantidad);
+    void sumarSalud(int delta);
 
     virtual int getTipo() override;
     Posicion& getPuntoRespawn();

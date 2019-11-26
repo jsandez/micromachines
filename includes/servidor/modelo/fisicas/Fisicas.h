@@ -58,6 +58,7 @@ public:
     Posicion getPosicionDe(uint8_t idCuerpo);
     
     void reubicar(Vehiculo& vehiculo, Posicion& Posicion);
+    void quitar(CajaVida& cajaVida);
 
 };
 
