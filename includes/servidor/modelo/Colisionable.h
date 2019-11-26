@@ -2,8 +2,12 @@
 #define _COLISIONABLE_H_
 
 class Colisionable {
+private:
+    bool yaColisionado_;
 
 public:
+    Colisionable();
+    virtual ~Colisionable();
     enum tipos {
         VEHICULO_ = 0,
         BARRO_ = 1,
@@ -18,7 +22,9 @@ public:
         META_ = 10
     };
     
-    virtual int getTipo() = 0;    
+    virtual int getTipo() = 0;
+    void colisionado();
+    bool yaFueColisionado();
 };
 
 #endif
