@@ -152,7 +152,13 @@ Animacion AnimacionFactory::instanciar(unsigned int uuidAnimacion, Renderizador 
       ancho_ = CONFIG_CLIENTE.ancho("fondoSala");
       alto_ = CONFIG_CLIENTE.alto("fondoSala");
       break;
-
+    case UUID_ANIMACION_FONDO_PODIO:
+      for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("fondoPodio")) {
+        frames_.emplace_back(Textura(rutaArchivo, renderizador));
+      }
+      ancho_ = CONFIG_CLIENTE.ancho("fondoPodio");
+      alto_ = CONFIG_CLIENTE.alto("fondoPodio");
+      break;
     case UUID_ANIMACION_EXPLOSION:
       for (std::string &rutaArchivo : CONFIG_CLIENTE.sprites("explosion")) {
         frames_.emplace_back(Textura(rutaArchivo, renderizador));

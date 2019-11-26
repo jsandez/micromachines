@@ -2,6 +2,7 @@
 #include <includes/cliente/utils/ConfigCliente.h>
 #include <includes/cliente/GUI/Texto.h>
 #include "includes/cliente/GUI/escenas/EscenaPartida.h"
+#include "includes/cliente/GUI/escenas/EscenaPodio.h"
 #include "includes/cliente/GUI/Area.h"
 
 // TODO: Refactorizar
@@ -61,11 +62,12 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
     pista.obtenerObjeto(id)->mover(xCoord, yCoord, angulo);
     vehiculoActual += 10;
 
-    if (juegaComputadora){
+    if (juegaComputadora) {
       jugador_ = std::move(std::unique_ptr<Jugador>(new Computadora(
-                              eventosAEnviar_,"assets/pistas/1.json")));
+          eventosAEnviar_, "assets/pistas/1.json")));
     } else {
-      jugador_ = std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
+      jugador_ =
+          std::move(std::unique_ptr<Jugador>(new Jugador(eventosAEnviar_)));
     }
   }
   camara.setCar(pista.obtenerObjeto(estadoInicial.idDelVehiculo_));
@@ -75,7 +77,10 @@ EscenaPartida::EscenaPartida(Renderizador &renderizador,
 
 Textura EscenaPartida::dibujate(uint32_t numeroIteracion, Area dimensiones) {
   float reescalado = CONFIG_CLIENTE.factorLejaniaCamara();
-  Area nueva = Area(0, 0, dimensiones.ancho() * reescalado, dimensiones.alto() * reescalado);
+  Area nueva = Area(0,
+                    0,
+                    dimensiones.ancho() * reescalado,
+                    dimensiones.alto() * reescalado);
   Textura miTextura(renderizador_, nueva);
   renderizador_.setDestino(miTextura);
   this->camara.setWidthHeight(nueva.ancho(), nueva.alto());
@@ -145,9 +150,20 @@ void EscenaPartida::manejar(EventoSnapshot &e) {
                                                      kv.second.angulo_);
     this->pista.obtenerObjeto(kv.first).get()->setVida(kv.second.salud_);
   }
-  jugador_->setEstado(datos[this->id_car].xCoord_, datos[this->id_car].yCoord_, datos[this->id_car].angulo_);
+  jugador_->setEstado(datos[this->id_car].xCoord_,
+                      datos[this->id_car].yCoord_,
+                      datos[this->id_car].angulo_);
 }
 
-EscenaPartida::~EscenaPartida(){
+void EscenaPartida::manejar(EventoFinCarrera &e) {
+  escenas_.emplace(std::make_shared<EscenaPodio>(renderizador_,
+                                                 eventosGUI_,
+                                                 escenas_,
+                                                 eventosAEnviar_,
+                                                 this->musicaAmbiente,
+                                                 e));
+}
+
+EscenaPartida::~EscenaPartida() {
   jugador_->terminar();
 }

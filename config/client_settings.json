@@ -252,6 +252,14 @@
         "assets/fondo_sala.png"
       ]
     },
+    "fondoPodio": {
+      "uuid": 720,
+      "ancho": 918,
+      "alto": 515,
+      "sprites": [
+        "assets/fondo_podio.png"
+      ]
+    },
     "pasto": {
       "uuid": 106,
       "ancho": 256,

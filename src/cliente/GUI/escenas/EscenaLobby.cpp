@@ -193,7 +193,7 @@ void EscenaLobby::manejar(EventoPartidaIniciada &estadoInicial) {
                                                    eventosAEnviar_,
                                                    estadoInicial,
                                                    this->musicaAmbiente,
-                                                   false));
+                                                   cpu));
 }
 
 void EscenaLobby::manejar(EventoSnapshotLobby &e) {
