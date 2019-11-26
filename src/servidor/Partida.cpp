@@ -16,6 +16,25 @@ Partida::~Partida() {
 
 void Partida::agregarJugador(std::shared_ptr<Jugador> jugador) {
     jugadores_[jugador->uuid()] = jugador;
+    uuidJugadorAEstaListo_.emplace(jugador->uuid(), false);
+}
+
+bool Partida::todosListos() {
+    for (auto& kv : uuidJugadorAEstaListo_) {
+        if (kv.second == false) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Partida::marcarListo(uint32_t uuidJugador) {
+    //Nunca debería pinchar porque el jugador fue agregado
+    uuidJugadorAEstaListo_.at(uuidJugador) = true;
+}
+
+bool Partida::estaListo(uint32_t uuidJugador) {
+    return uuidJugadorAEstaListo_.at(uuidJugador);
 }
 
 //TODO: CONST

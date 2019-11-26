@@ -43,7 +43,7 @@ std::shared_ptr<EventoSnapshotLobby> CoordinadorPartidas::getSnapshotLobby(uint1
     std::map<uint32_t, std::shared_ptr<Jugador>> jugadoresEnPartida = partida->jugadores();
     for (const auto& kv : jugadoresEnPartida) {
         //FIXME: Agregar logica de estoy listo
-        datosDelvento.emplace(kv.first, true);
+        datosDelvento.emplace(kv.first, partida->estaListo(kv.first));
     }
     return std::make_shared<EventoSnapshotLobby>(std::move(datosDelvento));        
 }
@@ -70,7 +70,14 @@ void CoordinadorPartidas::manejar(EventoCrearPartida& e) {
 void CoordinadorPartidas::manejar(EventoIniciarPartida& e) {
     uint32_t uuidJugador = e.uuidRemitente();
     uint16_t uuidPartida = jugadoresAPartidas_[uuidJugador];
-    partidas_[uuidPartida]->iniciar();
+    std::shared_ptr<Partida> partida = partidas_.at(uuidPartida);
+    partida->marcarListo(uuidJugador);
+    for (const auto& kv : partidas_.at(uuidPartida)->jugadores()) {
+        kv.second->ocurrio(getSnapshotLobby(uuidPartida));
+    }
+    if (partida->todosListos()) {
+        partidas_[uuidPartida]->iniciar();
+    }
 }
 
 void CoordinadorPartidas::manejar(EventoDesconexion& e) {
